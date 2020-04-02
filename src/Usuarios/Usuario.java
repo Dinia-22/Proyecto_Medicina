@@ -5,12 +5,18 @@
  */
 package Usuarios;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 /**
  *
  * @author Maria Paula
  */
 public class Usuario {
-    
+
     private int ID;
     private String Nombre;
     private int FechaNacimiento;
@@ -19,8 +25,11 @@ public class Usuario {
     private String NomUsuario;
     private String contraseña;
     private String tipo;
+    private Connection conexion;
+    private Statement sentencias;
+    private ResultSet datos;
 
-    public Usuario(int ID, String Nombre, int FechaNacimiento, int Tel, String NomUsuario, String contraseña, String tipo) {
+    public Usuario(int ID, String Nombre, int FechaNacimiento, int Tel, String NomUsuario, String contraseña, String tipo, String correo) {
         this.ID = ID;
         this.Nombre = Nombre;
         this.FechaNacimiento = FechaNacimiento;
@@ -28,7 +37,10 @@ public class Usuario {
         this.NomUsuario = NomUsuario;
         this.contraseña = contraseña;
         this.tipo = tipo;
+        this.correo= correo;
     }
+
+  
 
     public int getID() {
         return ID;
@@ -93,8 +105,39 @@ public class Usuario {
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
+
+    public void conectar() {
+        try {
+            this.conexion = DriverManager.getConnection("jdbc:mysql://localhost/medicna?useServerPrepStmts=true", "root", "");
+            this.sentencias = this.conexion.createStatement();
+
+        } catch (SQLException ex) {
+
+            System.out.println(" Error al conectar");
+        }
+    }
+
+    public void create(String nombre,int fecha,int tel,String correo,String usuario,String contraseña,String tipo) {
+        try {    
+            this.sentencias.executeUpdate("insert into usuarios values(null,'" + nombre +"','" + fecha +"','"+ tel +"','"+ correo +"','"+ usuario +"','"+ contraseña +"','"+ tipo +"')", Statement.RETURN_GENERATED_KEYS);
+
+            this.datos = this.sentencias.getGeneratedKeys();
+            if (datos.next()) {
+                System.out.println(datos.getInt(1));
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error al agregar");
+        }
+
+    }
     
-    
-    
-    
+    public static void main(String[] args) {
+        // TODO code application logic here
+        Usuario p = new Usuario(0,"",0,0,"","","","");
+        p.conectar();
+        p.create("juancarlos",2,72031679,"maripahzu@hotmailcom","juan23","12345","medico");
+        
+        
+    }
+
 }
