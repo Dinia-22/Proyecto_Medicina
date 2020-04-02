@@ -136,6 +136,7 @@ public class Usuario {
         Usuario p = new Usuario(0,"",0,0,"","","","");
         p.conectar();
         p.create("juancarlos",2,72031679,"maripahzu@hotmailcom","juan23","12345","medico");
+        System.out.println("");
         
         
     }
