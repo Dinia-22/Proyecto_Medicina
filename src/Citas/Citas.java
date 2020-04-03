@@ -108,6 +108,7 @@ public class Citas {
         Citas p = new Citas(0, 0, 0, "", "");
         p.conectar();
         p.create();
+        System.out.println("");
         
 
     }
