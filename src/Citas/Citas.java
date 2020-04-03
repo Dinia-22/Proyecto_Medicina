@@ -19,7 +19,6 @@ import java.util.logging.Logger;
  * @author Maria Paula
  */
 public class Citas {
-
     private int ID;
     private int fecha;
     private int hora;
@@ -110,8 +109,6 @@ public class Citas {
         p.create();
         System.out.println("");
         
-        
-
     }
 
 }
