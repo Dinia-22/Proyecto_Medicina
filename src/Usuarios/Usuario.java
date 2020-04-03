@@ -156,6 +156,16 @@ public class Usuario {
         }
 
     }
+    
+    public void updateContraseña(int Id, String Contraseña) { // modificar
+        try {
+            this.sentencias.executeUpdate("update usuario set nombre='" +Contraseña+ "' where id=" + Id);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
 
     public void delete(int Id) { /// controlar que siempre quede un usuario registrado al momento de eliminar
         try {
@@ -164,6 +174,7 @@ public class Usuario {
             System.out.println("Error en delete");
         }
     }
+    
  ///////////////////////////// para buscar la informacion del usuario///////////////////////////////////////////////////
     public void readNombre(String Nombre) {
         try {
@@ -274,6 +285,7 @@ public class Usuario {
         //p.delete(1);
         //p.update(1, "maria", 4, "hotmail", "p123", "secretaria", 01234);
         //p.create();
+        p.updateContraseña(1,"");
 
     }
 
