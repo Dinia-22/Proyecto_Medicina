@@ -5,25 +5,37 @@
  */
 package Medicos;
 
+import Usuarios.Usuario;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Maria Paula
  */
 public class Medicos {
+
     private int ID;
-    private int Nombre;
+    private String Nombre;
     private int FechaNacimiento;
     private int tel;
     private String correo;
     private int Codigo;
     private String especialidad;
     private float salario;
+    private Statement sentencias;
+    private Connection conexion;
 
     public int getID() {
         return ID;
     }
 
-    public int getNombre() {
+    public String getNombre() {
         return Nombre;
     }
 
@@ -55,7 +67,7 @@ public class Medicos {
         this.ID = ID;
     }
 
-    public void setNombre(int Nombre) {
+    public void setNombre(String Nombre) {
         this.Nombre = Nombre;
     }
 
@@ -83,7 +95,7 @@ public class Medicos {
         this.salario = salario;
     }
 
-    public Medicos(int ID, int Nombre, int FechaNacimiento, int tel, String correo, int Codigo, String especialidad, float salario) {
+    public Medicos(int ID, String Nombre, int FechaNacimiento, int tel, String correo, int Codigo, String especialidad, float salario) {
         this.ID = ID;
         this.Nombre = Nombre;
         this.FechaNacimiento = FechaNacimiento;
@@ -93,6 +105,43 @@ public class Medicos {
         this.especialidad = especialidad;
         this.salario = salario;
     }
-    
-    
+
+    public void conectar() {
+        try {
+            this.conexion = DriverManager.getConnection("jdbc:mysql://localhost/medicina?useServerPrepStmts=true", "root", "");
+            this.sentencias = this.conexion.createStatement();
+
+        } catch (SQLException ex) {
+
+            System.out.println(" Error al conectar");
+        }
+    }
+
+    public void create() {
+        try {
+            PreparedStatement sentencia;
+            sentencia = conexion.prepareStatement("insert medicos values(null,?,?,?,?,?,?,?)");
+
+            sentencia.setString(1, "Enrique");
+            sentencia.setInt(2,1980);
+            sentencia.setInt(3,17234569);
+            sentencia.setString(4,"enri@hotmail.com");
+            sentencia.setInt(5,0102);
+            sentencia.setString(6,"cirujano");
+            sentencia.setFloat(7,500000);
+            sentencia.execute();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public static void main(String[] args) {
+        // TODO code application logic here
+        Medicos p = new Medicos(0, " ", 2, 0, "", 0,"", 0);
+        p.conectar();
+        p.create();
+
+    }
+
 }
