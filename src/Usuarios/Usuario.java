@@ -7,6 +7,7 @@ package Usuarios;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -37,10 +38,8 @@ public class Usuario {
         this.NomUsuario = NomUsuario;
         this.contraseña = contraseña;
         this.tipo = tipo;
-        this.correo= correo;
+        this.correo = correo;
     }
-
-  
 
     public int getID() {
         return ID;
@@ -108,7 +107,7 @@ public class Usuario {
 
     public void conectar() {
         try {
-            this.conexion = DriverManager.getConnection("jdbc:mysql://localhost/medicna?useServerPrepStmts=true", "root", "");
+            this.conexion = DriverManager.getConnection("jdbc:mysql://localhost/medicina?useServerPrepStmts=true", "root", "");
             this.sentencias = this.conexion.createStatement();
 
         } catch (SQLException ex) {
@@ -117,28 +116,31 @@ public class Usuario {
         }
     }
 
-    public void create(String nombre,int fecha,int tel,String correo,String usuario,String contraseña,String tipo) {
-        try {    
-            this.sentencias.executeUpdate("insert into usuarios values(null,'" + nombre +"','" + fecha +"','"+ tel +"','"+ correo +"','"+ usuario +"','"+ contraseña +"','"+ tipo +"')", Statement.RETURN_GENERATED_KEYS);
+    public void create() {
+        try {
 
-            this.datos = this.sentencias.getGeneratedKeys();
-            if (datos.next()) {
-                System.out.println(datos.getInt(1));
-            }
+            PreparedStatement sentencia = conexion.prepareStatement("insert usuario values(null,?,?,?,?,?,?,?)");
+            sentencia.setString(1, "paula");
+            sentencia.setString(2,"2 enero");
+            sentencia.setString(3, "@");
+            sentencia.setString(4, "pau");
+            sentencia.setString(5, "1234");
+            sentencia.setString(6, "medico");
+            sentencia.setInt(7,72031697);
+            sentencia.execute();
+
         } catch (SQLException ex) {
             System.out.println("Error al agregar");
         }
 
     }
-    
+
     public static void main(String[] args) {
         // TODO code application logic here
-        Usuario p = new Usuario(0,"",0,0,"","","","");
+        Usuario p = new Usuario(0, "", 0, 0, "", "", "", "");
         p.conectar();
-        p.create("juancarlos",2,72031679,"maripahzu@hotmailcom","juan23","12345","medico");
-        System.out.println("");
-        
-        
+        p.create();
+
     }
 
 }
