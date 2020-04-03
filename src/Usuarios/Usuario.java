@@ -11,6 +11,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -117,20 +119,23 @@ public class Usuario {
     }
 
     public void create() {
-        try {
 
-            PreparedStatement sentencia = conexion.prepareStatement("insert usuario values(null,?,?,?,?,?,?,?)");
+        
+        try {
+            PreparedStatement sentencia;
+            sentencia = conexion.prepareStatement("insert usuario values(null,?,?,?,?,?,?,?)");
+           
             sentencia.setString(1, "paula");
-            sentencia.setString(2,"2 enero");
+            sentencia.setInt(2,2);
             sentencia.setString(3, "@");
             sentencia.setString(4, "pau");
             sentencia.setString(5, "1234");
             sentencia.setString(6, "medico");
-            sentencia.setInt(7,72031697);
+            sentencia.setInt(7, 72031697);
             sentencia.execute();
 
         } catch (SQLException ex) {
-            System.out.println("Error al agregar");
+            Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
