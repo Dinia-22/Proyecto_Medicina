@@ -5,6 +5,16 @@
  */
 package Expediente;
 
+
+import Usuarios.Usuario;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Maria Paula
@@ -14,6 +24,8 @@ public class Expediente {
     private int hora;
     private String medico;
     private String Descrip;
+    private Connection conexion;
+    private Statement sentencias;
 
     public Expediente(int Fecha, int hora, String medico, String Descrip) {
         this.Fecha = Fecha;
@@ -52,6 +64,41 @@ public class Expediente {
 
     public void setDescrip(String Descrip) {
         this.Descrip = Descrip;
+    }
+    
+    public void conectar() {
+        try {
+            this.conexion = DriverManager.getConnection("jdbc:mysql://localhost/medicina?useServerPrepStmts=true", "root", "");
+            this.sentencias = this.conexion.createStatement();
+
+        } catch (SQLException ex) {
+
+            System.out.println(" Error al conectar");
+        }
+    }
+
+    public void create() {
+        try {
+            PreparedStatement sentencia;
+            sentencia = conexion.prepareStatement("insert expediente values(null,?,?,?,?)");
+            sentencia.setInt(1, 5);
+            sentencia.setInt(2, 2);
+            sentencia.setString(3,"Carlos");
+            sentencia.setString(4,"pierna rota");
+            sentencia.execute();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
+    public static void main(String[] args) {
+        // TODO code application logic here
+        Expediente p = new Expediente(0,0,"","");
+        p.conectar();
+        p.create();
+    
     }
     
     
