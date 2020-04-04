@@ -96,14 +96,6 @@ public class Usuario {
             sentencia.setString(7, this.txtTel.getText());
             sentencia.execute();
 
-//            sentencia.setString(1,txtNombre.getText());
-//            sentencia.setString(2, dt.format(FechaNacimiento.getDate()));
-//            sentencia.setString(3, this.txtCorreo.getText());
-//            sentencia.setString(4, this.NomUsuario.getText());
-//            sentencia.setString(5, this.contraseña.getText());
-//            sentencia.setString(6, this.tipo.getText());
-//            sentencia.setString(7, this.txtTel.getText());
-//            sentencia.execute();
 
         } catch (SQLException ex) {
             Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
