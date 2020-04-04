@@ -48,6 +48,7 @@ public class FrmUsuario extends javax.swing.JFrame {
         txtCorreo = new javax.swing.JTextField();
         txtUsuario = new javax.swing.JTextField();
         guardar = new javax.swing.JButton();
+        cancel = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         B = new javax.swing.JMenuItem();
@@ -185,6 +186,13 @@ public class FrmUsuario extends javax.swing.JFrame {
             }
         });
 
+        cancel.setText("Cancelar");
+        cancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelActionPerformed(evt);
+            }
+        });
+
         jMenu1.setText("Buscar Usuario");
 
         B.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_B, java.awt.event.InputEvent.CTRL_MASK));
@@ -210,6 +218,11 @@ public class FrmUsuario extends javax.swing.JFrame {
 
         AI.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
         AI.setText("Actualizar ");
+        AI.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AIActionPerformed(evt);
+            }
+        });
         jMenu3.add(AI);
 
         jMenuBar1.add(jMenu3);
@@ -234,13 +247,17 @@ public class FrmUsuario extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(298, 298, 298)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(cancel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(guardar, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(298, 298, 298)
-                .addComponent(guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -249,7 +266,9 @@ public class FrmUsuario extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(guardar)
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cancel)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -260,7 +279,7 @@ public class FrmUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_EActionPerformed
 
     private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
-        
+        p.ID= this.txtCedula;
         p.txtCorreo= this.txtCorreo;
         p.NomUsuario= this.txtUsuario;
         p.contraseña= this.txtContraseña;
@@ -275,6 +294,17 @@ public class FrmUsuario extends javax.swing.JFrame {
         FrmModificacion prueba = new FrmModificacion ();
         prueba.setVisible(true);
     }//GEN-LAST:event_ACActionPerformed
+
+    private void cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelActionPerformed
+        System.exit(0);
+        
+    }//GEN-LAST:event_cancelActionPerformed
+
+    private void AIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AIActionPerformed
+        Actualizar act = new Actualizar ();
+        act.setVisible(true);
+        
+    }//GEN-LAST:event_AIActionPerformed
 
     /**
      * @param args the command line arguments
@@ -316,6 +346,7 @@ public class FrmUsuario extends javax.swing.JFrame {
     private javax.swing.JMenuItem AI;
     private javax.swing.JMenuItem B;
     private javax.swing.JMenuItem E;
+    private javax.swing.JButton cancel;
     private javax.swing.JButton guardar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

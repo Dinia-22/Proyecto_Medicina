@@ -113,7 +113,16 @@ public class Usuario {
         }
 
     }
-    
+      public void updateContraseña() {
+        try {
+           
+            this.sentencias.executeUpdate("update usuario set contraseña='" + this.contraseña.getText() + "' where id=" + this.ID.getText());
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
 
     public void delete() { /// controlar que siempre quede un usuario registrado al momento de eliminar
         try {
