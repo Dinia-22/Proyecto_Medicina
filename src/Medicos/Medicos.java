@@ -137,36 +137,64 @@ public class Medicos {
 
     }
 
-    public void impuestoUNO(float salario) {
+    public void impuestoENferYMATERNI(float salario) {
         double impuestos = 5.5 * salario;
         double resultado = impuestos / 100;
         double total = resultado + salario;
+        double resta = salario-resultado;
         System.out.println("el 5.5% de Enfermedad y maternidad es de :" + resultado);
-        System.out.println("el impuesto es de :" + total);
+        System.out.println("el impuesto aplicado al salario es de :" + total);
+        System.out.println("el salario neto descontando los impuestos es de :"+resta);
     }
 
-    public void impuestoDos(float salario) {
+    public void impuestoINMuerte(float salario) {
         double impuestos = 3.84 * salario;
         double resultado = impuestos / 100;
         double total = resultado + salario;
-        System.out.println("el 3.84% de Enfermedad y maternidad es de :" + resultado);
-        System.out.println("el impuesto es de :" + total);
+        double resta = salario-resultado;
+        System.out.println("el 3.84% de invalidez y muerte es de :" + resultado);
+        System.out.println("el impuesto aplicado al salario es de :" + total);
+        System.out.println("el salario neto descontando los impuestos es de :"+resta);
     }
 
-    public void impuestoTres(float salario) {
+    public void impuestoTrabajador(float salario) {
         double impuestos = 1.0 * salario;
         double resultado = impuestos / 100;
         double total = resultado + salario;
-        System.out.println("el 1% de Enfermedad y maternidad es de :" + resultado);
-        System.out.println("el impuesto es de :" + total);
+        double resta = salario-resultado;
+        System.out.println("el 1% de aporte del trabajador es de :" + resultado);
+        System.out.println("el impuesto aplicado al salario es de :" + total);
+        System.out.println("el salario neto descontando los impuestos es de :"+resta);
     }
 
-    public void impuestoCuatro(float salario) {
+    public void impuestoAsolidarista(float salario) {
         double impuestos = 3.3 * salario;
         double resultado = impuestos / 100;
         double total = resultado + salario;
-        System.out.println("el 1% de Enfermedad y maternidad es de :" + resultado);
-        System.out.println("el impuesto es de :" + total);
+        double resta = salario-resultado ;
+        System.out.println("el 3.3% de asociacion solidarista es de :" + resultado);
+        System.out.println("el impuesto aplicado al salario es de :" + total);
+        System.out.println("el salario neto descontando los impuestos es de :"+resta);
+    }
+
+    public void impuestoRenta(float salario) {
+        if (salario >= 817001 && salario <= 1226000) {
+            double impuesto = 10 * salario;
+            double resultado = impuesto / 100;
+            double total = resultado + salario;
+            double resta = salario-resultado;
+            System.out.println("el 10% de impuesto a la renta es de :" + resultado);
+            System.out.println("el impuesto aplicado al salario es de :" + total);
+            System.out.println("el salario neto descontando los impuestos es de :"+resta);
+        } else if (salario >= 1226001) {
+            double impu = 15 * salario;
+            double impuresultado = impu / 100;
+            double totalimpuesto = impuresultado + salario;
+            double restados = salario- impuresultado;
+            System.out.println("el 15% de impuesto a la renta es de :" + impuresultado);
+            System.out.println("el impuesto aplicado al salario es de :" + totalimpuesto);
+            System.out.println("el salario neto descontando los impuestos es de :"+restados);
+        }
     }
 
     public static void main(String[] args) {
@@ -176,10 +204,11 @@ public class Medicos {
         p.create();
 
         System.out.println("metodos de impuesto de medicina ");
-        p.impuestoUNO(250000);
-        p.impuestoDos(250000);
-        p.impuestoTres(250000);
-        p.impuestoCuatro(250000);
+        p.impuestoENferYMATERNI(250000);
+        p.impuestoINMuerte(250000);
+        p.impuestoTrabajador(250000);
+        p.impuestoAsolidarista(250000);
+        p.impuestoRenta(900000);
     }
 
 }
