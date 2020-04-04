@@ -111,9 +111,10 @@ public class Usuario {
 
     }
 
-    public void update(int Id, String Nombre, int Fecha, String Correo, String Usuario, String Tipo, int Tel) {
+    public void update() {
         try {
-            this.sentencias.executeUpdate("update usuario set nombre='" + Nombre + "',fecha='" + Fecha + "',correo='" + Correo + "',usuario='" + Usuario + "',tipo='" + Tipo + "',telefono='" + Tel + "' where id=" + Id);
+            SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd"); 
+            this.sentencias.executeUpdate("update usuario set nombre='" + this.txtNombre.getText() + "',fecha='" + dt.format(this.FechaNacimiento.getDate()) + "',correo='" + this.txtCorreo.getText() + "',usuario='" + this.NomUsuario.getText() + "',tipo='" + this.tipo.getText() + "',telefono='" + this.txtTel.getText() + "' where id=" + this.ID.getText());
 
         } catch (SQLException ex) {
             Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
@@ -121,9 +122,9 @@ public class Usuario {
 
     }
     
-    public void updateContraseña(int Id, String Contraseña) { // modificar
+    public void updateContraseña(int id, String con) { // modificar
         try {
-            this.sentencias.executeUpdate("update usuario set nombre='" +Contraseña+ "' where id=" + Id);
+            this.sentencias.executeUpdate("update usuario set contraseña='" +con+ "' where id=" + id);
 
         } catch (SQLException ex) {
             Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
@@ -131,18 +132,18 @@ public class Usuario {
 
     }
 
-    public void delete(int Id) { /// controlar que siempre quede un usuario registrado al momento de eliminar
+    public void delete() { /// controlar que siempre quede un usuario registrado al momento de eliminar
         try {
-            this.sentencias.executeUpdate("delete from usuario where id=" + Id);
+            this.sentencias.executeUpdate("delete from usuario where id=" + this.ID.getText());
         } catch (SQLException ex) {
             System.out.println("Error en delete");
         }
     }
     
  ///////////////////////////// para buscar la informacion del usuario///////////////////////////////////////////////////
-    public void readNombre(String Nombre) {
+    public void readNombre() {
         try {
-            this.datos = this.sentencias.executeQuery("select * from usuario where Nombre='" + Nombre + "'");
+            this.datos = this.sentencias.executeQuery("select * from usuario where Nombre='" + this.txtNombre.getText() + "'");
             if (this.datos.next()) {
                 System.out.println(datos.getInt(1));
                 System.out.println(datos.getString(2));
@@ -156,9 +157,11 @@ public class Usuario {
 
     }
 
-    public void readFecha(int Fecha) {
+    public void readFecha() {
         try {
-            this.datos = this.sentencias.executeQuery("select * from usuario where Nombre='" + Fecha + "'");
+            SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd"); 
+            
+            this.datos = this.sentencias.executeQuery("select * from usuario where Nombre='" + dt.format(this.FechaNacimiento.getDate()) + "'");
             if (this.datos.next()) {
                 System.out.println(datos.getInt(1));
                 System.out.println(datos.getString(2));
@@ -172,9 +175,9 @@ public class Usuario {
 
     }
 
-    public void readCorreo(String Correo) {
+    public void readCorreo() {
         try {
-            this.datos = this.sentencias.executeQuery("select * from usuario where Nombre='" + Correo + "'");
+            this.datos = this.sentencias.executeQuery("select * from usuario where Nombre='" + this.txtCorreo.getText() + "'");
             if (this.datos.next()) {
                 System.out.println(datos.getInt(1));
                 System.out.println(datos.getString(2));
@@ -188,9 +191,9 @@ public class Usuario {
 
     }
 
-    public void readUsuario(String Usuario) {
+    public void readUsuario() {
         try {
-            this.datos = this.sentencias.executeQuery("select * from usuario where Nombre='" + Usuario + "'");
+            this.datos = this.sentencias.executeQuery("select * from usuario where Nombre='" + this.NomUsuario.getText() + "'");
             if (this.datos.next()) {
                 System.out.println(datos.getInt(1));
                 System.out.println(datos.getString(2));
@@ -204,9 +207,9 @@ public class Usuario {
 
     }
 
-    public void readTipo(String Tipo) {
+    public void readTipo() {
         try {
-            this.datos = this.sentencias.executeQuery("select * from usuario where Nombre='" + Tipo + "'");
+            this.datos = this.sentencias.executeQuery("select * from usuario where Nombre='" + this.tipo.getText() + "'");
             if (this.datos.next()) {
                 System.out.println(datos.getInt(1));
                 System.out.println(datos.getString(2));
@@ -220,9 +223,9 @@ public class Usuario {
 
     }
 
-    public void readTel(int Tel) {
+    public void readTel() {
         try {
-            this.datos = this.sentencias.executeQuery("select * from usuario where Nombre='" + Tel + "'");
+            this.datos = this.sentencias.executeQuery("select * from usuario where Nombre='" + this.txtTel.getText() + "'");
             if (this.datos.next()) {
                 System.out.println(datos.getInt(1));
                 System.out.println(datos.getString(2));
@@ -239,8 +242,8 @@ public class Usuario {
   
     public static void main(String[] args) {
         // TODO code application logic here
-       // Usuario p = new Usuario(0, "", 0, 0, "", "", "", "");
-//        p.conectar();
+        Usuario p = new Usuario();
+        p.conectar();
 //        p.readNombre("paula");
 //        p.readCorreo("");
 //        p.readFecha(0);
@@ -250,7 +253,7 @@ public class Usuario {
 //        //p.delete(1);
 //        //p.update(1, "maria", 4, "hotmail", "p123", "secretaria", 01234);
 //        //p.create();
-//        p.updateContraseña(1,"");
+        p.updateContraseña(1,"paula199609");
 
     }
 
