@@ -123,8 +123,6 @@ public class FrmModificacion extends javax.swing.JFrame {
     private void changeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeActionPerformed
         Usuario prueba = new Usuario();
         prueba.contraseña= this.txtConfirmacion;
-        prueba.conectar();
-        //prueba.updateContraseña();
     }//GEN-LAST:event_changeActionPerformed
 
     /**

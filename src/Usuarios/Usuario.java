@@ -114,15 +114,6 @@ public class Usuario {
 
     }
     
-    public void updateContraseña(int id, String con) { // modificar
-        try {
-            this.sentencias.executeUpdate("update usuario set contraseña='" +con + "' where id=" + id);
-
-        } catch (SQLException ex) {
-            Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-    }
 
     public void delete() { /// controlar que siempre quede un usuario registrado al momento de eliminar
         try {
@@ -245,7 +236,7 @@ public class Usuario {
 //        //p.delete(1);
 //        //p.update(1, "maria", 4, "hotmail", "p123", "secretaria", 01234);
 //        //p.create();
-        p.updateContraseña(1,"paula199609");
+       
 
     }
 
