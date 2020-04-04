@@ -237,7 +237,7 @@ public class Usuario {
 //        //p.update(1, "maria", 4, "hotmail", "p123", "secretaria", 01234);
 //        //p.create();
        
-        System.out.println("Hola");
+   
     }
 
 }
