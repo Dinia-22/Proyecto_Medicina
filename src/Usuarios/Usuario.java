@@ -131,7 +131,7 @@ public class Usuario {
             JOptionPane.showMessageDialog(null, "Usuario Eliminado");
             
         } catch (SQLException ex) {
-            System.out.println("Error en delete");
+            JOptionPane.showMessageDialog(null, "Error al Eliminar");
         }
     }
     
