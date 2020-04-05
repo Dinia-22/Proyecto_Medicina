@@ -5,6 +5,8 @@
  */
 package Usuarios;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Maria Paula
@@ -62,6 +64,7 @@ public class FrmUsuario extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Usuarios");
 
+        jPanel1.setBackground(new java.awt.Color(153, 153, 153));
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel1.setText("Cedula");
@@ -179,6 +182,8 @@ public class FrmUsuario extends javax.swing.JFrame {
                         .addGap(42, 42, 42))))
         );
 
+        guardar.setBackground(new java.awt.Color(153, 0, 153));
+        guardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/save.png"))); // NOI18N
         guardar.setText("Guardar");
         guardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -186,6 +191,8 @@ public class FrmUsuario extends javax.swing.JFrame {
             }
         });
 
+        cancel.setBackground(new java.awt.Color(153, 0, 153));
+        cancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/close.png"))); // NOI18N
         cancel.setText("Cancelar");
         cancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -197,6 +204,11 @@ public class FrmUsuario extends javax.swing.JFrame {
 
         B.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_B, java.awt.event.InputEvent.CTRL_MASK));
         B.setText("Buscar");
+        B.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BActionPerformed(evt);
+            }
+        });
         jMenu1.add(B);
 
         jMenuBar1.add(jMenu1);
@@ -275,7 +287,8 @@ public class FrmUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void EActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EActionPerformed
-        // TODO add your handling code here:
+        EliminarUsuarios eli = new EliminarUsuarios();
+        eli.setVisible(true);
     }//GEN-LAST:event_EActionPerformed
 
     private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
@@ -288,6 +301,7 @@ public class FrmUsuario extends javax.swing.JFrame {
         p.txtTel= this.txtTelefono;
         p.FechaNacimiento= this.txtFecha;
         p.create();
+        JOptionPane.showMessageDialog(null, "Se agregaron los datos");
     }//GEN-LAST:event_guardarActionPerformed
 
     private void ACActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ACActionPerformed
@@ -305,6 +319,12 @@ public class FrmUsuario extends javax.swing.JFrame {
         act.setVisible(true);
         
     }//GEN-LAST:event_AIActionPerformed
+
+    private void BActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BActionPerformed
+        BuscarUsuarios buscar = new BuscarUsuarios();
+        buscar.setVisible(true);
+        
+    }//GEN-LAST:event_BActionPerformed
 
     /**
      * @param args the command line arguments

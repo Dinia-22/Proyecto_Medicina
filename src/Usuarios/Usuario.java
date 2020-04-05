@@ -70,6 +70,7 @@ public class Usuario {
     public JTextField getTipo() {
         return tipo;
     }
+
     public void conectar() {
         try {
             this.conexion = DriverManager.getConnection("jdbc:mysql://localhost/medicina?useServerPrepStmts=true", "root", "");
@@ -88,7 +89,7 @@ public class Usuario {
             PreparedStatement sentencia;
             sentencia = conex.prepareStatement("insert usuario values(null,?,?,?,?,?,?,?)");
             SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
-            sentencia.setString(1,txtNombre.getText());
+            sentencia.setString(1, txtNombre.getText());
             sentencia.setString(2, dt.format(FechaNacimiento.getDate()));
             sentencia.setString(3, this.txtCorreo.getText());
             sentencia.setString(4, this.NomUsuario.getText());
@@ -96,7 +97,6 @@ public class Usuario {
             sentencia.setString(6, this.tipo.getText());
             sentencia.setString(7, this.txtTel.getText());
             sentencia.execute();
-
 
         } catch (SQLException ex) {
             Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
@@ -106,7 +106,7 @@ public class Usuario {
 
     public void update() {
         try {
-            SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd"); 
+            SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
             this.sentencias.executeUpdate("update usuario set nombre='" + this.txtNombre.getText() + "',fecha='" + dt.format(this.FechaNacimiento.getDate()) + "',correo='" + this.txtCorreo.getText() + "',usuario='" + this.NomUsuario.getText() + "',tipo='" + this.tipo.getText() + "',telefono='" + this.txtTel.getText() + "' where id=" + this.ID.getText());
 
         } catch (SQLException ex) {
@@ -114,9 +114,10 @@ public class Usuario {
         }
 
     }
-      public void updateContraseña() {
+
+    public void updateContraseña() {
         try {
-           
+
             this.sentencias.executeUpdate("update usuario set contraseña='" + this.contraseña.getText() + "' where id=" + this.ID.getText());
 
         } catch (SQLException ex) {
@@ -129,13 +130,14 @@ public class Usuario {
         try {
             this.sentencias.executeUpdate("delete from usuario where id=" + this.ID.getText());
             JOptionPane.showMessageDialog(null, "Usuario Eliminado");
-            
+
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al Eliminar");
         }
+        
     }
-    
- ///////////////////////////// para buscar la informacion del usuario///////////////////////////////////////////////////
+
+    ///////////////////////////// para buscar la informacion del usuario///////////////////////////////////////////////////
     public void readNombre() {
         try {
             this.datos = this.sentencias.executeQuery("select * from usuario where Nombre='" + this.txtNombre.getText() + "'");
@@ -154,20 +156,20 @@ public class Usuario {
 
     public void readFecha() {
         try {
-            SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");   
+            SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
             this.datos = this.sentencias.executeQuery("select * from usuario where Fecha='" + dt.format(this.FechaNacimiento.getDate()) + "'");
             if (this.datos.next()) {
-               
+
                 System.out.println(datos.getInt(1));
                 JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(3));
                 System.out.println(datos.getString(3));
             } else {
                 JOptionPane.showMessageDialog(null, "No hay mas registros");
-               
+
             }
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error en el read" );
-            
+            JOptionPane.showMessageDialog(null, "Error en el read");
+
         }
 
     }
@@ -183,7 +185,7 @@ public class Usuario {
                 JOptionPane.showMessageDialog(null, "No hay mas registros");
             }
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error en el read" );
+            JOptionPane.showMessageDialog(null, "Error en el read");
         }
 
     }
@@ -196,10 +198,10 @@ public class Usuario {
                 JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(5));
                 System.out.println(datos.getString(3));
             } else {
-                 JOptionPane.showMessageDialog(null, "No hay mas registros");
+                JOptionPane.showMessageDialog(null, "No hay mas registros");
             }
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error en el read" );
+            JOptionPane.showMessageDialog(null, "Error en el read");
         }
 
     }
@@ -235,8 +237,7 @@ public class Usuario {
         }
 
     }
-    
-  
+
     public static void main(String[] args) {
         // TODO code application logic here
         Usuario p = new Usuario();
@@ -250,8 +251,7 @@ public class Usuario {
 //        //p.delete(1);
 //        //p.update(1, "maria", 4, "hotmail", "p123", "secretaria", 01234);
 //        //p.create();
-       
-   
+
     }
 
 }

@@ -52,6 +52,8 @@ public class FrmModificacion extends javax.swing.JFrame {
 
         jLabel4.setText("Confirmar Contraseña");
 
+        aceptar.setBackground(new java.awt.Color(153, 0, 153));
+        aceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/save.png"))); // NOI18N
         aceptar.setText("Guardar");
         aceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -59,6 +61,8 @@ public class FrmModificacion extends javax.swing.JFrame {
             }
         });
 
+        cancelar.setBackground(new java.awt.Color(153, 0, 153));
+        cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/close.png"))); // NOI18N
         cancelar.setText("Cancelar");
         cancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -72,7 +76,7 @@ public class FrmModificacion extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(aceptar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 254, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 234, Short.MAX_VALUE)
                 .addComponent(cancelar))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()

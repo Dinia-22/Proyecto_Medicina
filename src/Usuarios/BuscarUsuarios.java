@@ -52,6 +52,7 @@ public class BuscarUsuarios extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Buscar Informacion");
 
+        jPanel1.setBackground(new java.awt.Color(153, 153, 153));
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel2.setText("Nombre");
@@ -66,6 +67,7 @@ public class BuscarUsuarios extends javax.swing.JFrame {
 
         jLabel7.setText("Tipo de Usuario");
 
+        nom.setBackground(new java.awt.Color(102, 0, 102));
         nom.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.png"))); // NOI18N
         nom.setText("Buscar Nombre");
         nom.addActionListener(new java.awt.event.ActionListener() {
@@ -74,6 +76,7 @@ public class BuscarUsuarios extends javax.swing.JFrame {
             }
         });
 
+        Usuario.setBackground(new java.awt.Color(153, 0, 153));
         Usuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.png"))); // NOI18N
         Usuario.setText("Buscar Usuario");
         Usuario.addActionListener(new java.awt.event.ActionListener() {
@@ -82,6 +85,7 @@ public class BuscarUsuarios extends javax.swing.JFrame {
             }
         });
 
+        correo.setBackground(new java.awt.Color(153, 0, 153));
         correo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.png"))); // NOI18N
         correo.setText("Buscar Correo");
         correo.addActionListener(new java.awt.event.ActionListener() {
@@ -90,6 +94,7 @@ public class BuscarUsuarios extends javax.swing.JFrame {
             }
         });
 
+        tel.setBackground(new java.awt.Color(153, 0, 153));
         tel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.png"))); // NOI18N
         tel.setText("Buscar Telefono");
         tel.addActionListener(new java.awt.event.ActionListener() {
@@ -98,6 +103,7 @@ public class BuscarUsuarios extends javax.swing.JFrame {
             }
         });
 
+        fecha.setBackground(new java.awt.Color(153, 0, 153));
         fecha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.png"))); // NOI18N
         fecha.setText("Buscar Fecha");
         fecha.addActionListener(new java.awt.event.ActionListener() {
@@ -106,6 +112,7 @@ public class BuscarUsuarios extends javax.swing.JFrame {
             }
         });
 
+        tipo.setBackground(new java.awt.Color(204, 0, 204));
         tipo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.png"))); // NOI18N
         tipo.setText("Buscar Tipo");
         tipo.addActionListener(new java.awt.event.ActionListener() {
@@ -114,6 +121,7 @@ public class BuscarUsuarios extends javax.swing.JFrame {
             }
         });
 
+        calce.setBackground(new java.awt.Color(153, 0, 153));
         calce.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cancelar.png"))); // NOI18N
         calce.setText("Cancelar");
         calce.addActionListener(new java.awt.event.ActionListener() {
@@ -123,7 +131,7 @@ public class BuscarUsuarios extends javax.swing.JFrame {
         });
 
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.png"))); // NOI18N
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/job.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -202,7 +210,7 @@ public class BuscarUsuarios extends javax.swing.JFrame {
                                 .addComponent(jLabel7)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 43, Short.MAX_VALUE))
+                                .addGap(0, 54, Short.MAX_VALUE))
                             .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -214,10 +222,11 @@ public class BuscarUsuarios extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nom)
                     .addComponent(Usuario))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(fecha)
                     .addComponent(tipo)
@@ -235,10 +244,7 @@ public class BuscarUsuarios extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(38, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
