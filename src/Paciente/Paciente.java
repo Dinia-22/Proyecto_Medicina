@@ -19,6 +19,7 @@ import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 /**
@@ -29,7 +30,7 @@ public class Paciente {
 
     public JTextField ID;
     public JTextField Nombre;
-    public JTextField FechaNacimiento;
+    public JDateChooser FechaNacimiento;
     public JTextField correo;
     public JTextField edad;
     public JTextField Telefono;
@@ -50,7 +51,7 @@ public class Paciente {
         return Telefono;
     }
 
-    public JTextField getFechaNacimiento() {
+    public JDateChooser getFechaNacimiento() {
         return FechaNacimiento;
     }
 
@@ -79,36 +80,38 @@ public class Paciente {
             sentencia = conexion.prepareStatement("insert pacientes values(null,?,?,?,?)");
 
             SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
-            sentencia.setString(1, ID.getText());
-            sentencia.setString(2,FechaNacimiento.getText());
-            sentencia.setString(3, this.Nombre.getText());
-            sentencia.setString(4, this.correo.getText());
-            sentencia.setString(6, this.Telefono.getText());
-            sentencia.execute();
 
 //            sentencia.setString(1, "paula herrera");
-//            sentencia.setInt(2,1996);
-//            sentencia.setInt(3,72031697);
+//            sentencia.setInt(2, 1996);
+//            sentencia.setInt(3, 72031697);
 //            sentencia.setString(4, "maripa96-h-zu@hotmail.com");
 //            sentencia.execute();
+
+           // sentencia.setString(1, ID.getText());
+            sentencia.setString(1,dt.format(FechaNacimiento.getDate()));
+            sentencia.setString(2, this.Nombre.getText());
+            sentencia.setString(3, this.correo.getText());
+            sentencia.setString(4, this.Telefono.getText());
+            sentencia.execute();
+
         } catch (SQLException ex) {
-            Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Paciente.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    public void update() {
+    public void update() {// Cambiar
         try {
             SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
-            this.sentencias.executeUpdate("update paciente were Cedula='" + this.ID.getText() + "'Nombre='" + this.Nombre.getText() + "',fecha='" + dt.format(this.FechaNacimiento) + "',telefono='" + this.Telefono.getText() + "',correo='" + this.correo.getText());
+            this.sentencias.executeUpdate("update paciente were Cedula='" + this.ID.getText() + "'Nombre='" + this.Nombre.getText() + "',fecha='" + dt.format(this.FechaNacimiento.getDate()) + "',telefono='" + this.Telefono.getText() + "',correo='" + this.correo.getText());
 
         } catch (SQLException ex) {
             Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    public void delete() {
+    public void delete(int Id){
         try {
-            this.sentencias.executeUpdate("delete from paciente where id=" + this.ID.getText());
+            this.sentencias.executeUpdate("delete from pacientes where id="+Id);
         } catch (SQLException ex) {
             System.out.println("Error en delete");
         }
@@ -120,8 +123,7 @@ public class Paciente {
         LocalDate ahora = LocalDate.now();
 
         Period periodo = Period.between(fechaNac, ahora);
-        System.out.printf("Tu edad es: %s años, %s meses y %s días",
-                periodo.getYears(), periodo.getMonths(), periodo.getDays());
+        System.out.printf("Tu edad es: %s años, %s meses y %s días", periodo.getYears(), periodo.getMonths(), periodo.getDays());
     }
 
     ///////////////////////////// BUSCAR ///////////////////////////////////////
@@ -160,7 +162,7 @@ public class Paciente {
     public void Read_Fecha() {
         try {
             SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
-            this.datos = this.sentencias.executeQuery("select * from usuario where Nombre='" + dt.format(this.FechaNacimiento) + "'");
+            this.datos = this.sentencias.executeQuery("select * from pacientes where Fecha='" + dt.format(this.FechaNacimiento.getDate()) + "'");
             if (this.datos.next()) {
                 System.out.println(datos.getInt(1));
                 System.out.println(datos.getString(2));
@@ -175,7 +177,7 @@ public class Paciente {
 
     public void Read_Correo() {
         try {
-            this.datos = this.sentencias.executeQuery("select * from usuario where Nombre='" + this.correo.getText() + "'");
+            this.datos = this.sentencias.executeQuery("select * from pacientes where Correo='" + this.correo.getText() + "'");
             if (this.datos.next()) {
                 System.out.println(datos.getInt(1));
                 System.out.println(datos.getString(2));
@@ -191,7 +193,7 @@ public class Paciente {
     public void Read_Telefono() {
 
         try {
-            this.datos = this.sentencias.executeQuery("select * from usuario where Nombre='" + this.Telefono.getText() + "'");
+            this.datos = this.sentencias.executeQuery("select * from pacientes where Telefono='" + this.Telefono.getText() + "'");
             if (this.datos.next()) {
                 System.out.println(datos.getInt(1));
                 System.out.println(datos.getString(2));
@@ -206,10 +208,11 @@ public class Paciente {
 
     public static void main(String[] args) {
         // TODO code application logic here
-//        Paciente p = new Paciente(0,"",0,"",0);
-//        p.conectar();
+        Paciente p = new Paciente();
+        p.conectar();
 //        p.create();
-
+//        p.edad();
+        //p.delete(504270426);
     }
 
 }
