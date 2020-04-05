@@ -76,8 +76,9 @@ public class Paciente {
 
     public void create() {
         try {
+            Connection conex = DriverManager.getConnection("jdbc:mysql://localhost/medicina?useServerPrepStmts=true", "root", "");
             PreparedStatement sentencia;
-            sentencia = conexion.prepareStatement("insert pacientes values(null,?,?,?,?)");
+            sentencia = conexion.prepareStatement("insert pacientes values(null,?,?,?,?,?)");
 
             SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
 
@@ -87,7 +88,7 @@ public class Paciente {
 //            sentencia.setString(4, "maripa96-h-zu@hotmail.com");
 //            sentencia.execute();
 
-           // sentencia.setString(1, ID.getText());
+            //sentencia.setString(1, ID.getText());
             sentencia.setString(1,dt.format(FechaNacimiento.getDate()));
             sentencia.setString(2, this.Nombre.getText());
             sentencia.setString(3, this.correo.getText());
