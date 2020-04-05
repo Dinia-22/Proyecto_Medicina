@@ -43,6 +43,8 @@ public class ConfiguracionBaseDatos extends javax.swing.JFrame {
         Expedientes = new javax.swing.JMenuItem();
         jSeparator4 = new javax.swing.JPopupMenu.Separator();
         Citas = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Configuracion Base de Datos");
@@ -63,6 +65,7 @@ public class ConfiguracionBaseDatos extends javax.swing.JFrame {
         jMenu1.setText("Modules");
 
         Usuario.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
+        Usuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Hombre.png"))); // NOI18N
         Usuario.setText("Usuarios");
         Usuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -73,6 +76,7 @@ public class ConfiguracionBaseDatos extends javax.swing.JFrame {
         jMenu1.add(jSeparator1);
 
         Medicos.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_M, java.awt.event.InputEvent.CTRL_MASK));
+        Medicos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Hombre.png"))); // NOI18N
         Medicos.setText("Medicos");
         Medicos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -83,6 +87,7 @@ public class ConfiguracionBaseDatos extends javax.swing.JFrame {
         jMenu1.add(jSeparator2);
 
         Pacientes.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
+        Pacientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Hombre.png"))); // NOI18N
         Pacientes.setText("Pacientes");
         Pacientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -93,15 +98,26 @@ public class ConfiguracionBaseDatos extends javax.swing.JFrame {
         jMenu1.add(jSeparator3);
 
         Expedientes.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
+        Expedientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/modificar.png"))); // NOI18N
         Expedientes.setText("Expedientes");
         jMenu1.add(Expedientes);
         jMenu1.add(jSeparator4);
 
         Citas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
+        Citas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/share.png"))); // NOI18N
         Citas.setText("Citas");
         jMenu1.add(Citas);
 
         jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Configuracion al Sistema");
+
+        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/confi.png"))); // NOI18N
+        jMenuItem1.setText("Configuracion");
+        jMenu2.add(jMenuItem1);
+
+        jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
 
@@ -180,7 +196,9 @@ public class ConfiguracionBaseDatos extends javax.swing.JFrame {
     private javax.swing.JMenuItem Usuario;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JPopupMenu.Separator jSeparator3;
