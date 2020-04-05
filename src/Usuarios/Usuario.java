@@ -17,6 +17,7 @@ import java.text.SimpleDateFormat;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 import javax.swing.JTextField;
 
@@ -127,6 +128,8 @@ public class Usuario {
     public void delete() { /// controlar que siempre quede un usuario registrado al momento de eliminar
         try {
             this.sentencias.executeUpdate("delete from usuario where id=" + this.ID.getText());
+            JOptionPane.showMessageDialog(null, "Usuario Eliminado");
+            
         } catch (SQLException ex) {
             System.out.println("Error en delete");
         }
@@ -138,95 +141,97 @@ public class Usuario {
             this.datos = this.sentencias.executeQuery("select * from usuario where Nombre='" + this.txtNombre.getText() + "'");
             if (this.datos.next()) {
                 System.out.println(datos.getInt(1));
-                System.out.println(datos.getString(2));
+                JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(2));
                 System.out.println(datos.getString(3));
             } else {
-                System.out.println(" No hay mas registros ");
+                JOptionPane.showMessageDialog(null, "No hay mas registros");
             }
         } catch (SQLException ex) {
-            System.out.println(" Error en el read");
+            JOptionPane.showMessageDialog(null, "Error en el read");
         }
 
     }
 
     public void readFecha() {
         try {
-            SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd"); 
-            
-            this.datos = this.sentencias.executeQuery("select * from usuario where Nombre='" + dt.format(this.FechaNacimiento.getDate()) + "'");
+            SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");   
+            this.datos = this.sentencias.executeQuery("select * from usuario where Fecha='" + dt.format(this.FechaNacimiento.getDate()) + "'");
             if (this.datos.next()) {
+               
                 System.out.println(datos.getInt(1));
-                System.out.println(datos.getString(2));
+                JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(3));
                 System.out.println(datos.getString(3));
             } else {
-                System.out.println(" No hay mas registros ");
+                JOptionPane.showMessageDialog(null, "No hay mas registros");
+               
             }
         } catch (SQLException ex) {
-            System.out.println(" Error en el read");
+            JOptionPane.showMessageDialog(null, "Error en el read" );
+            
         }
 
     }
 
     public void readCorreo() {
         try {
-            this.datos = this.sentencias.executeQuery("select * from usuario where Nombre='" + this.txtCorreo.getText() + "'");
+            this.datos = this.sentencias.executeQuery("select * from usuario where Correo='" + this.txtCorreo.getText() + "'");
             if (this.datos.next()) {
                 System.out.println(datos.getInt(1));
-                System.out.println(datos.getString(2));
+                JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(4));
                 System.out.println(datos.getString(3));
             } else {
-                System.out.println(" No hay mas registros ");
+                JOptionPane.showMessageDialog(null, "No hay mas registros");
             }
         } catch (SQLException ex) {
-            System.out.println(" Error en el read");
+            JOptionPane.showMessageDialog(null, "Error en el read" );
         }
 
     }
 
     public void readUsuario() {
         try {
-            this.datos = this.sentencias.executeQuery("select * from usuario where Nombre='" + this.NomUsuario.getText() + "'");
+            this.datos = this.sentencias.executeQuery("select * from usuario where Usuario='" + this.NomUsuario.getText() + "'");
             if (this.datos.next()) {
                 System.out.println(datos.getInt(1));
-                System.out.println(datos.getString(2));
+                JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(5));
                 System.out.println(datos.getString(3));
             } else {
-                System.out.println(" No hay mas registros ");
+                 JOptionPane.showMessageDialog(null, "No hay mas registros");
             }
         } catch (SQLException ex) {
-            System.out.println(" Error en el read");
+            JOptionPane.showMessageDialog(null, "Error en el read" );
         }
 
     }
 
     public void readTipo() {
         try {
-            this.datos = this.sentencias.executeQuery("select * from usuario where Nombre='" + this.tipo.getText() + "'");
+            this.datos = this.sentencias.executeQuery("select * from usuario where Tipo='" + this.tipo.getText() + "'");
             if (this.datos.next()) {
                 System.out.println(datos.getInt(1));
-                System.out.println(datos.getString(2));
+                JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(6));
                 System.out.println(datos.getString(3));
             } else {
-                System.out.println(" No hay mas registros ");
+                JOptionPane.showMessageDialog(null, "No hay mas registros");
             }
         } catch (SQLException ex) {
-            System.out.println(" Error en el read");
+            JOptionPane.showMessageDialog(null, "Error en el read");
         }
 
     }
 
     public void readTel() {
         try {
-            this.datos = this.sentencias.executeQuery("select * from usuario where Nombre='" + this.txtTel.getText() + "'");
+            this.datos = this.sentencias.executeQuery("select * from usuario where Telefono='" + this.txtTel.getText() + "'");
             if (this.datos.next()) {
                 System.out.println(datos.getInt(1));
-                System.out.println(datos.getString(2));
+                JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(7));
                 System.out.println(datos.getString(3));
             } else {
-                System.out.println(" No hay mas registros ");
+                JOptionPane.showMessageDialog(null, "No hay mas registros");
             }
         } catch (SQLException ex) {
-            System.out.println(" Error en el read");
+            JOptionPane.showMessageDialog(null, "Error en el read");
         }
 
     }
