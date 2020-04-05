@@ -107,9 +107,10 @@ public class Medicos {
             PreparedStatement sentencia;
             sentencia = conexion.prepareStatement("insert medicos values(null,?,?,?,?,?,?,?)");
             SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
-            sentencia.setString(1, ID.getText());
-            sentencia.setString(2, Nombre.getText());
-            sentencia.setString(3, date.format(FechaNacimiento.getDate()));
+            //sentencia.setString(1, ID.getText());
+            sentencia.setString(1, Nombre.getText());
+            sentencia.setString(2, date.format(FechaNacimiento.getDate()));
+            sentencia.setString(3, this.tel.getText());
             sentencia.setString(4, correo.getText());
             sentencia.setString(5, Codigo.getText());
             sentencia.setString(6, especialidad.getText());
