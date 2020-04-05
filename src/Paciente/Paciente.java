@@ -6,13 +6,20 @@
 package Paciente;
 
 import Usuarios.Usuario;
+import com.toedter.calendar.JDateChooser;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JTextField;
 
 /**
  *
@@ -20,62 +27,41 @@ import java.util.logging.Logger;
  */
 public class Paciente {
 
-    private int ID;
-    private String Nomnre;
-    private int FechaNacimiento;
-    private String correro;
-    private int edad;
+    public JTextField ID;
+    public JTextField Nombre;
+    public JTextField FechaNacimiento;
+    public JTextField correo;
+    public JTextField edad;
+    public JTextField Telefono;
+
     private Connection conexion;
     private Statement sentencias;
+    private ResultSet datos;
 
-    public Paciente(int ID, String Nomnre, int FechaNacimiento, String correro, int edad) {
-        this.ID = ID;
-        this.Nomnre = Nomnre;
-        this.FechaNacimiento = FechaNacimiento;
-        this.correro = correro;
-        this.edad = edad;
-    }
-
-    public int getID() {
+    public JTextField getID() {
         return ID;
     }
 
-    public String getNomnre() {
-        return Nomnre;
-    }
-
-    public int getFechaNacimiento() {
-        return FechaNacimiento;
-    }
-
-    public String getCorrero() {
-        return correro;
-    }
-
-    public int getEdad() {
+    public JTextField getEdad() {
         return edad;
     }
 
-    public void setID(int ID) {
-        this.ID = ID;
+    public JTextField getTelefono() {
+        return Telefono;
     }
-    
-    public void setNomnre(String Nomnre) {
-        this.Nomnre = Nomnre;
+
+    public JTextField getFechaNacimiento() {
+        return FechaNacimiento;
     }
-    
-    public void setFechaNacimiento(int FechaNacimiento) {
-        this.FechaNacimiento = FechaNacimiento;
+
+    public JTextField getNombre() {
+        return Nombre;
     }
-    
-    public void setCorrero(String correro) {
-        this.correro = correro;
+
+    public JTextField getCorreo() {
+        return correo;
     }
-    
-    public void setEdad(int edad) {
-        this.edad = edad;
-    }
-    
+
     public void conectar() {
         try {
             this.conexion = DriverManager.getConnection("jdbc:mysql://localhost/medicina?useServerPrepStmts=true", "root", "");
@@ -86,25 +72,143 @@ public class Paciente {
             System.out.println(" Error al conectar");
         }
     }
+
     public void create() {
         try {
             PreparedStatement sentencia;
             sentencia = conexion.prepareStatement("insert pacientes values(null,?,?,?,?)");
-            sentencia.setString(1, "paula herrera");
-            sentencia.setInt(2,1996);
-            sentencia.setInt(3,72031697);
-            sentencia.setString(4, "maripa96-h-zu@hotmail.com");
+
+            SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
+            sentencia.setString(1, ID.getText());
+            sentencia.setString(2,FechaNacimiento.getText());
+            sentencia.setString(3, this.Nombre.getText());
+            sentencia.setString(4, this.correo.getText());
+            sentencia.setString(6, this.Telefono.getText());
             sentencia.execute();
+
+//            sentencia.setString(1, "paula herrera");
+//            sentencia.setInt(2,1996);
+//            sentencia.setInt(3,72031697);
+//            sentencia.setString(4, "maripa96-h-zu@hotmail.com");
+//            sentencia.execute();
         } catch (SQLException ex) {
             Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
+    public void update() {
+        try {
+            SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
+            this.sentencias.executeUpdate("update paciente were Cedula='" + this.ID.getText() + "'Nombre='" + this.Nombre.getText() + "',fecha='" + dt.format(this.FechaNacimiento) + "',telefono='" + this.Telefono.getText() + "',correo='" + this.correo.getText());
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void delete() {
+        try {
+            this.sentencias.executeUpdate("delete from paciente where id=" + this.ID.getText());
+        } catch (SQLException ex) {
+            System.out.println("Error en delete");
+        }
+    }
+
+    public void edad() {
+        DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate fechaNac = LocalDate.parse("15/08/1993", fmt);
+        LocalDate ahora = LocalDate.now();
+
+        Period periodo = Period.between(fechaNac, ahora);
+        System.out.printf("Tu edad es: %s años, %s meses y %s días",
+                periodo.getYears(), periodo.getMonths(), periodo.getDays());
+    }
+
+    ///////////////////////////// BUSCAR ///////////////////////////////////////
+    public void Read_Cedula() {
+
+        try {
+            this.datos = this.sentencias.executeQuery("select * from paciente where Cedula='" + this.ID.getText() + "'");
+            if (this.datos.next()) {
+                System.out.println(datos.getInt(1));
+                System.out.println(datos.getString(2));
+                System.out.println(datos.getString(3));
+            } else {
+                System.out.println(" No hay mas registros ");
+            }
+        } catch (SQLException ex) {
+            System.out.println(" Error en el read");
+        }
+    }
+
+    public void Read_Nombre() {
+
+        try {
+            this.datos = this.sentencias.executeQuery("select * from pacientes where Nombre='" + this.Nombre.getText() + "'");
+            if (this.datos.next()) {
+                System.out.println(datos.getInt(1));
+                System.out.println(datos.getString(2));
+                System.out.println(datos.getString(3));
+            } else {
+                System.out.println(" No hay mas registros ");
+            }
+        } catch (SQLException ex) {
+            System.out.println(" Error en el read");
+        }
+    }
+
+    public void Read_Fecha() {
+        try {
+            SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
+            this.datos = this.sentencias.executeQuery("select * from usuario where Nombre='" + dt.format(this.FechaNacimiento) + "'");
+            if (this.datos.next()) {
+                System.out.println(datos.getInt(1));
+                System.out.println(datos.getString(2));
+                System.out.println(datos.getString(3));
+            } else {
+                System.out.println(" No hay mas registros ");
+            }
+        } catch (SQLException ex) {
+            System.out.println(" Error en el read");
+        }
+    }
+
+    public void Read_Correo() {
+        try {
+            this.datos = this.sentencias.executeQuery("select * from usuario where Nombre='" + this.correo.getText() + "'");
+            if (this.datos.next()) {
+                System.out.println(datos.getInt(1));
+                System.out.println(datos.getString(2));
+                System.out.println(datos.getString(3));
+            } else {
+                System.out.println(" No hay mas registros ");
+            }
+        } catch (SQLException ex) {
+            System.out.println(" Error en el read");
+        }
+    }
+
+    public void Read_Telefono() {
+
+        try {
+            this.datos = this.sentencias.executeQuery("select * from usuario where Nombre='" + this.Telefono.getText() + "'");
+            if (this.datos.next()) {
+                System.out.println(datos.getInt(1));
+                System.out.println(datos.getString(2));
+                System.out.println(datos.getString(3));
+            } else {
+                System.out.println(" No hay mas registros ");
+            }
+        } catch (SQLException ex) {
+            System.out.println(" Error en el read");
+        }
+    }
+
     public static void main(String[] args) {
         // TODO code application logic here
-        Paciente p = new Paciente(0,"",0,"",0);
-        p.conectar();
-        p.create();
+//        Paciente p = new Paciente(0,"",0,"",0);
+//        p.conectar();
+//        p.create();
 
     }
 
