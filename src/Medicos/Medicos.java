@@ -10,11 +10,13 @@ import com.toedter.calendar.JDateChooser;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 /**
@@ -43,6 +45,7 @@ public class Medicos {
 
     private Statement sentencias;
     private Connection conexion;
+    private ResultSet datos;
 
     public JTextField getID() {
         return ID;
@@ -100,16 +103,16 @@ public class Medicos {
         this.salario = salario;
     }
 
-       public void conectar() {
+    public void conectar() {
         try {
-            this.conexion = DriverManager.getConnection("jdbc:mysql://localhost/medicina?useServerPrepStmts=true", "root", "");            
-            this.sentencias = this.conexion.createStatement();       
+            this.conexion = DriverManager.getConnection("jdbc:mysql://localhost/medicina?useServerPrepStmts=true", "root", "");
+            this.sentencias = this.conexion.createStatement();
         } catch (SQLException ex) {
-            
+
             System.out.println(" Error al conectar");
-        }        
+        }
     }
-       
+
     public void create() {
         try {
             PreparedStatement sentencia;
@@ -130,6 +133,129 @@ public class Medicos {
 
     }
 
+    ////////////////////////////////////////Buscar////////////////////////////////////////
+    public void readCedula() {
+        try {
+            this.datos = this.sentencias.executeQuery("select * from medicos where ID='" + this.ID.getText() + "'");
+            if (this.datos.next()) {
+                System.out.println(datos.getInt(1));
+                JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(2));
+                System.out.println(datos.getString(3));
+            } else {
+                JOptionPane.showMessageDialog(null, "No hay mas registros");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error en el read");
+        }
+    }
+
+    public void readNombre() {
+        try {
+            this.datos = this.sentencias.executeQuery("select * from medicos where NombreCompleto='" + this.Nombre.getText() + "'");
+            if (this.datos.next()) {
+                System.out.println(datos.getInt(1));
+                JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(2));
+                System.out.println(datos.getString(3));
+            } else {
+                JOptionPane.showMessageDialog(null, "No hay mas registros");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error en el read");
+        }
+    }
+
+    public void readDate() {
+        try {
+            SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
+            this.datos = this.sentencias.executeQuery("select * from medicos where FechaNacimiento='" + dt.format(this.FechaNacimiento.getDate()) + "'");
+            if (this.datos.next()) {
+                System.out.println(datos.getInt(1));
+                JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(3));
+                System.out.println(datos.getString(3));
+            } else {
+                JOptionPane.showMessageDialog(null, "No hay mas registros");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error en el read");
+        }
+    }
+
+    public void readTel() {
+        try {
+            this.datos = this.sentencias.executeQuery("select * from medicos where Telefono='" + this.tel.getText() + "'");
+            if (this.datos.next()) {
+                System.out.println(datos.getInt(1));
+                JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(2));
+                System.out.println(datos.getString(3));
+            } else {
+                JOptionPane.showMessageDialog(null, "No hay mas registros");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error en el read");
+        }
+    }
+
+    public void readCorreo() {
+        try {
+            this.datos = this.sentencias.executeQuery("select * from medicos where CorreoElectronico='" + this.correo.getText() + "'");
+            if (this.datos.next()) {
+                System.out.println(datos.getInt(1));
+                JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(2));
+                System.out.println(datos.getString(3));
+            } else {
+                JOptionPane.showMessageDialog(null, "No hay mas registros");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error en el read");
+        }
+    }
+
+    public void readCodigo() {
+        try {
+            this.datos = this.sentencias.executeQuery("select * from medicos where Codigo='" + this.Codigo.getText() + "'");
+            if (this.datos.next()) {
+                System.out.println(datos.getInt(1));
+                JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(2));
+                System.out.println(datos.getString(3));
+            } else {
+                JOptionPane.showMessageDialog(null, "No hay mas registros");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error en el read");
+        }
+    }
+
+    public void readEspecialidad() {
+        try {
+            this.datos = this.sentencias.executeQuery("select * from medicos where especialidad='" + this.especialidad.getText() + "'");
+            if (this.datos.next()) {
+                System.out.println(datos.getInt(1));
+                JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(2));
+                System.out.println(datos.getString(3));
+            } else {
+                JOptionPane.showMessageDialog(null, "No hay mas registros");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error en el read");
+        }
+    }
+
+    public void readSalario() {
+        try {
+            this.datos = this.sentencias.executeQuery("select * from medicos where Salario='" + this.salario.getText() + "'");
+            if (this.datos.next()) {
+                System.out.println(datos.getInt(1));
+                JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(2));
+                System.out.println(datos.getString(3));
+            } else {
+                JOptionPane.showMessageDialog(null, "No hay mas registros");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error en el read");
+        }
+    }
+
+    ////////////////////////////////////////Metodos de Impuestos////////////////////////////////////////
     public void impuestoEMaternidad(float salario) {
         double impuestos = 5.5 * salario;
         double resultado = impuestos / 100;
@@ -190,17 +316,4 @@ public class Medicos {
         }
     }
 
-//    public static void main(String[] args) {
-//        // TODO code application logic here
-//        Medicos p = new Medicos(0, " ", 2, 0, "", 0, "", 0);
-//        p.conectar();
-//        p.create();
-//
-//        System.out.println("metodos de impuesto de medicina ");
-//        p.impuestoEMaternidad(250000);
-//        p.impuestoInvalidezM(250000);
-//        p.impuestoTrabajador(250000);
-//        p.impuestoAsolidarista(250000);
-//        p.impuestoRenta(900000);
-//    }
 }
