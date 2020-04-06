@@ -91,7 +91,7 @@ public class Paciente {
     public void update() {// Actualizar Informacion
         try {
             SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
-            this.sentencias.executeUpdate("update pacientes set id='" + this.ID.getText() + "'NombreCompleto='" + this.Nombre.getText() + "'FechadeNacimiento='" + dt.format(this.FechaNacimiento.getDate()) + "',Telefono='" + this.Telefono.getText() + "',Correo='" + this.correo.getText());
+            this.sentencias.executeUpdate("update pacientes set NombreCompleto='" + this.Nombre.getText() + "',FechaNacimiento='" + dt.format(this.FechaNacimiento.getDate()) + "',Telefono='" + this.Telefono.getText() + "',Correo='" + this.correo.getText() + "' where id=" + this.ID.getText());
 
         } catch (SQLException ex) {
             Logger.getLogger(Paciente.class.getName()).log(Level.SEVERE, null, ex);
