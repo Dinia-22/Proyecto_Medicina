@@ -6,73 +6,53 @@
 package Citas;
 
 import Usuarios.Usuario;
+import com.toedter.calendar.JDateChooser;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
  * @author Maria Paula
  */
 public class Citas {
-    private int ID;
-    private int fecha;
-    private int hora;
-    private String paciente;
-    private String MedicoEspe;
+    public JTextField ID;
+    public JDateChooser fecha;
+    public JTextField hora;
+    public JTextField  paciente;
+    public JTextField MedicoEspe;
     private Connection conexion;
     private Statement sentencias;
+    private ResultSet datos;
 
-    public Citas(int ID, int fecha, int hora, String paciente, String MedicoEspe) {
-        this.ID = ID;
-        this.fecha = fecha;
-        this.hora = hora;
-        this.paciente = paciente;
-        this.MedicoEspe = MedicoEspe;
-    }
+   
 
-    public int getID() {
+    public JTextField getID() {
         return ID;
     }
 
-    public int getFecha() {
+    public JDateChooser getFecha() {
         return fecha;
     }
 
-    public int getHora() {
+    public JTextField getHora() {
         return hora;
     }
 
-    public String getPaciente() {
+    public JTextField getPaciente() {
         return paciente;
     }
 
-    public String getMedicoEspe() {
+    public JTextField getMedicoEspe() {
         return MedicoEspe;
-    }
-
-    public void setID(int ID) {
-        this.ID = ID;
-    }
-
-    public void setFecha(int fecha) {
-        this.fecha = fecha;
-    }
-
-    public void setHora(int hora) {
-        this.hora = hora;
-    }
-
-    public void setPaciente(String paciente) {
-        this.paciente = paciente;
-    }
-
-    public void setMedicoEspe(String MedicoEspe) {
-        this.MedicoEspe = MedicoEspe;
     }
 
     public void conectar() {
@@ -90,10 +70,11 @@ public class Citas {
         try {
             PreparedStatement sentencia;
             sentencia = conexion.prepareStatement("insert citas values(null,?,?,?,?)");
-            sentencia.setInt(1, 5);
-            sentencia.setInt(2, 2);
-            sentencia.setString(3, "Carlos");
-            sentencia.setString(4, "Juan");
+            SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
+            sentencia.setString(1, dt.format(this.fecha.getDate()));
+            sentencia.setString(2, this.hora.getText());
+            sentencia.setString(3, this.paciente.getText());
+            sentencia.setString(4, this.MedicoEspe.getText());
             sentencia.execute();
 
         } catch (SQLException ex) {
@@ -102,13 +83,118 @@ public class Citas {
 
     }
 
-    public static void main(String[] args) {
-        // TODO code application logic here
-        Citas p = new Citas(0, 0, 0, "", "");
-        p.conectar();
-        p.create();
-        System.out.println("");
+    public void update() {
+        try {
+            SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
+            this.sentencias.executeUpdate("update citas set fecha='" + dt.format(this.fecha.getDate()) + "',hora='" + this.hora.getText() + "',paciente='" + this.paciente.getText() + "',medico='" + this.MedicoEspe.getText() + "' where id=" + this.ID.getText());
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
+
+    public void delete() { 
+        try {
+            this.sentencias.executeUpdate("delete from citas where id=" + this.ID.getText());
+            JOptionPane.showMessageDialog(null, "Usuario Eliminado");
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al Eliminar");
+        }
         
     }
+
+    ///////////////////////////// para buscar la informacion del usuario///////////////////////////////////////////////////
+  
+
+    public void readFecha() {
+        try {
+            SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
+            this.datos = this.sentencias.executeQuery("select * from citas where Fecha='" + dt.format(this.fecha.getDate()) + "'");
+            if (this.datos.next()) {
+
+                System.out.println(datos.getInt(1));
+                JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(2));
+                System.out.println(datos.getString(3));
+            } else {
+                JOptionPane.showMessageDialog(null, "No hay mas registros");
+
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error en el read");
+
+        }
+
+    }
+    public void readCedula() {
+        try {
+            this.datos = this.sentencias.executeQuery("select * from citas where ID='" +this.ID.getText() + "'");
+            if (this.datos.next()) {
+
+                System.out.println(datos.getInt(1));
+                JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(4));
+                System.out.println(datos.getString(3));
+            } else {
+                JOptionPane.showMessageDialog(null, "No hay mas registros");
+
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error en el read");
+
+        }
+
+    }
+
+    public void readHora() {
+        try {
+            this.datos = this.sentencias.executeQuery("select * from citas where Hora='" + this.hora.getText() + "'");
+            if (this.datos.next()) {
+                System.out.println(datos.getInt(1));
+                JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(3));
+                System.out.println(datos.getString(3));
+            } else {
+                JOptionPane.showMessageDialog(null, "No hay mas registros");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error en el read");
+        }
+
+    }
+
+    public void readPaciente() {
+        try {
+            this.datos = this.sentencias.executeQuery("select * from citas where Paciente='" + this.paciente.getText() + "'");
+            if (this.datos.next()) {
+                System.out.println(datos.getInt(1));
+                JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(4));
+                System.out.println(datos.getString(3));
+            } else {
+                JOptionPane.showMessageDialog(null, "No hay mas registros");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error en el read");
+        }
+
+    }
+
+    public void readMedico() {
+        try {
+            this.datos = this.sentencias.executeQuery("select * from citas where Medico='" + this.MedicoEspe.getText() + "'");
+            if (this.datos.next()) {
+                System.out.println(datos.getInt(1));
+                JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(5));
+                System.out.println(datos.getString(3));
+            } else {
+                JOptionPane.showMessageDialog(null, "No hay mas registros");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error en el read");
+        }
+
+    }
+
+   
 
 }
