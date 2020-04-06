@@ -59,9 +59,19 @@ public class Paciente {
         return correo;
     }
 
+    public void conectar() {
+        try {
+            this.conexion = DriverManager.getConnection("jdbc:mysql://localhost/medicina?useServerPrepStmts=true", "root", "");            
+            this.sentencias = this.conexion.createStatement();
+            
+        } catch (SQLException ex) {
+            
+            System.out.println(" Error al conectar");
+        }        
+    }
+
     public void create() {
         try {
-            this.conexion = DriverManager.getConnection("jdbc:mysql://localhost/medicina?useServerPrepStmts=true", "root", "");
             this.sentencias = this.conexion.createStatement();
             PreparedStatement sentencia;
             sentencia = conexion.prepareStatement("insert pacientes values(null,?,?,?,?)");
@@ -87,9 +97,9 @@ public class Paciente {
         }
     }
 
-    public void delete(int Id) {
+    public void delete() {
         try {
-            this.sentencias.executeUpdate("delete from pacientes where id=" + Id);
+            this.sentencias.executeUpdate("delete from pacientes where id=" + this.ID);
         } catch (SQLException ex) {
             System.out.println("Error en delete");
         }

@@ -10,6 +10,7 @@ package Paciente;
  * @author Dinia Alvarado
  */
 public class FrmPacientes extends javax.swing.JFrame {
+
     Paciente paci = new Paciente();
 
     /**
@@ -146,15 +147,20 @@ public class FrmPacientes extends javax.swing.JFrame {
 
         jMenuBar2.add(jMenu3);
 
-        jMenu2.setText("Eliminar Usuario");
+        jMenu2.setText("Eliminar Paciente");
 
         jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem2.setText("Eliminar");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem2);
 
         jMenuBar2.add(jMenu2);
 
-        jMenu1.setText("Buscar Usuario");
+        jMenu1.setText("Buscar Paciente");
 
         jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_B, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem1.setText("Buscar");
@@ -181,14 +187,20 @@ public class FrmPacientes extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       paci.ID = this.txtcedula;
-       paci.Nombre = this.txtnombre;
-       paci.FechaNacimiento = this.txtfecha;
-       paci.Telefono=this.txttelefono;
-       paci.correo = this.txtcorreo;
-       paci.create();
-               
+        paci.ID = this.txtcedula;
+        paci.Nombre = this.txtnombre;
+        paci.FechaNacimiento = this.txtfecha;
+        paci.Telefono = this.txttelefono;
+        paci.correo = this.txtcorreo;
+        paci.conectar();
+        paci.create();
+
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        FrmEliminar eliminar = new FrmEliminar();
+        eliminar.setVisible(true);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     /**
      * @param args the command line arguments
