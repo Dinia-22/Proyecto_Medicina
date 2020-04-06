@@ -99,7 +99,7 @@ public class Paciente {
 
     public void delete() {
         try {
-            this.sentencias.executeUpdate("delete from pacientes where id=" + this.ID);
+            this.sentencias.executeUpdate("delete from pacientes where id=" + ID.getText());
         } catch (SQLException ex) {
             System.out.println("Error en delete");
         }
