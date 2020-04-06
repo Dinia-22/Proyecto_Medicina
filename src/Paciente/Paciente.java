@@ -51,10 +51,6 @@ public class Paciente {
         return Telefono;
     }
 
-    public JDateChooser getFechaNacimiento() {
-        return FechaNacimiento;
-    }
-
     public JTextField getNombre() {
         return Nombre;
     }
@@ -63,36 +59,17 @@ public class Paciente {
         return correo;
     }
 
-    public void conectar() {
+    public void create() {
         try {
             this.conexion = DriverManager.getConnection("jdbc:mysql://localhost/medicina?useServerPrepStmts=true", "root", "");
             this.sentencias = this.conexion.createStatement();
-
-        } catch (SQLException ex) {
-
-            System.out.println(" Error al conectar");
-        }
-    }
-
-    public void create() {
-        try {
-            Connection conex = DriverManager.getConnection("jdbc:mysql://localhost/medicina?useServerPrepStmts=true", "root", "");
             PreparedStatement sentencia;
-            sentencia = conexion.prepareStatement("insert pacientes values(null,?,?,?,?,?)");
-
-            SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
-
-//            sentencia.setString(1, "paula herrera");
-//            sentencia.setInt(2, 1996);
-//            sentencia.setInt(3, 72031697);
-//            sentencia.setString(4, "maripa96-h-zu@hotmail.com");
-//            sentencia.execute();
-
-            //sentencia.setString(1, ID.getText());
-            sentencia.setString(1,dt.format(FechaNacimiento.getDate()));
-            sentencia.setString(2, this.Nombre.getText());
-            sentencia.setString(3, this.correo.getText());
-            sentencia.setString(4, this.Telefono.getText());
+            sentencia = conexion.prepareStatement("insert pacientes values(null,?,?,?,?)");
+            SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
+            sentencia.setString(1, this.Nombre.getText());
+            sentencia.setString(2, date.format(FechaNacimiento.getDate()));
+            sentencia.setString(3, this.Telefono.getText());
+            sentencia.setString(4, correo.getText());
             sentencia.execute();
 
         } catch (SQLException ex) {
@@ -110,9 +87,9 @@ public class Paciente {
         }
     }
 
-    public void delete(int Id){
+    public void delete(int Id) {
         try {
-            this.sentencias.executeUpdate("delete from pacientes where id="+Id);
+            this.sentencias.executeUpdate("delete from pacientes where id=" + Id);
         } catch (SQLException ex) {
             System.out.println("Error en delete");
         }
@@ -209,8 +186,8 @@ public class Paciente {
 
     public static void main(String[] args) {
         // TODO code application logic here
-        Paciente p = new Paciente();
-        p.conectar();
+//        Paciente p = new Paciente();
+//        p.conectar();
 //        p.create();
 //        p.edad();
         //p.delete(504270426);
