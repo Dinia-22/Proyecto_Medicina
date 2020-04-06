@@ -61,6 +61,7 @@ public class FrmMedicos extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Medicos");
         setLocation(new java.awt.Point(360, 170));
+        setResizable(false);
 
         jcedula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
