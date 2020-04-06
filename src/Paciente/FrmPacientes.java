@@ -49,6 +49,8 @@ public class FrmPacientes extends javax.swing.JFrame {
         eliminar = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         buscar = new javax.swing.JMenuItem();
+        jMenu4 = new javax.swing.JMenu();
+        edad = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -181,6 +183,19 @@ public class FrmPacientes extends javax.swing.JFrame {
 
         jMenuBar2.add(jMenu1);
 
+        jMenu4.setText("Edad");
+
+        edad.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
+        edad.setText("Calcular Edad");
+        edad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                edadActionPerformed(evt);
+            }
+        });
+        jMenu4.add(edad);
+
+        jMenuBar2.add(jMenu4);
+
         setJMenuBar(jMenuBar2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -223,6 +238,11 @@ public class FrmPacientes extends javax.swing.JFrame {
         prueba.setVisible(true);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
+    private void edadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edadActionPerformed
+        FrmEdad prueba = new FrmEdad();
+        prueba.setVisible(true);
+    }//GEN-LAST:event_edadActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -261,6 +281,7 @@ public class FrmPacientes extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem buscar;
     private javax.swing.JButton cancelar;
+    private javax.swing.JMenuItem edad;
     private javax.swing.JMenuItem eliminar;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
@@ -271,6 +292,7 @@ public class FrmPacientes extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPanel jPanel1;

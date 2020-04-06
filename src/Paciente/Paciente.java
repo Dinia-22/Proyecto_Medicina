@@ -16,7 +16,9 @@ import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Period;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -86,13 +88,13 @@ public class Paciente {
         }
     }
 
-    public void update() {// Cambiar
+    public void update() {// Actualizar Informacion
         try {
             SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
-            this.sentencias.executeUpdate("update pacientes were id='" + this.ID.getText() + "'NombreCompleto='" + this.Nombre.getText() + "'FechadeNacimiento='" + dt.format(this.FechaNacimiento.getDate()) + "',Telefono='" + this.Telefono.getText() + "',Correo='" + this.correo.getText());
+            this.sentencias.executeUpdate("update pacientes set id='" + this.ID.getText() + "'NombreCompleto='" + this.Nombre.getText() + "'FechadeNacimiento='" + dt.format(this.FechaNacimiento.getDate()) + "',Telefono='" + this.Telefono.getText() + "',Correo='" + this.correo.getText());
 
         } catch (SQLException ex) {
-            Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Paciente.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -103,16 +105,7 @@ public class Paciente {
             System.out.println("Error en delete");
         }
     }
-
-    public void edad() {
-        DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        LocalDate fechaNac = LocalDate.parse("15/08/1993", fmt);
-        LocalDate ahora = LocalDate.now();
-
-        Period periodo = Period.between(fechaNac, ahora);
-        System.out.printf("Tu edad es: %s años, %s meses y %s días", periodo.getYears(), periodo.getMonths(), periodo.getDays());
-    }
-
+    
     ///////////////////////////// BUSCAR ///////////////////////////////////////
     public void Read_Cedula() {
 
