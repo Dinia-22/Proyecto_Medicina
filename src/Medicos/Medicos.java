@@ -254,7 +254,23 @@ public class Medicos {
             JOptionPane.showMessageDialog(null, "Error en el read");
         }
     }
+    
+    ////////////////////////////////////////Metodos de Eliminar////////////////////////////////////////
+    
+    public void delete() {
+        try {
+            this.sentencias.executeUpdate("delete from medicos where id=" + this.ID.getText());
+            JOptionPane.showMessageDialog(null, "Usuario Eliminado");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al Eliminar");
+        }
+        
+    }
+    
+    ////////////////////////////////////////Metodos de Actualizar////////////////////////////////////////
 
+    
+    
     ////////////////////////////////////////Metodos de Impuestos////////////////////////////////////////
     public void impuestoEMaternidad(float salario) {
         double impuestos = 5.5 * salario;

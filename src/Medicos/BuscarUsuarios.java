@@ -55,6 +55,7 @@ public class BuscarUsuarios extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("INGRESE SUS DATOS");
+        setLocation(new java.awt.Point(340, 170));
         setResizable(false);
 
         jcedula1.addActionListener(new java.awt.event.ActionListener() {
