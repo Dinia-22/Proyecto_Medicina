@@ -27,21 +27,223 @@ public class FrmBuscar extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        nombre = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        cedula = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        telefono = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        correo = new javax.swing.JTextField();
+        busnombre = new javax.swing.JButton();
+        buscedula = new javax.swing.JButton();
+        busfecha = new javax.swing.JButton();
+        bustelefono = new javax.swing.JButton();
+        buscorreo = new javax.swing.JButton();
+        fecha = new com.toedter.calendar.JDateChooser();
+        buscan = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setBackground(new java.awt.Color(153, 153, 153));
+        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jLabel1.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        jLabel1.setText("Nombre:");
+
+        jLabel2.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        jLabel2.setText("Cedula:");
+
+        jLabel3.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        jLabel3.setText("Fecha Nacimiento: ");
+
+        jLabel4.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        jLabel4.setText("Telefono:");
+
+        jLabel5.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        jLabel5.setText("Correo Electronico:");
+
+        busnombre.setText("Buscar Nombre");
+        busnombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                busnombreActionPerformed(evt);
+            }
+        });
+
+        buscedula.setText("Buscar Cedula");
+        buscedula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscedulaActionPerformed(evt);
+            }
+        });
+
+        busfecha.setText("Buscar Fecha");
+        busfecha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                busfechaActionPerformed(evt);
+            }
+        });
+
+        bustelefono.setText("Buscar Telefono");
+        bustelefono.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bustelefonoActionPerformed(evt);
+            }
+        });
+
+        buscorreo.setText("Buscar Correo");
+        buscorreo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscorreoActionPerformed(evt);
+            }
+        });
+
+        buscan.setText("Cancelar");
+        buscan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscanActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel5))
+                                .addGap(32, 32, 32)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(telefono, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
+                                    .addComponent(correo)))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel1)
+                                        .addComponent(jLabel2))
+                                    .addGap(32, 32, 32)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(nombre)
+                                        .addComponent(cedula, javax.swing.GroupLayout.DEFAULT_SIZE, 282, Short.MAX_VALUE)))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel3)
+                                    .addGap(21, 21, 21)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(busfecha)
+                                        .addComponent(fecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                            .addComponent(buscorreo)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                                            .addComponent(buscan)
+                                            .addGap(3, 3, 3))))))
+                        .addContainerGap(19, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(busnombre)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(bustelefono))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(buscedula)
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addContainerGap())))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel3)
+                    .addComponent(fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(telefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(correo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(busnombre)
+                    .addComponent(bustelefono)
+                    .addComponent(busfecha))
+                .addGap(34, 34, 34)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buscedula)
+                    .addComponent(buscorreo)
+                    .addComponent(buscan))
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void busnombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_busnombreActionPerformed
+        Paciente prueba = new Paciente();
+        prueba.Nombre = this.nombre;
+        prueba.conectar();
+        prueba.Read_Nombre();
+    }//GEN-LAST:event_busnombreActionPerformed
+
+    private void buscedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscedulaActionPerformed
+        Paciente prueba = new Paciente();
+        prueba.ID = this.cedula;
+        prueba.conectar();
+        prueba.Read_Cedula();
+    }//GEN-LAST:event_buscedulaActionPerformed
+
+    private void busfechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_busfechaActionPerformed
+        Paciente prueba = new Paciente();
+        prueba.FechaNacimiento = this.fecha;
+        prueba.conectar();
+        prueba.Read_Fecha();
+    }//GEN-LAST:event_busfechaActionPerformed
+
+    private void bustelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bustelefonoActionPerformed
+        Paciente prueba = new Paciente();
+        prueba.Telefono = this.telefono;
+        prueba.conectar();
+        prueba.Read_Telefono();
+    }//GEN-LAST:event_bustelefonoActionPerformed
+
+    private void buscorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscorreoActionPerformed
+        Paciente prueba = new Paciente();
+        prueba.correo = this.correo;
+        prueba.conectar();
+        prueba.Read_Correo();
+    }//GEN-LAST:event_buscorreoActionPerformed
+
+    private void buscanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscanActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_buscanActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +281,22 @@ public class FrmBuscar extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buscan;
+    private javax.swing.JButton buscedula;
+    private javax.swing.JButton buscorreo;
+    private javax.swing.JButton busfecha;
+    private javax.swing.JButton busnombre;
+    private javax.swing.JButton bustelefono;
+    private javax.swing.JTextField cedula;
+    private javax.swing.JTextField correo;
+    private com.toedter.calendar.JDateChooser fecha;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField nombre;
+    private javax.swing.JTextField telefono;
     // End of variables declaration//GEN-END:variables
 }

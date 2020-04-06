@@ -117,80 +117,85 @@ public class Paciente {
     public void Read_Cedula() {
 
         try {
-            this.datos = this.sentencias.executeQuery("select * from paciente where Cedula='" + this.ID.getText() + "'");
+            this.datos = this.sentencias.executeQuery("select * from pacientes where id='" + this.ID.getText() + "'");
             if (this.datos.next()) {
                 System.out.println(datos.getInt(1));
-                System.out.println(datos.getString(2));
+                JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(2));
                 System.out.println(datos.getString(3));
             } else {
-                System.out.println(" No hay mas registros ");
+                JOptionPane.showMessageDialog(null, "No hay mas registros");
             }
         } catch (SQLException ex) {
-            System.out.println(" Error en el read");
+            //JOptionPane.showMessageDialog(null, "Error en el read");
         }
     }
 
     public void Read_Nombre() {
 
         try {
-            this.datos = this.sentencias.executeQuery("select * from pacientes where Nombre='" + this.Nombre.getText() + "'");
+            this.datos = this.sentencias.executeQuery("select * from pacientes where NombreCompleto='" + this.Nombre.getText() + "'");
             if (this.datos.next()) {
                 System.out.println(datos.getInt(1));
-                System.out.println(datos.getString(2));
+                JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(2));
                 System.out.println(datos.getString(3));
             } else {
-                System.out.println(" No hay mas registros ");
+                JOptionPane.showMessageDialog(null, "No hay mas registros");
             }
         } catch (SQLException ex) {
-            System.out.println(" Error en el read");
+            //JOptionPane.showMessageDialog(null, "Error en el read");
         }
     }
 
     public void Read_Fecha() {
         try {
             SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
-            this.datos = this.sentencias.executeQuery("select * from pacientes where Fecha='" + dt.format(this.FechaNacimiento.getDate()) + "'");
+            this.datos = this.sentencias.executeQuery("select * from paciente where FechadeNacimiento'" + dt.format(this.FechaNacimiento.getDate()) + "'");
             if (this.datos.next()) {
+
                 System.out.println(datos.getInt(1));
-                System.out.println(datos.getString(2));
+                JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(3));
                 System.out.println(datos.getString(3));
             } else {
-                System.out.println(" No hay mas registros ");
+                JOptionPane.showMessageDialog(null, "No hay mas registros");
+
             }
         } catch (SQLException ex) {
-            System.out.println(" Error en el read");
+            JOptionPane.showMessageDialog(null, "Error en el read");
+
         }
     }
 
     public void Read_Correo() {
-        try {
-            this.datos = this.sentencias.executeQuery("select * from pacientes where Correo='" + this.correo.getText() + "'");
+         try {
+            this.datos = this.sentencias.executeQuery("select * from pacientes where CorreoElectronico='" + this.correo.getText() + "'");
             if (this.datos.next()) {
                 System.out.println(datos.getInt(1));
-                System.out.println(datos.getString(2));
+                JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(2
+                ));
                 System.out.println(datos.getString(3));
             } else {
-                System.out.println(" No hay mas registros ");
+                JOptionPane.showMessageDialog(null, "No hay mas registros");
             }
         } catch (SQLException ex) {
-            System.out.println(" Error en el read");
+            //JOptionPane.showMessageDialog(null, "Error en el read");
         }
     }
 
     public void Read_Telefono() {
 
-        try {
+         try {
             this.datos = this.sentencias.executeQuery("select * from pacientes where Telefono='" + this.Telefono.getText() + "'");
             if (this.datos.next()) {
                 System.out.println(datos.getInt(1));
-                System.out.println(datos.getString(2));
+                JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(2));
                 System.out.println(datos.getString(3));
             } else {
-                System.out.println(" No hay mas registros ");
+                JOptionPane.showMessageDialog(null, "No hay mas registros");
             }
         } catch (SQLException ex) {
-            System.out.println(" Error en el read");
+            //JOptionPane.showMessageDialog(null, "Error en el read");
         }
+
     }
 
     public static void main(String[] args) {
