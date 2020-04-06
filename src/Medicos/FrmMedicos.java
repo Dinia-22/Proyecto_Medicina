@@ -55,8 +55,6 @@ public class FrmMedicos extends javax.swing.JFrame {
         jMenuItem2 = new javax.swing.JMenuItem();
         jMActualizarIn = new javax.swing.JMenu();
         actu1 = new javax.swing.JMenuItem();
-        jMAcontra = new javax.swing.JMenu();
-        actu2 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Medicos");
@@ -239,19 +237,6 @@ public class FrmMedicos extends javax.swing.JFrame {
 
         jMenuBar1.add(jMActualizarIn);
 
-        jMAcontra.setText("Actualizar Contraseña");
-
-        actu2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
-        actu2.setText("Actualizar ");
-        actu2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                actu2ActionPerformed(evt);
-            }
-        });
-        jMAcontra.add(actu2);
-
-        jMenuBar1.add(jMAcontra);
-
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -301,10 +286,6 @@ public class FrmMedicos extends javax.swing.JFrame {
         actualizarInfo.setVisible(true);
 
     }//GEN-LAST:event_actu1ActionPerformed
-
-    private void actu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actu2ActionPerformed
-
-    }//GEN-LAST:event_actu2ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
@@ -357,7 +338,6 @@ public class FrmMedicos extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem actu1;
-    private javax.swing.JMenuItem actu2;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
@@ -368,7 +348,6 @@ public class FrmMedicos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JMenu jMAcontra;
     private javax.swing.JMenu jMActualizarIn;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;

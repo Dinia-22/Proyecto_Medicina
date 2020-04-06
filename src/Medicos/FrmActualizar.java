@@ -17,6 +17,7 @@ public class FrmActualizar extends javax.swing.JFrame {
     public FrmActualizar() {
         initComponents();
     }
+    Medicos medico = new Medicos();
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -44,6 +45,7 @@ public class FrmActualizar extends javax.swing.JFrame {
         jcodigo3 = new javax.swing.JTextField();
         jespecialidad3 = new javax.swing.JTextField();
         jsalario3 = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(360, 150));
@@ -81,6 +83,13 @@ public class FrmActualizar extends javax.swing.JFrame {
         jtelefono3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtelefono3ActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -127,6 +136,10 @@ public class FrmActualizar extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jsalario3)))))
                 .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(267, 267, 267)
+                .addComponent(jButton1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -163,7 +176,9 @@ public class FrmActualizar extends javax.swing.JFrame {
                     .addComponent(jLabel7)
                     .addComponent(jsalario3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8))
-                .addContainerGap(68, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -192,6 +207,22 @@ public class FrmActualizar extends javax.swing.JFrame {
     private void jtelefono3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtelefono3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jtelefono3ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+
+        // Aceptar Cambios de la Informacion.
+        medico.ID = this.jcedula3;
+        medico.Nombre = this.jnombre3;
+        medico.FechaNacimiento = this.jfecha3;
+        medico.tel = this.jtelefono3;
+        medico.correo = this.jcorreo3;
+        medico.Codigo = this.jcodigo3;
+        medico.especialidad = this.jespecialidad3;
+        medico.salario = this.jsalario3;
+        medico.conectar();
+        medico.update();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -229,6 +260,7 @@ public class FrmActualizar extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

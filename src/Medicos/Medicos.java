@@ -269,6 +269,16 @@ public class Medicos {
     
     ////////////////////////////////////////Metodos de Actualizar////////////////////////////////////////
 
+    public void update() {
+        try {
+            SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
+            this.sentencias.executeUpdate("update medicos set NombreCompleto='" + this.Nombre.getText() + "',FechaNacimiento='" + dt.format(this.FechaNacimiento.getDate()) + "',Telefono='" + this.tel.getText() + "',CorreoElectronico='" + this.correo.getText() + "',Codigo='" + this.Codigo.getText() + "',Especialidad='" + this.especialidad.getText()+"',Salario='" + this.salario.getText() + "' where id=" + this.ID.getText());
+        } catch (SQLException ex) {
+            Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    
     
     
     ////////////////////////////////////////Metodos de Impuestos////////////////////////////////////////
