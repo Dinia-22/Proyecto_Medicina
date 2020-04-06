@@ -238,20 +238,5 @@ public class Usuario {
 
     }
 
-    public static void main(String[] args) {
-        // TODO code application logic here
-        Usuario p = new Usuario();
-        p.conectar();
-//        p.readNombre("paula");
-//        p.readCorreo("");
-//        p.readFecha(0);
-//        p.readTel(0);
-//        p.readTipo("");
-//        p.readUsuario("");  
-//        //p.delete(1);
-//        //p.update(1, "maria", 4, "hotmail", "p123", "secretaria", 01234);
-//        //p.create();
-
-    }
-
+   
 }
