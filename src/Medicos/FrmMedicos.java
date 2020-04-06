@@ -231,6 +231,7 @@ public class FrmMedicos extends javax.swing.JFrame {
         medico.Codigo = this.jcodigo;
         medico.especialidad = this.jespecialidad;
         medico.salario = this.jsalario;
+        medico.conectar();
         medico.create();
     }//GEN-LAST:event_jButton1ActionPerformed
 

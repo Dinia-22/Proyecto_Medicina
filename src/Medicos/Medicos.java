@@ -100,10 +100,18 @@ public class Medicos {
         this.salario = salario;
     }
 
+       public void conectar() {
+        try {
+            this.conexion = DriverManager.getConnection("jdbc:mysql://localhost/medicina?useServerPrepStmts=true", "root", "");            
+            this.sentencias = this.conexion.createStatement();       
+        } catch (SQLException ex) {
+            
+            System.out.println(" Error al conectar");
+        }        
+    }
+       
     public void create() {
         try {
-            this.conexion = DriverManager.getConnection("jdbc:mysql://localhost/medicina?useServerPrepStmts=true", "root", "");
-            this.sentencias = this.conexion.createStatement();
             PreparedStatement sentencia;
             sentencia = conexion.prepareStatement("insert medicos values(null,?,?,?,?,?,?,?)");
             SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");

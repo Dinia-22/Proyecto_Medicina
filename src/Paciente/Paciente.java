@@ -72,7 +72,6 @@ public class Paciente {
 
     public void create() {
         try {
-            this.sentencias = this.conexion.createStatement();
             PreparedStatement sentencia;
             sentencia = conexion.prepareStatement("insert pacientes values(null,?,?,?,?)");
             SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
