@@ -58,6 +58,8 @@ public class BuscarUsuarios extends javax.swing.JFrame {
         setLocation(new java.awt.Point(340, 170));
         setResizable(false);
 
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+
         jcedula1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcedula1ActionPerformed(evt);
@@ -94,6 +96,8 @@ public class BuscarUsuarios extends javax.swing.JFrame {
             }
         });
 
+        btncedula.setBackground(new java.awt.Color(102, 102, 102));
+        btncedula.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.png"))); // NOI18N
         btncedula.setText("Cedula");
         btncedula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -101,6 +105,8 @@ public class BuscarUsuarios extends javax.swing.JFrame {
             }
         });
 
+        btnnombre.setBackground(new java.awt.Color(0, 204, 255));
+        btnnombre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.png"))); // NOI18N
         btnnombre.setText("Nombre");
         btnnombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -108,6 +114,8 @@ public class BuscarUsuarios extends javax.swing.JFrame {
             }
         });
 
+        btntelefono.setBackground(new java.awt.Color(102, 102, 102));
+        btntelefono.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.png"))); // NOI18N
         btntelefono.setText("Telefono");
         btntelefono.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -115,6 +123,8 @@ public class BuscarUsuarios extends javax.swing.JFrame {
             }
         });
 
+        btnnacimiento.setBackground(new java.awt.Color(0, 204, 255));
+        btnnacimiento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.png"))); // NOI18N
         btnnacimiento.setText("Fecha Nacimiento");
         btnnacimiento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -122,6 +132,8 @@ public class BuscarUsuarios extends javax.swing.JFrame {
             }
         });
 
+        btncorreo.setBackground(new java.awt.Color(102, 102, 102));
+        btncorreo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.png"))); // NOI18N
         btncorreo.setText("Correo");
         btncorreo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -129,6 +141,8 @@ public class BuscarUsuarios extends javax.swing.JFrame {
             }
         });
 
+        btncodigo.setBackground(new java.awt.Color(0, 204, 255));
+        btncodigo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.png"))); // NOI18N
         btncodigo.setText("Codigo");
         btncodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -136,6 +150,8 @@ public class BuscarUsuarios extends javax.swing.JFrame {
             }
         });
 
+        btnespecialidad.setBackground(new java.awt.Color(102, 102, 102));
+        btnespecialidad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.png"))); // NOI18N
         btnespecialidad.setText("Especialidad");
         btnespecialidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -143,6 +159,8 @@ public class BuscarUsuarios extends javax.swing.JFrame {
             }
         });
 
+        btnsalario.setBackground(new java.awt.Color(0, 204, 255));
+        btnsalario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.png"))); // NOI18N
         btnsalario.setText("Salario");
         btnsalario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

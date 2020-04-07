@@ -98,6 +98,8 @@ public class FrmMedicos extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setBackground(new java.awt.Color(102, 102, 102));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/save.png"))); // NOI18N
         jButton1.setText("Guardar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -105,8 +107,12 @@ public class FrmMedicos extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setBackground(new java.awt.Color(102, 102, 102));
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cancelar.png"))); // NOI18N
         jButton2.setText("Atras");
 
+        jButton3.setBackground(new java.awt.Color(0, 204, 255));
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/modificar.png"))); // NOI18N
         jButton3.setText("Calculo de Impuestos de Salario");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -209,9 +215,11 @@ public class FrmMedicos extends javax.swing.JFrame {
                 .addContainerGap(18, Short.MAX_VALUE))
         );
 
+        jMusuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/search_2.png"))); // NOI18N
         jMusuario.setText("Buscar Usuario");
 
         jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_B, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.png"))); // NOI18N
         jMenuItem1.setText("Buscar");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -222,9 +230,11 @@ public class FrmMedicos extends javax.swing.JFrame {
 
         jMenuBar1.add(jMusuario);
 
+        jmEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/delete.png"))); // NOI18N
         jmEliminar.setText("Eliminar Usuario");
 
         jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/close.png"))); // NOI18N
         jMenuItem2.setText("Eliminar");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -235,9 +245,11 @@ public class FrmMedicos extends javax.swing.JFrame {
 
         jMenuBar1.add(jmEliminar);
 
+        jMActualizarIn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/refresh.png"))); // NOI18N
         jMActualizarIn.setText("Actualizar Informacion");
 
         actu1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
+        actu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/modificar.png"))); // NOI18N
         actu1.setText("Actualizar ");
         actu1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

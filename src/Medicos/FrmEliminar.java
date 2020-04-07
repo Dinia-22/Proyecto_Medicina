@@ -38,6 +38,8 @@ public class FrmEliminar extends javax.swing.JFrame {
         setLocation(new java.awt.Point(450, 250));
         setResizable(false);
 
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+
         jcedulaID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcedulaIDActionPerformed(evt);
@@ -47,6 +49,8 @@ public class FrmEliminar extends javax.swing.JFrame {
         JID.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         JID.setText("Numero Cedula:");
 
+        BtnEliminar.setBackground(new java.awt.Color(102, 102, 102));
+        BtnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/save.png"))); // NOI18N
         BtnEliminar.setText("Guardar");
         BtnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -54,6 +58,8 @@ public class FrmEliminar extends javax.swing.JFrame {
             }
         });
 
+        BtnAtras.setBackground(new java.awt.Color(0, 204, 255));
+        BtnAtras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cancelar.png"))); // NOI18N
         BtnAtras.setText("Atras");
         BtnAtras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
