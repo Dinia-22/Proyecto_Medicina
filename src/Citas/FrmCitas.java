@@ -51,7 +51,7 @@ public class FrmCitas extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Citas");
 
-        jPanel1.setBackground(new java.awt.Color(153, 153, 153));
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel2.setText("Fecha");
@@ -126,7 +126,7 @@ public class FrmCitas extends javax.swing.JFrame {
                 .addContainerGap(25, Short.MAX_VALUE))
         );
 
-        save.setBackground(new java.awt.Color(153, 0, 153));
+        save.setBackground(new java.awt.Color(102, 102, 102));
         save.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/save.png"))); // NOI18N
         save.setText("Guardar Informacion");
         save.addActionListener(new java.awt.event.ActionListener() {
@@ -135,7 +135,7 @@ public class FrmCitas extends javax.swing.JFrame {
             }
         });
 
-        cancel.setBackground(new java.awt.Color(204, 0, 0));
+        cancel.setBackground(new java.awt.Color(0, 204, 255));
         cancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/close.png"))); // NOI18N
         cancel.setText("Cancelar");
         cancel.addActionListener(new java.awt.event.ActionListener() {
@@ -144,7 +144,7 @@ public class FrmCitas extends javax.swing.JFrame {
             }
         });
 
-        saveInformation.setBackground(new java.awt.Color(204, 0, 204));
+        saveInformation.setBackground(new java.awt.Color(102, 102, 102));
         saveInformation.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/save.png"))); // NOI18N
         saveInformation.setText("Guardar Informacion Actualizada");
         saveInformation.addActionListener(new java.awt.event.ActionListener() {
@@ -156,6 +156,7 @@ public class FrmCitas extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setText("Citas");
 
+        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/search_2.png"))); // NOI18N
         jMenu1.setText("Buscar Informacion");
 
         jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_B, java.awt.event.InputEvent.CTRL_MASK));
@@ -170,6 +171,7 @@ public class FrmCitas extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
+        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/delete.png"))); // NOI18N
         jMenu2.setText("Eliminar Datos");
 
         jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));

@@ -51,7 +51,7 @@ public class Buscar extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Buscar");
 
-        jPanel1.setBackground(new java.awt.Color(153, 153, 153));
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel2.setText("Fecha");
@@ -135,7 +135,7 @@ public class Buscar extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setText("Buscar");
 
-        fecha.setBackground(new java.awt.Color(153, 0, 153));
+        fecha.setBackground(new java.awt.Color(102, 102, 102));
         fecha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.png"))); // NOI18N
         fecha.setText("Buscar Fecha");
         fecha.addActionListener(new java.awt.event.ActionListener() {
@@ -144,7 +144,7 @@ public class Buscar extends javax.swing.JFrame {
             }
         });
 
-        cedula.setBackground(new java.awt.Color(102, 0, 102));
+        cedula.setBackground(new java.awt.Color(0, 204, 255));
         cedula.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.png"))); // NOI18N
         cedula.setText("Buscar Cedula");
         cedula.addActionListener(new java.awt.event.ActionListener() {
@@ -153,7 +153,7 @@ public class Buscar extends javax.swing.JFrame {
             }
         });
 
-        medico.setBackground(new java.awt.Color(153, 0, 153));
+        medico.setBackground(new java.awt.Color(102, 102, 102));
         medico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.png"))); // NOI18N
         medico.setText("Buscar Medico");
         medico.addActionListener(new java.awt.event.ActionListener() {
@@ -162,7 +162,7 @@ public class Buscar extends javax.swing.JFrame {
             }
         });
 
-        paciente.setBackground(new java.awt.Color(102, 0, 102));
+        paciente.setBackground(new java.awt.Color(0, 204, 255));
         paciente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.png"))); // NOI18N
         paciente.setText("Buscar Paciente");
         paciente.addActionListener(new java.awt.event.ActionListener() {
@@ -171,7 +171,7 @@ public class Buscar extends javax.swing.JFrame {
             }
         });
 
-        hora.setBackground(new java.awt.Color(102, 0, 102));
+        hora.setBackground(new java.awt.Color(102, 102, 102));
         hora.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.png"))); // NOI18N
         hora.setText("Buscar Hora");
         hora.addActionListener(new java.awt.event.ActionListener() {

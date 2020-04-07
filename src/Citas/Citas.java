@@ -86,7 +86,7 @@ public class Citas {
     public void update() {
         try {
             SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
-            this.sentencias.executeUpdate("update citas set fecha='" + dt.format(this.fecha.getDate()) + "',hora='" + this.hora.getText() + "',paciente='" + this.paciente.getText() + "',medico='" + this.MedicoEspe.getText() + "' where id=" + this.ID.getText());
+            this.sentencias.executeUpdate("update citas set Fecha='" + dt.format(this.fecha.getDate()) + "',Hora='" + this.hora.getText() + "',Paciente='" + this.paciente.getText() + "',Medico='" + this.MedicoEspe.getText() + "' where Id=" + this.ID.getText());
 
         } catch (SQLException ex) {
             Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
@@ -130,7 +130,7 @@ public class Citas {
     }
     public void readCedula() {
         try {
-            this.datos = this.sentencias.executeQuery("select * from citas where ID='" +this.ID.getText() + "'");
+            this.datos = this.sentencias.executeQuery("select * from citas where Id='" +this.ID.getText() + "'");
             if (this.datos.next()) {
 
                 System.out.println(datos.getInt(1));
