@@ -67,6 +67,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Expedientes"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ExpedientesActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator4">
             </MenuItem>
@@ -80,6 +83,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Citas"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CitasActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>

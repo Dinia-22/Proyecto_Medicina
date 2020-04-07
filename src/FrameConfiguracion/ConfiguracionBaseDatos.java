@@ -5,6 +5,8 @@
  */
 package FrameConfiguracion;
 
+import Citas.FrmCitas;
+import Expediente.Expediente;
 import Medicos.FrmMedicos;
 import Paciente.FrmPacientes;
 import Usuarios.FrmUsuario;
@@ -100,12 +102,22 @@ public class ConfiguracionBaseDatos extends javax.swing.JFrame {
         Expedientes.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
         Expedientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/modificar.png"))); // NOI18N
         Expedientes.setText("Expedientes");
+        Expedientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ExpedientesActionPerformed(evt);
+            }
+        });
         jMenu1.add(Expedientes);
         jMenu1.add(jSeparator4);
 
         Citas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
         Citas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/share.png"))); // NOI18N
         Citas.setText("Citas");
+        Citas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CitasActionPerformed(evt);
+            }
+        });
         jMenu1.add(Citas);
 
         jMenuBar1.add(jMenu1);
@@ -152,6 +164,15 @@ public class ConfiguracionBaseDatos extends javax.swing.JFrame {
         FrmPacientes paci = new FrmPacientes();
         paci.setVisible(true);
     }//GEN-LAST:event_PacientesActionPerformed
+
+    private void ExpedientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExpedientesActionPerformed
+        
+    }//GEN-LAST:event_ExpedientesActionPerformed
+
+    private void CitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CitasActionPerformed
+        FrmCitas expe = new FrmCitas();
+        expe.setVisible(true);
+    }//GEN-LAST:event_CitasActionPerformed
 
     /**
      * @param args the command line arguments
