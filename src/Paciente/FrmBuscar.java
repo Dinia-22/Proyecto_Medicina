@@ -47,7 +47,7 @@ public class FrmBuscar extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(153, 153, 153));
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel1.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
@@ -65,6 +65,7 @@ public class FrmBuscar extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel5.setText("Correo Electronico:");
 
+        busnombre.setBackground(new java.awt.Color(102, 102, 102));
         busnombre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.png"))); // NOI18N
         busnombre.setText("Buscar Nombre");
         busnombre.addActionListener(new java.awt.event.ActionListener() {
@@ -73,6 +74,7 @@ public class FrmBuscar extends javax.swing.JFrame {
             }
         });
 
+        buscedula.setBackground(new java.awt.Color(102, 102, 102));
         buscedula.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.png"))); // NOI18N
         buscedula.setText("Buscar Cedula");
         buscedula.addActionListener(new java.awt.event.ActionListener() {
@@ -81,6 +83,7 @@ public class FrmBuscar extends javax.swing.JFrame {
             }
         });
 
+        busfecha.setBackground(new java.awt.Color(0, 204, 255));
         busfecha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.png"))); // NOI18N
         busfecha.setText("Buscar Fecha");
         busfecha.addActionListener(new java.awt.event.ActionListener() {
@@ -89,6 +92,7 @@ public class FrmBuscar extends javax.swing.JFrame {
             }
         });
 
+        bustelefono.setBackground(new java.awt.Color(102, 102, 102));
         bustelefono.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.png"))); // NOI18N
         bustelefono.setText("Buscar Telefono");
         bustelefono.addActionListener(new java.awt.event.ActionListener() {
@@ -97,6 +101,7 @@ public class FrmBuscar extends javax.swing.JFrame {
             }
         });
 
+        buscorreo.setBackground(new java.awt.Color(0, 204, 255));
         buscorreo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.png"))); // NOI18N
         buscorreo.setText("Buscar Correo");
         buscorreo.addActionListener(new java.awt.event.ActionListener() {
@@ -105,6 +110,7 @@ public class FrmBuscar extends javax.swing.JFrame {
             }
         });
 
+        buscan.setBackground(new java.awt.Color(102, 102, 102));
         buscan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.png"))); // NOI18N
         buscan.setText("Cancelar");
         buscan.addActionListener(new java.awt.event.ActionListener() {

@@ -43,7 +43,7 @@ public class FrmEdad extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(153, 153, 153));
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
 
         jLabel1.setBackground(new java.awt.Color(204, 204, 204));
         jLabel1.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
@@ -52,6 +52,7 @@ public class FrmEdad extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel2.setText("Edad Actual:");
 
+        jButton1.setBackground(new java.awt.Color(102, 102, 102));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.png"))); // NOI18N
         jButton1.setText("Calcular Edad");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -60,6 +61,7 @@ public class FrmEdad extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setBackground(new java.awt.Color(0, 204, 255));
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/new.png"))); // NOI18N
         jButton2.setText("Nuevo Calculo");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -68,6 +70,7 @@ public class FrmEdad extends javax.swing.JFrame {
             }
         });
 
+        jButton3.setBackground(new java.awt.Color(102, 102, 102));
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cancelar.png"))); // NOI18N
         jButton3.setText("Cancelar");
 
@@ -110,12 +113,12 @@ public class FrmEdad extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtactual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2)
                     .addComponent(jButton3))
-                .addGap(41, 41, 41))
+                .addGap(21, 21, 21))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

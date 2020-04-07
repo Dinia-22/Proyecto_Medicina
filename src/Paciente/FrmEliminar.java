@@ -39,6 +39,7 @@ public class FrmEliminar extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
+        aceptar.setBackground(new java.awt.Color(102, 102, 102));
         aceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/save.png"))); // NOI18N
         aceptar.setText("Guardar");
         aceptar.addActionListener(new java.awt.event.ActionListener() {
@@ -47,6 +48,7 @@ public class FrmEliminar extends javax.swing.JFrame {
             }
         });
 
+        cancelar.setBackground(new java.awt.Color(0, 204, 255));
         cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cancelar.png"))); // NOI18N
         cancelar.setText(" Cancelar");
         cancelar.addActionListener(new java.awt.event.ActionListener() {

@@ -54,7 +54,7 @@ public class FrmPacientes extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(153, 153, 153));
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel1.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
@@ -72,6 +72,7 @@ public class FrmPacientes extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel5.setText("Correo Electronico:");
 
+        jButton1.setBackground(new java.awt.Color(102, 102, 102));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/save.png"))); // NOI18N
         jButton1.setText(" Guardar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -80,6 +81,7 @@ public class FrmPacientes extends javax.swing.JFrame {
             }
         });
 
+        cancelar.setBackground(new java.awt.Color(0, 204, 255));
         cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cancelar.png"))); // NOI18N
         cancelar.setText("Cancelar");
 
@@ -146,9 +148,11 @@ public class FrmPacientes extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/refresh.png"))); // NOI18N
         jMenu3.setText("Actualizar Informacion");
 
         jMenuItem3.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/modificar.png"))); // NOI18N
         jMenuItem3.setText("Actualizar");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -159,9 +163,11 @@ public class FrmPacientes extends javax.swing.JFrame {
 
         jMenuBar2.add(jMenu3);
 
+        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/delete.png"))); // NOI18N
         jMenu2.setText("Eliminar Paciente");
 
         eliminar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
+        eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/close.png"))); // NOI18N
         eliminar.setText("Eliminar");
         eliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -172,9 +178,11 @@ public class FrmPacientes extends javax.swing.JFrame {
 
         jMenuBar2.add(jMenu2);
 
+        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/search_2.png"))); // NOI18N
         jMenu1.setText("Buscar Paciente");
 
         buscar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_B, java.awt.event.InputEvent.CTRL_MASK));
+        buscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.png"))); // NOI18N
         buscar.setText("Buscar");
         buscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -185,9 +193,11 @@ public class FrmPacientes extends javax.swing.JFrame {
 
         jMenuBar2.add(jMenu1);
 
+        jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/hourglass.png"))); // NOI18N
         jMenu4.setText("Edad");
 
         edad.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
+        edad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/hourglass (1).png"))); // NOI18N
         edad.setText("Calcular Edad");
         edad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
