@@ -48,6 +48,7 @@ public class FrmMedicos extends javax.swing.JFrame {
         jsalario = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMusuario = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -106,6 +107,13 @@ public class FrmMedicos extends javax.swing.JFrame {
 
         jButton2.setText("Atras");
 
+        jButton3.setText("Calculo de Impuestos de Salario");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -152,6 +160,8 @@ public class FrmMedicos extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addComponent(jButton1)
+                .addGap(104, 104, 104)
+                .addComponent(jButton3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton2)
                 .addGap(40, 40, 40))
@@ -194,7 +204,8 @@ public class FrmMedicos extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(jButton2)
+                    .addComponent(jButton3))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
 
@@ -279,6 +290,9 @@ public class FrmMedicos extends javax.swing.JFrame {
         medico.salario = this.jsalario;
         medico.conectar();
         medico.create();
+        
+        
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void actu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actu1ActionPerformed
@@ -300,6 +314,18 @@ public class FrmMedicos extends javax.swing.JFrame {
         FrmEliminar eliminar=new FrmEliminar();
         eliminar.setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        // Calcular Impuestos:
+        medico.salario = this.jsalario;
+        medico.impuestoEMaternidad();       
+        medico.impuestoInvalidezM();
+        medico.impuestoTrabajador();
+        medico.impuestoAsolidarista();
+        medico.impuestoRenta();
+        
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -340,6 +366,7 @@ public class FrmMedicos extends javax.swing.JFrame {
     private javax.swing.JMenuItem actu1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

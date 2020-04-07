@@ -254,9 +254,8 @@ public class Medicos {
             JOptionPane.showMessageDialog(null, "Error en el read");
         }
     }
-    
+
     ////////////////////////////////////////Metodos de Eliminar////////////////////////////////////////
-    
     public void delete() {
         try {
             this.sentencias.executeUpdate("delete from medicos where id=" + this.ID.getText());
@@ -264,25 +263,22 @@ public class Medicos {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al Eliminar");
         }
-        
-    }
-    
-    ////////////////////////////////////////Metodos de Actualizar////////////////////////////////////////
 
+    }
+
+    ////////////////////////////////////////Metodos de Actualizar////////////////////////////////////////
     public void update() {
         try {
             SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
-            this.sentencias.executeUpdate("update medicos set NombreCompleto='" + this.Nombre.getText() + "',FechaNacimiento='" + dt.format(this.FechaNacimiento.getDate()) + "',Telefono='" + this.tel.getText() + "',CorreoElectronico='" + this.correo.getText() + "',Codigo='" + this.Codigo.getText() + "',Especialidad='" + this.especialidad.getText()+"',Salario='" + this.salario.getText() + "' where id=" + this.ID.getText());
+            this.sentencias.executeUpdate("update medicos set NombreCompleto='" + this.Nombre.getText() + "',FechaNacimiento='" + dt.format(this.FechaNacimiento.getDate()) + "',Telefono='" + this.tel.getText() + "',CorreoElectronico='" + this.correo.getText() + "',Codigo='" + this.Codigo.getText() + "',Especialidad='" + this.especialidad.getText() + "',Salario='" + this.salario.getText() + "' where id=" + this.ID.getText());
         } catch (SQLException ex) {
             Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    
-    
-    
+
     ////////////////////////////////////////Metodos de Impuestos////////////////////////////////////////
-    public void impuestoEMaternidad(float salario) {
+    public void impuestoEMaternidad() {
+        Double salario = Double.valueOf(this.salario.getText());
         double impuestos = 5.5 * salario;
         double resultado = impuestos / 100;
         double total = resultado + salario;
@@ -290,9 +286,12 @@ public class Medicos {
         System.out.println("el 5.5% de Enfermedad y maternidad es de :" + resultado);
         System.out.println("el impuesto aplicado al salario es de :" + total);
         System.out.println("el salario neto descontando los impuestos es de :" + resta);
+        JOptionPane.showMessageDialog(null,"el salario neto descontando los impuestos de Enfermedad y maternidad 5.5% es de :" + resta);
+
     }
 
-    public void impuestoInvalidezM(float salario) {
+    public void impuestoInvalidezM() {
+        Double salario = Double.valueOf(this.salario.getText());
         double impuestos = 3.84 * salario;
         double resultado = impuestos / 100;
         double total = resultado + salario;
@@ -300,9 +299,11 @@ public class Medicos {
         System.out.println("el 3.84% de invalidez y muerte es de :" + resultado);
         System.out.println("el impuesto aplicado al salario es de :" + total);
         System.out.println("el salario neto descontando los impuestos es de :" + resta);
+        JOptionPane.showMessageDialog(null,"el salario neto descontando los impuestos de Invalidez y Muerte 3.84% es de :" + resta);
     }
 
-    public void impuestoTrabajador(float salario) {
+    public void impuestoTrabajador() {
+        Double salario = Double.valueOf(this.salario.getText());
         double impuestos = 1.0 * salario;
         double resultado = impuestos / 100;
         double total = resultado + salario;
@@ -310,9 +311,11 @@ public class Medicos {
         System.out.println("el 1% de aporte del trabajador es de :" + resultado);
         System.out.println("el impuesto aplicado al salario es de :" + total);
         System.out.println("el salario neto descontando los impuestos es de :" + resta);
+        JOptionPane.showMessageDialog(null,"el salario neto descontando los impuestos de Aporte del trabajador 1% es de :" + resta);
     }
 
-    public void impuestoAsolidarista(float salario) {
+    public void impuestoAsolidarista() {
+        Double salario = Double.valueOf(this.salario.getText());
         double impuestos = 3.3 * salario;
         double resultado = impuestos / 100;
         double total = resultado + salario;
@@ -320,9 +323,11 @@ public class Medicos {
         System.out.println("el 3.3% de asociacion solidarista es de :" + resultado);
         System.out.println("el impuesto aplicado al salario es de :" + total);
         System.out.println("el salario neto descontando los impuestos es de :" + resta);
+        JOptionPane.showMessageDialog(null,"el salario neto descontando los impuestos de Aporte a la asociación solidarista 3.3% es de :" + resta);
     }
 
-    public void impuestoRenta(float salario) {
+    public void impuestoRenta() {
+        Double salario = Double.valueOf(this.salario.getText());
         if (salario >= 817001 && salario <= 1226000) {
             double impuesto = 10 * salario;
             double resultado = impuesto / 100;
@@ -331,6 +336,7 @@ public class Medicos {
             System.out.println("el 10% de impuesto a la renta es de :" + resultado);
             System.out.println("el impuesto aplicado al salario es de :" + total);
             System.out.println("el salario neto descontando los impuestos es de :" + resta);
+            JOptionPane.showMessageDialog(null,"el salario neto descontando los impuestos de Impuesto sobre la renta 10% es de :" + resta);
         } else if (salario >= 1226001) {
             double impu = 15 * salario;
             double impuresultado = impu / 100;
@@ -339,6 +345,7 @@ public class Medicos {
             System.out.println("el 15% de impuesto a la renta es de :" + impuresultado);
             System.out.println("el impuesto aplicado al salario es de :" + totalimpuesto);
             System.out.println("el salario neto descontando los impuestos es de :" + restados);
+            JOptionPane.showMessageDialog(null,"el salario neto descontando los impuestos de Impuesto sobre la renta 15% es de :" + restados);
         }
     }
 
