@@ -62,6 +62,8 @@ public class FrmMedicos extends javax.swing.JFrame {
         setLocation(new java.awt.Point(360, 170));
         setResizable(false);
 
+        jPanel1.setToolTipText("Ingrese sus Datos");
+
         jcedula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcedulaActionPerformed(evt);
@@ -302,9 +304,7 @@ public class FrmMedicos extends javax.swing.JFrame {
         medico.salario = this.jsalario;
         medico.conectar();
         medico.create();
-        
-        
-        
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void actu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actu1ActionPerformed

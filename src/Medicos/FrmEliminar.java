@@ -34,7 +34,7 @@ public class FrmEliminar extends javax.swing.JFrame {
         BtnAtras = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("INGRESA EL NUMERO A ELIMINAR");
+        setTitle("Ingrese el Numero a Eliminar");
         setLocation(new java.awt.Point(450, 250));
         setResizable(false);
 

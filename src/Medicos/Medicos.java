@@ -24,16 +24,6 @@ import javax.swing.JTextField;
  * @author Maria Paula
  */
 public class Medicos {
-//
-//    public int ID;
-//    public String Nombre;
-//    public int FechaNacimiento;
-//    public int tel;
-//    public String correo;
-//    public int Codigo;
-//    public String especialidad;
-//    public float salario;
-
     public JTextField ID;
     public JTextField Nombre;
     public JDateChooser FechaNacimiento;
