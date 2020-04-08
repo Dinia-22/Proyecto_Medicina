@@ -255,6 +255,7 @@ public class FrmExpediente extends javax.swing.JFrame {
         ex.conectar();
         ex.update();
         ex.xmlconfig();
+        
     }//GEN-LAST:event_actualizarActionPerformed
 
     private void cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelActionPerformed
