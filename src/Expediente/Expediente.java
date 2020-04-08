@@ -11,6 +11,7 @@ import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
@@ -46,6 +47,7 @@ public class Expediente {
     public JTextField Descrip;
     public JTextField paciente;
     public JTextField ID;
+    private ResultSet datos;
     private Connection conexion;
     private Statement sentencias;
     SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
@@ -111,6 +113,86 @@ public class Expediente {
 
     }
 
+    public void readFecha() {
+        try {
+            this.datos = this.sentencias.executeQuery("select * from expediente where Fecha='" + dt.format(this.Fecha.getDate()) + "'");
+            if (this.datos.next()) {
+                System.out.println(datos.getInt(1));
+                JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(2));
+                System.out.println(datos.getString(3));
+            } else {
+                JOptionPane.showMessageDialog(null, "No hay mas registros");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error en el read");
+        }
+
+    }
+
+    public void readHora() {
+        try {
+            this.datos = this.sentencias.executeQuery("select * from expediente where Hora='" + this.hora.getText() + "'");
+            if (this.datos.next()) {
+                System.out.println(datos.getInt(1));
+                JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(3));
+                System.out.println(datos.getString(3));
+            } else {
+                JOptionPane.showMessageDialog(null, "No hay mas registros");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error en el read");
+        }
+
+    }
+
+    public void readMedico() {
+        try {
+            this.datos = this.sentencias.executeQuery("select * from expediente where Medico='" + this.medico.getText() + "'");
+            if (this.datos.next()) {
+                System.out.println(datos.getInt(1));
+                JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(4));
+                System.out.println(datos.getString(3));
+            } else {
+                JOptionPane.showMessageDialog(null, "No hay mas registros");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error en el read");
+        }
+
+    }
+
+    public void readDescripcion() {
+        try {
+            this.datos = this.sentencias.executeQuery("select * from expediente where Descripcion='" + this.Descrip.getText() + "'");
+            if (this.datos.next()) {
+                System.out.println(datos.getInt(1));
+                JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(4));
+                System.out.println(datos.getString(3));
+            } else {
+                JOptionPane.showMessageDialog(null, "No hay mas registros");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error en el read");
+        }
+
+    }
+
+    public void readPaciente() {
+        try {
+            this.datos = this.sentencias.executeQuery("select * from expediente where Paciente='" + this.paciente.getText() + "'");
+            if (this.datos.next()) {
+                System.out.println(datos.getInt(1));
+                JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(5));
+                System.out.println(datos.getString(3));
+            } else {
+                JOptionPane.showMessageDialog(null, "No hay mas registros");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error en el read");
+        }
+
+    }
+
     public void delete() { /// controlar que siempre quede un usuario registrado al momento de eliminar
         try {
             this.sentencias.executeUpdate("delete from expediente where id=" + this.ID.getText());
@@ -121,6 +203,8 @@ public class Expediente {
         }
 
     }
+
+  
 
     public void xmlconfig() {
         try {
