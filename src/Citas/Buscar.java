@@ -89,7 +89,7 @@ public class Buscar extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(414, 414, 414)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtmedico, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
+                                    .addComponent(txtmedico)
                                     .addComponent(txtPaciente))
                                 .addContainerGap())
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -155,7 +155,7 @@ public class Buscar extends javax.swing.JFrame {
             }
         });
 
-        medico.setBackground(new java.awt.Color(102, 102, 102));
+        medico.setBackground(new java.awt.Color(0, 204, 255));
         medico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.png"))); // NOI18N
         medico.setText("Buscar Medico");
         medico.addActionListener(new java.awt.event.ActionListener() {
@@ -164,7 +164,7 @@ public class Buscar extends javax.swing.JFrame {
             }
         });
 
-        paciente.setBackground(new java.awt.Color(0, 204, 255));
+        paciente.setBackground(new java.awt.Color(102, 102, 102));
         paciente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.png"))); // NOI18N
         paciente.setText("Buscar Paciente");
         paciente.addActionListener(new java.awt.event.ActionListener() {
@@ -182,6 +182,8 @@ public class Buscar extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setBackground(new java.awt.Color(0, 204, 255));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cancelar.png"))); // NOI18N
         jButton1.setText("Cancelar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -194,7 +196,7 @@ public class Buscar extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 349, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(343, 343, 343))
             .addGroup(layout.createSequentialGroup()
