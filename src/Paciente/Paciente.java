@@ -91,7 +91,7 @@ public class Paciente {
     public void update() {// Actualizar Informacion
         try {
             SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
-            this.sentencias.executeUpdate("update pacientes set NombreCompleto='" + this.Nombre.getText() + "',FechadeNacimiento='" + dt.format(this.FechaNacimiento.getDate()) + "',Telefono='" + this.Telefono.getText() + "',CorreoElectronico='" + this.correo.getText() + "' where id=" + this.ID.getText());
+            this.sentencias.executeUpdate("update pacientes set NombreCompleto='" + this.Nombre.getText() + "',FechaNacimiento='" + dt.format(this.FechaNacimiento.getDate()) + "',Telefono='" + this.Telefono.getText() + "',CorreoElectronico='" + this.correo.getText() + "' where id=" + this.ID.getText());
 
         } catch (SQLException ex) {
             Logger.getLogger(Paciente.class.getName()).log(Level.SEVERE, null, ex);
@@ -119,7 +119,7 @@ public class Paciente {
                 JOptionPane.showMessageDialog(null, "No hay mas registros");
             }
         } catch (SQLException ex) {
-            //JOptionPane.showMessageDialog(null, "Error en el read");
+            JOptionPane.showMessageDialog(null, "Error en el read");
         }
     }
 
@@ -135,26 +135,23 @@ public class Paciente {
                 JOptionPane.showMessageDialog(null, "No hay mas registros");
             }
         } catch (SQLException ex) {
-            //JOptionPane.showMessageDialog(null, "Error en el read");
+            JOptionPane.showMessageDialog(null, "Error en el read");
         }
     }
 
     public void Read_Fecha() {
         try {
             SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
-            this.datos = this.sentencias.executeQuery("select * from paciente where FechadeNacimiento'" + dt.format(this.FechaNacimiento.getDate()) + "'");
+            this.datos = this.sentencias.executeQuery("select * from pacientes where FechaNacimiento='" + dt.format(this.FechaNacimiento.getDate()) + "'");
             if (this.datos.next()) {
-
                 System.out.println(datos.getInt(1));
                 JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(3));
                 System.out.println(datos.getString(3));
             } else {
                 JOptionPane.showMessageDialog(null, "No hay mas registros");
-
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error en el read");
-
         }
     }
 
@@ -170,7 +167,7 @@ public class Paciente {
                 JOptionPane.showMessageDialog(null, "No hay mas registros");
             }
         } catch (SQLException ex) {
-            //JOptionPane.showMessageDialog(null, "Error en el read");
+            JOptionPane.showMessageDialog(null, "Error en el read");
         }
     }
 
@@ -186,7 +183,7 @@ public class Paciente {
                 JOptionPane.showMessageDialog(null, "No hay mas registros");
             }
         } catch (SQLException ex) {
-            //JOptionPane.showMessageDialog(null, "Error en el read");
+            JOptionPane.showMessageDialog(null, "Error en el read");
         }
 
     }

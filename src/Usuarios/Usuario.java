@@ -85,29 +85,28 @@ public class Usuario {
     public void create() {
 
         try {
-            Connection conex = DriverManager.getConnection("jdbc:mysql://localhost/medicina?useServerPrepStmts=true", "root", "");
+            
             PreparedStatement sentencia;
-            sentencia = conex.prepareStatement("insert usuario values(null,?,?,?,?,?,?,?)");
+            sentencia = conexion.prepareStatement("insert usuarios values(null,?,?,?,?,?,?,?)");
             SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
             sentencia.setString(1, txtNombre.getText());
             sentencia.setString(2, dt.format(FechaNacimiento.getDate()));
-            sentencia.setString(3, this.txtCorreo.getText());
-            sentencia.setString(4, this.NomUsuario.getText());
-            sentencia.setString(5, this.contraseña.getText());
-            sentencia.setString(6, this.tipo.getText());
-            sentencia.setString(7, this.txtTel.getText());
+            sentencia.setString(3, this.txtTel.getText());
+            sentencia.setString(4, this.txtCorreo.getText());
+            sentencia.setString(5, this.NomUsuario.getText());
+            sentencia.setString(6, this.contraseña.getText());
+            sentencia.setString(7, this.tipo.getText());
             sentencia.execute();
-
         } catch (SQLException ex) {
             Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
 
-    public void update() {
+public void update() {
         try {
             SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
-            this.sentencias.executeUpdate("update usuario set nombre='" + this.txtNombre.getText() + "',fecha='" + dt.format(this.FechaNacimiento.getDate()) + "',correo='" + this.txtCorreo.getText() + "',usuario='" + this.NomUsuario.getText() + "',tipo='" + this.tipo.getText() + "',telefono='" + this.txtTel.getText() + "' where id=" + this.ID.getText());
+            this.sentencias.executeUpdate("update usuarios set NombreCompleto='" + this.txtNombre.getText() + "',FechaNacimiento='" + dt.format(this.FechaNacimiento.getDate())+ "',Telefono='" + this.txtTel.getText()+ "',CorreoElectronico='" + this.txtCorreo.getText()+ "',NombredeUsuario='" + this.NomUsuario.getText() + "',TipodeUsuario='" + this.tipo.getText() + "' where ID=" + this.ID.getText());
 
         } catch (SQLException ex) {
             Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
@@ -118,7 +117,7 @@ public class Usuario {
     public void updateContraseña() {
         try {
 
-            this.sentencias.executeUpdate("update usuario set contraseña='" + this.contraseña.getText() + "' where id=" + this.ID.getText());
+            this.sentencias.executeUpdate("update usuarios set contraseña='" + this.contraseña.getText() + "' where id=" + this.ID.getText());
 
         } catch (SQLException ex) {
             Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
@@ -128,7 +127,7 @@ public class Usuario {
 
     public void delete() { /// controlar que siempre quede un usuario registrado al momento de eliminar
         try {
-            this.sentencias.executeUpdate("delete from usuario where id=" + this.ID.getText());
+            this.sentencias.executeUpdate("delete from usuarios where ID=" + this.ID.getText());
             JOptionPane.showMessageDialog(null, "Usuario Eliminado");
 
         } catch (SQLException ex) {
@@ -140,7 +139,7 @@ public class Usuario {
     ///////////////////////////// para buscar la informacion del usuario///////////////////////////////////////////////////
     public void readNombre() {
         try {
-            this.datos = this.sentencias.executeQuery("select * from usuario where Nombre='" + this.txtNombre.getText() + "'");
+            this.datos = this.sentencias.executeQuery("select * from usuarios where NombreCompleto='" + this.txtNombre.getText() + "'");
             if (this.datos.next()) {
                 System.out.println(datos.getInt(1));
                 JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(2));
@@ -157,7 +156,7 @@ public class Usuario {
     public void readFecha() {
         try {
             SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
-            this.datos = this.sentencias.executeQuery("select * from usuario where Fecha='" + dt.format(this.FechaNacimiento.getDate()) + "'");
+            this.datos = this.sentencias.executeQuery("select * from usuarios where FechaNacimiento='" + dt.format(this.FechaNacimiento.getDate()) + "'");
             if (this.datos.next()) {
 
                 System.out.println(datos.getInt(1));
@@ -176,7 +175,7 @@ public class Usuario {
 
     public void readCorreo() {
         try {
-            this.datos = this.sentencias.executeQuery("select * from usuario where Correo='" + this.txtCorreo.getText() + "'");
+            this.datos = this.sentencias.executeQuery("select * from usuarios where CorreoElectronico='" + this.txtCorreo.getText() + "'");
             if (this.datos.next()) {
                 System.out.println(datos.getInt(1));
                 JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(4));
@@ -192,7 +191,7 @@ public class Usuario {
 
     public void readUsuario() {
         try {
-            this.datos = this.sentencias.executeQuery("select * from usuario where Usuario='" + this.NomUsuario.getText() + "'");
+            this.datos = this.sentencias.executeQuery("select * from usuarios where NombredeUsuario='" + this.NomUsuario.getText() + "'");
             if (this.datos.next()) {
                 System.out.println(datos.getInt(1));
                 JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(5));
@@ -208,7 +207,7 @@ public class Usuario {
 
     public void readTipo() {
         try {
-            this.datos = this.sentencias.executeQuery("select * from usuario where Tipo='" + this.tipo.getText() + "'");
+            this.datos = this.sentencias.executeQuery("select * from usuarios where TipodeUsuario='" + this.tipo.getText() + "'");
             if (this.datos.next()) {
                 System.out.println(datos.getInt(1));
                 JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(6));
@@ -224,7 +223,7 @@ public class Usuario {
 
     public void readTel() {
         try {
-            this.datos = this.sentencias.executeQuery("select * from usuario where Telefono='" + this.txtTel.getText() + "'");
+            this.datos = this.sentencias.executeQuery("select * from usuarios where Telefono='" + this.txtTel.getText() + "'");
             if (this.datos.next()) {
                 System.out.println(datos.getInt(1));
                 JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(7));
