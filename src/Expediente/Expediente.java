@@ -260,12 +260,5 @@ public class Expediente {
         }
     }
 
-//    public static void main(String[] args) {
-//        // TODO code application logic here
-//        Expediente p = new Expediente();
-//        p.conectar();
-//        p.create();
-//        p.xmlconfig();
-//
-//    }
+
 }
