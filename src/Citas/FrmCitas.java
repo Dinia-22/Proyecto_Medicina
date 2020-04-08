@@ -5,6 +5,8 @@
  */
 package Citas;
 
+import FrameConfiguracion.ConfiguracionBaseDatos;
+
 /**
  *
  * @author Maria Paula
@@ -242,7 +244,9 @@ public class FrmCitas extends javax.swing.JFrame {
     }//GEN-LAST:event_saveInformationActionPerformed
 
     private void cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelActionPerformed
-        System.exit(0);
+        this.dispose();  //decirle a una ventana que se destruya     
+        
+        //System.exit(0);
     }//GEN-LAST:event_cancelActionPerformed
 
     private void saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveActionPerformed
@@ -263,7 +267,7 @@ public class FrmCitas extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        Buscar b = new Buscar ();
+        Eliminar b = new Eliminar ();
         b.setVisible(true);
         
     }//GEN-LAST:event_jMenuItem1ActionPerformed

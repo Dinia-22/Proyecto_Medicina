@@ -83,9 +83,7 @@ public class Usuario {
     }
 
     public void create() {
-
         try {
-            
             PreparedStatement sentencia;
             sentencia = conexion.prepareStatement("insert usuarios values(null,?,?,?,?,?,?,?)");
             SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
@@ -100,18 +98,15 @@ public class Usuario {
         } catch (SQLException ex) {
             Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
 
 public void update() {
         try {
             SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
             this.sentencias.executeUpdate("update usuarios set NombreCompleto='" + this.txtNombre.getText() + "',FechaNacimiento='" + dt.format(this.FechaNacimiento.getDate())+ "',Telefono='" + this.txtTel.getText()+ "',CorreoElectronico='" + this.txtCorreo.getText()+ "',NombredeUsuario='" + this.NomUsuario.getText() + "',TipodeUsuario='" + this.tipo.getText() + "' where ID=" + this.ID.getText());
-
         } catch (SQLException ex) {
             Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
 
     public void updateContraseña() {

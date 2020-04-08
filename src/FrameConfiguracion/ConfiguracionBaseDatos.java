@@ -176,7 +176,7 @@ public class ConfiguracionBaseDatos extends javax.swing.JFrame {
 
     private void ExpedientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExpedientesActionPerformed
         FrmExpediente ex = new FrmExpediente();
-       ex.setVisible(true);
+        ex.setVisible(true);
     }//GEN-LAST:event_ExpedientesActionPerformed
 
     private void CitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CitasActionPerformed
@@ -185,7 +185,7 @@ public class ConfiguracionBaseDatos extends javax.swing.JFrame {
     }//GEN-LAST:event_CitasActionPerformed
 
     private void configuracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_configuracionActionPerformed
-      
+
     }//GEN-LAST:event_configuracionActionPerformed
 
     /**
