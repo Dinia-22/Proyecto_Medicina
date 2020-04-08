@@ -58,6 +58,7 @@ public class FrmExpediente extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Expediente");
 
+        jPanel1.setBackground(new java.awt.Color(153, 153, 153));
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel1.setText("Fecha");
@@ -76,6 +77,7 @@ public class FrmExpediente extends javax.swing.JFrame {
             }
         });
 
+        aceptar.setBackground(new java.awt.Color(0, 204, 204));
         aceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/check.png"))); // NOI18N
         aceptar.setText("Aceptar");
         aceptar.addActionListener(new java.awt.event.ActionListener() {
@@ -84,6 +86,7 @@ public class FrmExpediente extends javax.swing.JFrame {
             }
         });
 
+        cancel.setBackground(new java.awt.Color(153, 0, 0));
         cancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/close.png"))); // NOI18N
         cancel.setText("Cancelar");
         cancel.addActionListener(new java.awt.event.ActionListener() {
@@ -92,6 +95,7 @@ public class FrmExpediente extends javax.swing.JFrame {
             }
         });
 
+        actualizar.setBackground(new java.awt.Color(204, 204, 0));
         actualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/refresh.png"))); // NOI18N
         actualizar.setText("Actualizar");
         actualizar.addActionListener(new java.awt.event.ActionListener() {
@@ -183,6 +187,11 @@ public class FrmExpediente extends javax.swing.JFrame {
         Buscar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_B, java.awt.event.InputEvent.CTRL_MASK));
         Buscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.png"))); // NOI18N
         Buscar.setText("Buscar");
+        Buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BuscarActionPerformed(evt);
+            }
+        });
         jMenu1.add(Buscar);
 
         jMenuBar1.add(jMenu1);
@@ -256,6 +265,11 @@ public class FrmExpediente extends javax.swing.JFrame {
         Eliminar eli =  new Eliminar();
         eli.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarActionPerformed
+        Buscar b = new Buscar ();
+        b.setVisible(true);
+    }//GEN-LAST:event_BuscarActionPerformed
 
     /**
      * @param args the command line arguments
