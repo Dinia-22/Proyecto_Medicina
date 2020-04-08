@@ -7,6 +7,7 @@ package FrameConfiguracion;
 
 import Citas.FrmCitas;
 import Expediente.Expediente;
+import Expediente.FrmExpediente;
 import Medicos.FrmMedicos;
 import Paciente.FrmPacientes;
 import Usuarios.FrmUsuario;
@@ -35,7 +36,7 @@ public class ConfiguracionBaseDatos extends javax.swing.JFrame {
 
         jDesktopPane1 = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
+        modu = new javax.swing.JMenu();
         Usuario = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         Medicos = new javax.swing.JMenuItem();
@@ -45,8 +46,8 @@ public class ConfiguracionBaseDatos extends javax.swing.JFrame {
         Expedientes = new javax.swing.JMenuItem();
         jSeparator4 = new javax.swing.JPopupMenu.Separator();
         Citas = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        confi = new javax.swing.JMenu();
+        configuracion = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Configuracion Base de Datos");
@@ -65,8 +66,8 @@ public class ConfiguracionBaseDatos extends javax.swing.JFrame {
             .addGap(0, 478, Short.MAX_VALUE)
         );
 
-        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/doctor.png"))); // NOI18N
-        jMenu1.setText("Modules");
+        modu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/doctor.png"))); // NOI18N
+        modu.setText("Modules");
 
         Usuario.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
         Usuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Hombre.png"))); // NOI18N
@@ -76,8 +77,8 @@ public class ConfiguracionBaseDatos extends javax.swing.JFrame {
                 UsuarioActionPerformed(evt);
             }
         });
-        jMenu1.add(Usuario);
-        jMenu1.add(jSeparator1);
+        modu.add(Usuario);
+        modu.add(jSeparator1);
 
         Medicos.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_M, java.awt.event.InputEvent.CTRL_MASK));
         Medicos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Hombre.png"))); // NOI18N
@@ -87,8 +88,8 @@ public class ConfiguracionBaseDatos extends javax.swing.JFrame {
                 MedicosActionPerformed(evt);
             }
         });
-        jMenu1.add(Medicos);
-        jMenu1.add(jSeparator2);
+        modu.add(Medicos);
+        modu.add(jSeparator2);
 
         Pacientes.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
         Pacientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Hombre.png"))); // NOI18N
@@ -98,8 +99,8 @@ public class ConfiguracionBaseDatos extends javax.swing.JFrame {
                 PacientesActionPerformed(evt);
             }
         });
-        jMenu1.add(Pacientes);
-        jMenu1.add(jSeparator3);
+        modu.add(Pacientes);
+        modu.add(jSeparator3);
 
         Expedientes.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
         Expedientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/modificar.png"))); // NOI18N
@@ -109,8 +110,8 @@ public class ConfiguracionBaseDatos extends javax.swing.JFrame {
                 ExpedientesActionPerformed(evt);
             }
         });
-        jMenu1.add(Expedientes);
-        jMenu1.add(jSeparator4);
+        modu.add(Expedientes);
+        modu.add(jSeparator4);
 
         Citas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
         Citas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/share.png"))); // NOI18N
@@ -120,19 +121,24 @@ public class ConfiguracionBaseDatos extends javax.swing.JFrame {
                 CitasActionPerformed(evt);
             }
         });
-        jMenu1.add(Citas);
+        modu.add(Citas);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(modu);
 
-        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/gear.png"))); // NOI18N
-        jMenu2.setText("Configuracion al Sistema");
+        confi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/gear.png"))); // NOI18N
+        confi.setText("Configuracion al Sistema");
 
-        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/confi.png"))); // NOI18N
-        jMenuItem1.setText("Configuracion");
-        jMenu2.add(jMenuItem1);
+        configuracion.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
+        configuracion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/confi.png"))); // NOI18N
+        configuracion.setText("Configuracion");
+        configuracion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                configuracionActionPerformed(evt);
+            }
+        });
+        confi.add(configuracion);
 
-        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(confi);
 
         setJMenuBar(jMenuBar1);
 
@@ -169,13 +175,18 @@ public class ConfiguracionBaseDatos extends javax.swing.JFrame {
     }//GEN-LAST:event_PacientesActionPerformed
 
     private void ExpedientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExpedientesActionPerformed
-
+        FrmExpediente ex = new FrmExpediente();
+       ex.setVisible(true);
     }//GEN-LAST:event_ExpedientesActionPerformed
 
     private void CitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CitasActionPerformed
         FrmCitas expe = new FrmCitas();
         expe.setVisible(true);
     }//GEN-LAST:event_CitasActionPerformed
+
+    private void configuracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_configuracionActionPerformed
+      
+    }//GEN-LAST:event_configuracionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -218,14 +229,14 @@ public class ConfiguracionBaseDatos extends javax.swing.JFrame {
     private javax.swing.JMenuItem Medicos;
     private javax.swing.JMenuItem Pacientes;
     private javax.swing.JMenuItem Usuario;
+    private javax.swing.JMenu confi;
+    private javax.swing.JMenuItem configuracion;
     private javax.swing.JDesktopPane jDesktopPane1;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JPopupMenu.Separator jSeparator3;
     private javax.swing.JPopupMenu.Separator jSeparator4;
+    private javax.swing.JMenu modu;
     // End of variables declaration//GEN-END:variables
 }
