@@ -24,6 +24,7 @@ import javax.swing.JTextField;
  * @author Maria Paula
  */
 public class Medicos {
+
     public JTextField ID;
     public JTextField Nombre;
     public JDateChooser FechaNacimiento;
@@ -267,76 +268,132 @@ public class Medicos {
     }
 
     ////////////////////////////////////////Metodos de Impuestos////////////////////////////////////////
-    public void impuestoEMaternidad() {
+    public double impuestoEMaternidad() {
         Double salario = Double.valueOf(this.salario.getText());
-        double impuestos = 5.5 * salario;
-        double resultado = impuestos / 100;
-        double total = resultado + salario;
-        double resta = salario - resultado;
-        System.out.println("el 5.5% de Enfermedad y maternidad es de :" + resultado);
+        double impuestos = (5.5 * salario) / 100;
+        double total = impuestos + salario;
+        double resta = salario - impuestos;
+        System.out.println("el 5.5% de Enfermedad y maternidad es de :" + impuestos);
         System.out.println("el impuesto aplicado al salario es de :" + total);
         System.out.println("el salario neto descontando los impuestos es de :" + resta);
-        JOptionPane.showMessageDialog(null,"el salario neto descontando los impuestos de Enfermedad y maternidad 5.5% es de :" + resta);
-
+        JOptionPane.showMessageDialog(null, "el salario neto descontando los impuestos de Enfermedad y maternidad 5.5% es de :" + resta);
+        return resta;
     }
 
-    public void impuestoInvalidezM() {
+    public double impuestoInvalidezM() {
         Double salario = Double.valueOf(this.salario.getText());
-        double impuestos = 3.84 * salario;
-        double resultado = impuestos / 100;
-        double total = resultado + salario;
-        double resta = salario - resultado;
-        System.out.println("el 3.84% de invalidez y muerte es de :" + resultado);
+        double impuestos = (3.84 * salario) / 100;
+        double total = impuestos + salario;
+        double resta = salario - impuestos;
+        System.out.println("el 3.84% de invalidez y muerte es de :" + impuestos);
         System.out.println("el impuesto aplicado al salario es de :" + total);
         System.out.println("el salario neto descontando los impuestos es de :" + resta);
-        JOptionPane.showMessageDialog(null,"el salario neto descontando los impuestos de Invalidez y Muerte 3.84% es de :" + resta);
+        JOptionPane.showMessageDialog(null, "el salario neto descontando los impuestos de Invalidez y Muerte 3.84% es de :" + resta);
+        return resta;
     }
 
-    public void impuestoTrabajador() {
+    public double impuestoTrabajador() {
         Double salario = Double.valueOf(this.salario.getText());
-        double impuestos = 1.0 * salario;
-        double resultado = impuestos / 100;
-        double total = resultado + salario;
-        double resta = salario - resultado;
-        System.out.println("el 1% de aporte del trabajador es de :" + resultado);
+        double impuestos = (1.0 * salario) / 100;
+        double total = impuestos + salario;
+        double resta = salario - impuestos;
+        System.out.println("el 1% de aporte del trabajador es de :" + impuestos);
         System.out.println("el impuesto aplicado al salario es de :" + total);
         System.out.println("el salario neto descontando los impuestos es de :" + resta);
-        JOptionPane.showMessageDialog(null,"el salario neto descontando los impuestos de Aporte del trabajador 1% es de :" + resta);
+        JOptionPane.showMessageDialog(null, "el salario neto descontando los impuestos de Aporte del trabajador 1% es de :" + resta);
+        return resta;
     }
 
-    public void impuestoAsolidarista() {
+    public double impuestoAsolidarista() {
         Double salario = Double.valueOf(this.salario.getText());
-        double impuestos = 3.3 * salario;
-        double resultado = impuestos / 100;
-        double total = resultado + salario;
-        double resta = salario - resultado;
-        System.out.println("el 3.3% de asociacion solidarista es de :" + resultado);
+        double impuestos = (3.3 * salario) / 100;
+        double total = impuestos + salario;
+        double resta = salario - impuestos;
+        System.out.println("el 3.3% de asociacion solidarista es de :" + impuestos);
         System.out.println("el impuesto aplicado al salario es de :" + total);
         System.out.println("el salario neto descontando los impuestos es de :" + resta);
-        JOptionPane.showMessageDialog(null,"el salario neto descontando los impuestos de Aporte a la asociación solidarista 3.3% es de :" + resta);
+        JOptionPane.showMessageDialog(null, "el salario neto descontando los impuestos de Aporte a la asociación solidarista 3.3% es de :" + resta);
+        return resta;
     }
 
-    public void impuestoRenta() {
+    public double impuestoRenta() {
         Double salario = Double.valueOf(this.salario.getText());
         if (salario >= 817001 && salario <= 1226000) {
-            double impuesto = 10 * salario;
-            double resultado = impuesto / 100;
-            double total = resultado + salario;
-            double resta = salario - resultado;
-            System.out.println("el 10% de impuesto a la renta es de :" + resultado);
+            double impuesto = (10 * salario) / 100;
+            double total = impuesto + salario;
+            double resta = salario - impuesto;
+            System.out.println("el 10% de impuesto a la renta es de :" + impuesto);
             System.out.println("el impuesto aplicado al salario es de :" + total);
             System.out.println("el salario neto descontando los impuestos es de :" + resta);
-            JOptionPane.showMessageDialog(null,"el salario neto descontando los impuestos de Impuesto sobre la renta 10% es de :" + resta);
+            JOptionPane.showMessageDialog(null, "el salario neto descontando los impuestos de Impuesto sobre la renta 10% es de :" + resta);
+            return resta;
         } else if (salario >= 1226001) {
-            double impu = 15 * salario;
-            double impuresultado = impu / 100;
-            double totalimpuesto = impuresultado + salario;
-            double restados = salario - impuresultado;
-            System.out.println("el 15% de impuesto a la renta es de :" + impuresultado);
+            double impu = (15 * salario) / 100;
+            double totalimpuesto = impu + salario;
+            double restados = salario - impu;
+            System.out.println("el 15% de impuesto a la renta es de :" + impu);
             System.out.println("el impuesto aplicado al salario es de :" + totalimpuesto);
             System.out.println("el salario neto descontando los impuestos es de :" + restados);
-            JOptionPane.showMessageDialog(null,"el salario neto descontando los impuestos de Impuesto sobre la renta 15% es de :" + restados);
+            JOptionPane.showMessageDialog(null, "el salario neto descontando los impuestos de Impuesto sobre la renta 15% es de :" + restados);
+            return restados;
         }
+        return 0;
     }
 
+    public double impuestosAplicados() {
+        Double salario = Double.valueOf(this.salario.getText());
+        double im1 = (5.5 * salario) / 100;
+        double im2 = (3.84 * salario) / 100;
+        double im3 = (1 * salario) / 100;
+        double im4 = (3.3 * salario) / 100;
+        double suma=im1+im2+im3+im4;
+        double resta = salario-suma ;
+        System.out.println("la suma de los impuestos es de "+ suma);
+        System.out.println("el salario neto descontando los impuestos del la \n"
+                + " Enfermedad y maternidad 5.5%.  \n"
+                + " tambien Invalidez y Muerte 3.84%. \n"
+                + "Ademas de Aporte del trabajador 1% \n"
+                + "y tambien Aporte a la asociación solidarista 3.3%  da un salario neto de :"+resta);
+        JOptionPane.showMessageDialog(null, "el salario neto descontando los impuestos del la \n"
+                + " Enfermedad y maternidad 5.5%.  \n"
+                + " tambien Invalidez y Muerte 3.84%. \n"
+                + "A demas de Aporte del trabajador 1% \n"
+                + "y tambien Aporte a la asociación solidarista 3.3% y tambien el impuesto \n"
+                    + "Impuesto sobre la renta de un 10% da un salario neto de :"+resta);
+        return resta;
+    }
+
+
+    public double impuestosAplicadosMontoM(){
+        Double salario = Double.valueOf(this.salario.getText());
+        double im1 = (5.5 * salario) / 100;
+        double im2 = (3.84 * salario) / 100;
+        double im3 = (1 * salario) / 100;
+        double im4 = (3.3 * salario) / 100;
+        if (salario >= 817001 && salario <= 1226000) {
+            double impuesto = (10 * salario) / 100;
+            double suma=im1+im2+im3+im4+impuesto;
+            double resta = salario - suma;      
+            JOptionPane.showMessageDialog(null, "el salario neto descontando los impuestos del la \n"
+                + " Enfermedad y maternidad 5.5%.  \n"
+                + " tambien Invalidez y Muerte 3.84%. \n"
+                + "A demas de Aporte del trabajador 1% \n"
+                + "y tambien Aporte a la asociación solidarista 3.3% y tambien el impuesto \n"
+                    + "Impuesto sobre la renta de un 10% da un salario neto de :"+resta);
+            return resta;
+        } else if (salario >= 1226001) {
+            double impu = (15 * salario) / 100;
+            double impu2 = (10 * salario) / 100;
+            double suma=im1+im2+im3+im4+impu2+impu;
+            double restados = salario - suma;       
+            JOptionPane.showMessageDialog(null, "el salario neto descontando los impuestos del la \n"
+                + " Enfermedad y maternidad 5.5%.  \n"
+                + " tambien Invalidez y Muerte 3.84%. \n"
+                + "A demas de Aporte del trabajador 1% \n"
+                + "y tambien Aporte a la asociación solidarista 3.3% y tambien el impuesto \n"
+                    + "Impuesto sobre la renta de un 15% da un salario neto de :"+restados);
+            return restados;
+        }
+        return 0;
+    }
 }

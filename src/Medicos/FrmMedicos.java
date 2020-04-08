@@ -336,7 +336,8 @@ public class FrmMedicos extends javax.swing.JFrame {
         medico.impuestoTrabajador();
         medico.impuestoAsolidarista();
         medico.impuestoRenta();
-        
+        medico.impuestosAplicados();
+        medico.impuestosAplicadosMontoM();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
