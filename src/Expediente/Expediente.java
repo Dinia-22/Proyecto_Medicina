@@ -6,15 +6,18 @@
 package Expediente;
 
 import Usuarios.Usuario;
+import com.toedter.calendar.JDateChooser;
 import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -37,26 +40,18 @@ import org.w3c.dom.Text;
  */
 public class Expediente {
 
-    private String Fecha;
-    private String hora;
-    private String medico;
-    private String Descrip;
-    private String paciente;
+    public JDateChooser Fecha;
+    public JTextField hora;
+    public JTextField medico;
+    public JTextField Descrip;
+    public JTextField paciente;
+    public JTextField ID;
     private Connection conexion;
     private Statement sentencias;
-
-//    public Expediente(int Fecha, int hora, String medico, String Descrip, String paciente, Connection conexion, Statement sentencias) {
-//        this.Fecha = Fecha;
-//        this.hora = hora;
-//        this.medico = medico;
-//        this.Descrip = Descrip;
-//        this.paciente = paciente;
-//        this.conexion = conexion;
-//        this.sentencias = sentencias;
-//    }
+    SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
 
     public Expediente() {
-       this.Fecha = Fecha;
+        this.Fecha = Fecha;
         this.hora = hora;
         this.medico = medico;
         this.Descrip = Descrip;
@@ -65,53 +60,16 @@ public class Expediente {
         this.sentencias = sentencias;
     }
 
-   
-
-    
-
-    
-
-   
-    
-    public String getFecha() {
+    public JDateChooser getFecha() {
         return Fecha;
     }
 
-    public String getHora() {
-        return hora;
-    }
-
-    public String getMedico() {
-        return medico;
-    }
-
-    public String getDescrip() {
+    public JTextField getDescrip() {
         return Descrip;
     }
 
-    public void setFecha(String Fecha) {
-        this.Fecha = Fecha;
-    }
-
-    public void setHora(String hora) {
-        this.hora = hora;
-    }
-
-    public void setMedico(String medico) {
-        this.medico = medico;
-    }
-
-    public void setDescrip(String Descrip) {
-        this.Descrip = Descrip;
-    }
-    
-    
-     public String getPaciente() {
+    public JTextField getPaciente() {
         return paciente;
-    }
-
-    public void setPaciente(String paciente) {
-        this.paciente = paciente;
     }
 
     public void conectar() {
@@ -128,11 +86,12 @@ public class Expediente {
     public void create() {
         try {
             PreparedStatement sentencia;
-            sentencia = conexion.prepareStatement("insert expediente values(null,?,?,?,?)");
-            sentencia.setInt(1, 5);
-            sentencia.setInt(2, 2);
-            sentencia.setString(3, "Carlos");
-            sentencia.setString(4, "pierna rota");
+            sentencia = conexion.prepareStatement("insert expediente values(null,?,?,?,?,?)");
+            sentencia.setString(1, dt.format(this.Fecha.getDate()));
+            sentencia.setString(2, this.hora.getText());
+            sentencia.setString(3, this.medico.getText());
+            sentencia.setString(4, this.Descrip.getText());
+            sentencia.setString(5, this.paciente.getText());
             sentencia.execute();
 
         } catch (SQLException ex) {
@@ -140,49 +99,71 @@ public class Expediente {
         }
 
     }
-//"C:\\Users\\Adriel Chavarría B\\Desktop"
+
+    public void update() {
+        try {
+
+            this.sentencias.executeUpdate("update expediente set fecha='" + dt.format(this.Fecha.getDate()) + "',hora='" + this.hora.getText() + "',medico='" + this.medico.getText() + "',descripcion='" + this.Descrip.getText() + "',paciente='" + this.paciente.getText() + "' where id=" + this.ID.getText());
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
+    public void delete() { /// controlar que siempre quede un usuario registrado al momento de eliminar
+        try {
+            this.sentencias.executeUpdate("delete from expediente where id=" + this.ID.getText());
+            JOptionPane.showMessageDialog(null, "Usuario Eliminado");
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al Eliminar");
+        }
+
+    }
+
     public void xmlconfig() {
         try {
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = factory.newDocumentBuilder();
             DOMImplementation implementation = builder.getDOMImplementation();
 
-            Document documento = implementation.createDocument(null, "consultorio.xml",null);
+            Document documento = implementation.createDocument(null, "consultorio.xml", null);
             documento.setXmlVersion("1.0");
-            
+
             Element archxml = documento.createElement("Consulta");
             Element arch = documento.createElement("Consulta");
-            
+
             Element hora = documento.createElement("Hora");
-            Text texHora=documento.createTextNode(""+this.getHora());
+            Text texHora = documento.createTextNode("" + this.hora.getText());
             hora.appendChild(texHora);
             archxml.appendChild(hora);
-            
+
             Element fecha = documento.createElement("Fecha");
-            Text texFecha=documento.createTextNode(""+this.getFecha());
+            Text texFecha = documento.createTextNode("" + dt.format(this.Fecha.getDate()));
             fecha.appendChild(texFecha);
             archxml.appendChild(fecha);
 
             Element medicos = documento.createElement("Medico");
             Text textMedico;
-            textMedico = documento.createTextNode(""+this.getMedico());
+            textMedico = documento.createTextNode("" + this.medico.getText());
             medicos.appendChild(textMedico);
             archxml.appendChild(medicos);
-            
+
             Element pacientes = documento.createElement("Paciente");
-            Text texPaciente=documento.createTextNode(""+this.getPaciente());
+            Text texPaciente = documento.createTextNode("" + this.paciente.getText());
             pacientes.appendChild(texPaciente);
             archxml.appendChild(pacientes);
-            
+
             Element descripcion = documento.createElement("Descripcion");
-            Text texDescripcion=documento.createTextNode(""+this.getDescrip());
+            Text texDescripcion = documento.createTextNode("" + this.Descrip.getText());
             descripcion.appendChild(texDescripcion);
             archxml.appendChild(descripcion);
-            
+
             arch.appendChild(archxml);
-            
+
             documento.getDocumentElement().appendChild(arch);
-            
+
             Source source = new DOMSource(documento);
             Result result = new StreamResult(new File("consultorio.xml"));
 
@@ -203,5 +184,4 @@ public class Expediente {
 //        p.xmlconfig();
 //
 //    }
-
 }
