@@ -243,11 +243,11 @@ public class FrmExpediente extends javax.swing.JFrame {
 
     private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed
         Expediente ex = new Expediente();
-        ex.Descrip= this.txtDecrip;
-        ex.paciente= this.txtPaciente;
-        ex.Fecha= this.txtFecha;
-        ex.hora= this.txtHora;
-        ex.medico= this.txtMedico;
+        ex.Descrip = this.txtDecrip;
+        ex.paciente = this.txtPaciente;
+        ex.Fecha = this.txtFecha;
+        ex.hora = this.txtHora;
+        ex.medico = this.txtMedico;
         ex.xmlconfig();
         ex.conectar();
         ex.create();
@@ -255,29 +255,29 @@ public class FrmExpediente extends javax.swing.JFrame {
 
     private void actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarActionPerformed
         Expediente ex = new Expediente();
-        ex.Descrip= this.txtDecrip;
-        ex.paciente= this.txtPaciente;
-        ex.Fecha= this.txtFecha;
-        ex.hora= this.txtHora;
-        ex.medico= this.txtMedico;
-        ex.ID= this.txtID;
+        ex.Descrip = this.txtDecrip;
+        ex.paciente = this.txtPaciente;
+        ex.Fecha = this.txtFecha;
+        ex.hora = this.txtHora;
+        ex.medico = this.txtMedico;
+        ex.ID = this.txtID;
         ex.conectar();
         ex.update();
         ex.xmlconfig();
-        
+
     }//GEN-LAST:event_actualizarActionPerformed
 
     private void cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelActionPerformed
-        System.exit(0);
+        this.dispose();
     }//GEN-LAST:event_cancelActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        Eliminar eli =  new Eliminar();
+        Eliminar eli = new Eliminar();
         eli.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarActionPerformed
-        Buscar b = new Buscar ();
+        Buscar b = new Buscar();
         b.setVisible(true);
     }//GEN-LAST:event_BuscarActionPerformed
 

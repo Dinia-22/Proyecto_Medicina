@@ -12,9 +12,8 @@ import javax.swing.JOptionPane;
  * @author Maria Paula
  */
 public class FrmUsuario extends javax.swing.JFrame {
-    
-   Usuario p = new Usuario();
-    
+
+    Usuario p = new Usuario();
 
     /**
      * Creates new form FrmUsuario
@@ -296,39 +295,39 @@ public class FrmUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_EActionPerformed
 
     private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
-        p.ID= this.txtCedula;
-        p.txtCorreo= this.txtCorreo;
-        p.NomUsuario= this.txtUsuario;
-        p.contraseña= this.txtContraseña;
-        p.tipo= this.txtTipo;
-        p.txtNombre= this.txtNombre;
-        p.txtTel= this.txtTelefono;
-        p.FechaNacimiento= this.txtFecha;
+        p.ID = this.txtCedula;
+        p.txtCorreo = this.txtCorreo;
+        p.NomUsuario = this.txtUsuario;
+        p.contraseña = this.txtContraseña;
+        p.tipo = this.txtTipo;
+        p.txtNombre = this.txtNombre;
+        p.txtTel = this.txtTelefono;
+        p.FechaNacimiento = this.txtFecha;
         p.conectar();
         p.create();
         JOptionPane.showMessageDialog(null, "Se agregaron los datos");
     }//GEN-LAST:event_guardarActionPerformed
 
     private void ACActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ACActionPerformed
-        FrmModificacion prueba = new FrmModificacion ();
+        FrmModificacion prueba = new FrmModificacion();
         prueba.setVisible(true);
     }//GEN-LAST:event_ACActionPerformed
 
     private void cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelActionPerformed
-        System.exit(0);
-        
+        this.dispose();
+
     }//GEN-LAST:event_cancelActionPerformed
 
     private void AIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AIActionPerformed
-        Actualizar act = new Actualizar ();
+        Actualizar act = new Actualizar();
         act.setVisible(true);
-        
+
     }//GEN-LAST:event_AIActionPerformed
 
     private void BActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BActionPerformed
         BuscarUsuarios buscar = new BuscarUsuarios();
         buscar.setVisible(true);
-        
+
     }//GEN-LAST:event_BActionPerformed
 
     /**

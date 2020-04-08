@@ -112,6 +112,11 @@ public class FrmMedicos extends javax.swing.JFrame {
         jButton2.setBackground(new java.awt.Color(102, 102, 102));
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cancelar.png"))); // NOI18N
         jButton2.setText("Atras");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setBackground(new java.awt.Color(0, 204, 255));
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/modificar.png"))); // NOI18N
@@ -308,7 +313,7 @@ public class FrmMedicos extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void actu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actu1ActionPerformed
-        FrmActualizar actualizarInfo=new FrmActualizar();
+        FrmActualizar actualizarInfo = new FrmActualizar();
         actualizarInfo.setVisible(true);
 
     }//GEN-LAST:event_actu1ActionPerformed
@@ -323,7 +328,7 @@ public class FrmMedicos extends javax.swing.JFrame {
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         // TODO add your handling code here:
         //Eliminar Usuarios:
-        FrmEliminar eliminar=new FrmEliminar();
+        FrmEliminar eliminar = new FrmEliminar();
         eliminar.setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
@@ -331,7 +336,7 @@ public class FrmMedicos extends javax.swing.JFrame {
         // TODO add your handling code here:
         // Calcular Impuestos:
         medico.salario = this.jsalario;
-        medico.impuestoEMaternidad();       
+        medico.impuestoEMaternidad();
         medico.impuestoInvalidezM();
         medico.impuestoTrabajador();
         medico.impuestoAsolidarista();
@@ -339,6 +344,11 @@ public class FrmMedicos extends javax.swing.JFrame {
         medico.impuestosAplicados();
         medico.impuestosAplicadosMontoM();
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

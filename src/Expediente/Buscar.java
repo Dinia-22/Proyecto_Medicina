@@ -251,7 +251,7 @@ public class Buscar extends javax.swing.JFrame {
     }//GEN-LAST:event_medicoActionPerformed
 
     private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
-        System.exit(0);
+        this.dispose();
     }//GEN-LAST:event_cancelarActionPerformed
 
     /**

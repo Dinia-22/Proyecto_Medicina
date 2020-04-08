@@ -260,50 +260,50 @@ public class BuscarUsuarios extends javax.swing.JFrame {
 
     private void nomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomActionPerformed
         Usuario prueba = new Usuario();
-        prueba.txtNombre= this.txtNom;
+        prueba.txtNombre = this.txtNom;
         prueba.conectar();
         prueba.readNombre();
-     
+
     }//GEN-LAST:event_nomActionPerformed
 
     private void UsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsuarioActionPerformed
         Usuario prueba = new Usuario();
-        prueba.NomUsuario= this.txtU;
+        prueba.NomUsuario = this.txtU;
         prueba.conectar();
         prueba.readUsuario();
     }//GEN-LAST:event_UsuarioActionPerformed
 
     private void correoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_correoActionPerformed
         Usuario prueba = new Usuario();
-        prueba.txtCorreo= this.txtCorreo;
+        prueba.txtCorreo = this.txtCorreo;
         prueba.conectar();
         prueba.readCorreo();
     }//GEN-LAST:event_correoActionPerformed
 
     private void telActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_telActionPerformed
         Usuario prueba = new Usuario();
-        prueba.txtTel= this.txtTel;
+        prueba.txtTel = this.txtTel;
         prueba.conectar();
         prueba.readTel();
     }//GEN-LAST:event_telActionPerformed
 
     private void fechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fechaActionPerformed
         Usuario prueba = new Usuario();
-        prueba.FechaNacimiento= this.txtFecha;
+        prueba.FechaNacimiento = this.txtFecha;
         prueba.conectar();
         prueba.readFecha();
-        
+
     }//GEN-LAST:event_fechaActionPerformed
 
     private void tipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoActionPerformed
         Usuario prueba = new Usuario();
-        prueba.tipo= this.txtUsuario;
+        prueba.tipo = this.txtUsuario;
         prueba.conectar();
         prueba.readTipo();
     }//GEN-LAST:event_tipoActionPerformed
 
     private void calceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calceActionPerformed
-        System.exit(0);
+        this.dispose();
     }//GEN-LAST:event_calceActionPerformed
 
     /**

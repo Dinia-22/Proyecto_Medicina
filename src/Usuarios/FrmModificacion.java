@@ -160,15 +160,15 @@ public class FrmModificacion extends javax.swing.JFrame {
 
     private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed
         Usuario prueba = new Usuario();
-        prueba.contraseña= this.txtConfirmar;
-        prueba.ID= this.txtId;
+        prueba.contraseña = this.txtConfirmar;
+        prueba.ID = this.txtId;
         prueba.conectar();
         prueba.updateContraseña();
-        
+
     }//GEN-LAST:event_aceptarActionPerformed
 
     private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
-        System.exit(0);
+        this.dispose();
     }//GEN-LAST:event_cancelarActionPerformed
 
     /**

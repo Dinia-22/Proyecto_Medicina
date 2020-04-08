@@ -224,7 +224,7 @@ public class Actualizar extends javax.swing.JFrame {
     }//GEN-LAST:event_guardarActionPerformed
 
     private void cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelActionPerformed
-        System.exit(0);
+         this.dispose();
     }//GEN-LAST:event_cancelActionPerformed
 
     /**

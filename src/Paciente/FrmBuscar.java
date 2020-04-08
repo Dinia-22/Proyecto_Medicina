@@ -253,7 +253,7 @@ public class FrmBuscar extends javax.swing.JFrame {
     }//GEN-LAST:event_buscorreoActionPerformed
 
     private void buscanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscanActionPerformed
-        System.exit(0);
+        this.dispose();
     }//GEN-LAST:event_buscanActionPerformed
 
     /**

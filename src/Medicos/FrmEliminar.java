@@ -126,14 +126,14 @@ public class FrmEliminar extends javax.swing.JFrame {
     private void BtnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEliminarActionPerformed
         //Jbutton;
         Medicos medicoD = new Medicos();
-        medicoD.ID= this.jcedulaID;
+        medicoD.ID = this.jcedulaID;
         medicoD.conectar();
         medicoD.delete();
     }//GEN-LAST:event_BtnEliminarActionPerformed
 
     private void BtnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAtrasActionPerformed
         // TODO add your handling code here:
-        System.exit(0);
+        this.dispose();
     }//GEN-LAST:event_BtnAtrasActionPerformed
 
     /**
