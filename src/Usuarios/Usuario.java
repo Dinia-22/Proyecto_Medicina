@@ -128,7 +128,7 @@ public class Usuario {
 
     public void updateContraseña() {
         try {
-            if (this.txtNombre.getText().length() < 25 || this.contraseña.getText().length() < 7 || this.txtCorreo.getText().length() < 30 || this.txtTel.getText().length() < 9 || this.tipo.getText().length() < 10) {
+            if (this.contraseña.getText().length()<15) {
                this.sentencias.executeUpdate("update usuarios set contraseña='" + this.contraseña.getText() + "' where id=" + this.ID.getText());
                 JOptionPane.showMessageDialog(null, "Se agregaron los datos");
 
