@@ -84,26 +84,41 @@ public class Usuario {
 
     public void create() {
         try {
-            PreparedStatement sentencia;
-            sentencia = conexion.prepareStatement("insert usuarios values(null,?,?,?,?,?,?,?)");
-            SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
-            sentencia.setString(1, txtNombre.getText());
-            sentencia.setString(2, dt.format(FechaNacimiento.getDate()));
-            sentencia.setString(3, this.txtTel.getText());
-            sentencia.setString(4, this.txtCorreo.getText());
-            sentencia.setString(5, this.NomUsuario.getText());
-            sentencia.setString(6, this.contraseña.getText());
-            sentencia.setString(7, this.tipo.getText());
-            sentencia.execute();
+            if (this.txtNombre.getText().length() < 25 || this.contraseña.getText().length() < 7 || this.txtCorreo.getText().length() < 30 || this.txtTel.getText().length() < 9 || this.tipo.getText().length() < 10) {
+                PreparedStatement sentencia;
+                sentencia = conexion.prepareStatement("insert usuarios values(null,?,?,?,?,?,?,?)");
+                SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
+                sentencia.setString(1, txtNombre.getText());
+                sentencia.setString(2, dt.format(FechaNacimiento.getDate()));
+                sentencia.setString(3, this.txtTel.getText());
+                sentencia.setString(4, this.txtCorreo.getText());
+                sentencia.setString(5, this.NomUsuario.getText());
+                sentencia.setString(6, this.contraseña.getText());
+                sentencia.setString(7, this.tipo.getText());
+                sentencia.execute();
+                JOptionPane.showMessageDialog(null, "Se agregaron los datos");
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Paso el limite de caracteres");
+            }
+
         } catch (SQLException ex) {
             Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-public void update() {
+    public void update() {
+
         try {
-            SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
-            this.sentencias.executeUpdate("update usuarios set NombreCompleto='" + this.txtNombre.getText() + "',FechaNacimiento='" + dt.format(this.FechaNacimiento.getDate())+ "',Telefono='" + this.txtTel.getText()+ "',CorreoElectronico='" + this.txtCorreo.getText()+ "',NombredeUsuario='" + this.NomUsuario.getText() + "',TipodeUsuario='" + this.tipo.getText() + "' where ID=" + this.ID.getText());
+            if (this.txtNombre.getText().length() < 25 || this.contraseña.getText().length() < 7 || this.txtCorreo.getText().length() < 30 || this.txtTel.getText().length() < 9 || this.tipo.getText().length() < 10) {
+                SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
+                this.sentencias.executeUpdate("update usuarios set NombreCompleto='" + this.txtNombre.getText() + "',FechaNacimiento='" + dt.format(this.FechaNacimiento.getDate()) + "',Telefono='" + this.txtTel.getText() + "',CorreoElectronico='" + this.txtCorreo.getText() + "',NombredeUsuario='" + this.NomUsuario.getText() + "',TipodeUsuario='" + this.tipo.getText() + "' where ID=" + this.ID.getText());
+                JOptionPane.showMessageDialog(null, "Se agregaron los datos");
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Paso el limite de caracteres");
+            }
+
         } catch (SQLException ex) {
             Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -111,8 +126,13 @@ public void update() {
 
     public void updateContraseña() {
         try {
+            if (this.txtNombre.getText().length() < 25 || this.contraseña.getText().length() < 7 || this.txtCorreo.getText().length() < 30 || this.txtTel.getText().length() < 9 || this.tipo.getText().length() < 10) {
+               this.sentencias.executeUpdate("update usuarios set contraseña='" + this.contraseña.getText() + "' where id=" + this.ID.getText());
+                JOptionPane.showMessageDialog(null, "Se agregaron los datos");
 
-            this.sentencias.executeUpdate("update usuarios set contraseña='" + this.contraseña.getText() + "' where id=" + this.ID.getText());
+            } else {
+                JOptionPane.showMessageDialog(null, "Paso el limite de caracteres");
+            }     
 
         } catch (SQLException ex) {
             Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
@@ -128,7 +148,7 @@ public void update() {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al Eliminar");
         }
-        
+
     }
 
     ///////////////////////////// para buscar la informacion del usuario///////////////////////////////////////////////////
@@ -232,5 +252,4 @@ public void update() {
 
     }
 
-   
 }

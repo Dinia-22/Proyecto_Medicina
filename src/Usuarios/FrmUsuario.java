@@ -305,7 +305,8 @@ public class FrmUsuario extends javax.swing.JFrame {
         p.FechaNacimiento = this.txtFecha;
         p.conectar();
         p.create();
-        JOptionPane.showMessageDialog(null, "Se agregaron los datos");
+     
+       
     }//GEN-LAST:event_guardarActionPerformed
 
     private void ACActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ACActionPerformed
