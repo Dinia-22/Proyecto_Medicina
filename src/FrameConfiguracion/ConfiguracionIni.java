@@ -75,7 +75,7 @@ public class ConfiguracionIni {
     
     public void conectar() {
         try {
-            this.conexion = DriverManager.getConnection("jdbc:mysql://localhost/medicina?useServerPrepStmts=true", "root", "");            
+            this.conexion = DriverManager.getConnection("jdbc:mysql://localhost/medicina?useServerPrepStmts=true", "root", "");
             this.sentencias = this.conexion.createStatement();
             JOptionPane.showMessageDialog(null, "Se conecto de manera exitosa");
         } catch (SQLException ex) {
