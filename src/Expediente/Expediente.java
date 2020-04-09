@@ -87,14 +87,19 @@ public class Expediente {
 
     public void create() {
         try {
-            PreparedStatement sentencia;
-            sentencia = conexion.prepareStatement("insert expediente values(null,?,?,?,?,?)");
-            sentencia.setString(1, dt.format(this.Fecha.getDate()));
-            sentencia.setString(2, this.hora.getText());
-            sentencia.setString(3, this.medico.getText());
-            sentencia.setString(4, this.Descrip.getText());
-            sentencia.setString(5, this.paciente.getText());
-            sentencia.execute();
+            if (this.hora.getText().length() < 10 || this.medico.getText().length() < 25 || Descrip.getText().length() < 50 || paciente.getText().length() < 25) {
+                PreparedStatement sentencia;
+                sentencia = conexion.prepareStatement("insert expediente values(null,?,?,?,?,?)");
+                sentencia.setString(1, dt.format(this.Fecha.getDate()));
+                sentencia.setString(2, this.hora.getText());
+                sentencia.setString(3, this.medico.getText());
+                sentencia.setString(4, this.Descrip.getText());
+                sentencia.setString(5, this.paciente.getText());
+                sentencia.execute();
+                JOptionPane.showMessageDialog(null, "Se agregaron los datos");
+            }else{
+                JOptionPane.showMessageDialog(null, "Paso el limite de caracteres");
+            }
 
         } catch (SQLException ex) {
             Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
@@ -204,8 +209,6 @@ public class Expediente {
 
     }
 
-  
-
     public void xmlconfig() {
         try {
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -259,6 +262,5 @@ public class Expediente {
             JOptionPane.showMessageDialog(null, "Ah sido efectuada");
         }
     }
-
 
 }
