@@ -106,18 +106,24 @@ public class Medicos {
 
     public void create() {
         try {
-            PreparedStatement sentencia;
-            sentencia = conexion.prepareStatement("insert medicos values(null,?,?,?,?,?,?,?)");
-            SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
-            //sentencia.setString(1, ID.getText());
-            sentencia.setString(1, Nombre.getText());
-            sentencia.setString(2, date.format(FechaNacimiento.getDate()));
-            sentencia.setString(3, this.tel.getText());
-            sentencia.setString(4, correo.getText());
-            sentencia.setString(5, Codigo.getText());
-            sentencia.setString(6, especialidad.getText());
-            sentencia.setString(7, salario.getText());
-            sentencia.execute();
+            if (this.Nombre.getText().length() < 25 || this.tel.getText().length() < 10 || this.correo.getText().length() < 30 || this.Codigo.getText().length() < 7 || this.especialidad.getText().length() < 15) {
+                PreparedStatement sentencia;
+                sentencia = conexion.prepareStatement("insert medicos values(null,?,?,?,?,?,?,?)");
+                SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
+                //sentencia.setString(1, ID.getText());
+                sentencia.setString(1, Nombre.getText());
+                sentencia.setString(2, date.format(FechaNacimiento.getDate()));
+                sentencia.setString(3, this.tel.getText());
+                sentencia.setString(4, correo.getText());
+                sentencia.setString(5, Codigo.getText());
+                sentencia.setString(6, especialidad.getText());
+                sentencia.setString(7, salario.getText());
+                JOptionPane.showMessageDialog(null, "Se agregaron los datos");
+                sentencia.execute();
+            } else {
+                JOptionPane.showMessageDialog(null, "Paso el limite de caracteres");
+            }
+
         } catch (SQLException ex) {
             Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -259,9 +265,17 @@ public class Medicos {
 
     ////////////////////////////////////////Metodos de Actualizar////////////////////////////////////////
     public void update() {
+
         try {
-            SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
-            this.sentencias.executeUpdate("update medicos set NombreCompleto='" + this.Nombre.getText() + "',FechaNacimiento='" + dt.format(this.FechaNacimiento.getDate()) + "',Telefono='" + this.tel.getText() + "',CorreoElectronico='" + this.correo.getText() + "',Codigo='" + this.Codigo.getText() + "',Especialidad='" + this.especialidad.getText() + "',Salario='" + this.salario.getText() + "' where id=" + this.ID.getText());
+            if (this.Nombre.getText().length() < 25 || this.tel.getText().length() < 10 || this.correo.getText().length() < 30 || this.Codigo.getText().length() < 7 || this.especialidad.getText().length() < 15) {
+                SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
+                this.sentencias.executeUpdate("update medicos set NombreCompleto='" + this.Nombre.getText() + "',FechaNacimiento='" + dt.format(this.FechaNacimiento.getDate()) + "',Telefono='" + this.tel.getText() + "',CorreoElectronico='" + this.correo.getText() + "',Codigo='" + this.Codigo.getText() + "',Especialidad='" + this.especialidad.getText() + "',Salario='" + this.salario.getText() + "' where id=" + this.ID.getText());
+                JOptionPane.showMessageDialog(null, "Se agregaron los datos");
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Paso el limite de caracteres");
+            }
+
         } catch (SQLException ex) {
             Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -346,25 +360,24 @@ public class Medicos {
         double im2 = (3.84 * salario) / 100;
         double im3 = (1 * salario) / 100;
         double im4 = (3.3 * salario) / 100;
-        double suma=im1+im2+im3+im4;
-        double resta = salario-suma ;
-        System.out.println("la suma de los impuestos es de "+ suma);
+        double suma = im1 + im2 + im3 + im4;
+        double resta = salario - suma;
+        System.out.println("la suma de los impuestos es de " + suma);
         System.out.println("el salario neto descontando los impuestos del la \n"
                 + " Enfermedad y maternidad 5.5%.  \n"
                 + " tambien Invalidez y Muerte 3.84%. \n"
                 + "Ademas de Aporte del trabajador 1% \n"
-                + "y tambien Aporte a la asociación solidarista 3.3%  da un salario neto de :"+resta);
+                + "y tambien Aporte a la asociación solidarista 3.3%  da un salario neto de :" + resta);
         JOptionPane.showMessageDialog(null, "el salario neto descontando los impuestos del la \n"
                 + " Enfermedad y maternidad 5.5%.  \n"
                 + " tambien Invalidez y Muerte 3.84%. \n"
                 + "A demas de Aporte del trabajador 1% \n"
                 + "y tambien Aporte a la asociación solidarista 3.3% y tambien el impuesto \n"
-                    + "Impuesto sobre la renta de un 10% da un salario neto de :"+resta);
+                + "Impuesto sobre la renta de un 10% da un salario neto de :" + resta);
         return resta;
     }
 
-
-    public double impuestosAplicadosMontoM(){
+    public double impuestosAplicadosMontoM() {
         Double salario = Double.valueOf(this.salario.getText());
         double im1 = (5.5 * salario) / 100;
         double im2 = (3.84 * salario) / 100;
@@ -372,26 +385,26 @@ public class Medicos {
         double im4 = (3.3 * salario) / 100;
         if (salario >= 817001 && salario <= 1226000) {
             double impuesto = (10 * salario) / 100;
-            double suma=im1+im2+im3+im4+impuesto;
-            double resta = salario - suma;      
+            double suma = im1 + im2 + im3 + im4 + impuesto;
+            double resta = salario - suma;
             JOptionPane.showMessageDialog(null, "el salario neto descontando los impuestos del la \n"
-                + " Enfermedad y maternidad 5.5%.  \n"
-                + " tambien Invalidez y Muerte 3.84%. \n"
-                + "A demas de Aporte del trabajador 1% \n"
-                + "y tambien Aporte a la asociación solidarista 3.3% y tambien el impuesto \n"
-                    + "Impuesto sobre la renta de un 10% da un salario neto de :"+resta);
+                    + " Enfermedad y maternidad 5.5%.  \n"
+                    + " tambien Invalidez y Muerte 3.84%. \n"
+                    + "A demas de Aporte del trabajador 1% \n"
+                    + "y tambien Aporte a la asociación solidarista 3.3% y tambien el impuesto \n"
+                    + "Impuesto sobre la renta de un 10% da un salario neto de :" + resta);
             return resta;
         } else if (salario >= 1226001) {
             double impu = (15 * salario) / 100;
             double impu2 = (10 * salario) / 100;
-            double suma=im1+im2+im3+im4+impu2+impu;
-            double restados = salario - suma;       
+            double suma = im1 + im2 + im3 + im4 + impu2 + impu;
+            double restados = salario - suma;
             JOptionPane.showMessageDialog(null, "el salario neto descontando los impuestos del la \n"
-                + " Enfermedad y maternidad 5.5%.  \n"
-                + " tambien Invalidez y Muerte 3.84%. \n"
-                + "A demas de Aporte del trabajador 1% \n"
-                + "y tambien Aporte a la asociación solidarista 3.3% y tambien el impuesto \n"
-                    + "Impuesto sobre la renta de un 15% da un salario neto de :"+restados);
+                    + " Enfermedad y maternidad 5.5%.  \n"
+                    + " tambien Invalidez y Muerte 3.84%. \n"
+                    + "A demas de Aporte del trabajador 1% \n"
+                    + "y tambien Aporte a la asociación solidarista 3.3% y tambien el impuesto \n"
+                    + "Impuesto sobre la renta de un 15% da un salario neto de :" + restados);
             return restados;
         }
         return 0;
