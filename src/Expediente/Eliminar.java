@@ -35,7 +35,7 @@ public class Eliminar extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Eliminar");
-        setLocation(new java.awt.Point(500, 250));
+        setLocation(new java.awt.Point(520, 250));
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
