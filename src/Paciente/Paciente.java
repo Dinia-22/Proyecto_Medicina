@@ -5,7 +5,6 @@
  */
 package Paciente;
 
-import Usuarios.Usuario;
 import com.toedter.calendar.JDateChooser;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -14,11 +13,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.Period;
-import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
-import java.time.temporal.ChronoUnit;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -63,25 +58,30 @@ public class Paciente {
 
     public void conectar() {
         try {
-            this.conexion = DriverManager.getConnection("jdbc:mysql://localhost/medicina?useServerPrepStmts=true", "root", "");            
+            this.conexion = DriverManager.getConnection("jdbc:mysql://localhost/medicina?useServerPrepStmts=true", "root", "");
             this.sentencias = this.conexion.createStatement();
-            
+
         } catch (SQLException ex) {
-            
+
             System.out.println(" Error al conectar");
-        }        
+        }
     }
 
     public void create() {
         try {
-            PreparedStatement sentencia;
-            sentencia = conexion.prepareStatement("insert pacientes values(null,?,?,?,?)");
-            SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
-            sentencia.setString(1, this.Nombre.getText());
-            sentencia.setString(2, date.format(FechaNacimiento.getDate()));
-            sentencia.setString(3, this.Telefono.getText());
-            sentencia.setString(4, correo.getText());
-            sentencia.execute();
+            if (this.Nombre.getText().length() < 25 || this.Telefono.getText().length() < 10 || this.correo.getText().length() < 30) {
+                PreparedStatement sentencia;
+                sentencia = conexion.prepareStatement("insert pacientes values(null,?,?,?,?)");
+                SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
+                sentencia.setString(1, this.Nombre.getText());
+                sentencia.setString(2, date.format(FechaNacimiento.getDate()));
+                sentencia.setString(3, this.Telefono.getText());
+                sentencia.setString(4, correo.getText());
+                sentencia.execute();
+                JOptionPane.showMessageDialog(null, "Se agregaron los datos");
+            } else {
+                JOptionPane.showMessageDialog(null, "Paso el limite de caracteres");
+            }
 
         } catch (SQLException ex) {
             Logger.getLogger(Paciente.class.getName()).log(Level.SEVERE, null, ex);
@@ -90,8 +90,13 @@ public class Paciente {
 
     public void update() {// Actualizar Informacion
         try {
-            SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
-            this.sentencias.executeUpdate("update pacientes set NombreCompleto='" + this.Nombre.getText() + "',FechaNacimiento='" + dt.format(this.FechaNacimiento.getDate()) + "',Telefono='" + this.Telefono.getText() + "',CorreoElectronico='" + this.correo.getText() + "' where id=" + this.ID.getText());
+            if (this.Nombre.getText().length() < 25 || this.Telefono.getText().length() < 10 || this.correo.getText().length() < 30) {
+                SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
+                this.sentencias.executeUpdate("update pacientes set NombreCompleto='" + this.Nombre.getText() + "',FechaNacimiento='" + dt.format(this.FechaNacimiento.getDate()) + "',Telefono='" + this.Telefono.getText() + "',CorreoElectronico='" + this.correo.getText() + "' where id=" + this.ID.getText());
+                JOptionPane.showMessageDialog(null, "Se agregaron los datos");
+            } else {
+                JOptionPane.showMessageDialog(null, "Paso el limite de caracteres");
+            }
 
         } catch (SQLException ex) {
             Logger.getLogger(Paciente.class.getName()).log(Level.SEVERE, null, ex);
@@ -105,7 +110,7 @@ public class Paciente {
             System.out.println("Error en delete");
         }
     }
-    
+
     ///////////////////////////// BUSCAR ///////////////////////////////////////
     public void Read_Cedula() {
 
@@ -156,7 +161,7 @@ public class Paciente {
     }
 
     public void Read_Correo() {
-         try {
+        try {
             this.datos = this.sentencias.executeQuery("select * from pacientes where CorreoElectronico='" + this.correo.getText() + "'");
             if (this.datos.next()) {
                 System.out.println(datos.getInt(1));
@@ -173,7 +178,7 @@ public class Paciente {
 
     public void Read_Telefono() {
 
-         try {
+        try {
             this.datos = this.sentencias.executeQuery("select * from pacientes where Telefono='" + this.Telefono.getText() + "'");
             if (this.datos.next()) {
                 System.out.println(datos.getInt(1));
