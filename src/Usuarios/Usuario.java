@@ -95,6 +95,7 @@ public class Usuario {
                 sentencia.setString(5, this.NomUsuario.getText());
                 sentencia.setString(6, this.contraseña.getText());
                 sentencia.setString(7, this.tipo.getText());
+                
                 sentencia.execute();
                 
                 JOptionPane.showMessageDialog(null, "Se agregaron los datos");
