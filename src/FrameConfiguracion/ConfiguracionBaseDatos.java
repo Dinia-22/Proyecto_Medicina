@@ -243,7 +243,8 @@ public class ConfiguracionBaseDatos extends javax.swing.JFrame {
     }//GEN-LAST:event_CitasActionPerformed
 
     private void configuracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_configuracionActionPerformed
-
+        Conectar_Base base = new Conectar_Base();
+        base.setVisible(true);
     }//GEN-LAST:event_configuracionActionPerformed
 
     /**
