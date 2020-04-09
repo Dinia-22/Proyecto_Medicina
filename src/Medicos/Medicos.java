@@ -258,6 +258,7 @@ public class Medicos {
             this.sentencias.executeUpdate("delete from medicos where id=" + this.ID.getText());
             JOptionPane.showMessageDialog(null, "Usuario Eliminado");
         } catch (SQLException ex) {
+            
             JOptionPane.showMessageDialog(null, "Error al Eliminar");
         }
 
