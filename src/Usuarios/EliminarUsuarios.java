@@ -5,6 +5,8 @@
  */
 package Usuarios;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Maria Paula
@@ -31,7 +33,7 @@ public class EliminarUsuarios extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         txtDelete = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        txtEliminar = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -49,12 +51,12 @@ public class EliminarUsuarios extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel2.setText("ID");
 
-        jButton1.setBackground(new java.awt.Color(102, 102, 102));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/check.png"))); // NOI18N
-        jButton1.setText("Aceptar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        txtEliminar.setBackground(new java.awt.Color(102, 102, 102));
+        txtEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/check.png"))); // NOI18N
+        txtEliminar.setText("Aceptar");
+        txtEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                txtEliminarActionPerformed(evt);
             }
         });
 
@@ -80,7 +82,7 @@ public class EliminarUsuarios extends javax.swing.JFrame {
                         .addGap(24, 24, 24)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButton1)
+                                .addComponent(txtEliminar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jButton2))
                             .addComponent(txtDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -97,7 +99,7 @@ public class EliminarUsuarios extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(txtEliminar)
                     .addComponent(jButton2))
                 .addContainerGap())
         );
@@ -129,12 +131,20 @@ public class EliminarUsuarios extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void txtEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEliminarActionPerformed
         Usuario prueba = new Usuario();
-        prueba.ID= this.txtDelete;
         prueba.conectar();
-        prueba.delete();
-    }//GEN-LAST:event_jButton1ActionPerformed
+        prueba.ID= this.txtDelete;
+        if(prueba.ID.getText().equals("1")){ 
+            JOptionPane.showMessageDialog(null, "No puede eliminar este usuario");
+            
+        }else{
+           prueba.delete(); 
+        }
+        
+       
+        
+    }//GEN-LAST:event_txtEliminarActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         this.dispose();
@@ -176,11 +186,11 @@ public class EliminarUsuarios extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txtDelete;
+    private javax.swing.JButton txtEliminar;
     // End of variables declaration//GEN-END:variables
 }

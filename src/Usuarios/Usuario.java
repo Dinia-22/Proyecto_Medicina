@@ -145,6 +145,7 @@ public class Usuario {
     public void delete() { /// controlar que siempre quede un usuario registrado al momento de eliminar
         try {
             this.sentencias.executeUpdate("delete from usuarios where ID=" + this.ID.getText());
+            
             JOptionPane.showMessageDialog(null, "dato eliminado");
 
         } catch (SQLException ex) {
