@@ -92,7 +92,7 @@ public class Citas {
             if (this.hora.getText().length() < 10 || this.MedicoEspe.getText().length() < 15 || paciente.getText().length() < 25) {
                 SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
                 this.sentencias.executeUpdate("update citas set Fecha='" + dt.format(this.fecha.getDate()) + "',Hora='" + this.hora.getText() + "',Paciente='" + this.paciente.getText() + "',Medico='" + this.MedicoEspe.getText() + "' where Id=" + this.ID.getText());
-                JOptionPane.showMessageDialog(null, "Se agregaron los datos");
+                JOptionPane.showMessageDialog(null, "Se actualizaron los datos");
             } else {
                 JOptionPane.showMessageDialog(null, "Paso el limite de caracteres");
             }
@@ -137,16 +137,22 @@ public class Citas {
 
     public void readCedula() {
         try {
-            this.datos = this.sentencias.executeQuery("select * from citas where Id='" + this.ID.getText() + "'");
-            if (this.datos.next()) {
+            if (this.ID.getText().length() <= 1) {
+                this.datos = this.sentencias.executeQuery("select * from citas where Id='" + this.ID.getText() + "'");
+                if (this.datos.next()) {
 
-                System.out.println(datos.getInt(1));
-                JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(4));
-                System.out.println(datos.getString(3));
+                    System.out.println(datos.getInt(1));
+                    JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(4));
+                    System.out.println(datos.getString(3));
+                } else {
+                    JOptionPane.showMessageDialog(null, "No hay mas registros");
+
+                }
+
             } else {
-                JOptionPane.showMessageDialog(null, "No hay mas registros");
-
+                JOptionPane.showMessageDialog(null, "Se paso del limite de caracteres");
             }
+
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error en el read");
 
@@ -156,14 +162,19 @@ public class Citas {
 
     public void readHora() {
         try {
-            this.datos = this.sentencias.executeQuery("select * from citas where Hora='" + this.hora.getText() + "'");
-            if (this.datos.next()) {
-                System.out.println(datos.getInt(1));
-                JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(3));
-                System.out.println(datos.getString(3));
+            if (this.hora.getText().length() <= 7) {
+                this.datos = this.sentencias.executeQuery("select * from citas where Hora='" + this.hora.getText() + "'");
+                if (this.datos.next()) {
+                    System.out.println(datos.getInt(1));
+                    JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(3));
+                    System.out.println(datos.getString(3));
+                } else {
+                    JOptionPane.showMessageDialog(null, "No hay mas registros");
+                }
             } else {
-                JOptionPane.showMessageDialog(null, "No hay mas registros");
+                JOptionPane.showMessageDialog(null, "Se paso del limite de caracteres");
             }
+
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error en el read");
         }
@@ -172,14 +183,19 @@ public class Citas {
 
     public void readPaciente() {
         try {
-            this.datos = this.sentencias.executeQuery("select * from citas where Paciente='" + this.paciente.getText() + "'");
-            if (this.datos.next()) {
-                System.out.println(datos.getInt(1));
-                JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(4));
-                System.out.println(datos.getString(3));
+            if (this.paciente.getText().length() <= 25) {
+                this.datos = this.sentencias.executeQuery("select * from citas where Paciente='" + this.paciente.getText() + "'");
+                if (this.datos.next()) {
+                    System.out.println(datos.getInt(1));
+                    JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(4));
+                    System.out.println(datos.getString(3));
+                } else {
+                    JOptionPane.showMessageDialog(null, "No hay mas registros");
+                }
             } else {
-                JOptionPane.showMessageDialog(null, "No hay mas registros");
+                JOptionPane.showMessageDialog(null, "Se paso del limite de caracteres");
             }
+
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error en el read");
         }
@@ -188,14 +204,19 @@ public class Citas {
 
     public void readMedico() {
         try {
-            this.datos = this.sentencias.executeQuery("select * from citas where Medico='" + this.MedicoEspe.getText() + "'");
-            if (this.datos.next()) {
-                System.out.println(datos.getInt(1));
-                JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(5));
-                System.out.println(datos.getString(3));
+            if (MedicoEspe.getText().length() <= 25) {
+                this.datos = this.sentencias.executeQuery("select * from citas where Medico='" + this.MedicoEspe.getText() + "'");
+                if (this.datos.next()) {
+                    System.out.println(datos.getInt(1));
+                    JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(5));
+                    System.out.println(datos.getString(3));
+                } else {
+                    JOptionPane.showMessageDialog(null, "No hay mas registros");
+                }
             } else {
-                JOptionPane.showMessageDialog(null, "No hay mas registros");
+                JOptionPane.showMessageDialog(null, "Paso el limite de caracteres");
             }
+
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error en el read");
         }
