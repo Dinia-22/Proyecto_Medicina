@@ -115,14 +115,21 @@ public class Paciente {
     public void Read_Cedula() {
 
         try {
-            this.datos = this.sentencias.executeQuery("select * from pacientes where id='" + this.ID.getText() + "'");
-            if (this.datos.next()) {
-                System.out.println(datos.getInt(1));
-                JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(2));
-                System.out.println(datos.getString(3));
+            if (this.ID.getText().length() <= 1) {
+                this.datos = this.sentencias.executeQuery("select * from pacientes where id='" + this.ID.getText() + "'");
+                if (this.datos.next()) {
+                    System.out.println(datos.getInt(1));
+                    JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(2));
+                    System.out.println(datos.getString(3));
+                } else {
+                    JOptionPane.showMessageDialog(null, "No hay mas registros");
+                }
+
             } else {
-                JOptionPane.showMessageDialog(null, "No hay mas registros");
+                JOptionPane.showMessageDialog(null, "Se paso del limite de caracteres");
+
             }
+
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error en el read");
         }
@@ -131,14 +138,21 @@ public class Paciente {
     public void Read_Nombre() {
 
         try {
-            this.datos = this.sentencias.executeQuery("select * from pacientes where NombreCompleto='" + this.Nombre.getText() + "'");
-            if (this.datos.next()) {
-                System.out.println(datos.getInt(1));
-                JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(2));
-                System.out.println(datos.getString(3));
+            if (this.Nombre.getText().length() <= 25) {
+                this.datos = this.sentencias.executeQuery("select * from pacientes where NombreCompleto='" + this.Nombre.getText() + "'");
+                if (this.datos.next()) {
+                    System.out.println(datos.getInt(1));
+                    JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(2));
+                    System.out.println(datos.getString(3));
+                } else {
+                    JOptionPane.showMessageDialog(null, "No hay mas registros");
+                }
+
             } else {
-                JOptionPane.showMessageDialog(null, "No hay mas registros");
+                JOptionPane.showMessageDialog(null, "Paso el limite de caracteres");
+
             }
+
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error en el read");
         }
@@ -162,15 +176,21 @@ public class Paciente {
 
     public void Read_Correo() {
         try {
-            this.datos = this.sentencias.executeQuery("select * from pacientes where CorreoElectronico='" + this.correo.getText() + "'");
-            if (this.datos.next()) {
-                System.out.println(datos.getInt(1));
-                JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(2
-                ));
-                System.out.println(datos.getString(3));
+            if (correo.getText().length() <= 30) {
+                this.datos = this.sentencias.executeQuery("select * from pacientes where CorreoElectronico='" + this.correo.getText() + "'");
+                if (this.datos.next()) {
+                    System.out.println(datos.getInt(1));
+                    JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(2
+                    ));
+                    System.out.println(datos.getString(3));
+                } else {
+                    JOptionPane.showMessageDialog(null, "No hay mas registros");
+                }
+
             } else {
-                JOptionPane.showMessageDialog(null, "No hay mas registros");
+                JOptionPane.showMessageDialog(null, "Paso el limite de caracteres");
             }
+
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error en el read");
         }
@@ -179,27 +199,26 @@ public class Paciente {
     public void Read_Telefono() {
 
         try {
-            this.datos = this.sentencias.executeQuery("select * from pacientes where Telefono='" + this.Telefono.getText() + "'");
-            if (this.datos.next()) {
-                System.out.println(datos.getInt(1));
-                JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(2));
-                System.out.println(datos.getString(3));
-            } else {
-                JOptionPane.showMessageDialog(null, "No hay mas registros");
+            if (this.Telefono.getText().length() < 7) {
+                this.datos = this.sentencias.executeQuery("select * from pacientes where Telefono='" + this.Telefono.getText() + "'");
+                if (this.datos.next()) {
+                    System.out.println(datos.getInt(1));
+                    JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(2));
+                    System.out.println(datos.getString(3));
+                } else {
+                    JOptionPane.showMessageDialog(null, "No hay mas registros");
+                }
+
+            }else{
+                JOptionPane.showMessageDialog(null, "Paso el limite de caracteres");
             }
+
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error en el read");
         }
 
     }
 
-    public static void main(String[] args) {
-        // TODO code application logic here
-//        Paciente p = new Paciente();
-//        p.conectar();
-//        p.create();
-//        p.edad();
-        //p.delete(504270426);
-    }
+  
 
 }
