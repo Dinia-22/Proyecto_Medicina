@@ -115,7 +115,7 @@ public class Usuario {
             if (this.txtNombre.getText().length() < 25 || this.contraseña.getText().length() < 7 || this.txtCorreo.getText().length() < 30 || this.txtTel.getText().length() < 9 || this.tipo.getText().length() < 10) {
                 SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
                 this.sentencias.executeUpdate("update usuarios set NombreCompleto='" + this.txtNombre.getText() + "',FechaNacimiento='" + dt.format(this.FechaNacimiento.getDate()) + "',Telefono='" + this.txtTel.getText() + "',CorreoElectronico='" + this.txtCorreo.getText() + "',NombredeUsuario='" + this.NomUsuario.getText() + "',TipodeUsuario='" + this.tipo.getText() + "' where ID=" + this.ID.getText());
-                JOptionPane.showMessageDialog(null, "Se agregaron los datos");
+                JOptionPane.showMessageDialog(null, "Se actualizaron los datos");
 
             } else {
                 JOptionPane.showMessageDialog(null, "Paso el limite de caracteres");
@@ -130,7 +130,7 @@ public class Usuario {
         try {
             if (this.contraseña.getText().length() < 15) {
                 this.sentencias.executeUpdate("update usuarios set contraseña='" + this.contraseña.getText() + "' where id=" + this.ID.getText());
-                JOptionPane.showMessageDialog(null, "Se agregaron los datos");
+                JOptionPane.showMessageDialog(null, "Se actualizo la contraseña");
 
             } else {
                 JOptionPane.showMessageDialog(null, "Paso el limite de caracteres");
@@ -145,7 +145,7 @@ public class Usuario {
     public void delete() { /// controlar que siempre quede un usuario registrado al momento de eliminar
         try {
             this.sentencias.executeUpdate("delete from usuarios where ID=" + this.ID.getText());
-            JOptionPane.showMessageDialog(null, "Usuario Eliminado");
+            JOptionPane.showMessageDialog(null, "dato eliminado");
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al Eliminar");
@@ -275,9 +275,9 @@ public class Usuario {
                     JOptionPane.showMessageDialog(null, "No hay mas registros");
                 }
 
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(null, "Paso el limite de caracteres");
-                
+
             }
 
         } catch (SQLException ex) {
