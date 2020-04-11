@@ -93,7 +93,7 @@ public class Paciente {
             if (this.Nombre.getText().length() < 25 || this.Telefono.getText().length() < 10 || this.correo.getText().length() < 30) {
                 SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
                 this.sentencias.executeUpdate("update pacientes set NombreCompleto='" + this.Nombre.getText() + "',FechaNacimiento='" + dt.format(this.FechaNacimiento.getDate()) + "',Telefono='" + this.Telefono.getText() + "',CorreoElectronico='" + this.correo.getText() + "' where id=" + this.ID.getText());
-                JOptionPane.showMessageDialog(null, "Se agregaron los datos");
+                JOptionPane.showMessageDialog(null, "Se actualizaron los datos");
             } else {
                 JOptionPane.showMessageDialog(null, "Paso el limite de caracteres");
             }
