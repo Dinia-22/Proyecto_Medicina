@@ -6,6 +6,7 @@
 package Citas;
 
 import FrameConfiguracion.ConfiguracionBaseDatos;
+import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 
 /**
@@ -258,17 +259,17 @@ public class FrmCitas extends javax.swing.JFrame {
 
     private void saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveActionPerformed
         Citas prueba = new Citas();
-
+         SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
         prueba.MedicoEspe = this.txtMedico;
         prueba.fecha = this.txtfecha;
         prueba.hora = this.txtHora;
         prueba.paciente = this.txtPaciente;
         prueba.conectar();
-        if (prueba.hora.getText().equals("12:45")) {
-            JOptionPane.showMessageDialog(null, "No puede programar una cita con esa hora ");
+        if (prueba.hora.getText().equals("12:45")|| prueba.fecha.getDate().equals("2020-04-07")) {
+            JOptionPane.showMessageDialog(null, "No puede programar una cita en la misma fecha y hora ");
         }else{
             prueba.create();
-        }
+        } 
        
 
 
