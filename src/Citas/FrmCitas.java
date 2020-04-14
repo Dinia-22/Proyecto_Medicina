@@ -6,6 +6,7 @@
 package Citas;
 
 import FrameConfiguracion.ConfiguracionBaseDatos;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -263,7 +264,14 @@ public class FrmCitas extends javax.swing.JFrame {
         prueba.hora = this.txtHora;
         prueba.paciente = this.txtPaciente;
         prueba.conectar();
-        prueba.create();
+        if (prueba.hora.getText().equals("12:45")) {
+            JOptionPane.showMessageDialog(null, "No puede programar una cita con esa hora ");
+        }else{
+            prueba.create();
+        }
+       
+
+
     }//GEN-LAST:event_saveActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
