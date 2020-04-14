@@ -5,6 +5,8 @@
  */
 package Medicos;
 
+import Conectar.Conectar;
+
 /**
  *
  * @author juan1
@@ -18,6 +20,7 @@ public class FrmActualizar extends javax.swing.JFrame {
         initComponents();
     }
     Medicos medico = new Medicos();
+    Conectar conec = new Conectar();
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -227,8 +230,6 @@ public class FrmActualizar extends javax.swing.JFrame {
     }//GEN-LAST:event_jtelefono3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-
         // Aceptar Cambios de la Informacion.
         medico.ID = this.jcedula3;
         medico.Nombre = this.jnombre3;
@@ -238,7 +239,7 @@ public class FrmActualizar extends javax.swing.JFrame {
         medico.Codigo = this.jcodigo3;
         medico.especialidad = this.jespecialidad3;
         medico.salario = this.jsalario3;
-        medico.conectar();
+        conec.conectar();
         medico.update();
     }//GEN-LAST:event_jButton1ActionPerformed
 

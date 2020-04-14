@@ -5,6 +5,8 @@
  */
 package Medicos;
 
+import Conectar.Conectar;
+
 /**
  *
  * @author Dinia Alvarado
@@ -19,6 +21,7 @@ public class FrmMedicos extends javax.swing.JFrame {
     }
 
     Medicos medico = new Medicos();
+    Conectar conec = new Conectar();
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -64,12 +67,6 @@ public class FrmMedicos extends javax.swing.JFrame {
 
         jPanel1.setToolTipText("Ingrese sus Datos");
 
-        jcedula.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jcedulaActionPerformed(evt);
-            }
-        });
-
         jLabel1.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel1.setText("Numero Cedula:");
 
@@ -93,12 +90,6 @@ public class FrmMedicos extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel4.setText("Telefono:");
-
-        jtelefono.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtelefonoActionPerformed(evt);
-            }
-        });
 
         jButton1.setBackground(new java.awt.Color(102, 102, 102));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/save.png"))); // NOI18N
@@ -286,15 +277,6 @@ public class FrmMedicos extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jtelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtelefonoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtelefonoActionPerformed
-
-    private void jcedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcedulaActionPerformed
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_jcedulaActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         //Jbutton;
         medico.ID = this.jcedula;
@@ -305,7 +287,7 @@ public class FrmMedicos extends javax.swing.JFrame {
         medico.Codigo = this.jcodigo;
         medico.especialidad = this.jespecialidad;
         medico.salario = this.jsalario;
-        medico.conectar();
+        conec.conectar();
         medico.create();
 
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -317,14 +299,12 @@ public class FrmMedicos extends javax.swing.JFrame {
     }//GEN-LAST:event_actu1ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
         //BUSCAR USUARIO:
         BuscarUsuarios buscaU = new BuscarUsuarios();
         buscaU.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        // TODO add your handling code here:
         //Eliminar Usuarios:
         FrmEliminar eliminar = new FrmEliminar();
         eliminar.setVisible(true);

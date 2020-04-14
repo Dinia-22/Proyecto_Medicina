@@ -245,9 +245,6 @@
       </Layout>
       <SubComponents>
         <Component class="javax.swing.JTextField" name="jcedula">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jcedulaActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
@@ -318,9 +315,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jtelefono">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtelefonoActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="jcorreo">
         </Component>

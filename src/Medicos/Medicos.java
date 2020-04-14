@@ -5,6 +5,7 @@
  */
 package Medicos;
 
+import Conectar.Conectar;
 import Usuarios.Usuario;
 import com.toedter.calendar.JDateChooser;
 import java.sql.Connection;
@@ -92,16 +93,6 @@ public class Medicos {
 
     public void setSalario(JTextField salario) {
         this.salario = salario;
-    }
-
-    public void conectar() {
-        try {
-            this.conexion = DriverManager.getConnection("jdbc:mysql://localhost/medicina?useServerPrepStmts=true", "root", "");
-            this.sentencias = this.conexion.createStatement();
-        } catch (SQLException ex) {
-
-            System.out.println(" Error al conectar");
-        }
     }
 
     public void create() {
@@ -453,4 +444,9 @@ public class Medicos {
         }
         return 0;
     }
+    
+//    public static void main(String[] args) {
+//        Conectar p = new Conectar();
+//        p.conectar();
+//    }
 }

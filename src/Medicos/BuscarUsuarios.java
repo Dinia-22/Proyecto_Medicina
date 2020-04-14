@@ -5,17 +5,38 @@
  */
 package Medicos;
 
+import Conectar.Conectar;
+import static Conectar.Conectar.sentencias;
+import java.sql.SQLException;
+import java.sql.ResultSet;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author juan1
  */
 public class BuscarUsuarios extends javax.swing.JFrame {
 
+    Medicos prueba = new Medicos();
+    Conectar conec = new Conectar();
+    DefaultTableModel detamo;
+
     /**
      * Creates new form BuscarUsuarios
      */
     public BuscarUsuarios() {
         initComponents();
+        configurarTabla();
+    }
+
+    public void configurarTabla() {
+
+        String Titulos[] = new String[8];
+        detamo = new DefaultTableModel(null, Titulos);
+        tabla.setModel(detamo);
     }
 
     /**
@@ -27,6 +48,7 @@ public class BuscarUsuarios extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jcedula1 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -53,6 +75,14 @@ public class BuscarUsuarios extends javax.swing.JFrame {
         btnespecialidad = new javax.swing.JButton();
         btnsalario = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tabla = new javax.swing.JTable();
+        jLabel9 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
+        verdatos = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Ingrese sus Datos");
@@ -61,12 +91,6 @@ public class BuscarUsuarios extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        jcedula1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jcedula1ActionPerformed(evt);
-            }
-        });
 
         jLabel1.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel1.setText("Numero Cedula:");
@@ -92,14 +116,7 @@ public class BuscarUsuarios extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel4.setText("Telefono:");
 
-        jtelefono1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtelefono1ActionPerformed(evt);
-            }
-        });
-
         btncedula.setBackground(new java.awt.Color(102, 102, 102));
-        btncedula.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.png"))); // NOI18N
         btncedula.setText("Cedula");
         btncedula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -108,7 +125,6 @@ public class BuscarUsuarios extends javax.swing.JFrame {
         });
 
         btnnombre.setBackground(new java.awt.Color(0, 204, 255));
-        btnnombre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.png"))); // NOI18N
         btnnombre.setText("Nombre");
         btnnombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -117,7 +133,6 @@ public class BuscarUsuarios extends javax.swing.JFrame {
         });
 
         btntelefono.setBackground(new java.awt.Color(102, 102, 102));
-        btntelefono.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.png"))); // NOI18N
         btntelefono.setText("Telefono");
         btntelefono.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -126,7 +141,6 @@ public class BuscarUsuarios extends javax.swing.JFrame {
         });
 
         btnnacimiento.setBackground(new java.awt.Color(0, 204, 255));
-        btnnacimiento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.png"))); // NOI18N
         btnnacimiento.setText("Fecha Nacimiento");
         btnnacimiento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -135,7 +149,6 @@ public class BuscarUsuarios extends javax.swing.JFrame {
         });
 
         btncorreo.setBackground(new java.awt.Color(102, 102, 102));
-        btncorreo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.png"))); // NOI18N
         btncorreo.setText("Correo");
         btncorreo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -144,7 +157,6 @@ public class BuscarUsuarios extends javax.swing.JFrame {
         });
 
         btncodigo.setBackground(new java.awt.Color(0, 204, 255));
-        btncodigo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.png"))); // NOI18N
         btncodigo.setText("Codigo");
         btncodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -153,7 +165,6 @@ public class BuscarUsuarios extends javax.swing.JFrame {
         });
 
         btnespecialidad.setBackground(new java.awt.Color(102, 102, 102));
-        btnespecialidad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.png"))); // NOI18N
         btnespecialidad.setText("Especialidad");
         btnespecialidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -162,7 +173,6 @@ public class BuscarUsuarios extends javax.swing.JFrame {
         });
 
         btnsalario.setBackground(new java.awt.Color(0, 204, 255));
-        btnsalario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.png"))); // NOI18N
         btnsalario.setText("Salario");
         btnsalario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -171,7 +181,6 @@ public class BuscarUsuarios extends javax.swing.JFrame {
         });
 
         jButton1.setBackground(new java.awt.Color(102, 102, 102));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cancelar.png"))); // NOI18N
         jButton1.setText("Cancelar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -292,7 +301,7 @@ public class BuscarUsuarios extends javax.swing.JFrame {
                     .addComponent(btnnombre)
                     .addComponent(btncedula)
                     .addComponent(btntelefono))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnnacimiento)
                     .addComponent(btncorreo)
@@ -301,111 +310,193 @@ public class BuscarUsuarios extends javax.swing.JFrame {
                 .addGap(19, 19, 19))
         );
 
+        jTabbedPane1.addTab("Buscar", jPanel1);
+
+        jPanel2.setBackground(new java.awt.Color(204, 204, 204));
+
+        tabla.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane3.setViewportView(tabla);
+
+        jLabel9.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        jLabel9.setText("Buscar por Filtro:");
+
+        jButton2.setBackground(new java.awt.Color(102, 102, 102));
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.png"))); // NOI18N
+        jButton2.setText("Buscar Filtro");
+
+        verdatos.setBackground(new java.awt.Color(102, 102, 102));
+        verdatos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/binoculars.png"))); // NOI18N
+        verdatos.setText("Ver Datos");
+        verdatos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                verdatosActionPerformed(evt);
+            }
+        });
+
+        jButton3.setBackground(new java.awt.Color(0, 204, 255));
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cancelar.png"))); // NOI18N
+        jButton3.setText("Cancelar");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(jLabel9)
+                .addGap(18, 18, 18)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton2)
+                .addGap(76, 76, 76))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(24, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(verdatos)
+                        .addGap(152, 152, 152)
+                        .addComponent(jButton3)
+                        .addGap(127, 127, 127))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 606, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(25, 25, 25))))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2))
+                .addGap(31, 31, 31)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(verdatos)
+                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18))
+        );
+
+        jTabbedPane1.addTab("Filtro", jPanel2);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(21, Short.MAX_VALUE))
+            .addComponent(jTabbedPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jTabbedPane1)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jcedula1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcedula1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jcedula1ActionPerformed
-
-    private void jtelefono1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtelefono1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtelefono1ActionPerformed
-
     private void btncedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncedulaActionPerformed
-        // TODO add your handling code here:
         //Buscar Cedula:
-        Medicos Mbuscar = new Medicos();
-        Mbuscar.ID = this.jcedula1;
-        Mbuscar.conectar();
-        Mbuscar.readCedula();
+        prueba.ID = this.jcedula1;
+        conec.conectar();
+        prueba.readCedula();
     }//GEN-LAST:event_btncedulaActionPerformed
 
     private void btnnombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnnombreActionPerformed
-        // TODO add your handling code here:
         //Buscar Nombre:
-        Medicos Mbuscar = new Medicos();
-        Mbuscar.Nombre = this.jnombre1;
-        Mbuscar.conectar();
-        Mbuscar.readNombre();
+        prueba.Nombre = this.jnombre1;
+        conec.conectar();
+        prueba.readNombre();
     }//GEN-LAST:event_btnnombreActionPerformed
 
     private void btntelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btntelefonoActionPerformed
-        // TODO add your handling code here:
         //Buscar Telefono:
-        Medicos Mbuscar = new Medicos();
-        Mbuscar.tel = this.jtelefono1;
-        Mbuscar.conectar();
-        Mbuscar.readTel();
+        prueba.tel = this.jtelefono1;
+        conec.conectar();
+        prueba.readTel();
     }//GEN-LAST:event_btntelefonoActionPerformed
 
     private void btnnacimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnnacimientoActionPerformed
-        // TODO add your handling code here:
         //Buscar Nacimiento:
-        Medicos Mbuscar = new Medicos();
-        Mbuscar.FechaNacimiento = this.jfecha1;
-        Mbuscar.conectar();
-        Mbuscar.readDate();
+        prueba.FechaNacimiento = this.jfecha1;
+        conec.conectar();
+        prueba.readDate();
     }//GEN-LAST:event_btnnacimientoActionPerformed
 
     private void btncorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncorreoActionPerformed
-        // TODO add your handling code here:
         //Buscar Correo:
-
-        Medicos Mbuscar = new Medicos();
-        Mbuscar.correo = this.jcorreo1;
-        Mbuscar.conectar();
-        Mbuscar.readCorreo();
+        prueba.correo = this.jcorreo1;
+        conec.conectar();
+        prueba.readCorreo();
     }//GEN-LAST:event_btncorreoActionPerformed
 
     private void btncodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncodigoActionPerformed
-        // TODO add your handling code here:
         //Buscar Codigo:
-        Medicos Mbuscar = new Medicos();
-        Mbuscar.Codigo = this.jcodigo1;
-        Mbuscar.conectar();
-        Mbuscar.readCodigo();
+        prueba.Codigo = this.jcodigo1;
+        conec.conectar();
+        prueba.readCodigo();
     }//GEN-LAST:event_btncodigoActionPerformed
 
     private void btnespecialidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnespecialidadActionPerformed
-        // TODO add your handling code here:
         //Buscar Especialidad:
-        Medicos Mbuscar = new Medicos();
-        Mbuscar.especialidad = this.jespecialidad1;
-        Mbuscar.conectar();
-        Mbuscar.readEspecialidad();
+        prueba.especialidad = this.jespecialidad1;
+        conec.conectar();
+        prueba.readEspecialidad();
     }//GEN-LAST:event_btnespecialidadActionPerformed
 
     private void btnsalarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsalarioActionPerformed
-        // TODO add your handling code here:
         //Buscar Salario:
-        Medicos Mbuscar = new Medicos();
-        Mbuscar.salario = this.jsalario1;
-        Mbuscar.conectar();
-        Mbuscar.readSalario();
+        prueba.salario = this.jsalario1;
+        conec.conectar();
+        prueba.readSalario();
     }//GEN-LAST:event_btnsalarioActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void verdatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verdatosActionPerformed
+        conec.conectar();
+        String fecha;
+        try {
+            ResultSet rs = sentencias.executeQuery("SELECT * FROM medicos");
+            String Titulos[] = {"ID", "NombreCompleto", "FechaNacimiento", "Telefono", "CorreoElectronico","Codigo","Especialidad","Salario"};
+            detamo = new DefaultTableModel(null, Titulos);
+
+            String fila[] = new String[8];
+            rs.beforeFirst();
+            while (rs.next()) {
+
+                fila[0] = rs.getString("ID");
+                fila[1] = rs.getString("NombreCompleto");
+                fecha = rs.getString("FechaNacimiento");
+                fecha = fecha.substring(8, 10) + "/" + fecha.substring(5, 7) + "/" + fecha.substring(0, 4);
+                fila[2] = fecha;
+                fila[3] = rs.getString("Telefono");
+                fila[4] = rs.getString("CorreoElectronico");
+                fila[5] = rs.getString("Codigo");
+                fila[6] = rs.getString("Especialidad");
+                fila[7] = rs.getString("Salario");
+                detamo.addRow(fila);
+            }
+            tabla.setModel(detamo);
+        } catch (SQLException ex) {
+            //JOptionPane.showMessageDialog(null, "Error al extraer datos de la tabla");
+            Logger.getLogger(Medicos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_verdatosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -452,6 +543,8 @@ public class BuscarUsuarios extends javax.swing.JFrame {
     private javax.swing.JButton btnsalario;
     private javax.swing.JButton btntelefono;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -460,7 +553,12 @@ public class BuscarUsuarios extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jcedula1;
     private javax.swing.JTextField jcodigo1;
     private javax.swing.JTextField jcorreo1;
@@ -469,5 +567,7 @@ public class BuscarUsuarios extends javax.swing.JFrame {
     private javax.swing.JTextField jnombre1;
     private javax.swing.JTextField jsalario1;
     private javax.swing.JTextField jtelefono1;
+    private javax.swing.JTable tabla;
+    private javax.swing.JButton verdatos;
     // End of variables declaration//GEN-END:variables
 }

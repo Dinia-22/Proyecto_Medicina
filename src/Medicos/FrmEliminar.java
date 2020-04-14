@@ -5,11 +5,16 @@
  */
 package Medicos;
 
+import Conectar.Conectar;
+
 /**
  *
  * @author juan1
  */
 public class FrmEliminar extends javax.swing.JFrame {
+        
+        Medicos medicoD = new Medicos();
+        Conectar conec = new Conectar();
 
     /**
      * Creates new form FrmEliminar
@@ -128,9 +133,8 @@ public class FrmEliminar extends javax.swing.JFrame {
 
     private void BtnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEliminarActionPerformed
         //Jbutton;
-        Medicos medicoD = new Medicos();
         medicoD.ID = this.jcedulaID;
-        medicoD.conectar();
+        conec.conectar();
         medicoD.delete();
     }//GEN-LAST:event_BtnEliminarActionPerformed
 
