@@ -5,6 +5,7 @@
  */
 package Citas;
 
+import Conectar.Conectar;
 import FrameConfiguracion.ConfiguracionBaseDatos;
 import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
@@ -15,6 +16,8 @@ import javax.swing.JOptionPane;
  */
 public class FrmCitas extends javax.swing.JFrame {
 
+    Citas prueba = new Citas();
+    Conectar conec = new Conectar();
     /**
      * Creates new form FrmCitas
      */
@@ -240,13 +243,12 @@ public class FrmCitas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void saveInformationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveInformationActionPerformed
-        Citas prueba = new Citas();
         prueba.ID = this.txtcedula;
         prueba.fecha = this.txtfecha;
         prueba.hora = this.txtHora;
         prueba.paciente = this.txtPaciente;
         prueba.MedicoEspe = this.txtMedico;
-        prueba.conectar();
+        conec.conectar();
         prueba.update();
 
     }//GEN-LAST:event_saveInformationActionPerformed
@@ -258,13 +260,12 @@ public class FrmCitas extends javax.swing.JFrame {
     }//GEN-LAST:event_cancelActionPerformed
 
     private void saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveActionPerformed
-        Citas prueba = new Citas();
-         SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
         prueba.MedicoEspe = this.txtMedico;
         prueba.fecha = this.txtfecha;
         prueba.hora = this.txtHora;
         prueba.paciente = this.txtPaciente;
-        prueba.conectar();
+        conec.conectar();
         if (prueba.hora.getText().equals("12:45")|| prueba.fecha.getDate().equals("2020-04-07")) {
             JOptionPane.showMessageDialog(null, "No puede programar una cita en la misma fecha y hora ");
         }else{

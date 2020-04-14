@@ -5,11 +5,16 @@
  */
 package Citas;
 
+import Conectar.Conectar;
+
 /**
  *
  * @author Maria Paula
  */
 public class Eliminar extends javax.swing.JFrame {
+    
+    Citas cita = new Citas();
+    Conectar conec = new Conectar();
 
     /**
      * Creates new form Eliminar
@@ -117,9 +122,8 @@ public class Eliminar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarActionPerformed
-        Citas cita = new Citas();
         cita.ID= this.txtDelete;
-        cita.conectar();
+        conec.conectar();
         cita.delete();
     }//GEN-LAST:event_eliminarActionPerformed
 
