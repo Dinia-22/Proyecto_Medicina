@@ -5,11 +5,16 @@
  */
 package Expediente;
 
+import Conectar.Conectar;
+
 /**
  *
  * @author Maria Paula
  */
 public class FrmExpediente extends javax.swing.JFrame {
+    
+    Expediente ex = new Expediente();
+    Conectar conec = new Conectar();
 
     /**
      * Creates new form FrmExpediente
@@ -263,26 +268,24 @@ public class FrmExpediente extends javax.swing.JFrame {
     }//GEN-LAST:event_txtPacienteActionPerformed
 
     private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed
-        Expediente ex = new Expediente();
-        ex.Descrip = this.txtDecrip;
+         ex.Descrip = this.txtDecrip;
         ex.paciente = this.txtPaciente;
         ex.Fecha = this.txtFecha;
         ex.hora = this.txtHora;
         ex.medico = this.txtMedico;
         ex.xmlconfig();
-        ex.conectar();
+        conec.conectar();
         ex.create();
     }//GEN-LAST:event_aceptarActionPerformed
 
     private void actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarActionPerformed
-        Expediente ex = new Expediente();
         ex.Descrip = this.txtDecrip;
         ex.paciente = this.txtPaciente;
         ex.Fecha = this.txtFecha;
         ex.hora = this.txtHora;
         ex.medico = this.txtMedico;
         ex.ID = this.txtID;
-        ex.conectar();
+        conec.conectar();
         ex.update();
         ex.xmlconfig();
 

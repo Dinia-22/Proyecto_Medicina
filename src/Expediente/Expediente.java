@@ -74,17 +74,6 @@ public class Expediente {
         return paciente;
     }
 
-    public void conectar() {
-        try {
-            this.conexion = DriverManager.getConnection("jdbc:mysql://localhost/medicina?useServerPrepStmts=true", "root", "");
-            this.sentencias = this.conexion.createStatement();
-
-        } catch (SQLException ex) {
-
-            System.out.println(" Error al conectar");
-        }
-    }
-
     public void create() {
         try {
             if (this.hora.getText().length() < 10 || this.medico.getText().length() < 25 || Descrip.getText().length() < 50 || paciente.getText().length() < 25) {
@@ -120,6 +109,29 @@ public class Expediente {
             Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+    }
+    
+    public void Read_Cedula() {
+
+        try {
+            if (this.ID.getText().length() <= 1) {
+                this.datos = this.sentencias.executeQuery("select * from expediente where id='" + this.ID.getText() + "'");
+                if (this.datos.next()) {
+                    System.out.println(datos.getInt(1));
+                    JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(1));
+                    System.out.println(datos.getString(3));
+                } else {
+                    JOptionPane.showMessageDialog(null, "No hay mas registros");
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Se paso del limite de caracteres");
+
+            }
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error en el read");
+        }
     }
 
     public void readFecha() {
@@ -189,7 +201,7 @@ public class Expediente {
                 this.datos = this.sentencias.executeQuery("select * from expediente where Descripcion='" + this.Descrip.getText() + "'");
                 if (this.datos.next()) {
                     System.out.println(datos.getInt(1));
-                    JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(4));
+                    JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(5));
                     System.out.println(datos.getString(3));
                 } else {
                     JOptionPane.showMessageDialog(null, "No hay mas registros");
@@ -211,7 +223,7 @@ public class Expediente {
                 this.datos = this.sentencias.executeQuery("select * from expediente where Paciente='" + this.paciente.getText() + "'");
                 if (this.datos.next()) {
                     System.out.println(datos.getInt(1));
-                    JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(5));
+                    JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(6));
                     System.out.println(datos.getString(3));
                 } else {
                     JOptionPane.showMessageDialog(null, "No hay mas registros");

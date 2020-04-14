@@ -5,11 +5,16 @@
  */
 package Expediente;
 
+import Conectar.Conectar;
+
 /**
  *
  * @author Maria Paula
  */
 public class Eliminar extends javax.swing.JFrame {
+    
+    Expediente ex = new Expediente();
+    Conectar conec = new Conectar();
 
     /**
      * Creates new form Eliminar
@@ -116,9 +121,8 @@ public class Eliminar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Expediente ex = new Expediente();
         ex.ID = this.id;
-        ex.conectar();
+        conec.conectar();
         ex.delete();
     }//GEN-LAST:event_jButton1ActionPerformed
 
