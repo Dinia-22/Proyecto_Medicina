@@ -5,17 +5,38 @@
  */
 package Paciente;
 
+import Conectar.Conectar;
+import static Conectar.Conectar.sentencias;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Dinia Alvarado
  */
 public class FrmBuscar extends javax.swing.JFrame {
 
+    Paciente prueba = new Paciente();
+    Conectar conec = new Conectar();
+    DefaultTableModel detamo;
+    
     /**
      * Creates new form FrmBuscar
      */
     public FrmBuscar() {
         initComponents();
+        configurarTabla();
+    }
+
+    public void configurarTabla() {
+
+        String Titulos[] = new String[5];
+        detamo = new DefaultTableModel(null, Titulos);
+        tabla.setModel(detamo);
     }
 
     /**
@@ -27,6 +48,7 @@ public class FrmBuscar extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         nombre = new javax.swing.JTextField();
@@ -44,6 +66,14 @@ public class FrmBuscar extends javax.swing.JFrame {
         buscorreo = new javax.swing.JButton();
         fecha = new com.toedter.calendar.JDateChooser();
         buscan = new javax.swing.JButton();
+        filtro = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tabla = new javax.swing.JTable();
+        jLabel6 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        verdatos = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(480, 200));
@@ -68,7 +98,6 @@ public class FrmBuscar extends javax.swing.JFrame {
         jLabel5.setText("Correo Electronico:");
 
         busnombre.setBackground(new java.awt.Color(102, 102, 102));
-        busnombre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.png"))); // NOI18N
         busnombre.setText("Buscar Nombre");
         busnombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -77,7 +106,6 @@ public class FrmBuscar extends javax.swing.JFrame {
         });
 
         buscedula.setBackground(new java.awt.Color(102, 102, 102));
-        buscedula.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.png"))); // NOI18N
         buscedula.setText("Buscar Cedula");
         buscedula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -86,7 +114,6 @@ public class FrmBuscar extends javax.swing.JFrame {
         });
 
         busfecha.setBackground(new java.awt.Color(0, 204, 255));
-        busfecha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.png"))); // NOI18N
         busfecha.setText("Buscar Fecha");
         busfecha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -95,7 +122,6 @@ public class FrmBuscar extends javax.swing.JFrame {
         });
 
         bustelefono.setBackground(new java.awt.Color(102, 102, 102));
-        bustelefono.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.png"))); // NOI18N
         bustelefono.setText("Buscar Telefono");
         bustelefono.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -104,7 +130,6 @@ public class FrmBuscar extends javax.swing.JFrame {
         });
 
         buscorreo.setBackground(new java.awt.Color(0, 204, 255));
-        buscorreo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.png"))); // NOI18N
         buscorreo.setText("Buscar Correo");
         buscorreo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -113,7 +138,6 @@ public class FrmBuscar extends javax.swing.JFrame {
         });
 
         buscan.setBackground(new java.awt.Color(102, 102, 102));
-        buscan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.png"))); // NOI18N
         buscan.setText("Cancelar");
         buscan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -190,7 +214,7 @@ public class FrmBuscar extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(correo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(busnombre)
                     .addComponent(bustelefono)
@@ -203,58 +227,167 @@ public class FrmBuscar extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jTabbedPane1.addTab("Buscar", jPanel1);
+
+        filtro.setBackground(new java.awt.Color(204, 204, 204));
+
+        tabla.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane3.setViewportView(tabla);
+
+        jLabel6.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        jLabel6.setText("Buscar por Filtro:");
+
+        jButton1.setBackground(new java.awt.Color(102, 102, 102));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.png"))); // NOI18N
+        jButton1.setText("Buscar Filtro");
+
+        verdatos.setBackground(new java.awt.Color(102, 102, 102));
+        verdatos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/binoculars.png"))); // NOI18N
+        verdatos.setText("Ver Datos");
+        verdatos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                verdatosActionPerformed(evt);
+            }
+        });
+
+        jButton2.setBackground(new java.awt.Color(0, 204, 255));
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cancelar.png"))); // NOI18N
+        jButton2.setText("Cancelar");
+
+        javax.swing.GroupLayout filtroLayout = new javax.swing.GroupLayout(filtro);
+        filtro.setLayout(filtroLayout);
+        filtroLayout.setHorizontalGroup(
+            filtroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(filtroLayout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(jLabel6)
+                .addGap(18, 18, 18)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(20, 20, 20))
+            .addGroup(filtroLayout.createSequentialGroup()
+                .addGroup(filtroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(filtroLayout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 412, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(filtroLayout.createSequentialGroup()
+                        .addGap(81, 81, 81)
+                        .addComponent(verdatos)
+                        .addGap(64, 64, 64)
+                        .addComponent(jButton2)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        filtroLayout.setVerticalGroup(
+            filtroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, filtroLayout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addGroup(filtroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addGroup(filtroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(verdatos)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(23, 23, 23))
+        );
+
+        jTabbedPane1.addTab("Filtro", filtro);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jTabbedPane1))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 348, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void busnombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_busnombreActionPerformed
-        Paciente prueba = new Paciente();
         prueba.Nombre = this.nombre;
-        prueba.conectar();
+        conec.conectar();
         prueba.Read_Nombre();
     }//GEN-LAST:event_busnombreActionPerformed
 
     private void buscedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscedulaActionPerformed
         Paciente prueba = new Paciente();
         prueba.ID = this.cedula;
-        prueba.conectar();
+        conec.conectar();
         prueba.Read_Cedula();
     }//GEN-LAST:event_buscedulaActionPerformed
 
     private void busfechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_busfechaActionPerformed
         Paciente prueba = new Paciente();
         prueba.FechaNacimiento = this.fecha;
-        prueba.conectar();
+        conec.conectar();
         prueba.Read_Fecha();
     }//GEN-LAST:event_busfechaActionPerformed
 
     private void bustelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bustelefonoActionPerformed
         Paciente prueba = new Paciente();
         prueba.Telefono = this.telefono;
-        prueba.conectar();
+        conec.conectar();
         prueba.Read_Telefono();
     }//GEN-LAST:event_bustelefonoActionPerformed
 
     private void buscorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscorreoActionPerformed
         Paciente prueba = new Paciente();
         prueba.correo = this.correo;
-        prueba.conectar();
+        conec.conectar();
         prueba.Read_Correo();
     }//GEN-LAST:event_buscorreoActionPerformed
 
     private void buscanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscanActionPerformed
         this.dispose();
     }//GEN-LAST:event_buscanActionPerformed
+
+    private void verdatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verdatosActionPerformed
+        conec.conectar();
+        String fecha;
+        try {
+            ResultSet rs = sentencias.executeQuery("SELECT * FROM pacientes");
+            String Titulos[] = {"ID", "NombreCompleto", "FechaNacimiento", "Telefono", "CorreoElectronico"};
+            detamo = new DefaultTableModel(null, Titulos);
+
+            String fila[] = new String[5];
+            rs.beforeFirst();
+            while (rs.next()) {
+
+                fila[0] = rs.getString("ID");
+                fila[1] = rs.getString("NombreCompleto");
+                fecha = rs.getString("FechaNacimiento");
+                fecha = fecha.substring(8, 10) + "/" + fecha.substring(5, 7) + "/" + fecha.substring(0, 4);
+                fila[2] = fecha;
+                fila[3] = rs.getString("Telefono");
+                fila[4] = rs.getString("CorreoElectronico");
+                detamo.addRow(fila);
+            }
+            tabla.setModel(detamo);
+        } catch (SQLException ex) {
+            //JOptionPane.showMessageDialog(null, "Error al extraer datos de la tabla");
+            Logger.getLogger(Paciente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_verdatosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -301,13 +434,22 @@ public class FrmBuscar extends javax.swing.JFrame {
     private javax.swing.JTextField cedula;
     private javax.swing.JTextField correo;
     private com.toedter.calendar.JDateChooser fecha;
+    private javax.swing.JPanel filtro;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField nombre;
+    private javax.swing.JTable tabla;
     private javax.swing.JTextField telefono;
+    private javax.swing.JButton verdatos;
     // End of variables declaration//GEN-END:variables
 }

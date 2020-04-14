@@ -5,11 +5,16 @@
  */
 package Paciente;
 
+import Conectar.Conectar;
+
 /**
  *
  * @author Dinia Alvarado
  */
 public class FrmEliminar extends javax.swing.JFrame {
+
+    Paciente prueba = new Paciente();
+    Conectar conec = new Conectar();
 
     /**
      * Creates new form FrmEliminar
@@ -126,10 +131,9 @@ public class FrmEliminar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed
-       Paciente paciente = new Paciente();
-       paciente.ID = this.txtid;
-       paciente.conectar();
-       paciente.delete();
+        prueba.ID = this.txtid;
+        conec.conectar();
+        prueba.delete();
     }//GEN-LAST:event_aceptarActionPerformed
 
     private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed

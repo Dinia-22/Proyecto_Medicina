@@ -5,6 +5,8 @@
  */
 package Paciente;
 
+import Conectar.Conectar;
+
 /**
  *
  * @author Dinia Alvarado
@@ -12,6 +14,7 @@ package Paciente;
 public class FrmPacientes extends javax.swing.JFrame {
 
     Paciente paci = new Paciente();
+    Conectar conec = new Conectar();
 
     /**
      * Creates new form FrmPacientes
@@ -44,7 +47,7 @@ public class FrmPacientes extends javax.swing.JFrame {
         cancelar = new javax.swing.JButton();
         jMenuBar2 = new javax.swing.JMenuBar();
         jMenu3 = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        actualizar = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         eliminar = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
@@ -158,15 +161,15 @@ public class FrmPacientes extends javax.swing.JFrame {
         jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/refresh.png"))); // NOI18N
         jMenu3.setText("Actualizar Informacion");
 
-        jMenuItem3.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/modificar.png"))); // NOI18N
-        jMenuItem3.setText("Actualizar");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+        actualizar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
+        actualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/modificar.png"))); // NOI18N
+        actualizar.setText("Actualizar");
+        actualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
+                actualizarActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem3);
+        jMenu3.add(actualizar);
 
         jMenuBar2.add(jMenu3);
 
@@ -237,7 +240,7 @@ public class FrmPacientes extends javax.swing.JFrame {
         paci.FechaNacimiento = this.txtfecha;
         paci.Telefono = this.txttelefono;
         paci.correo = this.txtcorreo;
-        paci.conectar();
+        conec.conectar();
         paci.create();
 
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -248,18 +251,18 @@ public class FrmPacientes extends javax.swing.JFrame {
     }//GEN-LAST:event_eliminarActionPerformed
 
     private void buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarActionPerformed
-        FrmBuscar prueba = new FrmBuscar();
-        prueba.setVisible(true);
+        FrmBuscar buscar = new FrmBuscar();
+        buscar.setVisible(true);
     }//GEN-LAST:event_buscarActionPerformed
 
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        FrmActualizar prueba = new FrmActualizar();
-        prueba.setVisible(true);
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
+    private void actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarActionPerformed
+        FrmActualizar actualizar = new FrmActualizar();
+        actualizar.setVisible(true);
+    }//GEN-LAST:event_actualizarActionPerformed
 
     private void edadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edadActionPerformed
-        FrmEdad prueba = new FrmEdad();
-        prueba.setVisible(true);
+        FrmEdad edad = new FrmEdad();
+        edad.setVisible(true);
     }//GEN-LAST:event_edadActionPerformed
 
     private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
@@ -303,6 +306,7 @@ public class FrmPacientes extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem actualizar;
     private javax.swing.JMenuItem buscar;
     private javax.swing.JButton cancelar;
     private javax.swing.JMenuItem edad;
@@ -318,7 +322,6 @@ public class FrmPacientes extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar2;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txtcedula;
     private javax.swing.JTextField txtcorreo;

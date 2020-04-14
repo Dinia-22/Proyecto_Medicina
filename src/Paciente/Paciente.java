@@ -5,6 +5,7 @@
  */
 package Paciente;
 
+import Conectar.Conectar;
 import com.toedter.calendar.JDateChooser;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -56,15 +57,8 @@ public class Paciente {
         return correo;
     }
 
-    public void conectar() {
-        try {
-            this.conexion = DriverManager.getConnection("jdbc:mysql://localhost/medicina?useServerPrepStmts=true", "root", "");
-            this.sentencias = this.conexion.createStatement();
-
-        } catch (SQLException ex) {
-
-            System.out.println(" Error al conectar");
-        }
+    public JDateChooser getFechaNacimiento() {
+        return FechaNacimiento;
     }
 
     public void create() {
@@ -119,7 +113,7 @@ public class Paciente {
                 this.datos = this.sentencias.executeQuery("select * from pacientes where id='" + this.ID.getText() + "'");
                 if (this.datos.next()) {
                     System.out.println(datos.getInt(1));
-                    JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(2));
+                    JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(1));
                     System.out.println(datos.getString(3));
                 } else {
                     JOptionPane.showMessageDialog(null, "No hay mas registros");
@@ -180,8 +174,7 @@ public class Paciente {
                 this.datos = this.sentencias.executeQuery("select * from pacientes where CorreoElectronico='" + this.correo.getText() + "'");
                 if (this.datos.next()) {
                     System.out.println(datos.getInt(1));
-                    JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(2
-                    ));
+                    JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(4));
                     System.out.println(datos.getString(3));
                 } else {
                     JOptionPane.showMessageDialog(null, "No hay mas registros");
@@ -203,13 +196,13 @@ public class Paciente {
                 this.datos = this.sentencias.executeQuery("select * from pacientes where Telefono='" + this.Telefono.getText() + "'");
                 if (this.datos.next()) {
                     System.out.println(datos.getInt(1));
-                    JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(2));
+                    JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(5));
                     System.out.println(datos.getString(3));
                 } else {
                     JOptionPane.showMessageDialog(null, "No hay mas registros");
                 }
 
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(null, "Paso el limite de caracteres");
             }
 
@@ -219,6 +212,8 @@ public class Paciente {
 
     }
 
-  
-
+//    public static void main(String[] args) {
+//        Conectar p = new Conectar();
+//        p.conectar();
+//    }
 }

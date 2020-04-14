@@ -5,12 +5,16 @@
  */
 package Paciente;
 
+import Conectar.Conectar;
+
 /**
  *
  * @author Dinia Alvarado
  */
 public class FrmActualizar extends javax.swing.JFrame {
-
+    
+    Paciente prueba = new Paciente();
+    Conectar conec = new Conectar();
     /**
      * Creates new form FrmActualizar
      */
@@ -53,12 +57,6 @@ public class FrmActualizar extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel2.setText("Nombre:");
-
-        nombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nombreActionPerformed(evt);
-            }
-        });
 
         jLabel3.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel3.setText("Fecha:");
@@ -167,23 +165,18 @@ public class FrmActualizar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Paciente prueba = new Paciente();
         prueba.ID = this.cedula;
         prueba.Nombre = this.nombre;
         prueba.FechaNacimiento = this.fecha;
         prueba.Telefono = this.telefono;
         prueba.correo = this.correo;
-        prueba.conectar();
+        conec.conectar();
         prueba.update();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nombreActionPerformed
 
     /**
      * @param args the command line arguments
