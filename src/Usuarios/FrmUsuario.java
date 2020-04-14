@@ -5,6 +5,7 @@
  */
 package Usuarios;
 
+import Conectar.Conectar;
 import javax.swing.JOptionPane;
 
 /**
@@ -14,6 +15,7 @@ import javax.swing.JOptionPane;
 public class FrmUsuario extends javax.swing.JFrame {
 
     Usuario p = new Usuario();
+    Conectar conec = new Conectar();       
 
     /**
      * Creates new form FrmUsuario
@@ -307,7 +309,7 @@ public class FrmUsuario extends javax.swing.JFrame {
         p.txtNombre = this.txtNombre;
         p.txtTel = this.txtTelefono;
         p.FechaNacimiento = this.txtFecha;
-        p.conectar();
+        conec.conectar();
         p.create();
      
        

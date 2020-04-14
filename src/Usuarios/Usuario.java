@@ -5,6 +5,7 @@
  */
 package Usuarios;
 
+import Conectar.Conectar;
 import com.toedter.calendar.JDateChooser;
 
 import java.sql.Connection;
@@ -71,17 +72,6 @@ public class Usuario {
         return tipo;
     }
 
-    public void conectar() {
-        try {
-            this.conexion = DriverManager.getConnection("jdbc:mysql://localhost/medicina?useServerPrepStmts=true", "root", "");
-            this.sentencias = this.conexion.createStatement();
-
-        } catch (SQLException ex) {
-
-            System.out.println(" Error al conectar");
-        }
-    }
-
     public void create() {
         try {
             if (this.txtNombre.getText().length() < 25 || this.contraseña.getText().length() < 7 || this.txtCorreo.getText().length() < 30 || this.txtTel.getText().length() < 9 || this.tipo.getText().length() < 10) {
@@ -145,7 +135,7 @@ public class Usuario {
     public void delete() { /// controlar que siempre quede un usuario registrado al momento de eliminar
         try {
             this.sentencias.executeUpdate("delete from usuarios where ID=" + this.ID.getText());
-            
+
             JOptionPane.showMessageDialog(null, "dato eliminado");
 
         } catch (SQLException ex) {
@@ -286,5 +276,10 @@ public class Usuario {
         }
 
     }
+
+//    public static void main(String[] args) {
+//        Conectar p = new Conectar();
+//        p.conectar();
+//    }
 
 }

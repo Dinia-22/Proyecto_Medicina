@@ -5,11 +5,16 @@
  */
 package Usuarios;
 
+import Conectar.Conectar;
+
 /**
  *
  * @author Maria Paula
  */
 public class FrmModificacion extends javax.swing.JFrame {
+    
+    Usuario prueba = new Usuario();
+    Conectar conec = new Conectar();
 
     /**
      * Creates new form FrmModificacion
@@ -159,10 +164,9 @@ public class FrmModificacion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed
-        Usuario prueba = new Usuario();
         prueba.contraseña = this.txtConfirmar;
         prueba.ID = this.txtId;
-        prueba.conectar();
+        conec.conectar();
         prueba.updateContraseña();
 
     }//GEN-LAST:event_aceptarActionPerformed

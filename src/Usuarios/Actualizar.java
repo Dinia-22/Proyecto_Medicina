@@ -5,11 +5,16 @@
  */
 package Usuarios;
 
+import Conectar.Conectar;
+
 /**
  *
  * @author Maria Paula
  */
 public class Actualizar extends javax.swing.JFrame {
+    
+    Usuario prueba = new Usuario();
+    Conectar conec = new Conectar();
 
     /**
      * Creates new form Actualizar
@@ -73,18 +78,6 @@ public class Actualizar extends javax.swing.JFrame {
 
         jLabel7.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel7.setText("Fecha de Nacimiento");
-
-        txtNom.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNomActionPerformed(evt);
-            }
-        });
-
-        txtCorreo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCorreoActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -211,16 +204,7 @@ public class Actualizar extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtNomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNomActionPerformed
-
-    private void txtCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCorreoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCorreoActionPerformed
-
     private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
-        Usuario prueba = new Usuario();
         prueba.ID= this.txtCedula;
         prueba.FechaNacimiento = this.txtFecha;
         prueba.NomUsuario= this.txtUsuario;
@@ -228,7 +212,7 @@ public class Actualizar extends javax.swing.JFrame {
         prueba.txtNombre = this.txtNom;
         prueba.txtTel = this.txtTel;
         prueba.txtCorreo= this.txtCorreo;
-        prueba.conectar();
+        conec.conectar();
         prueba.update();
     }//GEN-LAST:event_guardarActionPerformed
 

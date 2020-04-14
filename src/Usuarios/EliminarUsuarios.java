@@ -5,6 +5,7 @@
  */
 package Usuarios;
 
+import Conectar.Conectar;
 import javax.swing.JOptionPane;
 
 /**
@@ -12,6 +13,9 @@ import javax.swing.JOptionPane;
  * @author Maria Paula
  */
 public class EliminarUsuarios extends javax.swing.JFrame {
+    
+    Usuario prueba = new Usuario();
+    Conectar conec = new Conectar();
 
     /**
      * Creates new form EliminarUsuarios
@@ -132,8 +136,7 @@ public class EliminarUsuarios extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEliminarActionPerformed
-        Usuario prueba = new Usuario();
-        prueba.conectar();
+        conec.conectar();
         prueba.ID= this.txtDelete;
         if(prueba.ID.getText().equals("1")){ 
             JOptionPane.showMessageDialog(null, "No puede eliminar este usuario");
@@ -141,9 +144,6 @@ public class EliminarUsuarios extends javax.swing.JFrame {
         }else{
            prueba.delete(); 
         }
-        
-       
-        
     }//GEN-LAST:event_txtEliminarActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

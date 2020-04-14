@@ -5,17 +5,37 @@
  */
 package Usuarios;
 
+import Conectar.Conectar;
+import static Conectar.Conectar.sentencias;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Maria Paula
  */
 public class BuscarUsuarios extends javax.swing.JFrame {
 
+    Usuario prueba = new Usuario();
+    Conectar conec = new Conectar();
+    DefaultTableModel detamo;
+
     /**
      * Creates new form BuscarUsuarios
      */
     public BuscarUsuarios() {
         initComponents();
+        configurarTabla();
+    }
+    
+    public void configurarTabla() {
+
+        String Titulos[] = new String[8];
+        detamo = new DefaultTableModel(null, Titulos);
+        tabla.setModel(detamo);
     }
 
     /**
@@ -27,6 +47,7 @@ public class BuscarUsuarios extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         txtNom = new javax.swing.JTextField();
@@ -48,6 +69,14 @@ public class BuscarUsuarios extends javax.swing.JFrame {
         tipo = new javax.swing.JButton();
         calce = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
+        filtro = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tabla = new javax.swing.JTable();
+        jLabel9 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        verdatos = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Buscar Informacion");
@@ -76,7 +105,6 @@ public class BuscarUsuarios extends javax.swing.JFrame {
         jLabel7.setText("Tipo de Usuario");
 
         nom.setBackground(new java.awt.Color(102, 102, 102));
-        nom.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.png"))); // NOI18N
         nom.setText("Buscar Nombre");
         nom.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -85,7 +113,6 @@ public class BuscarUsuarios extends javax.swing.JFrame {
         });
 
         Usuario.setBackground(new java.awt.Color(0, 204, 255));
-        Usuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.png"))); // NOI18N
         Usuario.setText("Buscar Usuario");
         Usuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -94,7 +121,6 @@ public class BuscarUsuarios extends javax.swing.JFrame {
         });
 
         correo.setBackground(new java.awt.Color(102, 102, 102));
-        correo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.png"))); // NOI18N
         correo.setText("Buscar Correo");
         correo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -103,7 +129,6 @@ public class BuscarUsuarios extends javax.swing.JFrame {
         });
 
         tel.setBackground(new java.awt.Color(0, 204, 255));
-        tel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.png"))); // NOI18N
         tel.setText("Buscar Telefono");
         tel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -112,7 +137,6 @@ public class BuscarUsuarios extends javax.swing.JFrame {
         });
 
         fecha.setBackground(new java.awt.Color(0, 204, 255));
-        fecha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.png"))); // NOI18N
         fecha.setText("Buscar Fecha");
         fecha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -121,7 +145,6 @@ public class BuscarUsuarios extends javax.swing.JFrame {
         });
 
         tipo.setBackground(new java.awt.Color(102, 102, 102));
-        tipo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.png"))); // NOI18N
         tipo.setText("Buscar Tipo");
         tipo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -130,7 +153,6 @@ public class BuscarUsuarios extends javax.swing.JFrame {
         });
 
         calce.setBackground(new java.awt.Color(102, 102, 102));
-        calce.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cancelar.png"))); // NOI18N
         calce.setText("Cancelar");
         calce.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -148,6 +170,25 @@ public class BuscarUsuarios extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(nom)
+                            .addComponent(fecha))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(1, 1, 1)
+                                .addComponent(tipo, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(tel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(calce))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(68, 68, 68)
+                                .addComponent(Usuario)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(correo)))
+                        .addGap(145, 145, 145))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -170,28 +211,9 @@ public class BuscarUsuarios extends javax.swing.JFrame {
                                     .addComponent(txtUsuario)
                                     .addComponent(txtU)
                                     .addComponent(txtFecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                        .addGap(88, 88, 88)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(nom)
-                            .addComponent(fecha))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(1, 1, 1)
-                                .addComponent(tipo, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(tel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(calce))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(68, 68, 68)
-                                .addComponent(Usuario)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(correo)))
-                        .addGap(145, 145, 145))))
+                        .addGap(85, 85, 85))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -201,10 +223,7 @@ public class BuscarUsuarios extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(txtNom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(24, 24, 24))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -213,13 +232,13 @@ public class BuscarUsuarios extends javax.swing.JFrame {
                                     .addComponent(jLabel4)
                                     .addComponent(txtTel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(jLabel1)))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(2, 2, 2)
-                                .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -227,84 +246,188 @@ public class BuscarUsuarios extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nom)
-                    .addComponent(Usuario)
-                    .addComponent(correo))
-                .addGap(29, 29, 29)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tipo)
-                    .addComponent(fecha)
-                    .addComponent(tel)
-                    .addComponent(calce))
-                .addContainerGap())
+                            .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(nom)
+                            .addComponent(Usuario)
+                            .addComponent(correo))
+                        .addGap(29, 29, 29)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(tipo)
+                            .addComponent(fecha)
+                            .addComponent(tel)
+                            .addComponent(calce))
+                        .addContainerGap())
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
+
+        jTabbedPane1.addTab("Buscar", jPanel1);
+
+        filtro.setBackground(new java.awt.Color(204, 204, 204));
+
+        tabla.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane3.setViewportView(tabla);
+
+        jLabel9.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        jLabel9.setText("Buscar por Filtro:");
+
+        jButton1.setBackground(new java.awt.Color(102, 102, 102));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.png"))); // NOI18N
+        jButton1.setText("Buscar Filtro");
+
+        verdatos.setBackground(new java.awt.Color(102, 102, 102));
+        verdatos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/binoculars.png"))); // NOI18N
+        verdatos.setText("Ver Datos");
+        verdatos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                verdatosActionPerformed(evt);
+            }
+        });
+
+        jButton2.setBackground(new java.awt.Color(0, 204, 255));
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cancelar.png"))); // NOI18N
+        jButton2.setText("Cancelar");
+
+        javax.swing.GroupLayout filtroLayout = new javax.swing.GroupLayout(filtro);
+        filtro.setLayout(filtroLayout);
+        filtroLayout.setHorizontalGroup(
+            filtroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(filtroLayout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(jLabel9)
+                .addGap(18, 18, 18)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(20, 20, 20))
+            .addGroup(filtroLayout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 564, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(35, Short.MAX_VALUE))
+            .addGroup(filtroLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(verdatos)
+                .addGap(139, 139, 139)
+                .addComponent(jButton2)
+                .addGap(125, 125, 125))
+        );
+        filtroLayout.setVerticalGroup(
+            filtroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, filtroLayout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addGroup(filtroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addGroup(filtroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(verdatos)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(23, 23, 23))
+        );
+
+        jTabbedPane1.addTab("Filtro", filtro);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 564, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jTabbedPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jTabbedPane1)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void nomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomActionPerformed
-        Usuario prueba = new Usuario();
         prueba.txtNombre = this.txtNom;
-        prueba.conectar();
+        conec.conectar();
         prueba.readNombre();
-
     }//GEN-LAST:event_nomActionPerformed
 
     private void UsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsuarioActionPerformed
-        Usuario prueba = new Usuario();
         prueba.NomUsuario = this.txtU;
-        prueba.conectar();
+        conec.conectar();
         prueba.readUsuario();
     }//GEN-LAST:event_UsuarioActionPerformed
 
     private void correoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_correoActionPerformed
-        Usuario prueba = new Usuario();
         prueba.txtCorreo = this.txtCorreo;
-        prueba.conectar();
+        conec.conectar();
         prueba.readCorreo();
     }//GEN-LAST:event_correoActionPerformed
 
     private void telActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_telActionPerformed
-        Usuario prueba = new Usuario();
         prueba.txtTel = this.txtTel;
-        prueba.conectar();
+        conec.conectar();
         prueba.readTel();
     }//GEN-LAST:event_telActionPerformed
 
     private void fechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fechaActionPerformed
         Usuario prueba = new Usuario();
         prueba.FechaNacimiento = this.txtFecha;
-        prueba.conectar();
+        conec.conectar();
         prueba.readFecha();
-
     }//GEN-LAST:event_fechaActionPerformed
 
     private void tipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoActionPerformed
-        Usuario prueba = new Usuario();
         prueba.tipo = this.txtUsuario;
-        prueba.conectar();
+        conec.conectar();
         prueba.readTipo();
     }//GEN-LAST:event_tipoActionPerformed
 
     private void calceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calceActionPerformed
         this.dispose();
     }//GEN-LAST:event_calceActionPerformed
+
+    private void verdatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verdatosActionPerformed
+        conec.conectar();
+        String fecha;
+        try {
+            ResultSet rs = sentencias.executeQuery("SELECT * FROM usuarios");
+            String Titulos[] = {"ID", "NombreCompleto", "FechaNacimiento", "Telefono", "CorreoElectronico","NombredeUsuario","Contraseña","TipodeUsuario"};
+            detamo = new DefaultTableModel(null, Titulos);
+
+            String fila[] = new String[8];
+            rs.beforeFirst();
+            while (rs.next()) {
+
+                fila[0] = rs.getString("ID");
+                fila[1] = rs.getString("NombreCompleto");
+                fecha = rs.getString("FechaNacimiento");
+                fecha = fecha.substring(8, 10) + "/" + fecha.substring(5, 7) + "/" + fecha.substring(0, 4);
+                fila[2] = fecha;
+                fila[3] = rs.getString("Telefono");
+                fila[4] = rs.getString("CorreoElectronico");
+                fila[5] = rs.getString("NombredeUsuario");
+                fila[6] = rs.getString("Contraseña");
+                fila[7] = rs.getString("TipodeUsuario");
+                detamo.addRow(fila);
+            }
+            tabla.setModel(detamo);
+        } catch (SQLException ex) {
+            //JOptionPane.showMessageDialog(null, "Error al extraer datos de la tabla");
+            Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_verdatosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -346,6 +469,9 @@ public class BuscarUsuarios extends javax.swing.JFrame {
     private javax.swing.JButton calce;
     private javax.swing.JButton correo;
     private javax.swing.JButton fecha;
+    private javax.swing.JPanel filtro;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
@@ -353,8 +479,13 @@ public class BuscarUsuarios extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JButton nom;
+    private javax.swing.JTable tabla;
     private javax.swing.JButton tel;
     private javax.swing.JButton tipo;
     private javax.swing.JTextField txtCorreo;
@@ -363,5 +494,6 @@ public class BuscarUsuarios extends javax.swing.JFrame {
     private javax.swing.JTextField txtTel;
     private javax.swing.JTextField txtU;
     private javax.swing.JTextField txtUsuario;
+    private javax.swing.JButton verdatos;
     // End of variables declaration//GEN-END:variables
 }
