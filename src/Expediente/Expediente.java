@@ -301,7 +301,7 @@ public class Expediente extends Thread {
             JOptionPane.showMessageDialog(null, "Ah sido efectuada");
         }
     }
-
+    ///////////////////////////////////metodo Hilo clase Thread//////////////////////////////////
     @Override
     public void run() {
         System.out.println("Hola soy un Hilo");
