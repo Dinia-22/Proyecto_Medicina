@@ -304,6 +304,8 @@ public class Expediente extends Thread {
     ///////////////////////////////////metodo Hilo clase Thread//////////////////////////////////
     @Override
     public void run() {
+        xmlconfig();
         System.out.println("Hola soy un Hilo");
+
     }
 }
