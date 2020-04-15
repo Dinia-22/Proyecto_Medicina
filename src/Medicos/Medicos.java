@@ -5,15 +5,13 @@
  */
 package Medicos;
 
-import Conectar.Conectar;
+import static Conectar.Conectar.conexion;
+import static Conectar.Conectar.datos;
+import static Conectar.Conectar.sentencias;
 import Usuarios.Usuario;
 import com.toedter.calendar.JDateChooser;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -35,10 +33,7 @@ public class Medicos {
     public JTextField especialidad;
     public JTextField salario;
 
-    private Statement sentencias;
-    private Connection conexion;
-    private ResultSet datos;
-
+    
     public JTextField getID() {
         return ID;
     }
@@ -101,7 +96,6 @@ public class Medicos {
                 PreparedStatement sentencia;
                 sentencia = conexion.prepareStatement("insert medicos values(null,?,?,?,?,?,?,?)");
                 SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
-                //sentencia.setString(1, ID.getText());
                 sentencia.setString(1, Nombre.getText());
                 sentencia.setString(2, date.format(FechaNacimiento.getDate()));
                 sentencia.setString(3, this.tel.getText());
@@ -124,9 +118,9 @@ public class Medicos {
     ////////////////////////////////////////Buscar////////////////////////////////////////
     public void readCedula() {
         try {
-            if (this.ID.getText().length() <= 1) {
-                this.datos = this.sentencias.executeQuery("select * from medicos where ID='" + this.ID.getText() + "'");
-                if (this.datos.next()) {
+            if (this.ID.getText().length() <= 11) {
+                datos = sentencias.executeQuery("select * from medicos where ID='" + this.ID.getText() + "'");
+                if (datos.next()) {
                     System.out.println(datos.getInt(1));
                     JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(2));
                     System.out.println(datos.getString(3));
@@ -147,8 +141,8 @@ public class Medicos {
     public void readNombre() {
         try {
             if (this.Nombre.getText().length() <= 25) {
-                this.datos = this.sentencias.executeQuery("select * from medicos where NombreCompleto='" + this.Nombre.getText() + "'");
-                if (this.datos.next()) {
+                datos = sentencias.executeQuery("select * from medicos where NombreCompleto='" + this.Nombre.getText() + "'");
+                if (datos.next()) {
                     System.out.println(datos.getInt(1));
                     JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(3));
                     System.out.println(datos.getString(3));
@@ -170,8 +164,8 @@ public class Medicos {
         try {
             SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
 
-            this.datos = this.sentencias.executeQuery("select * from medicos where FechaNacimiento='" + dt.format(this.FechaNacimiento.getDate()) + "'");
-            if (this.datos.next()) {
+            datos = sentencias.executeQuery("select * from medicos where FechaNacimiento='" + dt.format(this.FechaNacimiento.getDate()) + "'");
+            if (datos.next()) {
                 System.out.println(datos.getInt(1));
                 JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(4));
                 System.out.println(datos.getString(3));
@@ -186,8 +180,8 @@ public class Medicos {
     public void readTel() {
         try {
             if (this.tel.getText().length() <= 10) {
-                this.datos = this.sentencias.executeQuery("select * from medicos where Telefono='" + this.tel.getText() + "'");
-                if (this.datos.next()) {
+                datos = sentencias.executeQuery("select * from medicos where Telefono='" + this.tel.getText() + "'");
+                if (datos.next()) {
                     System.out.println(datos.getInt(1));
                     JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(5));
                     System.out.println(datos.getString(3));
@@ -209,8 +203,8 @@ public class Medicos {
     public void readCorreo() {
         try {
             if (correo.getText().length() <= 30) {
-                this.datos = this.sentencias.executeQuery("select * from medicos where CorreoElectronico='" + this.correo.getText() + "'");
-                if (this.datos.next()) {
+                datos = sentencias.executeQuery("select * from medicos where CorreoElectronico='" + this.correo.getText() + "'");
+                if (datos.next()) {
                     System.out.println(datos.getInt(1));
                     JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(6));
                     System.out.println(datos.getString(3));
@@ -231,8 +225,8 @@ public class Medicos {
     public void readCodigo() {
         try {
             if (this.Codigo.getText().length() < 7) {
-                this.datos = this.sentencias.executeQuery("select * from medicos where Codigo='" + this.Codigo.getText() + "'");
-                if (this.datos.next()) {
+                datos = sentencias.executeQuery("select * from medicos where Codigo='" + this.Codigo.getText() + "'");
+                if (datos.next()) {
                     System.out.println(datos.getInt(1));
                     JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(7));
                     System.out.println(datos.getString(3));
@@ -253,8 +247,8 @@ public class Medicos {
     public void readEspecialidad() {
         try {
             if (this.especialidad.getText().length() < 15) {
-                this.datos = this.sentencias.executeQuery("select * from medicos where especialidad='" + this.especialidad.getText() + "'");
-                if (this.datos.next()) {
+                datos = sentencias.executeQuery("select * from medicos where especialidad='" + this.especialidad.getText() + "'");
+                if (datos.next()) {
                     System.out.println(datos.getInt(1));
                     JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(8));
                     System.out.println(datos.getString(3));
@@ -273,8 +267,8 @@ public class Medicos {
 
     public void readSalario() {
         try {
-            this.datos = this.sentencias.executeQuery("select * from medicos where Salario='" + this.salario.getText() + "'");
-            if (this.datos.next()) {
+            datos = sentencias.executeQuery("select * from medicos where Salario='" + this.salario.getText() + "'");
+            if (datos.next()) {
                 System.out.println(datos.getInt(1));
                 JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(9));
                 System.out.println(datos.getString(3));
@@ -289,7 +283,7 @@ public class Medicos {
     ////////////////////////////////////////Metodos de Eliminar////////////////////////////////////////
     public void delete() {
         try {
-            this.sentencias.executeUpdate("delete from medicos where id=" + this.ID.getText());
+            sentencias.executeUpdate("delete from medicos where id=" + this.ID.getText());
             JOptionPane.showMessageDialog(null, "Usuario Eliminado");
         } catch (SQLException ex) {
 
@@ -304,7 +298,7 @@ public class Medicos {
         try {
             if (this.Nombre.getText().length() < 25 || this.tel.getText().length() < 10 || this.correo.getText().length() < 30 || this.Codigo.getText().length() < 7 || this.especialidad.getText().length() < 15) {
                 SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
-                this.sentencias.executeUpdate("update medicos set NombreCompleto='" + this.Nombre.getText() + "',FechaNacimiento='" + dt.format(this.FechaNacimiento.getDate()) + "',Telefono='" + this.tel.getText() + "',CorreoElectronico='" + this.correo.getText() + "',Codigo='" + this.Codigo.getText() + "',Especialidad='" + this.especialidad.getText() + "',Salario='" + this.salario.getText() + "' where id=" + this.ID.getText());
+                sentencias.executeUpdate("update medicos set NombreCompleto='" + this.Nombre.getText() + "',FechaNacimiento='" + dt.format(this.FechaNacimiento.getDate()) + "',Telefono='" + this.tel.getText() + "',CorreoElectronico='" + this.correo.getText() + "',Codigo='" + this.Codigo.getText() + "',Especialidad='" + this.especialidad.getText() + "',Salario='" + this.salario.getText() + "' where id=" + this.ID.getText());
                 JOptionPane.showMessageDialog(null, "Se actualizaron los datos");
 
             } else {
