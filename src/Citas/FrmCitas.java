@@ -6,14 +6,9 @@
 package Citas;
 
 import Conectar.Conectar;
-import FrameConfiguracion.ConfiguracionBaseDatos;
 import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Maria Paula
- */
 public class FrmCitas extends javax.swing.JFrame {
 
     Citas prueba = new Citas();
@@ -255,8 +250,6 @@ public class FrmCitas extends javax.swing.JFrame {
 
     private void cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelActionPerformed
         this.dispose();  //decirle a una ventana que se destruya     
-
-        //System.exit(0);
     }//GEN-LAST:event_cancelActionPerformed
 
     private void saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveActionPerformed
@@ -271,21 +264,16 @@ public class FrmCitas extends javax.swing.JFrame {
         }else{
             prueba.create();
         } 
-       
-
-
     }//GEN-LAST:event_saveActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         Buscar b = new Buscar();
         b.setVisible(true);
-
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         Eliminar b = new Eliminar();
         b.setVisible(true);
-
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
