@@ -5,6 +5,9 @@
  */
 package Expediente;
 
+import static Conectar.Conectar.conexion;
+import static Conectar.Conectar.datos;
+import static Conectar.Conectar.sentencias;
 import Usuarios.Usuario;
 import com.toedter.calendar.JDateChooser;
 import java.io.File;
@@ -47,9 +50,6 @@ public class Expediente {
     public JTextField Descrip;
     public JTextField paciente;
     public JTextField ID;
-    private ResultSet datos;
-    private Connection conexion;
-    private Statement sentencias;
     SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
 
     public Expediente() {
@@ -58,8 +58,6 @@ public class Expediente {
         this.medico = medico;
         this.Descrip = Descrip;
         this.paciente = paciente;
-        this.conexion = conexion;
-        this.sentencias = sentencias;
     }
 
     public JDateChooser getFecha() {
@@ -99,7 +97,7 @@ public class Expediente {
     public void update() {
         try {
             if (this.hora.getText().length() < 10 || this.medico.getText().length() < 25 || Descrip.getText().length() < 50 || paciente.getText().length() < 25) {
-                this.sentencias.executeUpdate("update expediente set fecha='" + dt.format(this.Fecha.getDate()) + "',hora='" + this.hora.getText() + "',medico='" + this.medico.getText() + "',descripcion='" + this.Descrip.getText() + "',paciente='" + this.paciente.getText() + "' where id=" + this.ID.getText());
+                sentencias.executeUpdate("update expediente set fecha='" + dt.format(this.Fecha.getDate()) + "',hora='" + this.hora.getText() + "',medico='" + this.medico.getText() + "',descripcion='" + this.Descrip.getText() + "',paciente='" + this.paciente.getText() + "' where id=" + this.ID.getText());
                 JOptionPane.showMessageDialog(null, "Se actualizaron los datos");
             } else {
                 JOptionPane.showMessageDialog(null, "Paso el limite de caracteres");
@@ -114,9 +112,9 @@ public class Expediente {
     public void Read_Cedula() {
 
         try {
-            if (this.ID.getText().length() <= 1) {
-                this.datos = this.sentencias.executeQuery("select * from expediente where id='" + this.ID.getText() + "'");
-                if (this.datos.next()) {
+            if (this.ID.getText().length() <= 11) {
+                datos = sentencias.executeQuery("select * from expediente where id='" + this.ID.getText() + "'");
+                if (datos.next()) {
                     System.out.println(datos.getInt(1));
                     JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(1));
                     System.out.println(datos.getString(3));
@@ -136,8 +134,8 @@ public class Expediente {
 
     public void readFecha() {
         try {
-            this.datos = this.sentencias.executeQuery("select * from expediente where Fecha='" + dt.format(this.Fecha.getDate()) + "'");
-            if (this.datos.next()) {
+            datos = sentencias.executeQuery("select * from expediente where Fecha='" + dt.format(this.Fecha.getDate()) + "'");
+            if (datos.next()) {
                 System.out.println(datos.getInt(1));
                 JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(2));
                 System.out.println(datos.getString(3));
@@ -153,8 +151,8 @@ public class Expediente {
     public void readHora() {
         try {
             if (this.hora.getText().length() <= 8) {
-                this.datos = this.sentencias.executeQuery("select * from expediente where Hora='" + this.hora.getText() + "'");
-                if (this.datos.next()) {
+                datos = sentencias.executeQuery("select * from expediente where Hora='" + this.hora.getText() + "'");
+                if (datos.next()) {
                     System.out.println(datos.getInt(1));
                     JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(3));
                     System.out.println(datos.getString(3));
@@ -176,8 +174,8 @@ public class Expediente {
     public void readMedico() {
         try {
             if (medico.getText().length() <= 25) {
-                this.datos = this.sentencias.executeQuery("select * from expediente where Medico='" + this.medico.getText() + "'");
-                if (this.datos.next()) {
+                datos = sentencias.executeQuery("select * from expediente where Medico='" + this.medico.getText() + "'");
+                if (datos.next()) {
                     System.out.println(datos.getInt(1));
                     JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(4));
                     System.out.println(datos.getString(3));
@@ -198,8 +196,8 @@ public class Expediente {
     public void readDescripcion() {
         try {
             if (this.Descrip.getText().length() >= 50) {
-                this.datos = this.sentencias.executeQuery("select * from expediente where Descripcion='" + this.Descrip.getText() + "'");
-                if (this.datos.next()) {
+                datos = sentencias.executeQuery("select * from expediente where Descripcion='" + this.Descrip.getText() + "'");
+                if (datos.next()) {
                     System.out.println(datos.getInt(1));
                     JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(5));
                     System.out.println(datos.getString(3));
@@ -220,8 +218,8 @@ public class Expediente {
     public void readPaciente() {
         try {
             if (this.paciente.getText().length() <= 25) {
-                this.datos = this.sentencias.executeQuery("select * from expediente where Paciente='" + this.paciente.getText() + "'");
-                if (this.datos.next()) {
+                datos = sentencias.executeQuery("select * from expediente where Paciente='" + this.paciente.getText() + "'");
+                if (datos.next()) {
                     System.out.println(datos.getInt(1));
                     JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(6));
                     System.out.println(datos.getString(3));
@@ -241,7 +239,7 @@ public class Expediente {
 
     public void delete() { /// controlar que siempre quede un usuario registrado al momento de eliminar
         try {
-            this.sentencias.executeUpdate("delete from expediente where id=" + this.ID.getText());
+            sentencias.executeUpdate("delete from expediente where id=" + this.ID.getText());
             JOptionPane.showMessageDialog(null, "Usuario Eliminado");
 
         } catch (SQLException ex) {
