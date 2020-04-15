@@ -42,7 +42,7 @@ import org.w3c.dom.Text;
  *
  * @author Maria Paula
  */
-public class Expediente {
+public class Expediente extends Thread {
 
     public JDateChooser Fecha;
     public JTextField hora;
@@ -108,7 +108,7 @@ public class Expediente {
         }
 
     }
-    
+
     public void Read_Cedula() {
 
         try {
@@ -227,7 +227,7 @@ public class Expediente {
                     JOptionPane.showMessageDialog(null, "No hay mas registros");
                 }
 
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(null, "Paso el limite de caracteres");
             }
 
@@ -302,4 +302,8 @@ public class Expediente {
         }
     }
 
+    @Override
+    public void run() {
+        System.out.println("Hola soy un Hilo");
+    }
 }

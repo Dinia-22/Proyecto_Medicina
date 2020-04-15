@@ -262,9 +262,10 @@ public class FrmExpediente extends javax.swing.JFrame {
         ex.Fecha = this.txtFecha;
         ex.hora = this.txtHora;
         ex.medico = this.txtMedico;
-        ex.xmlconfig();
+//        ex.xmlconfig();
         conec.conectar();
         ex.create();
+        ex.start();
     }//GEN-LAST:event_aceptarActionPerformed
 
     private void actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarActionPerformed
@@ -276,7 +277,8 @@ public class FrmExpediente extends javax.swing.JFrame {
         ex.ID = this.txtID;
         conec.conectar();
         ex.update();
-        ex.xmlconfig();
+//        ex.xmlconfig();
+        ex.start();
 
     }//GEN-LAST:event_actualizarActionPerformed
 

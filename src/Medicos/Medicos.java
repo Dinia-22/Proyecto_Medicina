@@ -425,8 +425,7 @@ public class Medicos {
             return resta;
         } else if (salario >= 1226001) {
             double impu = (15 * salario) / 100;
-            double impu2 = (10 * salario) / 100;
-            double suma = im1 + im2 + im3 + im4 + impu2 + impu;
+            double suma = im1 + im2 + im3 + im4 + impu;
             double restados = salario - suma;
             JOptionPane.showMessageDialog(null, "el salario neto descontando los impuestos del la \n"
                     + " Enfermedad y maternidad 5.5%.  \n"
