@@ -5,16 +5,13 @@
  */
 package Paciente;
 
-import Conectar.Conectar;
+import static Conectar.Conectar.conexion;
+import static Conectar.Conectar.datos;
+import static Conectar.Conectar.sentencias;
 import com.toedter.calendar.JDateChooser;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.text.SimpleDateFormat;
-
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -32,10 +29,6 @@ public class Paciente {
     public JTextField correo;
     public JTextField edad;
     public JTextField Telefono;
-
-    private Connection conexion;
-    private Statement sentencias;
-    private ResultSet datos;
 
     public JTextField getID() {
         return ID;
@@ -86,7 +79,7 @@ public class Paciente {
         try {
             if (this.Nombre.getText().length() < 25 || this.Telefono.getText().length() < 10 || this.correo.getText().length() < 30) {
                 SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
-                this.sentencias.executeUpdate("update pacientes set NombreCompleto='" + this.Nombre.getText() + "',FechaNacimiento='" + dt.format(this.FechaNacimiento.getDate()) + "',Telefono='" + this.Telefono.getText() + "',CorreoElectronico='" + this.correo.getText() + "' where id=" + this.ID.getText());
+                sentencias.executeUpdate("update pacientes set NombreCompleto='" + this.Nombre.getText() + "',FechaNacimiento='" + dt.format(this.FechaNacimiento.getDate()) + "',Telefono='" + this.Telefono.getText() + "',CorreoElectronico='" + this.correo.getText() + "' where id=" + this.ID.getText());
                 JOptionPane.showMessageDialog(null, "Se actualizaron los datos");
             } else {
                 JOptionPane.showMessageDialog(null, "Paso el limite de caracteres");
@@ -99,7 +92,7 @@ public class Paciente {
 
     public void delete() {
         try {
-            this.sentencias.executeUpdate("delete from pacientes where id=" + ID.getText());
+            sentencias.executeUpdate("delete from pacientes where id=" + ID.getText());
         } catch (SQLException ex) {
             System.out.println("Error en delete");
         }
@@ -109,9 +102,9 @@ public class Paciente {
     public void Read_Cedula() {
 
         try {
-            if (this.ID.getText().length() <= 1) {
-                this.datos = this.sentencias.executeQuery("select * from pacientes where id='" + this.ID.getText() + "'");
-                if (this.datos.next()) {
+            if (this.ID.getText().length() <= 11) {
+                datos = sentencias.executeQuery("select * from pacientes where id='" + this.ID.getText() + "'");
+                if (datos.next()) {
                     System.out.println(datos.getInt(1));
                     JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(1));
                     System.out.println(datos.getString(3));
@@ -133,8 +126,8 @@ public class Paciente {
 
         try {
             if (this.Nombre.getText().length() <= 25) {
-                this.datos = this.sentencias.executeQuery("select * from pacientes where NombreCompleto='" + this.Nombre.getText() + "'");
-                if (this.datos.next()) {
+                datos = sentencias.executeQuery("select * from pacientes where NombreCompleto='" + this.Nombre.getText() + "'");
+                if (datos.next()) {
                     System.out.println(datos.getInt(1));
                     JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(2));
                     System.out.println(datos.getString(3));
@@ -155,8 +148,8 @@ public class Paciente {
     public void Read_Fecha() {
         try {
             SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
-            this.datos = this.sentencias.executeQuery("select * from pacientes where FechaNacimiento='" + dt.format(this.FechaNacimiento.getDate()) + "'");
-            if (this.datos.next()) {
+            datos = sentencias.executeQuery("select * from pacientes where FechaNacimiento='" + dt.format(this.FechaNacimiento.getDate()) + "'");
+            if (datos.next()) {
                 System.out.println(datos.getInt(1));
                 JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(3));
                 System.out.println(datos.getString(3));
@@ -171,8 +164,8 @@ public class Paciente {
     public void Read_Correo() {
         try {
             if (correo.getText().length() <= 30) {
-                this.datos = this.sentencias.executeQuery("select * from pacientes where CorreoElectronico='" + this.correo.getText() + "'");
-                if (this.datos.next()) {
+                datos = sentencias.executeQuery("select * from pacientes where CorreoElectronico='" + this.correo.getText() + "'");
+                if (datos.next()) {
                     System.out.println(datos.getInt(1));
                     JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(4));
                     System.out.println(datos.getString(3));
@@ -193,8 +186,8 @@ public class Paciente {
 
         try {
             if (this.Telefono.getText().length() < 7) {
-                this.datos = this.sentencias.executeQuery("select * from pacientes where Telefono='" + this.Telefono.getText() + "'");
-                if (this.datos.next()) {
+                datos = sentencias.executeQuery("select * from pacientes where Telefono='" + this.Telefono.getText() + "'");
+                if (datos.next()) {
                     System.out.println(datos.getInt(1));
                     JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(5));
                     System.out.println(datos.getString(3));

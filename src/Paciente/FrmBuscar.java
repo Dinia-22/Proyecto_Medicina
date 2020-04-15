@@ -73,7 +73,7 @@ public class FrmBuscar extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         verdatos = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        cancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(480, 200));
@@ -98,6 +98,7 @@ public class FrmBuscar extends javax.swing.JFrame {
         jLabel5.setText("Correo Electronico:");
 
         busnombre.setBackground(new java.awt.Color(102, 102, 102));
+        busnombre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.png"))); // NOI18N
         busnombre.setText("Buscar Nombre");
         busnombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -106,6 +107,7 @@ public class FrmBuscar extends javax.swing.JFrame {
         });
 
         buscedula.setBackground(new java.awt.Color(102, 102, 102));
+        buscedula.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.png"))); // NOI18N
         buscedula.setText("Buscar Cedula");
         buscedula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -114,6 +116,7 @@ public class FrmBuscar extends javax.swing.JFrame {
         });
 
         busfecha.setBackground(new java.awt.Color(0, 204, 255));
+        busfecha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.png"))); // NOI18N
         busfecha.setText("Buscar Fecha");
         busfecha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -122,6 +125,7 @@ public class FrmBuscar extends javax.swing.JFrame {
         });
 
         bustelefono.setBackground(new java.awt.Color(102, 102, 102));
+        bustelefono.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.png"))); // NOI18N
         bustelefono.setText("Buscar Telefono");
         bustelefono.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -130,6 +134,7 @@ public class FrmBuscar extends javax.swing.JFrame {
         });
 
         buscorreo.setBackground(new java.awt.Color(0, 204, 255));
+        buscorreo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.png"))); // NOI18N
         buscorreo.setText("Buscar Correo");
         buscorreo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -138,6 +143,7 @@ public class FrmBuscar extends javax.swing.JFrame {
         });
 
         buscan.setBackground(new java.awt.Color(102, 102, 102));
+        buscan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.png"))); // NOI18N
         buscan.setText("Cancelar");
         buscan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -163,8 +169,8 @@ public class FrmBuscar extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(buscedula)
                         .addGap(18, 18, 18)
-                        .addComponent(buscorreo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
+                        .addComponent(buscorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(buscan)
                         .addGap(8, 8, 8))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -188,7 +194,7 @@ public class FrmBuscar extends javax.swing.JFrame {
                                 .addComponent(busfecha)
                                 .addGap(8, 8, 8)
                                 .addComponent(bustelefono)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 48, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -260,9 +266,14 @@ public class FrmBuscar extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(0, 204, 255));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cancelar.png"))); // NOI18N
-        jButton2.setText("Cancelar");
+        cancelar.setBackground(new java.awt.Color(0, 204, 255));
+        cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cancelar.png"))); // NOI18N
+        cancelar.setText("Cancelar");
+        cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout filtroLayout = new javax.swing.GroupLayout(filtro);
         filtro.setLayout(filtroLayout);
@@ -285,7 +296,7 @@ public class FrmBuscar extends javax.swing.JFrame {
                         .addGap(81, 81, 81)
                         .addComponent(verdatos)
                         .addGap(64, 64, 64)
-                        .addComponent(jButton2)))
+                        .addComponent(cancelar)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         filtroLayout.setVerticalGroup(
@@ -301,7 +312,7 @@ public class FrmBuscar extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addGroup(filtroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(verdatos)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(23, 23, 23))
         );
 
@@ -317,7 +328,7 @@ public class FrmBuscar extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 348, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1)
         );
 
         pack();
@@ -389,6 +400,10 @@ public class FrmBuscar extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_verdatosActionPerformed
 
+    private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_cancelarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -431,12 +446,12 @@ public class FrmBuscar extends javax.swing.JFrame {
     private javax.swing.JButton busfecha;
     private javax.swing.JButton busnombre;
     private javax.swing.JButton bustelefono;
+    private javax.swing.JButton cancelar;
     private javax.swing.JTextField cedula;
     private javax.swing.JTextField correo;
     private com.toedter.calendar.JDateChooser fecha;
     private javax.swing.JPanel filtro;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
