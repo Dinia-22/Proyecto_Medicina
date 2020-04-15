@@ -5,11 +5,11 @@
  */
 package Usuarios;
 
-import Conectar.Conectar;
+import static Conectar.Conectar.conexion;
+import static Conectar.Conectar.datos;
+import static Conectar.Conectar.sentencias;
 import com.toedter.calendar.JDateChooser;
-
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -36,9 +36,6 @@ public class Usuario {
     public JTextField contraseña;
     public JTextField tipo;
     public JTextField txtNombre;
-    private Connection conexion;
-    private Statement sentencias;
-    private ResultSet datos;
 
     public JTextField getID() {
         return ID;
@@ -104,7 +101,7 @@ public class Usuario {
         try {
             if (this.txtNombre.getText().length() < 25 || this.contraseña.getText().length() < 7 || this.txtCorreo.getText().length() < 30 || this.txtTel.getText().length() < 9 || this.tipo.getText().length() < 10) {
                 SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
-                this.sentencias.executeUpdate("update usuarios set NombreCompleto='" + this.txtNombre.getText() + "',FechaNacimiento='" + dt.format(this.FechaNacimiento.getDate()) + "',Telefono='" + this.txtTel.getText() + "',CorreoElectronico='" + this.txtCorreo.getText() + "',NombredeUsuario='" + this.NomUsuario.getText() + "',TipodeUsuario='" + this.tipo.getText() + "' where ID=" + this.ID.getText());
+                sentencias.executeUpdate("update usuarios set NombreCompleto='" + this.txtNombre.getText() + "',FechaNacimiento='" + dt.format(this.FechaNacimiento.getDate()) + "',Telefono='" + this.txtTel.getText() + "',CorreoElectronico='" + this.txtCorreo.getText() + "',NombredeUsuario='" + this.NomUsuario.getText() + "',TipodeUsuario='" + this.tipo.getText() + "' where ID=" + this.ID.getText());
                 JOptionPane.showMessageDialog(null, "Se actualizaron los datos");
 
             } else {
@@ -119,7 +116,7 @@ public class Usuario {
     public void updateContraseña() {
         try {
             if (this.contraseña.getText().length() < 15) {
-                this.sentencias.executeUpdate("update usuarios set contraseña='" + this.contraseña.getText() + "' where id=" + this.ID.getText());
+                sentencias.executeUpdate("update usuarios set contraseña='" + this.contraseña.getText() + "' where id=" + this.ID.getText());
                 JOptionPane.showMessageDialog(null, "Se actualizo la contraseña");
 
             } else {
@@ -134,7 +131,7 @@ public class Usuario {
 
     public void delete() { /// controlar que siempre quede un usuario registrado al momento de eliminar
         try {
-            this.sentencias.executeUpdate("delete from usuarios where ID=" + this.ID.getText());
+            sentencias.executeUpdate("delete from usuarios where ID=" + this.ID.getText());
 
             JOptionPane.showMessageDialog(null, "dato eliminado");
 
@@ -145,11 +142,34 @@ public class Usuario {
     }
 
     ///////////////////////////// para buscar la informacion del usuario///////////////////////////////////////////////////
+    public void Read_Cedula() {
+
+        try {
+            if (this.ID.getText().length() <= 11) {
+                datos = sentencias.executeQuery("select * from usuarios where id='" + this.ID.getText() + "'");
+                if (datos.next()) {
+                    System.out.println(datos.getInt(1));
+                    JOptionPane.showMessageDialog(null, "Dato Encontrado "+ datos.getString(1));
+                    System.out.println(datos.getString(3));
+                } else {
+                    JOptionPane.showMessageDialog(null, "No hay mas registros");
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Se paso del limite de caracteres");
+
+            }
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error en el read");
+        }
+    }
+
     public void readNombre() {
         try {
             if (this.txtNombre.getText().length() <= 25) {
-                this.datos = this.sentencias.executeQuery("select * from usuarios where NombreCompleto='" + this.txtNombre.getText() + "'");
-                if (this.datos.next()) {
+                datos = sentencias.executeQuery("select * from usuarios where NombreCompleto='" + this.txtNombre.getText() + "'");
+                if (datos.next()) {
                     System.out.println(datos.getInt(1));
                     JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(2));
                     System.out.println(datos.getString(3));
@@ -171,8 +191,8 @@ public class Usuario {
         try {
             SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
 
-            this.datos = this.sentencias.executeQuery("select * from usuarios where FechaNacimiento='" + dt.format(this.FechaNacimiento.getDate()) + "'");
-            if (this.datos.next()) {
+            datos = sentencias.executeQuery("select * from usuarios where FechaNacimiento='" + dt.format(this.FechaNacimiento.getDate()) + "'");
+            if (datos.next()) {
 
                 System.out.println(datos.getInt(1));
                 JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(3));
@@ -191,8 +211,8 @@ public class Usuario {
     public void readCorreo() {
         try {
             if (this.txtCorreo.getText().length() <= 30) {
-                this.datos = this.sentencias.executeQuery("select * from usuarios where CorreoElectronico='" + this.txtCorreo.getText() + "'");
-                if (this.datos.next()) {
+                datos = sentencias.executeQuery("select * from usuarios where CorreoElectronico='" + this.txtCorreo.getText() + "'");
+                if (datos.next()) {
                     System.out.println(datos.getInt(1));
                     JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(4));
                     System.out.println(datos.getString(3));
@@ -213,8 +233,8 @@ public class Usuario {
     public void readUsuario() {
         try {
             if (this.NomUsuario.getText().length() <= 15) {
-                this.datos = this.sentencias.executeQuery("select * from usuarios where NombredeUsuario='" + this.NomUsuario.getText() + "'");
-                if (this.datos.next()) {
+                datos = sentencias.executeQuery("select * from usuarios where NombredeUsuario='" + this.NomUsuario.getText() + "'");
+                if (datos.next()) {
                     System.out.println(datos.getInt(1));
                     JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(5));
                     System.out.println(datos.getString(3));
@@ -235,8 +255,8 @@ public class Usuario {
     public void readTipo() {
         try {
             if (this.tipo.getText().length() <= 10) {
-                this.datos = this.sentencias.executeQuery("select * from usuarios where TipodeUsuario='" + this.tipo.getText() + "'");
-                if (this.datos.next()) {
+                datos = sentencias.executeQuery("select * from usuarios where TipodeUsuario='" + this.tipo.getText() + "'");
+                if (datos.next()) {
                     System.out.println(datos.getInt(1));
                     JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(6));
                     System.out.println(datos.getString(3));
@@ -257,8 +277,8 @@ public class Usuario {
     public void readTel() {
         try {
             if (this.txtTel.getText().length() <= 9) {
-                this.datos = this.sentencias.executeQuery("select * from usuarios where Telefono='" + this.txtTel.getText() + "'");
-                if (this.datos.next()) {
+                datos = sentencias.executeQuery("select * from usuarios where Telefono='" + this.txtTel.getText() + "'");
+                if (datos.next()) {
                     System.out.println(datos.getInt(1));
                     JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(7));
                     System.out.println(datos.getString(3));
@@ -281,5 +301,4 @@ public class Usuario {
 //        Conectar p = new Conectar();
 //        p.conectar();
 //    }
-
 }
