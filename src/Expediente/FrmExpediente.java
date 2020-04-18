@@ -6,13 +6,14 @@
 package Expediente;
 
 import Conectar.Conectar;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Maria Paula
  */
 public class FrmExpediente extends javax.swing.JFrame {
-    
+
     Expediente ex = new Expediente();
     Conectar conec = new Conectar();
 
@@ -262,10 +263,16 @@ public class FrmExpediente extends javax.swing.JFrame {
         ex.Fecha = this.txtFecha;
         ex.hora = this.txtHora;
         ex.medico = this.txtMedico;
-//        ex.xmlconfig();
+        ex.xmlconfig();
         conec.conectar();
         ex.create();
-        ex.start();
+        try {
+            ex.start();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Se creo el archivo XML");
+        }
+
+
     }//GEN-LAST:event_aceptarActionPerformed
 
     private void actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarActionPerformed
@@ -277,8 +284,13 @@ public class FrmExpediente extends javax.swing.JFrame {
         ex.ID = this.txtID;
         conec.conectar();
         ex.update();
-//        ex.xmlconfig();
-        ex.start();
+        ex.xmlconfig();
+        try {
+            ex.start();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Se actualizo el archivo XML");
+        }
+       
 
     }//GEN-LAST:event_actualizarActionPerformed
 
