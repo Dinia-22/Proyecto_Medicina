@@ -267,7 +267,7 @@ public class FrmCitas extends javax.swing.JFrame {
     }//GEN-LAST:event_saveActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        Buscar b = new Buscar();
+        Buscar_Citas b = new Buscar_Citas();
         b.setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 

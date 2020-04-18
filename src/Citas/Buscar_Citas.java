@@ -17,16 +17,16 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Maria Paula
  */
-public class Buscar extends javax.swing.JFrame {
+public class Buscar_Citas extends javax.swing.JFrame {
 
     Citas prueba = new Citas();
     Conectar conec = new Conectar();
-    DefaultTableModel detamo;
+    DefaultTableModel cita;
 
     /**
      * Creates new form Buscar
      */
-    public Buscar() {
+    public Buscar_Citas() {
         initComponents();
         configurarTabla();
     }
@@ -34,8 +34,8 @@ public class Buscar extends javax.swing.JFrame {
     public void configurarTabla() {
 
         String Titulos[] = new String[5];
-        detamo = new DefaultTableModel(null, Titulos);
-        tabla.setModel(detamo);
+        cita = new DefaultTableModel(null, Titulos);
+        tabla.setModel(cita);
     }
 
     /**
@@ -47,7 +47,17 @@ public class Buscar extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField1 = new javax.swing.JTextField();
+        Filtrar_Citas = new javax.swing.JDialog();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        txtid = new javax.swing.JTextField();
+        txtnombre = new javax.swing.JTextField();
+        aceptar_citas = new javax.swing.JButton();
+        cancelar_citas = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
+        txtmedi = new javax.swing.JTextField();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -71,12 +81,105 @@ public class Buscar extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         tabla = new javax.swing.JTable();
         jLabel9 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
         verdatos = new javax.swing.JButton();
         cancelar = new javax.swing.JButton();
 
-        jTextField1.setText("jTextField1");
+        jPanel3.setBackground(new java.awt.Color(204, 204, 204));
+
+        jLabel7.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
+        jLabel7.setText("Filtrar Citas");
+
+        jLabel8.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jLabel8.setText("ID:");
+
+        jLabel10.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jLabel10.setText("Paciente:");
+
+        aceptar_citas.setBackground(new java.awt.Color(102, 102, 102));
+        aceptar_citas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/save.png"))); // NOI18N
+        aceptar_citas.setText("Guardar");
+        aceptar_citas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aceptar_citasActionPerformed(evt);
+            }
+        });
+
+        cancelar_citas.setBackground(new java.awt.Color(0, 204, 204));
+        cancelar_citas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cancelar.png"))); // NOI18N
+        cancelar_citas.setText("Cancelar");
+        cancelar_citas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelar_citasActionPerformed(evt);
+            }
+        });
+
+        jLabel11.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jLabel11.setText("Medico:");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(149, 149, 149)
+                        .addComponent(jLabel7))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(64, 64, 64)
+                        .addComponent(aceptar_citas)
+                        .addGap(54, 54, 54)
+                        .addComponent(cancelar_citas))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel10)
+                            .addComponent(jLabel11))
+                        .addGap(57, 57, 57)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtid)
+                            .addComponent(txtnombre)
+                            .addComponent(txtmedi, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE))))
+                .addContainerGap(91, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel7)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(txtid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel10)
+                    .addComponent(txtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(txtmedi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(aceptar_citas)
+                    .addComponent(cancelar_citas))
+                .addGap(26, 26, 26))
+        );
+
+        javax.swing.GroupLayout Filtrar_CitasLayout = new javax.swing.GroupLayout(Filtrar_Citas.getContentPane());
+        Filtrar_Citas.getContentPane().setLayout(Filtrar_CitasLayout);
+        Filtrar_CitasLayout.setHorizontalGroup(
+            Filtrar_CitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        Filtrar_CitasLayout.setVerticalGroup(
+            Filtrar_CitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Filtrar_CitasLayout.createSequentialGroup()
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Buscar");
@@ -275,12 +378,17 @@ public class Buscar extends javax.swing.JFrame {
         ));
         jScrollPane3.setViewportView(tabla);
 
-        jLabel9.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
-        jLabel9.setText("Buscar por Filtro:");
+        jLabel9.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
+        jLabel9.setText("Datos Base de Datos");
 
         jButton2.setBackground(new java.awt.Color(102, 102, 102));
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.png"))); // NOI18N
         jButton2.setText("Buscar Filtro");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         verdatos.setBackground(new java.awt.Color(102, 102, 102));
         verdatos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/binoculars.png"))); // NOI18N
@@ -304,41 +412,36 @@ public class Buscar extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(jLabel9)
-                .addGap(18, 18, 18)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2)
-                .addGap(76, 76, 76))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(verdatos)
-                        .addGap(152, 152, 152)
-                        .addComponent(cancelar)
-                        .addGap(127, 127, 127))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 606, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(25, 25, 25))))
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 606, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(48, 48, 48)
+                .addComponent(verdatos)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton2)
+                .addGap(78, 78, 78)
+                .addComponent(cancelar)
+                .addGap(95, 95, 95))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(185, 185, 185)
+                .addComponent(jLabel9)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2))
-                .addGap(31, 31, 31)
+                .addGap(22, 22, 22)
+                .addComponent(jLabel9)
+                .addGap(32, 32, 32)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(verdatos)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18))
+                .addGap(40, 40, 40))
         );
 
         jTabbedPane1.addTab("Filtro", jPanel2);
@@ -399,8 +502,8 @@ public class Buscar extends javax.swing.JFrame {
         String fecha;
         try {
             ResultSet rs = sentencias.executeQuery("SELECT * FROM citas");
-            String Titulos[] = {"ID", "Fecha", "Hora", "Paciente", "Medico",};
-            detamo = new DefaultTableModel(null, Titulos);
+            String Titulos[] = {"ID", "Fecha", "Hora", "Paciente", "Medico"};
+            cita = new DefaultTableModel(null, Titulos);
 
             String fila[] = new String[5];
             rs.beforeFirst();
@@ -413,9 +516,9 @@ public class Buscar extends javax.swing.JFrame {
                 fila[2] = rs.getString("Hora");// arreglar la hora
                 fila[3] = rs.getString("Paciente");
                 fila[4] = rs.getString("Medico");
-                detamo.addRow(fila);
+                cita.addRow(fila);
             }
-            tabla.setModel(detamo);
+            tabla.setModel(cita);
         } catch (SQLException ex) {
             //JOptionPane.showMessageDialog(null, "Error al extraer datos de la tabla");
             Logger.getLogger(Citas.class.getName()).log(Level.SEVERE, null, ex);
@@ -425,6 +528,75 @@ public class Buscar extends javax.swing.JFrame {
     private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
        this.dispose();
     }//GEN-LAST:event_cancelarActionPerformed
+
+    private void aceptar_citasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptar_citasActionPerformed
+        String id, paciente, fecha, medico;
+        String sql;
+        int contador = 0;
+
+        try {
+
+            id = txtid.getText();
+            paciente = txtnombre.getText();
+            medico = txtmedi.getText();
+
+            // Contruccion de la consulta sql select
+            sql = "SELECT * FROM citas";
+
+            if (!id.equals("")) {
+                contador++;
+                sql += " WHERE ID LIKE '%" + id + "%'";
+            }
+
+            if (!paciente.equals("")) {
+                contador++;
+                if (contador == 1) {
+                    sql += " WHERE Paciente LIKE '%" + paciente + "%'";
+                } else {
+                    sql += " AND Paciente LIKE '%" + paciente + "%'";
+                }
+            }
+            
+            if (!medico.equals("")) {
+                contador++;
+                if (contador == 1) {
+                    sql += " WHERE Medico LIKE '%" + medico + "%'";
+                } else {
+                    sql += " AND Medico LIKE '%" + medico + "%'";
+                }
+            }
+
+            ResultSet rs = sentencias.executeQuery(sql);
+            String encabezado[] = {"ID", "Fecha", "Hora", "Paciente", "Medico"};
+            cita = new DefaultTableModel(null, encabezado);
+
+            String fila[] = new String[5];
+            rs.beforeFirst();
+            while (rs.next()) {
+                fila[0] = rs.getString("ID");
+                fecha = rs.getString("Fecha");
+                fila[1] = fecha.substring(8, 10) + "/" + fecha.substring(5, 7) + "/" + fecha.substring(0, 4);
+                fila[2] = rs.getString("Hora");
+                fila[3] = rs.getString("Paciente");
+                fila[4] = rs.getString("Medico");
+
+                cita.addRow(fila);
+            }
+            tabla.setModel(cita);
+        } catch (Exception ex) {
+            Logger.getLogger(Citas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_aceptar_citasActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        Filtrar_Citas.setSize(350,330);
+        Filtrar_Citas.setModal(true);
+        Filtrar_Citas.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void cancelar_citasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelar_citasActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_cancelar_citasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -443,44 +615,51 @@ public class Buscar extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Buscar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Buscar_Citas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Buscar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Buscar_Citas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Buscar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Buscar_Citas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Buscar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Buscar_Citas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Buscar().setVisible(true);
+                new Buscar_Citas().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JDialog Filtrar_Citas;
+    private javax.swing.JButton aceptar_citas;
     private javax.swing.JButton cancelar;
+    private javax.swing.JButton cancelar_citas;
     private javax.swing.JButton cedula;
     private javax.swing.JButton fecha;
     private javax.swing.JButton hora;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JButton medico;
     private javax.swing.JButton paciente;
     private javax.swing.JTable tabla;
@@ -488,7 +667,10 @@ public class Buscar extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser txtFecha;
     private javax.swing.JTextField txtHora;
     private javax.swing.JTextField txtPaciente;
+    private javax.swing.JTextField txtid;
+    private javax.swing.JTextField txtmedi;
     private javax.swing.JTextField txtmedico;
+    private javax.swing.JTextField txtnombre;
     private javax.swing.JButton verdatos;
     // End of variables declaration//GEN-END:variables
 }
