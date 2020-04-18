@@ -302,7 +302,7 @@ public class FrmExpediente extends javax.swing.JFrame {
     }//GEN-LAST:event_eliminarActionPerformed
 
     private void BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarActionPerformed
-        Buscar b = new Buscar();
+        Buscar_Expedientes b = new Buscar_Expedientes();
         b.setVisible(true);
     }//GEN-LAST:event_BuscarActionPerformed
 

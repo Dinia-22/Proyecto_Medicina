@@ -11,12 +11,8 @@ import static Conectar.Conectar.sentencias;
 import Usuarios.Usuario;
 import com.toedter.calendar.JDateChooser;
 import java.io.File;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -71,6 +67,19 @@ public class Expediente extends Thread {
     public JTextField getPaciente() {
         return paciente;
     }
+
+    public JTextField getHora() {
+        return hora;
+    }
+
+    public JTextField getMedico() {
+        return medico;
+    }
+
+    public JTextField getID() {
+        return ID;
+    }
+    
 
     public void create() {
         try {
