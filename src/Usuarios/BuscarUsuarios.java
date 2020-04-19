@@ -637,7 +637,7 @@ public class BuscarUsuarios extends javax.swing.JFrame {
     }//GEN-LAST:event_buscar_filtroActionPerformed
 
     private void cancelar_usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelar_usuarioActionPerformed
-        this.dispose();
+        Filtrar_Usuarios.dispose();
     }//GEN-LAST:event_cancelar_usuarioActionPerformed
 
     /**
