@@ -103,7 +103,7 @@ public class Citas {
             if (datos.next()) {
 
                 System.out.println(datos.getInt(1));
-                JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(1));
+                JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(2));
                 System.out.println(datos.getString(3));
             } else {
                 JOptionPane.showMessageDialog(null, "No hay mas registros");
@@ -123,7 +123,7 @@ public class Citas {
                 if (datos.next()) {
 
                     System.out.println(datos.getInt(1));
-                    JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(2));
+                    JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(1));
                     System.out.println(datos.getString(3));
                 } else {
                     JOptionPane.showMessageDialog(null, "No hay mas registros");

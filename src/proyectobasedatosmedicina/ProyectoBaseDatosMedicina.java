@@ -5,10 +5,7 @@
  */
 package proyectobasedatosmedicina;
 
-/**
- *
- * @author Maria Paula
- */
+
 public class ProyectoBaseDatosMedicina {
 
     /**

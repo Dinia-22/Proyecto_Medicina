@@ -7,10 +7,7 @@ package Medicos;
 
 import Conectar.Conectar;
 
-/**
- *
- * @author juan1
- */
+
 public class FrmActualizar extends javax.swing.JFrame {
 
     /**
@@ -54,6 +51,7 @@ public class FrmActualizar extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Ingrese sus Datos");
         setLocation(new java.awt.Point(360, 150));
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -241,6 +239,7 @@ public class FrmActualizar extends javax.swing.JFrame {
         medico.salario = this.jsalario3;
         conec.conectar();
         medico.update();
+        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

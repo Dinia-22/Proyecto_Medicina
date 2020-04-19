@@ -18,10 +18,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-/**
- *
- * @author Maria Paula
- */
+
 public class Medicos {
 
     public JTextField ID;
@@ -122,7 +119,7 @@ public class Medicos {
                 datos = sentencias.executeQuery("select * from medicos where ID='" + this.ID.getText() + "'");
                 if (datos.next()) {
                     System.out.println(datos.getInt(1));
-                    JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(2));
+                    JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(1));
                     System.out.println(datos.getString(3));
                 } else {
                     JOptionPane.showMessageDialog(null, "No hay mas registros");
@@ -141,7 +138,7 @@ public class Medicos {
                 datos = sentencias.executeQuery("select * from medicos where NombreCompleto='" + this.Nombre.getText() + "'");
                 if (datos.next()) {
                     System.out.println(datos.getInt(1));
-                    JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(3));
+                    JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(2));
                     System.out.println(datos.getString(3));
                 } else {
                     JOptionPane.showMessageDialog(null, "No hay mas registros");
@@ -164,7 +161,7 @@ public class Medicos {
             datos = sentencias.executeQuery("select * from medicos where FechaNacimiento='" + dt.format(this.FechaNacimiento.getDate()) + "'");
             if (datos.next()) {
                 System.out.println(datos.getInt(1));
-                JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(4));
+                JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(3));
                 System.out.println(datos.getString(3));
             } else {
                 JOptionPane.showMessageDialog(null, "No hay mas registros");
@@ -180,7 +177,7 @@ public class Medicos {
                 datos = sentencias.executeQuery("select * from medicos where Telefono='" + this.tel.getText() + "'");
                 if (datos.next()) {
                     System.out.println(datos.getInt(1));
-                    JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(5));
+                    JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(4));
                     System.out.println(datos.getString(3));
                 } else {
                     JOptionPane.showMessageDialog(null, "No hay mas registros");
@@ -203,7 +200,7 @@ public class Medicos {
                 datos = sentencias.executeQuery("select * from medicos where CorreoElectronico='" + this.correo.getText() + "'");
                 if (datos.next()) {
                     System.out.println(datos.getInt(1));
-                    JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(6));
+                    JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(5));
                     System.out.println(datos.getString(3));
                 } else {
                     JOptionPane.showMessageDialog(null, "No hay mas registros");
@@ -225,7 +222,7 @@ public class Medicos {
                 datos = sentencias.executeQuery("select * from medicos where Codigo='" + this.Codigo.getText() + "'");
                 if (datos.next()) {
                     System.out.println(datos.getInt(1));
-                    JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(7));
+                    JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(6));
                     System.out.println(datos.getString(3));
                 } else {
                     JOptionPane.showMessageDialog(null, "No hay mas registros");
@@ -247,7 +244,7 @@ public class Medicos {
                 datos = sentencias.executeQuery("select * from medicos where especialidad='" + this.especialidad.getText() + "'");
                 if (datos.next()) {
                     System.out.println(datos.getInt(1));
-                    JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(8));
+                    JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(7));
                     System.out.println(datos.getString(3));
                 } else {
                     JOptionPane.showMessageDialog(null, "No hay mas registros");
@@ -267,7 +264,7 @@ public class Medicos {
             datos = sentencias.executeQuery("select * from medicos where Salario='" + this.salario.getText() + "'");
             if (datos.next()) {
                 System.out.println(datos.getInt(1));
-                JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(9));
+                JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(8));
                 System.out.println(datos.getString(3));
             } else {
                 JOptionPane.showMessageDialog(null, "No hay mas registros");

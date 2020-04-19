@@ -7,10 +7,7 @@ package Usuarios;
 
 import Conectar.Conectar;
 
-/**
- *
- * @author Maria Paula
- */
+
 public class Actualizar extends javax.swing.JFrame {
     
     Usuario prueba = new Usuario();
@@ -128,7 +125,7 @@ public class Actualizar extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(25, 25, 25)
                         .addComponent(jLabel1)
-                        .addGap(188, 188, 188)
+                        .addGap(174, 174, 174)
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel3)
@@ -144,9 +141,9 @@ public class Actualizar extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(139, 139, 139)
                 .addComponent(guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(202, 202, 202)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(cancel)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(139, 139, 139))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -212,6 +209,7 @@ public class Actualizar extends javax.swing.JFrame {
         prueba.txtCorreo= this.txtCorreo;
         conec.conectar();
         prueba.update();
+        this.dispose();
     }//GEN-LAST:event_guardarActionPerformed
 
     private void cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelActionPerformed

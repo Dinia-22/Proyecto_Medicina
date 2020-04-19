@@ -22,10 +22,7 @@ import javax.swing.JOptionPane;
 
 import javax.swing.JTextField;
 
-/**
- *
- * @author Maria Paula
- */
+
 public class Usuario {
 
     public JTextField ID;
@@ -149,7 +146,7 @@ public class Usuario {
                 datos = sentencias.executeQuery("select * from usuarios where id='" + this.ID.getText() + "'");
                 if (datos.next()) {
                     System.out.println(datos.getInt(1));
-                    JOptionPane.showMessageDialog(null, "Dato Encontrado "+ datos.getString(1));
+                    JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(1));
                     System.out.println(datos.getString(3));
                 } else {
                     JOptionPane.showMessageDialog(null, "No hay mas registros");
@@ -208,13 +205,35 @@ public class Usuario {
 
     }
 
+    public void readTel() {
+        try {
+            if (this.txtTel.getText().length() <= 9) {
+                datos = sentencias.executeQuery("select * from usuarios where Telefono='" + this.txtTel.getText() + "'");
+                if (datos.next()) {
+                    System.out.println(datos.getInt(1));
+                    JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(4));
+                    System.out.println(datos.getString(3));
+                } else {
+                    JOptionPane.showMessageDialog(null, "No hay mas registros");
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Paso el limite de caracteres");
+
+            }
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error en el read");
+        }
+    }
+
     public void readCorreo() {
         try {
             if (this.txtCorreo.getText().length() <= 30) {
                 datos = sentencias.executeQuery("select * from usuarios where CorreoElectronico='" + this.txtCorreo.getText() + "'");
                 if (datos.next()) {
                     System.out.println(datos.getInt(1));
-                    JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(4));
+                    JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(5));
                     System.out.println(datos.getString(3));
                 } else {
                     JOptionPane.showMessageDialog(null, "No hay mas registros");
@@ -236,7 +255,7 @@ public class Usuario {
                 datos = sentencias.executeQuery("select * from usuarios where NombredeUsuario='" + this.NomUsuario.getText() + "'");
                 if (datos.next()) {
                     System.out.println(datos.getInt(1));
-                    JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(5));
+                    JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(6));
                     System.out.println(datos.getString(3));
                 } else {
                     JOptionPane.showMessageDialog(null, "No hay mas registros");
@@ -258,7 +277,7 @@ public class Usuario {
                 datos = sentencias.executeQuery("select * from usuarios where TipodeUsuario='" + this.tipo.getText() + "'");
                 if (datos.next()) {
                     System.out.println(datos.getInt(1));
-                    JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(6));
+                    JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(8));
                     System.out.println(datos.getString(3));
                 } else {
                     JOptionPane.showMessageDialog(null, "No hay mas registros");
@@ -266,29 +285,6 @@ public class Usuario {
 
             } else {
                 JOptionPane.showMessageDialog(null, "Paso el limite de caracteres");
-            }
-
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error en el read");
-        }
-
-    }
-
-    public void readTel() {
-        try {
-            if (this.txtTel.getText().length() <= 9) {
-                datos = sentencias.executeQuery("select * from usuarios where Telefono='" + this.txtTel.getText() + "'");
-                if (datos.next()) {
-                    System.out.println(datos.getInt(1));
-                    JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(7));
-                    System.out.println(datos.getString(3));
-                } else {
-                    JOptionPane.showMessageDialog(null, "No hay mas registros");
-                }
-
-            } else {
-                JOptionPane.showMessageDialog(null, "Paso el limite de caracteres");
-
             }
 
         } catch (SQLException ex) {

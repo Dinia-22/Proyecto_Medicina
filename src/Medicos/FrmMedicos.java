@@ -7,10 +7,7 @@ package Medicos;
 
 import Conectar.Conectar;
 
-/**
- *
- * @author Dinia Alvarado
- */
+
 public class FrmMedicos extends javax.swing.JFrame {
 
     /**

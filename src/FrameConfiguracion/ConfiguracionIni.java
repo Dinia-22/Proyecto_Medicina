@@ -13,10 +13,7 @@ import java.sql.Statement;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-/**
- *
- * @author Adriel Chavarría B
- */
+
 public class ConfiguracionIni {
 
     public JTextField Ip;

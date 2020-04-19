@@ -1,1 +1,1 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><consultorio.xml><Consulta><Consulta><Hora>2</Hora><Fecha>1999-02-10</Fecha><Medico>jp</Medico><Paciente>hola soy doctor jp</Paciente><Descripcion>hola jp</Descripcion></Consulta></Consulta></consultorio.xml>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><consultorio.xml><Consulta><Consulta><Hora>22:50</Hora><Fecha>2025-01-10</Fecha><Medico>doc</Medico><Paciente>hola</Paciente><Descripcion>hola</Descripcion></Consulta></Consulta></consultorio.xml>

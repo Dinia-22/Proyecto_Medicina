@@ -12,10 +12,7 @@ import Medicos.FrmMedicos;
 import Paciente.FrmPacientes;
 import Usuarios.FrmUsuario;
 
-/**
- *
- * @author Maria Paula
- */
+
 public class ConfiguracionBaseDatos extends javax.swing.JFrame {
 
     /**

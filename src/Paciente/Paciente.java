@@ -17,10 +17,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-/**
- *
- * @author Maria Paula
- */
+
 public class Paciente {
 
     public JTextField ID;
@@ -93,7 +90,9 @@ public class Paciente {
     public void delete() {
         try {
             sentencias.executeUpdate("delete from pacientes where id=" + ID.getText());
+            JOptionPane.showMessageDialog(null, "Usuario Eliminado");
         } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al Eliminar");
             System.out.println("Error en delete");
         }
     }
@@ -167,7 +166,7 @@ public class Paciente {
                 datos = sentencias.executeQuery("select * from pacientes where CorreoElectronico='" + this.correo.getText() + "'");
                 if (datos.next()) {
                     System.out.println(datos.getInt(1));
-                    JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(4));
+                    JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(5));
                     System.out.println(datos.getString(3));
                 } else {
                     JOptionPane.showMessageDialog(null, "No hay mas registros");
@@ -189,7 +188,7 @@ public class Paciente {
                 datos = sentencias.executeQuery("select * from pacientes where Telefono='" + this.Telefono.getText() + "'");
                 if (datos.next()) {
                     System.out.println(datos.getInt(1));
-                    JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(5));
+                    JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(4));
                     System.out.println(datos.getString(3));
                 } else {
                     JOptionPane.showMessageDialog(null, "No hay mas registros");

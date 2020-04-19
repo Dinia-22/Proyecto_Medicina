@@ -7,10 +7,6 @@ package Medicos;
 
 import Conectar.Conectar;
 
-/**
- *
- * @author juan1
- */
 public class FrmEliminar extends javax.swing.JFrame {
         
         Medicos medicoD = new Medicos();
@@ -136,6 +132,7 @@ public class FrmEliminar extends javax.swing.JFrame {
         medicoD.ID = this.jcedulaID;
         conec.conectar();
         medicoD.delete();
+        this.dispose();
     }//GEN-LAST:event_BtnEliminarActionPerformed
 
     private void BtnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAtrasActionPerformed

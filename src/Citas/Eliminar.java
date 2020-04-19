@@ -7,10 +7,7 @@ package Citas;
 
 import Conectar.Conectar;
 
-/**
- *
- * @author Maria Paula
- */
+
 public class Eliminar extends javax.swing.JFrame {
     
     Citas cita = new Citas();
@@ -125,6 +122,7 @@ public class Eliminar extends javax.swing.JFrame {
         cita.ID= this.txtDelete;
         conec.conectar();
         cita.delete();
+        this.dispose();
     }//GEN-LAST:event_eliminarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
