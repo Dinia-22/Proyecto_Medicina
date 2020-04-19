@@ -127,12 +127,9 @@ public class Medicos {
                 } else {
                     JOptionPane.showMessageDialog(null, "No hay mas registros");
                 }
-
             } else {
                 JOptionPane.showMessageDialog(null, "Paso el limite de caracteres");
-
             }
-
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error en el read");
         }

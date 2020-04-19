@@ -290,8 +290,6 @@ public class FrmExpediente extends javax.swing.JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Se actualizo el archivo XML");
         }
-       
-
     }//GEN-LAST:event_actualizarActionPerformed
 
     private void cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelActionPerformed
