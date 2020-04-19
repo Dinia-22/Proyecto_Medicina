@@ -578,7 +578,7 @@ public class Buscar_Expedientes extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void cancelar_expedienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelar_expedienteActionPerformed
-       this.dispose();
+       Filtrar_Expediente.dispose();
     }//GEN-LAST:event_cancelar_expedienteActionPerformed
 
     /**
