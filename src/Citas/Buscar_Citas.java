@@ -595,7 +595,7 @@ public class Buscar_Citas extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void cancelar_citasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelar_citasActionPerformed
-        this.dispose();
+        Filtrar_Citas.dispose();
     }//GEN-LAST:event_cancelar_citasActionPerformed
 
     /**
