@@ -68,7 +68,7 @@ public class Usuario {
 
     public void create() {
         try {
-            if (this.txtNombre.getText().length() < 25 || this.contraseña.getText().length() < 7 || this.txtCorreo.getText().length() < 30 || this.txtTel.getText().length() < 9 || this.tipo.getText().length() < 10) {
+            if (this.txtNombre.getText().length() < 25 || this.contraseña.getText().length() < 7 || this.txtCorreo.getText().length() < 30 || this.txtTel.getText().length() < 9 || this.tipo.getText().length() < 20) {
                 PreparedStatement sentencia;
                 sentencia = conexion.prepareStatement("insert usuarios values(null,?,?,?,?,?,?,?)");
                 SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
