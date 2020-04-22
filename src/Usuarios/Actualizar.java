@@ -207,7 +207,7 @@ public class Actualizar extends javax.swing.JFrame {
         prueba.setNomUsuario(this.txtUsuario.getText());
         prueba.setTipo(this.txtTipo.getText());
         prueba.setNomUsuario(this.txtNom.getText());
-        prueba.setTxtTel(Integer.parseInt(this.txtTel.getText()));
+        prueba.setTxtTel(this.txtTel.getText());
         prueba.setTxtCorreo(this.txtCorreo.getText());
         conec.conectar();
         prueba.update();

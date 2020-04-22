@@ -309,7 +309,7 @@ public class FrmUsuario extends javax.swing.JFrame {
         p.setContraseña(this.txtContraseña.getText());
         p.setTipo(this.txtTipo.getText());
         p.setTxtNombre(this.txtNombre.getText());
-        p.setTxtTel(Integer.parseInt(this.txtTelefono.getText()));
+        p.setTxtTel(this.txtTelefono.getText());
         SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
         p.setFechaNacimiento(dt.format(this.txtFecha.getDate()));
         conec.conectar();

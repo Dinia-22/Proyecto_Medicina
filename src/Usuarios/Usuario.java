@@ -19,7 +19,7 @@ public class Usuario {
 
     private int Id;
     private String FechaNacimiento;
-    private int txtTel;
+    private String txtTel;
     private String txtCorreo;
     private String NomUsuario;
     private String contraseña;
@@ -34,7 +34,7 @@ public class Usuario {
         this.FechaNacimiento = FechaNacimiento;
     }
 
-    public void setTxtTel(int txtTel) {
+    public void setTxtTel(String txtTel) {
         this.txtTel = txtTel;
     }
 
@@ -66,7 +66,7 @@ public class Usuario {
         return FechaNacimiento;
     }
 
-    public int getTxtTel() {
+    public String getTxtTel() {
         return txtTel;
     }
 
@@ -99,7 +99,7 @@ public class Usuario {
             SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
             sentencia.setString(1, txtNombre);
             sentencia.setString(2, this.FechaNacimiento);
-            sentencia.setInt(3, this.txtTel);
+            sentencia.setString(3, this.txtTel);
             sentencia.setString(4, this.txtCorreo);
             sentencia.setString(5, this.NomUsuario);
             sentencia.setString(6, this.contraseña);

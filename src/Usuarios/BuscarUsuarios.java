@@ -515,7 +515,7 @@ public class BuscarUsuarios extends javax.swing.JFrame {
     }//GEN-LAST:event_correoActionPerformed
 
     private void telActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_telActionPerformed
-        prueba.setTxtTel(Integer.parseInt(this.txtTel.getText()));
+        prueba.setTxtTel(this.txtTel.getText());
         conec.conectar();
         prueba.readTel();
     }//GEN-LAST:event_telActionPerformed
