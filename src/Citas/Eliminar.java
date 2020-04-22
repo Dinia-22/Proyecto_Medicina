@@ -119,7 +119,7 @@ public class Eliminar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarActionPerformed
-        cita.ID= this.txtDelete;
+        cita.setId(Integer.parseInt(this.txtDelete.getText()));
         conec.conectar();
         cita.delete();
         this.dispose();

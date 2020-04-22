@@ -20,47 +20,64 @@ import javax.swing.JTextField;
 
 public class Citas {
 
-    public JTextField ID;
-    public JDateChooser fecha;
-    public JTextField hora;
-    public JTextField paciente;
-    public JTextField MedicoEspe;
+    private int Id;
+    private String fecha;
+    private String hora;
+    private String paciente;
+    private String MedicoEspe;
 
-    public JTextField getID() {
-        return ID;
+    public void setId(int Id) {
+        this.Id = Id;
     }
 
-    public JDateChooser getFecha() {
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
+    }
+
+    public void setHora(String hora) {
+        this.hora = hora;
+    }
+
+    public void setPaciente(String paciente) {
+        this.paciente = paciente;
+    }
+
+    public void setMedicoEspe(String MedicoEspe) {
+        this.MedicoEspe = MedicoEspe;
+    }
+
+    public int getId() {
+        return Id;
+    }
+
+    public String getFecha() {
         return fecha;
     }
 
-    public JTextField getHora() {
+    public String getHora() {
         return hora;
     }
 
-    public JTextField getPaciente() {
+    public String getPaciente() {
         return paciente;
     }
 
-    public JTextField getMedicoEspe() {
+    public String getMedicoEspe() {
         return MedicoEspe;
     }
 
     public void create() {
         try {
-            if (this.hora.getText().length() < 10 || this.MedicoEspe.getText().length() < 15 || paciente.getText().length() < 25) {
-                PreparedStatement sentencia;
-                sentencia = conexion.prepareStatement("insert citas values(null,?,?,?,?)");
-                SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
-                sentencia.setString(1, dt.format(this.fecha.getDate()));
-                sentencia.setString(2, this.hora.getText());
-                sentencia.setString(3, this.paciente.getText());
-                sentencia.setString(4, this.MedicoEspe.getText());
-                sentencia.execute();
-                JOptionPane.showMessageDialog(null, "Se agregaron los datos");
-            } else {
-                JOptionPane.showMessageDialog(null, "Paso el limite de caracteres");
-            }
+
+            PreparedStatement sentencia;
+            sentencia = conexion.prepareStatement("insert citas values(null,?,?,?,?)");
+
+            sentencia.setString(1, this.fecha);
+            sentencia.setString(2, this.hora);
+            sentencia.setString(3, this.paciente);
+            sentencia.setString(4, this.MedicoEspe);
+            sentencia.execute();
+            JOptionPane.showMessageDialog(null, "Se agregaron los datos");
 
         } catch (SQLException ex) {
             Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
@@ -70,13 +87,10 @@ public class Citas {
 
     public void update() {
         try {
-            if (this.hora.getText().length() < 10 || this.MedicoEspe.getText().length() < 15 || paciente.getText().length() < 25) {
-                SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
-                sentencias.executeUpdate("update citas set Fecha='" + dt.format(this.fecha.getDate()) + "',Hora='" + this.hora.getText() + "',Paciente='" + this.paciente.getText() + "',Medico='" + this.MedicoEspe.getText() + "' where Id=" + this.ID.getText());
-                JOptionPane.showMessageDialog(null, "Se actualizaron los datos");
-            } else {
-                JOptionPane.showMessageDialog(null, "Paso el limite de caracteres");
-            }
+
+            SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
+            sentencias.executeUpdate("update citas set Fecha='" + this.fecha + "',Hora='" + this.hora + "',Paciente='" + this.paciente + "',Medico='" + this.MedicoEspe + "' where Id=" + this.Id);
+            JOptionPane.showMessageDialog(null, "Se actualizaron los datos");
 
         } catch (SQLException ex) {
             Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
@@ -86,7 +100,7 @@ public class Citas {
 
     public void delete() {
         try {
-            sentencias.executeUpdate("delete from citas where id=" + this.ID.getText());
+            sentencias.executeUpdate("delete from citas where id=" + this.Id);
             JOptionPane.showMessageDialog(null, "Usuario Eliminado");
 
         } catch (SQLException ex) {
@@ -99,7 +113,7 @@ public class Citas {
     public void readFecha() {
         try {
             SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
-            datos = sentencias.executeQuery("select * from citas where Fecha='" + dt.format(this.fecha.getDate()) + "'");
+            datos = sentencias.executeQuery("select * from citas where Fecha='" + this.fecha + "'");
             if (datos.next()) {
 
                 System.out.println(datos.getInt(1));
@@ -118,20 +132,16 @@ public class Citas {
 
     public void readCedula() {
         try {
-            if (this.ID.getText().length() <= 1) {
-                datos = sentencias.executeQuery("select * from citas where Id='" + this.ID.getText() + "'");
-                if (datos.next()) {
 
-                    System.out.println(datos.getInt(1));
-                    JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(1));
-                    System.out.println(datos.getString(3));
-                } else {
-                    JOptionPane.showMessageDialog(null, "No hay mas registros");
+            datos = sentencias.executeQuery("select * from citas where Id='" + this.Id + "'");
+            if (datos.next()) {
 
-                }
-
+                System.out.println(datos.getInt(1));
+                JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(1));
+                System.out.println(datos.getString(3));
             } else {
-                JOptionPane.showMessageDialog(null, "Se paso del limite de caracteres");
+                JOptionPane.showMessageDialog(null, "No hay mas registros");
+
             }
 
         } catch (SQLException ex) {
@@ -143,17 +153,14 @@ public class Citas {
 
     public void readHora() {
         try {
-            if (this.hora.getText().length() <= 7) {
-                datos = sentencias.executeQuery("select * from citas where Hora='" + this.hora.getText() + "'");
-                if (datos.next()) {
-                    System.out.println(datos.getInt(1));
-                    JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(3));
-                    System.out.println(datos.getString(3));
-                } else {
-                    JOptionPane.showMessageDialog(null, "No hay mas registros");
-                }
+
+            datos = sentencias.executeQuery("select * from citas where Hora='" + this.hora + "'");
+            if (datos.next()) {
+                System.out.println(datos.getInt(1));
+                JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(3));
+                System.out.println(datos.getString(3));
             } else {
-                JOptionPane.showMessageDialog(null, "Se paso del limite de caracteres");
+                JOptionPane.showMessageDialog(null, "No hay mas registros");
             }
 
         } catch (SQLException ex) {
@@ -164,17 +171,14 @@ public class Citas {
 
     public void readPaciente() {
         try {
-            if (this.paciente.getText().length() <= 25) {
-                datos = sentencias.executeQuery("select * from citas where Paciente='" + this.paciente.getText() + "'");
-                if (datos.next()) {
-                    System.out.println(datos.getInt(1));
-                    JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(4));
-                    System.out.println(datos.getString(3));
-                } else {
-                    JOptionPane.showMessageDialog(null, "No hay mas registros");
-                }
+
+            datos = sentencias.executeQuery("select * from citas where Paciente='" + this.paciente + "'");
+            if (datos.next()) {
+                System.out.println(datos.getInt(1));
+                JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(4));
+                System.out.println(datos.getString(3));
             } else {
-                JOptionPane.showMessageDialog(null, "Se paso del limite de caracteres");
+                JOptionPane.showMessageDialog(null, "No hay mas registros");
             }
 
         } catch (SQLException ex) {
@@ -185,17 +189,14 @@ public class Citas {
 
     public void readMedico() {
         try {
-            if (MedicoEspe.getText().length() <= 25) {
-                datos = sentencias.executeQuery("select * from citas where Medico='" + this.MedicoEspe.getText() + "'");
-                if (datos.next()) {
-                    System.out.println(datos.getInt(1));
-                    JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(5));
-                    System.out.println(datos.getString(3));
-                } else {
-                    JOptionPane.showMessageDialog(null, "No hay mas registros");
-                }
+
+            datos = sentencias.executeQuery("select * from citas where Medico='" + this.MedicoEspe + "'");
+            if (datos.next()) {
+                System.out.println(datos.getInt(1));
+                JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(5));
+                System.out.println(datos.getString(3));
             } else {
-                JOptionPane.showMessageDialog(null, "Paso el limite de caracteres");
+                JOptionPane.showMessageDialog(null, "No hay mas registros");
             }
 
         } catch (SQLException ex) {

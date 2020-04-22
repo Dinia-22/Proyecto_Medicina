@@ -238,11 +238,12 @@ public class FrmCitas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void saveInformationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveInformationActionPerformed
-        prueba.ID = this.txtcedula;
-        prueba.fecha = this.txtfecha;
-        prueba.hora = this.txtHora;
-        prueba.paciente = this.txtPaciente;
-        prueba.MedicoEspe = this.txtMedico;
+        prueba.setId(Integer.parseInt(this.txtcedula.getText()));
+        SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
+        prueba.setFecha(dt.format(this.txtfecha.getDate()));
+        prueba.setHora(this.txtHora.getText());
+        prueba.setPaciente(this.txtPaciente.getText());
+        prueba.setMedicoEspe(this.txtMedico.getText());
         conec.conectar();
         prueba.update();
 
@@ -254,12 +255,12 @@ public class FrmCitas extends javax.swing.JFrame {
 
     private void saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveActionPerformed
         SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
-        prueba.MedicoEspe = this.txtMedico;
-        prueba.fecha = this.txtfecha;
-        prueba.hora = this.txtHora;
-        prueba.paciente = this.txtPaciente;
+        prueba.setMedicoEspe(this.txtMedico.getText());
+        prueba.setFecha(dt.format(this.txtfecha.getDate()));
+        prueba.setHora(this.txtHora.getText());
+        prueba.setPaciente(this.txtPaciente.getText());
         conec.conectar();
-        if (prueba.hora.getText().equals("12:45")|| prueba.fecha.getDate().equals("2020-04-07")) {
+        if (this.txtHora.getText().equals("12:45")|| this.txtfecha.getDate().equals("2020-04-07")) {
             JOptionPane.showMessageDialog(null, "No puede programar una cita en la misma fecha y hora ");
         }else{
             prueba.create();

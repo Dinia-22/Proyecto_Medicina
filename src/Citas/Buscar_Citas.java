@@ -9,6 +9,7 @@ import Conectar.Conectar;
 import static Conectar.Conectar.sentencias;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
@@ -447,31 +448,33 @@ public class Buscar_Citas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void fechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fechaActionPerformed
-        prueba.fecha = this.txtFecha;
+        SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
+
+        prueba.setFecha(dt.format(this.txtFecha.getDate()));
         conec.conectar();
         prueba.readFecha();
     }//GEN-LAST:event_fechaActionPerformed
 
     private void medicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_medicoActionPerformed
-        prueba.MedicoEspe = this.txtmedico;
+        prueba.setMedicoEspe(this.txtmedico.getText());
         conec.conectar();
         prueba.readMedico();
     }//GEN-LAST:event_medicoActionPerformed
 
     private void horaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_horaActionPerformed
-        prueba.hora = this.txtHora;
+        prueba.setHora(this.txtHora.getText());
         conec.conectar();
         prueba.readHora();
     }//GEN-LAST:event_horaActionPerformed
 
     private void cedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cedulaActionPerformed
-        prueba.ID = this.txtCedula;
+        prueba.setId(Integer.parseInt(this.txtid.getText()));
         conec.conectar();
         prueba.readCedula();
     }//GEN-LAST:event_cedulaActionPerformed
 
     private void pacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pacienteActionPerformed
-        prueba.paciente = this.txtPaciente;
+        prueba.setPaciente(this.txtPaciente.getText());
         conec.conectar();
         prueba.readPaciente();
     }//GEN-LAST:event_pacienteActionPerformed
@@ -510,7 +513,7 @@ public class Buscar_Citas extends javax.swing.JFrame {
     }//GEN-LAST:event_verdatosActionPerformed
 
     private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
-       this.dispose();
+        this.dispose();
     }//GEN-LAST:event_cancelarActionPerformed
 
     private void aceptar_citasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptar_citasActionPerformed
@@ -540,7 +543,7 @@ public class Buscar_Citas extends javax.swing.JFrame {
                     sql += " AND Paciente LIKE '%" + paciente + "%'";
                 }
             }
-            
+
             if (!medico.equals("")) {
                 contador++;
                 if (contador == 1) {
@@ -573,7 +576,7 @@ public class Buscar_Citas extends javax.swing.JFrame {
     }//GEN-LAST:event_aceptar_citasActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        Filtrar_Citas.setSize(350,330);
+        Filtrar_Citas.setSize(350, 330);
         Filtrar_Citas.setModal(true);
         Filtrar_Citas.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
