@@ -374,6 +374,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtNom">
+              <Events>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtNomKeyTyped"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel4">
               <Properties>
@@ -384,6 +387,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtTel">
+              <Events>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtTelKeyTyped"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel1">
               <Properties>
@@ -394,6 +400,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtCorreo">
+              <Events>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtCorreoKeyTyped"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel5">
               <Properties>
@@ -404,6 +413,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtU">
+              <Events>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtUKeyTyped"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel6">
               <Properties>
@@ -424,6 +436,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtUsuario">
+              <Events>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtUsuarioKeyTyped"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="nom">
               <Properties>
@@ -540,6 +555,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtcedula">
+              <Events>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtcedulaKeyTyped"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="buscedula">
               <Properties>
