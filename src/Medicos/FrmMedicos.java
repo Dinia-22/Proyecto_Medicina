@@ -48,8 +48,6 @@ public class FrmMedicos extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jtelefono = new javax.swing.JFormattedTextField();
-        jejemplo = new javax.swing.JSpinner();
-        jtelefonono = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMusuario = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -232,8 +230,6 @@ public class FrmMedicos extends javax.swing.JFrame {
                 .addContainerGap(18, Short.MAX_VALUE))
         );
 
-        jejemplo.setModel(new javax.swing.SpinnerNumberModel(1, 1, 999, 1));
-
         jMusuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/search_2.png"))); // NOI18N
         jMusuario.setText("Buscar Usuario");
 
@@ -289,21 +285,11 @@ public class FrmMedicos extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(213, 213, 213)
-                .addComponent(jejemplo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jtelefonono, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(67, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jejemplo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtelefonono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(48, 48, 48)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -313,8 +299,8 @@ public class FrmMedicos extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         //Jbutton;
 
-        medico.setID(Integer.parseInt(jejemplo.getValue().toString()));
-        //medico.setID(Integer.parseInt(this.jcedula.getText()));
+        //medico.setID(Integer.parseInt(jejemplo.getValue().toString())); esto era ejemplo
+        medico.setID(Integer.parseInt(this.jcedula.getText()));
         medico.setNombre(this.jnombre.getText());
         medico.setFechaNacimiento(this.jfecha);
         medico.setTel(this.jtelefono.getText());
@@ -442,13 +428,11 @@ public class FrmMedicos extends javax.swing.JFrame {
     private javax.swing.JTextField jcedula;
     private javax.swing.JTextField jcodigo;
     private javax.swing.JTextField jcorreo;
-    private javax.swing.JSpinner jejemplo;
     private javax.swing.JTextField jespecialidad;
     private com.toedter.calendar.JDateChooser jfecha;
     private javax.swing.JMenu jmEliminar;
     private javax.swing.JTextField jnombre;
     private javax.swing.JTextField jsalario;
     private javax.swing.JFormattedTextField jtelefono;
-    private javax.swing.JTextField jtelefonono;
     // End of variables declaration//GEN-END:variables
 }
