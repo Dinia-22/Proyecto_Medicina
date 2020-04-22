@@ -46,6 +46,7 @@ public class Expediente extends Thread {
     private String Descrip;
     private String paciente;
     private int ID;
+    private int cedula;
     
 
     public Expediente() {
@@ -74,6 +75,10 @@ public class Expediente extends Thread {
 
     public String getPaciente() {
         return paciente;
+    }
+
+    public void setCedula(int cedula) {
+        this.cedula = cedula;
     }
 
     public int getID() {
@@ -109,12 +114,13 @@ public class Expediente extends Thread {
         try {
 
             PreparedStatement sentencia;
-            sentencia = conexion.prepareStatement("insert expediente values(null,?,?,?,?,?)");
-            sentencia.setString(1, this.Fecha);
-            sentencia.setString(2, this.hora);
-            sentencia.setString(3, this.medico);
-            sentencia.setString(4, this.Descrip);
-            sentencia.setString(5, this.paciente);
+            sentencia = conexion.prepareStatement("insert expediente values(null,?,?,?,?,?,?)");
+            sentencia.setInt(1, cedula);
+            sentencia.setString(2, this.Fecha);
+            sentencia.setString(3, this.hora);
+            sentencia.setString(4, this.medico);
+            sentencia.setString(5, this.Descrip);
+            sentencia.setString(6, this.paciente);
             sentencia.execute();
             JOptionPane.showMessageDialog(null, "Se agregaron los datos");
 
@@ -140,10 +146,10 @@ public class Expediente extends Thread {
 
         try {
 
-            datos = sentencias.executeQuery("select * from expediente where id='" + this.ID + "'");
+            datos = sentencias.executeQuery("select * from expediente where cedula='" + cedula + "'");
             if (datos.next()) {
                 System.out.println(datos.getInt(1));
-                JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(1));
+                JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(2));
                 System.out.println(datos.getString(3));
             } else {
                 JOptionPane.showMessageDialog(null, "No hay mas registros");
@@ -159,7 +165,7 @@ public class Expediente extends Thread {
             datos = sentencias.executeQuery("select * from expediente where Fecha='" + this.Fecha + "'");
             if (datos.next()) {
                 System.out.println(datos.getInt(1));
-                JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(2));
+                JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(3));
                 System.out.println(datos.getString(3));
             } else {
                 JOptionPane.showMessageDialog(null, "No hay mas registros");
@@ -176,7 +182,7 @@ public class Expediente extends Thread {
             datos = sentencias.executeQuery("select * from expediente where Hora='" + this.hora + "'");
             if (datos.next()) {
                 System.out.println(datos.getInt(1));
-                JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(3));
+                JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(4));
                 System.out.println(datos.getString(3));
             } else {
                 JOptionPane.showMessageDialog(null, "No hay mas registros");
@@ -194,24 +200,6 @@ public class Expediente extends Thread {
             datos = sentencias.executeQuery("select * from expediente where Medico='" + this.medico + "'");
             if (datos.next()) {
                 System.out.println(datos.getInt(1));
-                JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(4));
-                System.out.println(datos.getString(3));
-            } else {
-                JOptionPane.showMessageDialog(null, "No hay mas registros");
-            }
-
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error en el read");
-        }
-
-    }
-
-    public void readDescripcion() {
-        try {
-
-            datos = sentencias.executeQuery("select * from expediente where Descripcion='" + this.Descrip + "'");
-            if (datos.next()) {
-                System.out.println(datos.getInt(1));
                 JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(5));
                 System.out.println(datos.getString(3));
             } else {
@@ -224,13 +212,15 @@ public class Expediente extends Thread {
 
     }
 
+
+
     public void readPaciente() {
         try {
 
             datos = sentencias.executeQuery("select * from expediente where Paciente='" + this.paciente + "'");
             if (datos.next()) {
                 System.out.println(datos.getInt(1));
-                JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(6));
+                JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(7));
                 System.out.println(datos.getString(3));
             } else {
                 JOptionPane.showMessageDialog(null, "No hay mas registros");
@@ -244,7 +234,7 @@ public class Expediente extends Thread {
 
     public void delete() { /// controlar que siempre quede un usuario registrado al momento de eliminar
         try {
-            sentencias.executeUpdate("delete from expediente where id=" + this.ID);
+            sentencias.executeUpdate("delete from expediente where cedula=" + cedula);
             JOptionPane.showMessageDialog(null, "Usuario Eliminado");
 
         } catch (SQLException ex) {

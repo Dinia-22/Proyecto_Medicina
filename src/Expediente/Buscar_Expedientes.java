@@ -61,15 +61,12 @@ public class Buscar_Expedientes extends javax.swing.JFrame {
         txtFecha = new com.toedter.calendar.JDateChooser();
         jLabel2 = new javax.swing.JLabel();
         txthora = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        txtDecrip = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         txtmedico = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         txtPaciente = new javax.swing.JTextField();
         fecha = new javax.swing.JButton();
         hora = new javax.swing.JButton();
-        decrip = new javax.swing.JButton();
         paciente = new javax.swing.JButton();
         medico = new javax.swing.JButton();
         cancelar = new javax.swing.JButton();
@@ -191,14 +188,23 @@ public class Buscar_Expedientes extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel2.setText("Hora");
 
-        jLabel3.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
-        jLabel3.setText("Descripcion");
+        txthora.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txthoraKeyTyped(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel4.setText("Medico");
 
         jLabel5.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel5.setText("Paciente");
+
+        txtPaciente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPacienteKeyTyped(evt);
+            }
+        });
 
         fecha.setBackground(new java.awt.Color(102, 102, 102));
         fecha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.png"))); // NOI18N
@@ -215,15 +221,6 @@ public class Buscar_Expedientes extends javax.swing.JFrame {
         hora.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 horaActionPerformed(evt);
-            }
-        });
-
-        decrip.setBackground(new java.awt.Color(102, 102, 102));
-        decrip.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.png"))); // NOI18N
-        decrip.setText("Buscar Descripcion");
-        decrip.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                decripActionPerformed(evt);
             }
         });
 
@@ -270,75 +267,68 @@ public class Buscar_Expedientes extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel5)
                 .addGap(99, 99, 99))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(paciente)
+                .addGap(70, 70, 70)
+                .addComponent(medico)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(cancelar)
+                .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txthora)
-                            .addComponent(txtFecha, javax.swing.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE))
-                        .addGap(124, 124, 124)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtmedico, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(227, 227, 227)
-                        .addComponent(jLabel3))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(122, 122, 122)
-                        .addComponent(txtDecrip, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(fecha)
-                            .addComponent(paciente))
-                        .addGap(76, 76, 76)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(medico)
-                            .addComponent(hora))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(cancelar)
-                            .addComponent(decrip))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(26, 26, 26)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txthora)
+                    .addComponent(txtFecha, javax.swing.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE))
+                .addGap(124, 124, 124)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtmedico, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(29, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(fecha)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(hora)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addComponent(jLabel1))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(5, 5, 5)
+                                .addComponent(jLabel1))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel4)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtmedico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(13, 13, 13)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel5))
+                        .addGap(17, 17, 17)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txthora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(160, 160, 160)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(hora)
+                            .addComponent(fecha))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(medico)
+                            .addComponent(paciente))
+                        .addGap(0, 2, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel4)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtmedico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(13, 13, 13)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel5))
-                .addGap(17, 17, 17)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txthora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtDecrip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(58, 58, 58)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(fecha)
-                    .addComponent(hora)
-                    .addComponent(decrip))
-                .addGap(26, 26, 26)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(paciente)
-                    .addComponent(medico)
-                    .addComponent(cancelar))
-                .addContainerGap(19, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(cancelar)))
+                .addContainerGap())
         );
 
         jTabbedPane1.addTab("Buscar", jPanel1);
@@ -397,12 +387,12 @@ public class Buscar_Expedientes extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(verdatos)
-                        .addGap(52, 52, 52)
+                        .addGap(67, 67, 67)
                         .addComponent(jButton2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(cencelar))
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addContainerGap(45, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel9)
@@ -452,12 +442,6 @@ public class Buscar_Expedientes extends javax.swing.JFrame {
         ex.readHora();
     }//GEN-LAST:event_horaActionPerformed
 
-    private void decripActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_decripActionPerformed
-        ex.setDescrip(this.txtDecrip.getText());
-        conec.conectar();
-        ex.readDescripcion();
-    }//GEN-LAST:event_decripActionPerformed
-
     private void pacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pacienteActionPerformed
         ex.setPaciente(this.txtPaciente.getText());
         conec.conectar();
@@ -479,21 +463,22 @@ public class Buscar_Expedientes extends javax.swing.JFrame {
         String fecha;
         try {
             ResultSet rs = sentencias.executeQuery("SELECT * FROM expediente");
-            String Titulos[] = {"ID", "Fecha", "Hora", "Medico", "Descripcion", "Paciente"};
+            String Titulos[] = {"ID", "Cedula", "Fecha", "Hora", "Medico", "Descripcion","Paciente"};
             expediente = new DefaultTableModel(null, Titulos);
 
-            String fila[] = new String[6];
+            String fila[] = new String[7];
             rs.beforeFirst();
             while (rs.next()) {
 
                 fila[0] = rs.getString("ID");
+                fila[1]=rs.getString("Cedula");
                 fecha = rs.getString("Fecha");
                 fecha = fecha.substring(8, 10) + "/" + fecha.substring(5, 7) + "/" + fecha.substring(0, 4);
-                fila[1] = fecha;
-                fila[2] = rs.getString("Hora");
-                fila[3] = rs.getString("Medico");
-                fila[4] = rs.getString("Descripcion");
-                fila[5] = rs.getString("Paciente");
+                fila[2] = fecha;
+                fila[3] = rs.getString("Hora");
+                fila[4] = rs.getString("Medico");
+                fila[5] = rs.getString("Descripcion");
+                fila[6] = rs.getString("Paciente");
                 expediente.addRow(fila);
             }
             tabla.setModel(expediente);
@@ -545,19 +530,20 @@ public class Buscar_Expedientes extends javax.swing.JFrame {
             }
 
             ResultSet rs = sentencias.executeQuery(sql);
-            String encabezado[] = {"ID", "Fecha", "Hora", "Medico", "Descripcion", "Paciente"};
+            String encabezado[] = {"ID", "Cedula", "Fecha", "Hora", "Medico", "Descripcion","Paciente"};
             expediente = new DefaultTableModel(null, encabezado);
 
-            String fila[] = new String[6];
+            String fila[] = new String[7];
             rs.beforeFirst();
             while (rs.next()) {
                 fila[0] = rs.getString("ID");
+                fila[1]=rs.getString("Cedula");
                 fecha = rs.getString("Fecha");
-                fila[1] = fecha.substring(8, 10) + "/" + fecha.substring(5, 7) + "/" + fecha.substring(0, 4);
-                fila[2] = rs.getString("Hora");
-                fila[3] = rs.getString("Medico");
-                fila[4] = rs.getString("Descripcion");
-                fila[5] = rs.getString("Paciente");
+                fila[2] = fecha.substring(8, 10) + "/" + fecha.substring(5, 7) + "/" + fecha.substring(0, 4);
+                fila[3] = rs.getString("Hora");
+                fila[4] = rs.getString("Medico");
+                fila[5] = rs.getString("Descripcion");
+                fila[6] = rs.getString("Paciente");
 
                 expediente.addRow(fila);
             }
@@ -576,6 +562,18 @@ public class Buscar_Expedientes extends javax.swing.JFrame {
     private void cancelar_expedienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelar_expedienteActionPerformed
        Filtrar_Expediente.dispose();
     }//GEN-LAST:event_cancelar_expedienteActionPerformed
+
+    private void txthoraKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txthoraKeyTyped
+        if(txthora.getText().length()==7){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txthoraKeyTyped
+
+    private void txtPacienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPacienteKeyTyped
+        if(txtPaciente.getText().length()==25){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtPacienteKeyTyped
 
     /**
      * @param args the command line arguments
@@ -618,7 +616,6 @@ public class Buscar_Expedientes extends javax.swing.JFrame {
     private javax.swing.JButton cancelar;
     private javax.swing.JButton cancelar_expediente;
     private javax.swing.JButton cencelar;
-    private javax.swing.JButton decrip;
     private javax.swing.JButton fecha;
     private javax.swing.JButton guardar_expedientes;
     private javax.swing.JButton hora;
@@ -626,7 +623,6 @@ public class Buscar_Expedientes extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -641,7 +637,6 @@ public class Buscar_Expedientes extends javax.swing.JFrame {
     private javax.swing.JButton medico;
     private javax.swing.JButton paciente;
     private javax.swing.JTable tabla;
-    private javax.swing.JTextField txtDecrip;
     private com.toedter.calendar.JDateChooser txtFecha;
     private javax.swing.JTextField txtPaciente;
     private javax.swing.JTextField txthora;
