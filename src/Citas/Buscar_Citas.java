@@ -192,14 +192,38 @@ public class Buscar_Citas extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel3.setText("Cedula");
 
+        txtCedula.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCedulaKeyTyped(evt);
+            }
+        });
+
         jLabel4.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel4.setText("Hora");
+
+        txtHora.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtHoraKeyTyped(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel5.setText("Paciente");
 
+        txtPaciente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPacienteKeyTyped(evt);
+            }
+        });
+
         jLabel6.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel6.setText("Medico");
+
+        txtmedico.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtmedicoKeyTyped(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setText("Buscar");
@@ -586,6 +610,30 @@ public class Buscar_Citas extends javax.swing.JFrame {
     private void cancelar_citasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelar_citasActionPerformed
         Filtrar_Citas.dispose();
     }//GEN-LAST:event_cancelar_citasActionPerformed
+
+    private void txtmedicoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtmedicoKeyTyped
+        if(txtmedico.getText().length()==25){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtmedicoKeyTyped
+
+    private void txtHoraKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtHoraKeyTyped
+        if(txtHora.getText().length()==7){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtHoraKeyTyped
+
+    private void txtCedulaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCedulaKeyTyped
+        if(txtCedula.getText().length()==10){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtCedulaKeyTyped
+
+    private void txtPacienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPacienteKeyTyped
+        if(txtPaciente.getText().length()==25){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtPacienteKeyTyped
 
     /**
      * @param args the command line arguments
