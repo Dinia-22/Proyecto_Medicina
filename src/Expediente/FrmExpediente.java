@@ -6,6 +6,7 @@
 package Expediente;
 
 import Conectar.Conectar;
+import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 
 public class FrmExpediente extends javax.swing.JFrame {
@@ -254,11 +255,12 @@ public class FrmExpediente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed
-        ex.Descrip = this.txtDecrip;
-        ex.paciente = this.txtPaciente;
-        ex.Fecha = this.txtFecha;
-        ex.hora = this.txtHora;
-        ex.medico = this.txtMedico;
+        ex.setDescrip(this.txtDecrip.getText());
+        ex.setPaciente(this.txtPaciente.getText());
+        SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
+        ex.setFecha(dt.format(this.txtFecha.getDate()));
+        ex.setHora(this.txtHora.getText());
+        ex.setMedico(this.txtMedico.getText());
         ex.xmlconfig();
         conec.conectar();
         ex.create();
@@ -272,12 +274,13 @@ public class FrmExpediente extends javax.swing.JFrame {
     }//GEN-LAST:event_aceptarActionPerformed
 
     private void actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarActionPerformed
-        ex.Descrip = this.txtDecrip;
-        ex.paciente = this.txtPaciente;
-        ex.Fecha = this.txtFecha;
-        ex.hora = this.txtHora;
-        ex.medico = this.txtMedico;
-        ex.ID = this.txtID;
+        ex.setDescrip(this.txtDecrip.getText());
+        ex.setPaciente(this.txtPaciente.getText());
+        SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
+        ex.setFecha(dt.format(this.txtFecha.getDate()));
+        ex.setHora(this.txtHora.getText());
+        ex.setMedico(this.txtMedico.getText());
+        ex.setID(Integer.parseInt(this.txtID.getText()));
         conec.conectar();
         ex.update();
         ex.xmlconfig();

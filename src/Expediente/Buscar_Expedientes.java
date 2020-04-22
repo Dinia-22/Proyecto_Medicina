@@ -9,6 +9,7 @@ import Conectar.Conectar;
 import static Conectar.Conectar.sentencias;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
@@ -439,31 +440,32 @@ public class Buscar_Expedientes extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void fechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fechaActionPerformed
-        ex.Fecha = this.txtFecha;
+        SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
+        ex.setFecha(dt.format(this.txtFecha.getDate()));
         conec.conectar();
         ex.readFecha();
     }//GEN-LAST:event_fechaActionPerformed
 
     private void horaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_horaActionPerformed
-        ex.hora = this.txthora;
+        ex.setHora(this.txthora.getText());
         conec.conectar();
         ex.readHora();
     }//GEN-LAST:event_horaActionPerformed
 
     private void decripActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_decripActionPerformed
-        ex.Descrip = this.txtDecrip;
+        ex.setDescrip(this.txtDecrip.getText());
         conec.conectar();
         ex.readDescripcion();
     }//GEN-LAST:event_decripActionPerformed
 
     private void pacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pacienteActionPerformed
-        ex.paciente = this.txtPaciente;
+        ex.setPaciente(this.txtPaciente.getText());
         conec.conectar();
         ex.readPaciente();
     }//GEN-LAST:event_pacienteActionPerformed
 
     private void medicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_medicoActionPerformed
-        ex.medico = this.txtmedico;
+        ex.setMedico(this.txtmedico.getText());
         conec.conectar();
         ex.readMedico();
     }//GEN-LAST:event_medicoActionPerformed
