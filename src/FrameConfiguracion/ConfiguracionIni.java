@@ -16,43 +16,46 @@ import javax.swing.JTextField;
 
 public class ConfiguracionIni {
 
-    public JTextField Ip;
-    public JTextField NomBaD;
-    public JTextField NomUsuario;
-    public JTextField contraseña;
+    private String Ip;
+    private String NomBaD;
+    private String NomUsuario;
+    private String contraseña;
     private Connection conexion;
     private Statement sentencias;
-    public JTextField getIp() {
+
+    public String getIp() {
         return Ip;
     }
 
-    public void setIp(JTextField Ip) {
-        this.Ip = Ip;
-    }
-
-    public JTextField getNomBaD() {
+    public String getNomBaD() {
         return NomBaD;
     }
 
-    public void setNomBaD(JTextField NomBaD) {
-        this.NomBaD = NomBaD;
-    }
-
-    public JTextField getNomUsuario() {
+    public String getNomUsuario() {
         return NomUsuario;
     }
 
-    public void setNomUsuario(JTextField NomUsuario) {
-        this.NomUsuario = NomUsuario;
-    }
-
-    public JTextField getContraseña() {
+    public String getContraseña() {
         return contraseña;
     }
 
-    public void setContraseña(JTextField contraseña) {
+    public void setIp(String Ip) {
+        this.Ip = Ip;
+    }
+
+    public void setNomBaD(String NomBaD) {
+        this.NomBaD = NomBaD;
+    }
+
+    public void setNomUsuario(String NomUsuario) {
+        this.NomUsuario = NomUsuario;
+    }
+
+    public void setContraseña(String contraseña) {
         this.contraseña = contraseña;
     }
+   
+  
 
     public Connection getConexion() {
         return conexion;
@@ -96,10 +99,10 @@ public class ConfiguracionIni {
                 
                 FileWriter LeeS = new FileWriter(archIni, true);
                 BufferedWriter crea = new BufferedWriter(LeeS);
-                crea.write(this.Ip.getText()+ " Nombre de la IP \n");
-                crea.write( this.NomBaD.getText() + " Nombre de la base de datos \n");
-                crea.write(this.NomUsuario.getText()+ " Nombre de Usuario \n");
-                crea.write(this.contraseña.getText() +" Contraseña \n");
+                crea.write(this.Ip+ " Nombre de la IP \n");
+                crea.write( this.NomBaD + " Nombre de la base de datos \n");
+                crea.write(this.NomUsuario+ " Nombre de Usuario \n");
+                crea.write(this.contraseña +" Contraseña \n");
                 crea.close();
                 crea.flush();
                 
