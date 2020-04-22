@@ -32,7 +32,7 @@ public class EliminarUsuarios extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        txtDelete = new javax.swing.JTextField();
+        txtcedula = new javax.swing.JTextField();
         txtEliminar = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
@@ -49,7 +49,7 @@ public class EliminarUsuarios extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel2.setText("ID");
+        jLabel2.setText("Cedula");
 
         txtEliminar.setBackground(new java.awt.Color(102, 102, 102));
         txtEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/check.png"))); // NOI18N
@@ -80,7 +80,7 @@ public class EliminarUsuarios extends javax.swing.JFrame {
                         .addComponent(txtEliminar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton2))
-                    .addComponent(txtDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtcedula, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(27, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -93,7 +93,7 @@ public class EliminarUsuarios extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtDelete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtcedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 57, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -131,8 +131,8 @@ public class EliminarUsuarios extends javax.swing.JFrame {
 
     private void txtEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEliminarActionPerformed
         conec.conectar();
-        prueba.setId(Integer.parseInt(this.txtDelete.getText()));
-        if(this.txtDelete.getText().equals("1")){ 
+        prueba.setCedula(Integer.parseInt(this.txtcedula.getText()));
+        if(this.txtcedula.getText().equals("0")){ 
             JOptionPane.showMessageDialog(null, "No puede eliminar este usuario");
             
         }else{
@@ -185,7 +185,7 @@ public class EliminarUsuarios extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField txtDelete;
     private javax.swing.JButton txtEliminar;
+    private javax.swing.JTextField txtcedula;
     // End of variables declaration//GEN-END:variables
 }

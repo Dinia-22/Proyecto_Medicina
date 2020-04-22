@@ -10,7 +10,6 @@ import static Conectar.Conectar.datos;
 import static Conectar.Conectar.sentencias;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -18,6 +17,7 @@ import javax.swing.JOptionPane;
 public class Usuario {
 
     private int Id;
+    private int cedula;
     private String FechaNacimiento;
     private String txtTel;
     private String txtCorreo;
@@ -28,6 +28,14 @@ public class Usuario {
 
     public void setId(int Id) {
         this.Id = Id;
+    }
+
+    public void setCedula(int cedula) {
+        this.cedula = cedula;
+    }
+
+    public int getCedula() {
+        return cedula;
     }
 
     public void setFechaNacimiento(String FechaNacimiento) {
@@ -95,15 +103,16 @@ public class Usuario {
         try {
 
             PreparedStatement sentencia;
-            sentencia = conexion.prepareStatement("insert usuarios values(null,?,?,?,?,?,?,?)");
-            SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
-            sentencia.setString(1, txtNombre);
-            sentencia.setString(2, this.FechaNacimiento);
-            sentencia.setString(3, this.txtTel);
-            sentencia.setString(4, this.txtCorreo);
-            sentencia.setString(5, this.NomUsuario);
-            sentencia.setString(6, this.contraseña);
-            sentencia.setString(7, this.tipo);
+            sentencia = conexion.prepareStatement("insert usuarios values(null,?,?,?,?,?,?,?,?)");
+          
+            sentencia.setInt(1, cedula);
+            sentencia.setString(2, txtNombre);
+            sentencia.setString(3, this.FechaNacimiento);
+            sentencia.setString(4, this.txtTel);
+            sentencia.setString(5, this.txtCorreo);
+            sentencia.setString(6, this.NomUsuario);
+            sentencia.setString(7, this.contraseña);
+            sentencia.setString(8, this.tipo);
 
             sentencia.execute();
 
@@ -139,7 +148,7 @@ public class Usuario {
 
     public void delete() { /// controlar que siempre quede un usuario registrado al momento de eliminar
         try {
-            sentencias.executeUpdate("delete from usuarios where ID=" + this.Id);
+            sentencias.executeUpdate("delete from usuarios where cedula=" + this.cedula);
 
             JOptionPane.showMessageDialog(null, "dato eliminado");
 
