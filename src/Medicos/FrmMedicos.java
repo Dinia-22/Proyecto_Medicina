@@ -7,7 +7,6 @@ package Medicos;
 
 import Conectar.Conectar;
 
-
 public class FrmMedicos extends javax.swing.JFrame {
 
     /**
@@ -49,6 +48,8 @@ public class FrmMedicos extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jejemplo = new javax.swing.JSpinner();
+        jFormattedTextField1 = new javax.swing.JFormattedTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMusuario = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -64,8 +65,20 @@ public class FrmMedicos extends javax.swing.JFrame {
 
         jPanel1.setToolTipText("Ingrese sus Datos");
 
+        jcedula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcedulaActionPerformed(evt);
+            }
+        });
+
         jLabel1.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel1.setText("Numero Cedula:");
+
+        jnombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jnombreKeyTyped(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel2.setText("Nombre Completo:");
@@ -208,6 +221,14 @@ public class FrmMedicos extends javax.swing.JFrame {
                 .addContainerGap(18, Short.MAX_VALUE))
         );
 
+        jejemplo.setModel(new javax.swing.SpinnerNumberModel(1, 1, 999, 1));
+
+        try {
+            jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##-##-##-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
         jMusuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/search_2.png"))); // NOI18N
         jMusuario.setText("Buscar Usuario");
 
@@ -263,11 +284,21 @@ public class FrmMedicos extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(104, 104, 104)
+                .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
+                .addComponent(jejemplo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(67, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jejemplo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(48, 48, 48)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -276,14 +307,16 @@ public class FrmMedicos extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         //Jbutton;
-        medico.ID = this.jcedula;
-        medico.Nombre = this.jnombre;
+        
+        medico.setID(Integer.parseInt(jejemplo.getValue().toString()));
+        //medico.setID(Integer.parseInt(this.jcedula.getText()));
+        medico.setNombre(this.jnombre.getText());
         medico.FechaNacimiento = this.jfecha;
-        medico.tel = this.jtelefono;
-        medico.correo = this.jcorreo;
-        medico.Codigo = this.jcodigo;
-        medico.especialidad = this.jespecialidad;
-        medico.salario = this.jsalario;
+        medico.setTel(this.jtelefono.getText());
+        medico.setCorreo(this.jcorreo.getText());
+        medico.setCodigo(Integer.parseInt(this.jcodigo.getText()));
+        medico.setEspecialidad(this.jespecialidad.getText());
+        medico.setSalario(Double.parseDouble(this.jsalario.getText()));
         conec.conectar();
         medico.create();
 
@@ -310,20 +343,33 @@ public class FrmMedicos extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         // Calcular Impuestos:
-        medico.salario = this.jsalario;
-        medico.impuestoEMaternidad();
-        medico.impuestoInvalidezM();
-        medico.impuestoTrabajador();
-        medico.impuestoAsolidarista();
-        medico.impuestoRenta();
-        medico.impuestosAplicados();
-        medico.impuestosAplicadosMontoM();
+        //medico.salario = this.jsalario;
+        medico.setSalario(Double.parseDouble(this.jsalario.getText()));
+
+        medico.impuestoEMaternidad(Double.parseDouble(this.jsalario.getText()));
+        medico.impuestoInvalidezM(Double.parseDouble(this.jsalario.getText()));
+        medico.impuestoTrabajador(Double.parseDouble(this.jsalario.getText()));
+        medico.impuestoAsolidarista(Double.parseDouble(this.jsalario.getText()));
+        medico.impuestoRenta(Double.parseDouble(this.jsalario.getText()));
+        medico.impuestosAplicados(Double.parseDouble(this.jsalario.getText()));
+        medico.impuestosAplicadosMontoM(Double.parseDouble(this.jsalario.getText()));
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jnombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jnombreKeyTyped
+        // TODO add your handling code here:
+        if (jnombre.getText().length()==3) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jnombreKeyTyped
+
+    private void jcedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcedulaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcedulaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -365,6 +411,7 @@ public class FrmMedicos extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -382,6 +429,7 @@ public class FrmMedicos extends javax.swing.JFrame {
     private javax.swing.JTextField jcedula;
     private javax.swing.JTextField jcodigo;
     private javax.swing.JTextField jcorreo;
+    private javax.swing.JSpinner jejemplo;
     private javax.swing.JTextField jespecialidad;
     private com.toedter.calendar.JDateChooser jfecha;
     private javax.swing.JMenu jmEliminar;

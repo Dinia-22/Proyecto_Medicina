@@ -16,95 +16,89 @@ import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
-
 
 public class Medicos {
 
-    public JTextField ID;
-    public JTextField Nombre;
+    private int id;
+    private String nombre;
     public JDateChooser FechaNacimiento;
-    public JTextField tel;
-    public JTextField correo;
-    public JTextField Codigo;
-    public JTextField especialidad;
-    public JTextField salario;
+    private String tel;
+    private String correo;
+    private int codigo;
+    private String especialidad;
+    public double salario;
 
-    
-    public JTextField getID() {
-        return ID;
+    public int getId() {
+        return id;
     }
 
-    public JTextField getNombre() {
-        return Nombre;
+    public String getNombre() {
+        return nombre;
     }
 
-    public JTextField getTel() {
+    public String getTel() {
         return tel;
     }
 
-    public JTextField getCorreo() {
+    public String getCorreo() {
         return correo;
     }
 
-    public JTextField getCodigo() {
-        return Codigo;
+    public int getCodigo() {
+        return codigo;
     }
 
-    public JTextField getEspecialidad() {
+    public String getEspecialidad() {
         return especialidad;
     }
 
-    public JTextField getSalario() {
+    public double getSalario() {
         return salario;
     }
 
-    public void setID(JTextField ID) {
-        this.ID = ID;
+    public void setID(int id) {
+        this.id = id;
     }
 
-    public void setNombre(JTextField Nombre) {
-        this.Nombre = Nombre;
+    public void setNombre(String Nombre) {
+        this.nombre = Nombre;
     }
 
-    public void setTel(JTextField tel) {
+    public void setTel(String tel) {
         this.tel = tel;
     }
 
-    public void setCorreo(JTextField correo) {
+    public void setCorreo(String correo) {
         this.correo = correo;
     }
 
-    public void setCodigo(JTextField Codigo) {
-        this.Codigo = Codigo;
+    public void setCodigo(int Codigo) {
+        this.codigo = Codigo;
     }
 
-    public void setEspecialidad(JTextField especialidad) {
+    public void setEspecialidad(String especialidad) {
         this.especialidad = especialidad;
     }
 
-    public void setSalario(JTextField salario) {
+    public void setSalario(double salario) {
         this.salario = salario;
     }
 
     public void create() {
         try {
-            if (this.Nombre.getText().length() < 25 || this.tel.getText().length() < 10 || this.correo.getText().length() < 30 || this.Codigo.getText().length() < 7 || this.especialidad.getText().length() < 15) {
-                PreparedStatement sentencia;
-                sentencia = conexion.prepareStatement("insert medicos values(null,?,?,?,?,?,?,?)");
-                SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
-                sentencia.setString(1, Nombre.getText());
-                sentencia.setString(2, date.format(FechaNacimiento.getDate()));
-                sentencia.setString(3, this.tel.getText());
-                sentencia.setString(4, correo.getText());
-                sentencia.setString(5, Codigo.getText());
-                sentencia.setString(6, especialidad.getText());
-                sentencia.setString(7, salario.getText());
-                JOptionPane.showMessageDialog(null, "Se agregaron los datos");
-                sentencia.execute();
-            } else {
-                JOptionPane.showMessageDialog(null, "Paso el limite de caracteres");
-            }
+
+            PreparedStatement sentencia;
+            sentencia = conexion.prepareStatement("insert medicos values(null,?,?,?,?,?,?,?)");
+            SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
+            sentencia.setString(1, nombre);
+            sentencia.setString(2, date.format(FechaNacimiento.getDate()));
+            sentencia.setString(3, tel);
+            sentencia.setString(4, correo);
+            sentencia.setInt(5, codigo);
+            sentencia.setString(6, especialidad);
+            sentencia.setDouble(7, salario);
+            JOptionPane.showMessageDialog(null, "Se agregaron los datos");
+            sentencia.execute();
 
         } catch (SQLException ex) {
             Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
@@ -115,8 +109,8 @@ public class Medicos {
     ////////////////////////////////////////Buscar////////////////////////////////////////
     public void readCedula() {
         try {
-            if (this.ID.getText().length() <= 11) {
-                datos = sentencias.executeQuery("select * from medicos where ID='" + this.ID.getText() + "'");
+            if (this.id <= 999) {
+                datos = sentencias.executeQuery("select * from medicos where ID=" + this.id + "");
                 if (datos.next()) {
                     System.out.println(datos.getInt(1));
                     JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(1));
@@ -134,21 +128,14 @@ public class Medicos {
 
     public void readNombre() {
         try {
-            if (this.Nombre.getText().length() <= 25) {
-                datos = sentencias.executeQuery("select * from medicos where NombreCompleto='" + this.Nombre.getText() + "'");
-                if (datos.next()) {
-                    System.out.println(datos.getInt(1));
-                    JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(2));
-                    System.out.println(datos.getString(3));
-                } else {
-                    JOptionPane.showMessageDialog(null, "No hay mas registros");
-                }
-
+            datos = sentencias.executeQuery("select * from medicos where NombreCompleto='" + this.nombre + "'");
+            if (datos.next()) {
+                System.out.println(datos.getInt(1));
+                JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(2));
+                System.out.println(datos.getString(3));
             } else {
-                JOptionPane.showMessageDialog(null, "Paso el limte de caracteres");
-
+                JOptionPane.showMessageDialog(null, "No hay mas registros");
             }
-
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error en el read");
         }
@@ -173,22 +160,14 @@ public class Medicos {
 
     public void readTel() {
         try {
-            if (this.tel.getText().length() <= 10) {
-                datos = sentencias.executeQuery("select * from medicos where Telefono='" + this.tel.getText() + "'");
-                if (datos.next()) {
-                    System.out.println(datos.getInt(1));
-                    JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(4));
-                    System.out.println(datos.getString(3));
-                } else {
-                    JOptionPane.showMessageDialog(null, "No hay mas registros");
-                }
-
+            datos = sentencias.executeQuery("select * from medicos where Telefono='" + tel + "'");
+            if (datos.next()) {
+                System.out.println(datos.getInt(1));
+                JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(4));
+                System.out.println(datos.getString(3));
             } else {
-
-                JOptionPane.showMessageDialog(null, "Paso el limite de caracteres");
-
+                JOptionPane.showMessageDialog(null, "No hay mas registros");
             }
-
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error en el read");
         }
@@ -196,19 +175,14 @@ public class Medicos {
 
     public void readCorreo() {
         try {
-            if (correo.getText().length() <= 30) {
-                datos = sentencias.executeQuery("select * from medicos where CorreoElectronico='" + this.correo.getText() + "'");
-                if (datos.next()) {
-                    System.out.println(datos.getInt(1));
-                    JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(5));
-                    System.out.println(datos.getString(3));
-                } else {
-                    JOptionPane.showMessageDialog(null, "No hay mas registros");
-                }
 
+            datos = sentencias.executeQuery("select * from medicos where CorreoElectronico='" + this.correo + "'");
+            if (datos.next()) {
+                System.out.println(datos.getInt(1));
+                JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(5));
+                System.out.println(datos.getString(3));
             } else {
-                JOptionPane.showMessageDialog(null, "Paso el limite de caracteres");
-
+                JOptionPane.showMessageDialog(null, "No hay mas registros");
             }
 
         } catch (SQLException ex) {
@@ -218,8 +192,7 @@ public class Medicos {
 
     public void readCodigo() {
         try {
-            if (this.Codigo.getText().length() < 7) {
-                datos = sentencias.executeQuery("select * from medicos where Codigo='" + this.Codigo.getText() + "'");
+                datos = sentencias.executeQuery("select * from medicos where Codigo='" + this.codigo + "'");
                 if (datos.next()) {
                     System.out.println(datos.getInt(1));
                     JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(6));
@@ -227,12 +200,6 @@ public class Medicos {
                 } else {
                     JOptionPane.showMessageDialog(null, "No hay mas registros");
                 }
-
-            } else {
-                JOptionPane.showMessageDialog(null, "Paso el limite de caracteres");
-
-            }
-
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error en el read");
         }
@@ -240,8 +207,7 @@ public class Medicos {
 
     public void readEspecialidad() {
         try {
-            if (this.especialidad.getText().length() < 15) {
-                datos = sentencias.executeQuery("select * from medicos where especialidad='" + this.especialidad.getText() + "'");
+                datos = sentencias.executeQuery("select * from medicos where especialidad='" + this.especialidad + "'");
                 if (datos.next()) {
                     System.out.println(datos.getInt(1));
                     JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(7));
@@ -250,10 +216,6 @@ public class Medicos {
                     JOptionPane.showMessageDialog(null, "No hay mas registros");
                 }
 
-            }else{
-                JOptionPane.showMessageDialog(null, "Paso el limite de caracteres");
-            }
-
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error en el read");
         }
@@ -261,7 +223,7 @@ public class Medicos {
 
     public void readSalario() {
         try {
-            datos = sentencias.executeQuery("select * from medicos where Salario='" + this.salario.getText() + "'");
+            datos = sentencias.executeQuery("select * from medicos where Salario='" + this.salario + "'");
             if (datos.next()) {
                 System.out.println(datos.getInt(1));
                 JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(8));
@@ -277,7 +239,7 @@ public class Medicos {
     ////////////////////////////////////////Metodos de Eliminar////////////////////////////////////////
     public void delete() {
         try {
-            sentencias.executeUpdate("delete from medicos where id=" + this.ID.getText());
+            sentencias.executeUpdate("delete from medicos where id=" + this.id);
             JOptionPane.showMessageDialog(null, "Usuario Eliminado");
         } catch (SQLException ex) {
 
@@ -290,14 +252,10 @@ public class Medicos {
     public void update() {
 
         try {
-            if (this.Nombre.getText().length() < 25 || this.tel.getText().length() < 10 || this.correo.getText().length() < 30 || this.Codigo.getText().length() < 7 || this.especialidad.getText().length() < 15) {
-                SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
-                sentencias.executeUpdate("update medicos set NombreCompleto='" + this.Nombre.getText() + "',FechaNacimiento='" + dt.format(this.FechaNacimiento.getDate()) + "',Telefono='" + this.tel.getText() + "',CorreoElectronico='" + this.correo.getText() + "',Codigo='" + this.Codigo.getText() + "',Especialidad='" + this.especialidad.getText() + "',Salario='" + this.salario.getText() + "' where id=" + this.ID.getText());
-                JOptionPane.showMessageDialog(null, "Se actualizaron los datos");
 
-            } else {
-                JOptionPane.showMessageDialog(null, "Paso el limite de caracteres");
-            }
+            SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
+            sentencias.executeUpdate("update medicos set NombreCompleto='" + this.nombre + "',FechaNacimiento='" + dt.format(this.FechaNacimiento.getDate()) + "',Telefono='" + this.tel + "',CorreoElectronico='" + this.correo + "',Codigo='" + this.codigo + "',Especialidad='" + this.especialidad + "',Salario='" + this.salario + "' where id=" + this.id);
+            JOptionPane.showMessageDialog(null, "Se actualizaron los datos");
 
         } catch (SQLException ex) {
             Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
@@ -305,8 +263,8 @@ public class Medicos {
     }
 
     ////////////////////////////////////////Metodos de Impuestos////////////////////////////////////////
-    public double impuestoEMaternidad() {
-        Double salario = Double.valueOf(this.salario.getText());
+    public double impuestoEMaternidad(double salario) {
+        
         double impuestos = (5.5 * salario) / 100;
         double total = impuestos + salario;
         double resta = salario - impuestos;
@@ -317,8 +275,8 @@ public class Medicos {
         return resta;
     }
 
-    public double impuestoInvalidezM() {
-        Double salario = Double.valueOf(this.salario.getText());
+    public double impuestoInvalidezM(double salario) {
+       
         double impuestos = (3.84 * salario) / 100;
         double total = impuestos + salario;
         double resta = salario - impuestos;
@@ -329,8 +287,8 @@ public class Medicos {
         return resta;
     }
 
-    public double impuestoTrabajador() {
-        Double salario = Double.valueOf(this.salario.getText());
+    public double impuestoTrabajador(double salario) {
+
         double impuestos = (1.0 * salario) / 100;
         double total = impuestos + salario;
         double resta = salario - impuestos;
@@ -341,8 +299,8 @@ public class Medicos {
         return resta;
     }
 
-    public double impuestoAsolidarista() {
-        Double salario = Double.valueOf(this.salario.getText());
+    public double impuestoAsolidarista(double salario) {
+
         double impuestos = (3.3 * salario) / 100;
         double total = impuestos + salario;
         double resta = salario - impuestos;
@@ -353,8 +311,8 @@ public class Medicos {
         return resta;
     }
 
-    public double impuestoRenta() {
-        Double salario = Double.valueOf(this.salario.getText());
+    public double impuestoRenta(double salario) {
+
         if (salario >= 817001 && salario <= 1226000) {
             double impuesto = (10 * salario) / 100;
             double total = impuesto + salario;
@@ -377,8 +335,8 @@ public class Medicos {
         return 0;
     }
 
-    public double impuestosAplicados() {
-        Double salario = Double.valueOf(this.salario.getText());
+    public double impuestosAplicados(double salario) {
+
         double im1 = (5.5 * salario) / 100;
         double im2 = (3.84 * salario) / 100;
         double im3 = (1 * salario) / 100;
@@ -400,8 +358,8 @@ public class Medicos {
         return resta;
     }
 
-    public double impuestosAplicadosMontoM() {
-        Double salario = Double.valueOf(this.salario.getText());
+    public double impuestosAplicadosMontoM(double salario) {
+
         double im1 = (5.5 * salario) / 100;
         double im2 = (3.84 * salario) / 100;
         double im3 = (1 * salario) / 100;
@@ -431,9 +389,5 @@ public class Medicos {
         }
         return 0;
     }
-    
-//    public static void main(String[] args) {
-//        Conectar p = new Conectar();
-//        p.conectar();
-//    }
+
 }

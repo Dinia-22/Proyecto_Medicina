@@ -512,21 +512,20 @@ public class Buscar_Medicos extends javax.swing.JFrame {
 
     private void btncedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncedulaActionPerformed
         //Buscar Cedula:
-        prueba.ID = this.jcedula1;
         conec.conectar();
         prueba.readCedula();
     }//GEN-LAST:event_btncedulaActionPerformed
 
     private void btnnombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnnombreActionPerformed
         //Buscar Nombre:
-        prueba.Nombre = this.jnombre1;
+        prueba.setNombre(this.jnombre1.getText());
         conec.conectar();
         prueba.readNombre();
     }//GEN-LAST:event_btnnombreActionPerformed
 
     private void btntelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btntelefonoActionPerformed
         //Buscar Telefono:
-        prueba.tel = this.jtelefono1;
+        prueba.setTel(this.jtelefono1.getText());
         conec.conectar();
         prueba.readTel();
     }//GEN-LAST:event_btntelefonoActionPerformed
@@ -540,28 +539,28 @@ public class Buscar_Medicos extends javax.swing.JFrame {
 
     private void btncorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncorreoActionPerformed
         //Buscar Correo:
-        prueba.correo = this.jcorreo1;
+        prueba.setCorreo(this.jcorreo1.getText());
         conec.conectar();
         prueba.readCorreo();
     }//GEN-LAST:event_btncorreoActionPerformed
 
     private void btncodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncodigoActionPerformed
         //Buscar Codigo:
-        prueba.Codigo = this.jcodigo1;
+        prueba.setCodigo(Integer.parseInt(this.jcodigo1.getText()));
         conec.conectar();
         prueba.readCodigo();
     }//GEN-LAST:event_btncodigoActionPerformed
 
     private void btnespecialidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnespecialidadActionPerformed
         //Buscar Especialidad:
-        prueba.especialidad = this.jespecialidad1;
+        prueba.setEspecialidad(this.jespecialidad1.getText());
         conec.conectar();
         prueba.readEspecialidad();
     }//GEN-LAST:event_btnespecialidadActionPerformed
 
     private void btnsalarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsalarioActionPerformed
         //Buscar Salario:
-        prueba.salario = this.jsalario1;
+        prueba.setSalario(Double.parseDouble(this.jsalario1.getText()));
         conec.conectar();
         prueba.readSalario();
     }//GEN-LAST:event_btnsalarioActionPerformed
