@@ -46,6 +46,12 @@ public class Eliminar extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel1.setText("ID");
 
+        txtcedula.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtcedulaKeyTyped(evt);
+            }
+        });
+
         eliminar.setBackground(new java.awt.Color(0, 204, 255));
         eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/delete.png"))); // NOI18N
         eliminar.setText("Eliminar");
@@ -129,6 +135,12 @@ public class Eliminar extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.dispose(); 
     }//GEN-LAST:event_botoncancelrActionPerformed
+
+    private void txtcedulaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtcedulaKeyTyped
+        if(txtcedula.getText().length()==10){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtcedulaKeyTyped
 
     /**
      * @param args the command line arguments

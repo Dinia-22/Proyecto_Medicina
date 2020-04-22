@@ -489,20 +489,21 @@ public class Buscar_Citas extends javax.swing.JFrame {
         String fecha;
         try {
             ResultSet rs = sentencias.executeQuery("SELECT * FROM citas");
-            String Titulos[] = {"ID", "Fecha", "Hora", "Paciente", "Medico"};
+            String Titulos[] = {"ID", "Cedula", "Fecha", "Hora", "Paciente","Medico"};
             cita = new DefaultTableModel(null, Titulos);
 
-            String fila[] = new String[5];
+            String fila[] = new String[6];
             rs.beforeFirst();
             while (rs.next()) {
 
                 fila[0] = rs.getString("ID");
+                fila[1]=rs.getString("Cedula");
                 fecha = rs.getString("Fecha");
                 fecha = fecha.substring(8, 10) + "/" + fecha.substring(5, 7) + "/" + fecha.substring(0, 4);
-                fila[1] = fecha;
-                fila[2] = rs.getString("Hora");// arreglar la hora
-                fila[3] = rs.getString("Paciente");
-                fila[4] = rs.getString("Medico");
+                fila[2] = fecha;
+                fila[3] = rs.getString("Hora");// arreglar la hora
+                fila[4] = rs.getString("Paciente");
+                fila[5] = rs.getString("Medico");
                 cita.addRow(fila);
             }
             tabla.setModel(cita);
@@ -554,18 +555,19 @@ public class Buscar_Citas extends javax.swing.JFrame {
             }
 
             ResultSet rs = sentencias.executeQuery(sql);
-            String encabezado[] = {"ID", "Fecha", "Hora", "Paciente", "Medico"};
+            String encabezado[] = {"ID", "Cedula", "Fecha", "Hora", "Paciente","Medico"};
             cita = new DefaultTableModel(null, encabezado);
 
-            String fila[] = new String[5];
+            String fila[] = new String[6];
             rs.beforeFirst();
             while (rs.next()) {
                 fila[0] = rs.getString("ID");
+                fila[1]=rs.getString("Cedula");
                 fecha = rs.getString("Fecha");
-                fila[1] = fecha.substring(8, 10) + "/" + fecha.substring(5, 7) + "/" + fecha.substring(0, 4);
-                fila[2] = rs.getString("Hora");
-                fila[3] = rs.getString("Paciente");
-                fila[4] = rs.getString("Medico");
+                fila[2] = fecha.substring(8, 10) + "/" + fecha.substring(5, 7) + "/" + fecha.substring(0, 4);
+                fila[3] = rs.getString("Hora");
+                fila[4] = rs.getString("Paciente");
+                fila[5] = rs.getString("Medico");
 
                 cita.addRow(fila);
             }
