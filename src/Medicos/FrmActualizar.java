@@ -40,13 +40,13 @@ public class FrmActualizar extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jfecha3 = new com.toedter.calendar.JDateChooser();
         jLabel4 = new javax.swing.JLabel();
-        jtelefono3 = new javax.swing.JTextField();
         jcorreo3 = new javax.swing.JTextField();
         jcodigo3 = new javax.swing.JTextField();
         jespecialidad3 = new javax.swing.JTextField();
         jsalario3 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jtelefono3 = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Ingrese sus Datos");
@@ -85,12 +85,6 @@ public class FrmActualizar extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel4.setText("Telefono:");
 
-        jtelefono3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtelefono3ActionPerformed(evt);
-            }
-        });
-
         jButton1.setBackground(new java.awt.Color(102, 102, 102));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/modificar.png"))); // NOI18N
         jButton1.setText("Actualizar");
@@ -108,6 +102,12 @@ public class FrmActualizar extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
+
+        try {
+            jtelefono3.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##-##-##-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -134,9 +134,9 @@ public class FrmActualizar extends javax.swing.JFrame {
                         .addComponent(jcorreo3))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jtelefono3, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jtelefono3, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(41, 41, 41)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jfecha3, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -170,19 +170,19 @@ public class FrmActualizar extends javax.swing.JFrame {
                     .addComponent(jnombre3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
+                        .addGap(25, 25, 25)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
-                            .addComponent(jtelefono3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3)))
+                            .addComponent(jLabel3)
+                            .addComponent(jtelefono3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jfecha3, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jcorreo3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
-                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5)
+                    .addComponent(jcorreo3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(jcodigo3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -223,14 +223,10 @@ public class FrmActualizar extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jcedula3ActionPerformed
 
-    private void jtelefono3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtelefono3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtelefono3ActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // Aceptar Cambios de la Informacion.
         medico.setNombre(this.jnombre3.getText());
-        medico.FechaNacimiento = this.jfecha3;
+        medico.setFechaNacimiento(this.jfecha3);
         medico.setTel(this.jtelefono3.getText());
         medico.setCorreo(this.jcorreo3.getText());
         medico.setCodigo(Integer.parseInt(this.jcodigo3.getText()));
@@ -300,6 +296,6 @@ public class FrmActualizar extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser jfecha3;
     private javax.swing.JTextField jnombre3;
     private javax.swing.JTextField jsalario3;
-    private javax.swing.JTextField jtelefono3;
+    private javax.swing.JFormattedTextField jtelefono3;
     // End of variables declaration//GEN-END:variables
 }

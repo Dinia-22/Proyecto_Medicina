@@ -61,7 +61,6 @@ public class Buscar_Medicos extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jfecha1 = new com.toedter.calendar.JDateChooser();
         jLabel4 = new javax.swing.JLabel();
-        jtelefono1 = new javax.swing.JTextField();
         jcorreo1 = new javax.swing.JTextField();
         jcodigo1 = new javax.swing.JTextField();
         jespecialidad1 = new javax.swing.JTextField();
@@ -75,6 +74,7 @@ public class Buscar_Medicos extends javax.swing.JFrame {
         btnespecialidad = new javax.swing.JButton();
         btnsalario = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jtelefono1 = new javax.swing.JFormattedTextField();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tabla = new javax.swing.JTable();
@@ -284,6 +284,12 @@ public class Buscar_Medicos extends javax.swing.JFrame {
             }
         });
 
+        try {
+            jtelefono1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##-##-##-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -298,9 +304,9 @@ public class Buscar_Medicos extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel4)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jtelefono1, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(39, 39, 39)
+                                        .addGap(34, 34, 34)
+                                        .addComponent(jtelefono1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(67, 67, 67)
                                         .addComponent(jLabel3))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel5)
@@ -350,12 +356,9 @@ public class Buscar_Medicos extends javax.swing.JFrame {
                             .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGap(37, 37, 37)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jespecialidad1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(btnnombre)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(jespecialidad1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnnombre, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btnnacimiento)
                         .addGap(0, 0, Short.MAX_VALUE))))
@@ -373,15 +376,15 @@ public class Buscar_Medicos extends javax.swing.JFrame {
                     .addComponent(jnombre1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
+                        .addGap(25, 25, 25)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
-                            .addComponent(jtelefono1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3)))
+                            .addComponent(jLabel3)
+                            .addComponent(jtelefono1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jfecha1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jcorreo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
@@ -402,7 +405,7 @@ public class Buscar_Medicos extends javax.swing.JFrame {
                     .addComponent(btnnombre)
                     .addComponent(btncedula)
                     .addComponent(btntelefono))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnnacimiento)
                     .addComponent(btncorreo)
@@ -532,7 +535,7 @@ public class Buscar_Medicos extends javax.swing.JFrame {
 
     private void btnnacimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnnacimientoActionPerformed
         //Buscar Nacimiento:
-        prueba.FechaNacimiento = this.jfecha1;
+        prueba.setFechaNacimiento(this.jfecha1);
         conec.conectar();
         prueba.readDate();
     }//GEN-LAST:event_btnnacimientoActionPerformed
@@ -741,7 +744,7 @@ public class Buscar_Medicos extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser jfecha1;
     private javax.swing.JTextField jnombre1;
     private javax.swing.JTextField jsalario1;
-    private javax.swing.JTextField jtelefono1;
+    private javax.swing.JFormattedTextField jtelefono1;
     private javax.swing.JTable tabla;
     private javax.swing.JTextField txtID;
     private javax.swing.JTextField txtNombre;

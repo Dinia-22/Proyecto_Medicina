@@ -21,12 +21,20 @@ public class Medicos {
 
     private int id;
     private String nombre;
-    public JDateChooser FechaNacimiento;
+    private JDateChooser FechaNacimiento;
     private String tel;
     private String correo;
     private int codigo;
     private String especialidad;
     public double salario;
+
+    public JDateChooser getFechaNacimiento() {
+        return FechaNacimiento;
+    }
+
+    public void setFechaNacimiento(JDateChooser FechaNacimiento) {
+        this.FechaNacimiento = FechaNacimiento;
+    }
 
     public int getId() {
         return id;
@@ -192,14 +200,14 @@ public class Medicos {
 
     public void readCodigo() {
         try {
-                datos = sentencias.executeQuery("select * from medicos where Codigo='" + this.codigo + "'");
-                if (datos.next()) {
-                    System.out.println(datos.getInt(1));
-                    JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(6));
-                    System.out.println(datos.getString(3));
-                } else {
-                    JOptionPane.showMessageDialog(null, "No hay mas registros");
-                }
+            datos = sentencias.executeQuery("select * from medicos where Codigo='" + this.codigo + "'");
+            if (datos.next()) {
+                System.out.println(datos.getInt(1));
+                JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(6));
+                System.out.println(datos.getString(3));
+            } else {
+                JOptionPane.showMessageDialog(null, "No hay mas registros");
+            }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error en el read");
         }
@@ -207,14 +215,14 @@ public class Medicos {
 
     public void readEspecialidad() {
         try {
-                datos = sentencias.executeQuery("select * from medicos where especialidad='" + this.especialidad + "'");
-                if (datos.next()) {
-                    System.out.println(datos.getInt(1));
-                    JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(7));
-                    System.out.println(datos.getString(3));
-                } else {
-                    JOptionPane.showMessageDialog(null, "No hay mas registros");
-                }
+            datos = sentencias.executeQuery("select * from medicos where especialidad='" + this.especialidad + "'");
+            if (datos.next()) {
+                System.out.println(datos.getInt(1));
+                JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(7));
+                System.out.println(datos.getString(3));
+            } else {
+                JOptionPane.showMessageDialog(null, "No hay mas registros");
+            }
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error en el read");
@@ -264,7 +272,7 @@ public class Medicos {
 
     ////////////////////////////////////////Metodos de Impuestos////////////////////////////////////////
     public double impuestoEMaternidad(double salario) {
-        
+
         double impuestos = (5.5 * salario) / 100;
         double total = impuestos + salario;
         double resta = salario - impuestos;
@@ -276,7 +284,7 @@ public class Medicos {
     }
 
     public double impuestoInvalidezM(double salario) {
-       
+
         double impuestos = (3.84 * salario) / 100;
         double total = impuestos + salario;
         double resta = salario - impuestos;

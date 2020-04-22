@@ -40,7 +40,6 @@ public class FrmMedicos extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jfecha = new com.toedter.calendar.JDateChooser();
         jLabel4 = new javax.swing.JLabel();
-        jtelefono = new javax.swing.JTextField();
         jcorreo = new javax.swing.JTextField();
         jcodigo = new javax.swing.JTextField();
         jespecialidad = new javax.swing.JTextField();
@@ -48,8 +47,9 @@ public class FrmMedicos extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jtelefono = new javax.swing.JFormattedTextField();
         jejemplo = new javax.swing.JSpinner();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
+        jtelefonono = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMusuario = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -68,6 +68,11 @@ public class FrmMedicos extends javax.swing.JFrame {
         jcedula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcedulaActionPerformed(evt);
+            }
+        });
+        jcedula.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jcedulaKeyTyped(evt);
             }
         });
 
@@ -128,6 +133,12 @@ public class FrmMedicos extends javax.swing.JFrame {
             }
         });
 
+        try {
+            jtelefono.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##-##-##-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -153,9 +164,9 @@ public class FrmMedicos extends javax.swing.JFrame {
                         .addComponent(jcorreo))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jtelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
+                        .addComponent(jtelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(75, 75, 75)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jfecha, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -191,11 +202,11 @@ public class FrmMedicos extends javax.swing.JFrame {
                     .addComponent(jnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
+                        .addGap(25, 25, 25)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
-                            .addComponent(jtelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3)))
+                            .addComponent(jLabel3)
+                            .addComponent(jtelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jfecha, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)))
@@ -222,12 +233,6 @@ public class FrmMedicos extends javax.swing.JFrame {
         );
 
         jejemplo.setModel(new javax.swing.SpinnerNumberModel(1, 1, 999, 1));
-
-        try {
-            jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##-##-##-##")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
 
         jMusuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/search_2.png"))); // NOI18N
         jMusuario.setText("Buscar Usuario");
@@ -285,10 +290,10 @@ public class FrmMedicos extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(104, 104, 104)
-                .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
+                .addGap(213, 213, 213)
                 .addComponent(jejemplo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jtelefonono, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -297,7 +302,7 @@ public class FrmMedicos extends javax.swing.JFrame {
                 .addContainerGap(67, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jejemplo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtelefonono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(48, 48, 48)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -307,11 +312,11 @@ public class FrmMedicos extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         //Jbutton;
-        
+
         medico.setID(Integer.parseInt(jejemplo.getValue().toString()));
         //medico.setID(Integer.parseInt(this.jcedula.getText()));
         medico.setNombre(this.jnombre.getText());
-        medico.FechaNacimiento = this.jfecha;
+        medico.setFechaNacimiento(this.jfecha);
         medico.setTel(this.jtelefono.getText());
         medico.setCorreo(this.jcorreo.getText());
         medico.setCodigo(Integer.parseInt(this.jcodigo.getText()));
@@ -362,7 +367,8 @@ public class FrmMedicos extends javax.swing.JFrame {
 
     private void jnombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jnombreKeyTyped
         // TODO add your handling code here:
-        if (jnombre.getText().length()==3) {
+        //Da la longitud al nombre
+        if (jnombre.getText().length() == 10) {
             evt.consume();
         }
     }//GEN-LAST:event_jnombreKeyTyped
@@ -370,6 +376,14 @@ public class FrmMedicos extends javax.swing.JFrame {
     private void jcedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcedulaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jcedulaActionPerformed
+
+    private void jcedulaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jcedulaKeyTyped
+        // TODO add your handling code here:
+        //Da la longitud al id
+        if (jcedula.getText().length()==11) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jcedulaKeyTyped
 
     /**
      * @param args the command line arguments
@@ -411,7 +425,6 @@ public class FrmMedicos extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -435,6 +448,7 @@ public class FrmMedicos extends javax.swing.JFrame {
     private javax.swing.JMenu jmEliminar;
     private javax.swing.JTextField jnombre;
     private javax.swing.JTextField jsalario;
-    private javax.swing.JTextField jtelefono;
+    private javax.swing.JFormattedTextField jtelefono;
+    private javax.swing.JTextField jtelefonono;
     // End of variables declaration//GEN-END:variables
 }
