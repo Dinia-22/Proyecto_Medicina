@@ -9,10 +9,10 @@ import Conectar.Conectar;
 import static Conectar.Conectar.sentencias;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
-
 
 public class BuscarUsuarios extends javax.swing.JFrame {
 
@@ -27,7 +27,7 @@ public class BuscarUsuarios extends javax.swing.JFrame {
         initComponents();
         configurarTabla();
     }
-    
+
     public void configurarTabla() {
 
         String Titulos[] = new String[8];
@@ -497,38 +497,39 @@ public class BuscarUsuarios extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void nomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomActionPerformed
-        prueba.txtNombre = this.txtNom;
+        prueba.setTxtNombre(this.txtnombre.getText());
         conec.conectar();
         prueba.readNombre();
     }//GEN-LAST:event_nomActionPerformed
 
     private void UsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsuarioActionPerformed
-        prueba.NomUsuario = this.txtU;
+        prueba.setNomUsuario(this.txtU.getText());
         conec.conectar();
         prueba.readUsuario();
     }//GEN-LAST:event_UsuarioActionPerformed
 
     private void correoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_correoActionPerformed
-        prueba.txtCorreo = this.txtCorreo;
+        prueba.setTxtCorreo(this.txtCorreo.getText());
         conec.conectar();
         prueba.readCorreo();
     }//GEN-LAST:event_correoActionPerformed
 
     private void telActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_telActionPerformed
-        prueba.txtTel = this.txtTel;
+        prueba.setTxtTel(Integer.parseInt(this.txtTel.getText()));
         conec.conectar();
         prueba.readTel();
     }//GEN-LAST:event_telActionPerformed
 
     private void fechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fechaActionPerformed
         Usuario prueba = new Usuario();
-        prueba.FechaNacimiento = this.txtFecha;
+        SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
+        prueba.setFechaNacimiento(dt.format(this.txtFecha.getDate()));
         conec.conectar();
         prueba.readFecha();
     }//GEN-LAST:event_fechaActionPerformed
 
     private void tipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoActionPerformed
-        prueba.tipo = this.txtUsuario;
+        prueba.setTipo(this.txtUsuario.getText());
         conec.conectar();
         prueba.readTipo();
     }//GEN-LAST:event_tipoActionPerformed
@@ -542,7 +543,7 @@ public class BuscarUsuarios extends javax.swing.JFrame {
         String fecha;
         try {
             ResultSet rs = sentencias.executeQuery("SELECT * FROM usuarios");
-            String Titulos[] = {"ID", "NombreCompleto", "FechaNacimiento", "Telefono", "CorreoElectronico","NombredeUsuario","Contraseña","TipodeUsuario"};
+            String Titulos[] = {"ID", "NombreCompleto", "FechaNacimiento", "Telefono", "CorreoElectronico", "NombredeUsuario", "Contraseña", "TipodeUsuario"};
             usuario = new DefaultTableModel(null, Titulos);
 
             String fila[] = new String[8];
@@ -569,9 +570,9 @@ public class BuscarUsuarios extends javax.swing.JFrame {
     }//GEN-LAST:event_verdatosActionPerformed
 
     private void buscedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscedulaActionPerformed
-       prueba.ID = this.txtcedula;
-       conec.conectar();
-       prueba.Read_Cedula();
+        prueba.setId(Integer.parseInt(this.txtid.getText()));
+        conec.conectar();
+        prueba.Read_Cedula();
     }//GEN-LAST:event_buscedulaActionPerformed
 
     private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
@@ -630,7 +631,7 @@ public class BuscarUsuarios extends javax.swing.JFrame {
     }//GEN-LAST:event_gaurdar_usuarioActionPerformed
 
     private void buscar_filtroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscar_filtroActionPerformed
-        Filtrar_Usuarios.setSize(350,230);
+        Filtrar_Usuarios.setSize(350, 230);
         Filtrar_Usuarios.setModal(true);
         Filtrar_Usuarios.setVisible(true);
     }//GEN-LAST:event_buscar_filtroActionPerformed

@@ -6,7 +6,8 @@
 package Usuarios;
 
 import Conectar.Conectar;
-import javax.swing.JOptionPane;
+import java.text.SimpleDateFormat;
+
 
 
 public class FrmUsuario extends javax.swing.JFrame {
@@ -302,14 +303,15 @@ public class FrmUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_EActionPerformed
 
     private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
-        p.ID = this.txtCedula;
-        p.txtCorreo = this.txtCorreo;
-        p.NomUsuario = this.txtUsuario;
-        p.contraseña = this.txtContraseña;
-        p.tipo = this.txtTipo;
-        p.txtNombre = this.txtNombre;
-        p.txtTel = this.txtTelefono;
-        p.FechaNacimiento = this.txtFecha;
+        p.setId(Integer.parseInt(this.txtCedula.getText()));
+        p.setTxtCorreo(this.txtCorreo.getText());
+        p.setNomUsuario(this.txtUsuario.getText());
+        p.setContraseña(this.txtContraseña.getText());
+        p.setTipo(this.txtTipo.getText());
+        p.setTxtNombre(this.txtNombre.getText());
+        p.setTxtTel(Integer.parseInt(this.txtTelefono.getText()));
+        SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
+        p.setFechaNacimiento(dt.format(this.txtFecha.getDate()));
         conec.conectar();
         p.create();
      

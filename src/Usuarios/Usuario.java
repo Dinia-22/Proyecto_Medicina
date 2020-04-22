@@ -8,23 +8,17 @@ package Usuarios;
 import static Conectar.Conectar.conexion;
 import static Conectar.Conectar.datos;
 import static Conectar.Conectar.sentencias;
-import com.toedter.calendar.JDateChooser;
-
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-
 import java.text.SimpleDateFormat;
-
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
-
-
 public class Usuario {
 
     private int Id;
-    private int FechaNacimiento;
+    private String FechaNacimiento;
     private int txtTel;
     private String txtCorreo;
     private String NomUsuario;
@@ -36,7 +30,7 @@ public class Usuario {
         this.Id = Id;
     }
 
-    public void setFechaNacimiento(int FechaNacimiento) {
+    public void setFechaNacimiento(String FechaNacimiento) {
         this.FechaNacimiento = FechaNacimiento;
     }
 
@@ -68,7 +62,7 @@ public class Usuario {
         return Id;
     }
 
-    public int getFechaNacimiento() {
+    public String getFechaNacimiento() {
         return FechaNacimiento;
     }
 
@@ -97,7 +91,6 @@ public class Usuario {
     }
     
     
-
     public void create() {
         try {
 
@@ -105,7 +98,7 @@ public class Usuario {
             sentencia = conexion.prepareStatement("insert usuarios values(null,?,?,?,?,?,?,?)");
             SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
             sentencia.setString(1, txtNombre);
-            sentencia.setInt(2, this.FechaNacimiento);
+            sentencia.setString(2, this.FechaNacimiento);
             sentencia.setInt(3, this.txtTel);
             sentencia.setString(4, this.txtCorreo);
             sentencia.setString(5, this.NomUsuario);

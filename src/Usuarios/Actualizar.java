@@ -6,6 +6,7 @@
 package Usuarios;
 
 import Conectar.Conectar;
+import java.text.SimpleDateFormat;
 
 
 public class Actualizar extends javax.swing.JFrame {
@@ -200,13 +201,14 @@ public class Actualizar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
-        prueba.ID= this.txtCedula;
-        prueba.FechaNacimiento = this.txtFecha;
-        prueba.NomUsuario= this.txtUsuario;
-        prueba.tipo= this.txtTipo;
-        prueba.txtNombre = this.txtNom;
-        prueba.txtTel = this.txtTel;
-        prueba.txtCorreo= this.txtCorreo;
+        prueba.setId(Integer.parseInt(this.txtCedula.getText()));
+        SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
+        prueba.setFechaNacimiento(dt.format(this.txtFecha.getDate()));
+        prueba.setNomUsuario(this.txtUsuario.getText());
+        prueba.setTipo(this.txtTipo.getText());
+        prueba.setNomUsuario(this.txtNom.getText());
+        prueba.setTxtTel(Integer.parseInt(this.txtTel.getText()));
+        prueba.setTxtCorreo(this.txtCorreo.getText());
         conec.conectar();
         prueba.update();
         this.dispose();

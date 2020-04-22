@@ -161,8 +161,8 @@ public class FrmModificacion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed
-        prueba.contraseña = this.txtConfirmar;
-        prueba.ID = this.txtId;
+        prueba.setContraseña(this.txtConfirmar.getText());
+        prueba.setId(Integer.parseInt(this.txtConfirmar.getText()));
         conec.conectar();
         prueba.updateContraseña();
         this.dispose();

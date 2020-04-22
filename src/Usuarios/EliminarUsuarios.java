@@ -131,8 +131,8 @@ public class EliminarUsuarios extends javax.swing.JFrame {
 
     private void txtEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEliminarActionPerformed
         conec.conectar();
-        prueba.ID= this.txtDelete;
-        if(prueba.ID.getText().equals("1")){ 
+        prueba.setId(Integer.parseInt(this.txtDelete.getText()));
+        if(this.txtDelete.getText().equals("1")){ 
             JOptionPane.showMessageDialog(null, "No puede eliminar este usuario");
             
         }else{
