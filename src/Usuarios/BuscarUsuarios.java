@@ -58,7 +58,6 @@ public class BuscarUsuarios extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         txtNom = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        txtTel = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         txtCorreo = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
@@ -78,6 +77,7 @@ public class BuscarUsuarios extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         txtcedula = new javax.swing.JTextField();
         buscedula = new javax.swing.JButton();
+        txtTel = new javax.swing.JFormattedTextField();
         filtro = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tabla = new javax.swing.JTable();
@@ -194,12 +194,6 @@ public class BuscarUsuarios extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel4.setText("Telefono");
 
-        txtTel.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtTelKeyTyped(evt);
-            }
-        });
-
         jLabel1.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel1.setText("Correo");
 
@@ -314,6 +308,12 @@ public class BuscarUsuarios extends javax.swing.JFrame {
             }
         });
 
+        try {
+            txtTel.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##-##-##-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -343,28 +343,28 @@ public class BuscarUsuarios extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel7)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel1)
-                                    .addComponent(jLabel3))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtUsuario)
-                                    .addComponent(txtU)
-                                    .addComponent(txtFecha, javax.swing.GroupLayout.DEFAULT_SIZE, 328, Short.MAX_VALUE)
-                                    .addComponent(txtcedula)
-                                    .addComponent(txtCorreo)))
+                                .addComponent(jLabel2)
+                                .addGap(61, 61, 61)
+                                .addComponent(txtNom, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                     .addComponent(jLabel4)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(txtTel, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel2)
-                                    .addGap(61, 61, 61)
-                                    .addComponent(txtNom, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addGap(54, 54, 54)
+                                    .addComponent(txtTel))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel7)
+                                        .addComponent(jLabel5)
+                                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel1)
+                                        .addComponent(jLabel3))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(txtUsuario)
+                                        .addComponent(txtU)
+                                        .addComponent(txtFecha, javax.swing.GroupLayout.DEFAULT_SIZE, 328, Short.MAX_VALUE)
+                                        .addComponent(txtcedula)
+                                        .addComponent(txtCorreo)))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -684,12 +684,6 @@ public class BuscarUsuarios extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtNomKeyTyped
 
-    private void txtTelKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelKeyTyped
-        if(txtTel.getText().length()==10){
-            evt.consume();
-        }
-    }//GEN-LAST:event_txtTelKeyTyped
-
     private void txtCorreoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCorreoKeyTyped
         if(txtCorreo.getText().length()==30){
             evt.consume();
@@ -784,7 +778,7 @@ public class BuscarUsuarios extends javax.swing.JFrame {
     private javax.swing.JTextField txtCorreo;
     private com.toedter.calendar.JDateChooser txtFecha;
     private javax.swing.JTextField txtNom;
-    private javax.swing.JTextField txtTel;
+    private javax.swing.JFormattedTextField txtTel;
     private javax.swing.JTextField txtU;
     private javax.swing.JTextField txtUsuario;
     private javax.swing.JTextField txtcedula;
