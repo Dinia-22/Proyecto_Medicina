@@ -543,23 +543,24 @@ public class BuscarUsuarios extends javax.swing.JFrame {
         String fecha;
         try {
             ResultSet rs = sentencias.executeQuery("SELECT * FROM usuarios");
-            String Titulos[] = {"ID", "NombreCompleto", "FechaNacimiento", "Telefono", "CorreoElectronico", "NombredeUsuario", "Contraseña", "TipodeUsuario"};
+            String Titulos[] = {"ID", "Cedula", "NombreCompleto", "FechaNacimiento", "Telefono", "CorreoElectronico", "NombredeUsuario", "Contraseña","TipodeUsuario"};
             usuario = new DefaultTableModel(null, Titulos);
 
-            String fila[] = new String[8];
+            String fila[] = new String[9];
             rs.beforeFirst();
             while (rs.next()) {
 
                 fila[0] = rs.getString("ID");
-                fila[1] = rs.getString("NombreCompleto");
+                fila[1]=rs.getString("Cedula");
+                fila[2] = rs.getString("NombreCompleto");
                 fecha = rs.getString("FechaNacimiento");
                 fecha = fecha.substring(8, 10) + "/" + fecha.substring(5, 7) + "/" + fecha.substring(0, 4);
-                fila[2] = fecha;
-                fila[3] = rs.getString("Telefono");
-                fila[4] = rs.getString("CorreoElectronico");
-                fila[5] = rs.getString("NombredeUsuario");
-                fila[6] = rs.getString("Contraseña");
-                fila[7] = rs.getString("TipodeUsuario");
+                fila[3] = fecha;
+                fila[4] = rs.getString("Telefono");
+                fila[5] = rs.getString("CorreoElectronico");
+                fila[6] = rs.getString("NombredeUsuario");
+                fila[7] = rs.getString("Contraseña");
+                fila[8] = rs.getString("TipodeUsuario");
                 usuario.addRow(fila);
             }
             tabla.setModel(usuario);
@@ -607,21 +608,22 @@ public class BuscarUsuarios extends javax.swing.JFrame {
             }
 
             ResultSet rs = sentencias.executeQuery(sql);
-            String encabezado[] = {"ID", "NombreCompleto", "FechaNacimiento", "Telefono", "CorreoElectronico", "NombredeUsuario", "Contraseña", "TipodeUsuario"};
+            String encabezado[] = {"ID", "Cedula", "NombreCompleto", "FechaNacimiento", "Telefono", "CorreoElectronico", "NombredeUsuario", "Contraseña","TipodeUsuario"};
             usuario = new DefaultTableModel(null, encabezado);
 
-            String fila[] = new String[8];
+            String fila[] = new String[9];
             rs.beforeFirst();
             while (rs.next()) {
                 fila[0] = rs.getString("ID");
-                fila[1] = rs.getString("NombreCompleto");
+                fila[1]=rs.getString("Cedula");
+                fila[2] = rs.getString("NombreCompleto");
                 fecha = rs.getString("FechaNacimiento");
-                fila[2] = fecha.substring(8, 10) + "/" + fecha.substring(5, 7) + "/" + fecha.substring(0, 4);
-                fila[3] = rs.getString("Telefono");
-                fila[4] = rs.getString("CorreoElectronico");
-                fila[5] = rs.getString("NombredeUsuario");
-                fila[6] = rs.getString("Contraseña");
-                fila[7] = rs.getString("TipodeUsuario");
+                fila[3] = fecha.substring(8, 10) + "/" + fecha.substring(5, 7) + "/" + fecha.substring(0, 4);
+                fila[4] = rs.getString("Telefono");
+                fila[5] = rs.getString("CorreoElectronico");
+                fila[6] = rs.getString("NombredeUsuario");
+                fila[7] = rs.getString("Contraseña");
+                fila[8] = rs.getString("TipodeUsuario");
                 usuario.addRow(fila);
             }
             tabla.setModel(usuario);
