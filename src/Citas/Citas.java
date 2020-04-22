@@ -9,18 +9,19 @@ import static Conectar.Conectar.conexion;
 import static Conectar.Conectar.datos;
 import static Conectar.Conectar.sentencias;
 import Usuarios.Usuario;
-import com.toedter.calendar.JDateChooser;
+
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
+
 
 public class Citas {
 
     private int Id;
+    private int cedula;
     private String fecha;
     private String hora;
     private String paciente;
@@ -66,16 +67,24 @@ public class Citas {
         return MedicoEspe;
     }
 
+    public void setCedula(int cedula) {
+        this.cedula = cedula;
+    }
+
+    public int getCedula() {
+        return cedula;
+    }
+
     public void create() {
         try {
 
             PreparedStatement sentencia;
-            sentencia = conexion.prepareStatement("insert citas values(null,?,?,?,?)");
-
-            sentencia.setString(1, this.fecha);
-            sentencia.setString(2, this.hora);
-            sentencia.setString(3, this.paciente);
-            sentencia.setString(4, this.MedicoEspe);
+            sentencia = conexion.prepareStatement("insert citas values(null,?,?,?,?,?)");
+            sentencia.setInt(1, cedula);
+            sentencia.setString(2, this.fecha);
+            sentencia.setString(3, this.hora);
+            sentencia.setString(4, this.paciente);
+            sentencia.setString(5, this.MedicoEspe);
             sentencia.execute();
             JOptionPane.showMessageDialog(null, "Se agregaron los datos");
 
@@ -100,7 +109,7 @@ public class Citas {
 
     public void delete() {
         try {
-            sentencias.executeUpdate("delete from citas where id=" + this.Id);
+            sentencias.executeUpdate("delete from citas where cedula=" + this.cedula);
             JOptionPane.showMessageDialog(null, "Usuario Eliminado");
 
         } catch (SQLException ex) {
@@ -112,12 +121,11 @@ public class Citas {
     ///////////////////////////// para buscar la informacion del usuario///////////////////////////////////////////////////
     public void readFecha() {
         try {
-            SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
+           
             datos = sentencias.executeQuery("select * from citas where Fecha='" + this.fecha + "'");
             if (datos.next()) {
-
                 System.out.println(datos.getInt(1));
-                JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(2));
+                JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(3));
                 System.out.println(datos.getString(3));
             } else {
                 JOptionPane.showMessageDialog(null, "No hay mas registros");
@@ -133,11 +141,11 @@ public class Citas {
     public void readCedula() {
         try {
 
-            datos = sentencias.executeQuery("select * from citas where Id='" + this.Id + "'");
+            datos = sentencias.executeQuery("select * from citas where cedula='" + this.cedula + "'");
             if (datos.next()) {
 
                 System.out.println(datos.getInt(1));
-                JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(1));
+                JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(2));
                 System.out.println(datos.getString(3));
             } else {
                 JOptionPane.showMessageDialog(null, "No hay mas registros");
@@ -157,7 +165,7 @@ public class Citas {
             datos = sentencias.executeQuery("select * from citas where Hora='" + this.hora + "'");
             if (datos.next()) {
                 System.out.println(datos.getInt(1));
-                JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(3));
+                JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(4));
                 System.out.println(datos.getString(3));
             } else {
                 JOptionPane.showMessageDialog(null, "No hay mas registros");
@@ -175,7 +183,7 @@ public class Citas {
             datos = sentencias.executeQuery("select * from citas where Paciente='" + this.paciente + "'");
             if (datos.next()) {
                 System.out.println(datos.getInt(1));
-                JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(4));
+                JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(5));
                 System.out.println(datos.getString(3));
             } else {
                 JOptionPane.showMessageDialog(null, "No hay mas registros");
@@ -193,7 +201,7 @@ public class Citas {
             datos = sentencias.executeQuery("select * from citas where Medico='" + this.MedicoEspe + "'");
             if (datos.next()) {
                 System.out.println(datos.getInt(1));
-                JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(5));
+                JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(6));
                 System.out.println(datos.getString(3));
             } else {
                 JOptionPane.showMessageDialog(null, "No hay mas registros");
