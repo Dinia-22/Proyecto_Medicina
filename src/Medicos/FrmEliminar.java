@@ -129,8 +129,7 @@ public class FrmEliminar extends javax.swing.JFrame {
 
     private void BtnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEliminarActionPerformed
         //Jbutton;
-        //medicoD.ID = this.jcedulaID;
-        //medicoD.setID(Integer.parseInt(this.jcedula.getText())
+        medicoD.setID(Integer.parseInt(this.jcedulaID.getText()));
         conec.conectar();
         medicoD.delete();
         this.dispose();
