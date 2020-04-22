@@ -26,6 +26,7 @@ public class Medicos {
     private String correo;
     private int codigo;
     private String especialidad;
+    private int cedula;
     public double salario;
 
     public JDateChooser getFechaNacimiento() {
@@ -92,19 +93,32 @@ public class Medicos {
         this.salario = salario;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setCedula(int cedula) {
+        this.cedula = cedula;
+    }
+
+    public int getCedula() {
+        return cedula;
+    }
+
     public void create() {
         try {
 
             PreparedStatement sentencia;
-            sentencia = conexion.prepareStatement("insert medicos values(null,?,?,?,?,?,?,?)");
+            sentencia = conexion.prepareStatement("insert medicos values(null,?,?,?,?,?,?,?,?)");
             SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
-            sentencia.setString(1, nombre);
-            sentencia.setString(2, date.format(FechaNacimiento.getDate()));
-            sentencia.setString(3, tel);
-            sentencia.setString(4, correo);
-            sentencia.setInt(5, codigo);
-            sentencia.setString(6, especialidad);
-            sentencia.setDouble(7, salario);
+            sentencia.setInt(1, cedula);
+            sentencia.setString(2, nombre);
+            sentencia.setString(3, date.format(FechaNacimiento.getDate()));
+            sentencia.setString(4, tel);
+            sentencia.setString(5, correo);
+            sentencia.setInt(6, codigo);
+            sentencia.setString(7, especialidad);
+            sentencia.setDouble(8, salario);
             JOptionPane.showMessageDialog(null, "Se agregaron los datos");
             sentencia.execute();
 
@@ -117,18 +131,16 @@ public class Medicos {
     ////////////////////////////////////////Buscar////////////////////////////////////////
     public void readCedula() {
         try {
-            if (this.id <= 999) {
-                datos = sentencias.executeQuery("select * from medicos where ID=" + this.id + "");
-                if (datos.next()) {
-                    System.out.println(datos.getInt(1));
-                    JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(1));
-                    System.out.println(datos.getString(3));
-                } else {
-                    JOptionPane.showMessageDialog(null, "No hay mas registros");
-                }
+
+            datos = sentencias.executeQuery("select * from medicos where cedula=" + this.cedula + "");
+            if (datos.next()) {
+                System.out.println(datos.getInt(1));
+                JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(2));
+                System.out.println(datos.getString(3));
             } else {
-                JOptionPane.showMessageDialog(null, "Paso el limite de caracteres");
+                JOptionPane.showMessageDialog(null, "No hay mas registros");
             }
+
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error en el read");
         }
@@ -139,7 +151,7 @@ public class Medicos {
             datos = sentencias.executeQuery("select * from medicos where NombreCompleto='" + this.nombre + "'");
             if (datos.next()) {
                 System.out.println(datos.getInt(1));
-                JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(2));
+                JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(3));
                 System.out.println(datos.getString(3));
             } else {
                 JOptionPane.showMessageDialog(null, "No hay mas registros");
@@ -156,7 +168,7 @@ public class Medicos {
             datos = sentencias.executeQuery("select * from medicos where FechaNacimiento='" + dt.format(this.FechaNacimiento.getDate()) + "'");
             if (datos.next()) {
                 System.out.println(datos.getInt(1));
-                JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(3));
+                JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(4));
                 System.out.println(datos.getString(3));
             } else {
                 JOptionPane.showMessageDialog(null, "No hay mas registros");
@@ -171,7 +183,7 @@ public class Medicos {
             datos = sentencias.executeQuery("select * from medicos where Telefono='" + tel + "'");
             if (datos.next()) {
                 System.out.println(datos.getInt(1));
-                JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(4));
+                JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(5));
                 System.out.println(datos.getString(3));
             } else {
                 JOptionPane.showMessageDialog(null, "No hay mas registros");
@@ -187,7 +199,7 @@ public class Medicos {
             datos = sentencias.executeQuery("select * from medicos where CorreoElectronico='" + this.correo + "'");
             if (datos.next()) {
                 System.out.println(datos.getInt(1));
-                JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(5));
+                JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(6));
                 System.out.println(datos.getString(3));
             } else {
                 JOptionPane.showMessageDialog(null, "No hay mas registros");
@@ -203,7 +215,7 @@ public class Medicos {
             datos = sentencias.executeQuery("select * from medicos where Codigo='" + this.codigo + "'");
             if (datos.next()) {
                 System.out.println(datos.getInt(1));
-                JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(6));
+                JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(7));
                 System.out.println(datos.getString(3));
             } else {
                 JOptionPane.showMessageDialog(null, "No hay mas registros");
@@ -218,7 +230,7 @@ public class Medicos {
             datos = sentencias.executeQuery("select * from medicos where especialidad='" + this.especialidad + "'");
             if (datos.next()) {
                 System.out.println(datos.getInt(1));
-                JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(7));
+                JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(8));
                 System.out.println(datos.getString(3));
             } else {
                 JOptionPane.showMessageDialog(null, "No hay mas registros");
@@ -234,7 +246,7 @@ public class Medicos {
             datos = sentencias.executeQuery("select * from medicos where Salario='" + this.salario + "'");
             if (datos.next()) {
                 System.out.println(datos.getInt(1));
-                JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(8));
+                JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(9));
                 System.out.println(datos.getString(3));
             } else {
                 JOptionPane.showMessageDialog(null, "No hay mas registros");
@@ -247,7 +259,7 @@ public class Medicos {
     ////////////////////////////////////////Metodos de Eliminar////////////////////////////////////////
     public void delete() {
         try {
-            sentencias.executeUpdate("delete from medicos where id=" + this.id);
+            sentencias.executeUpdate("delete from medicos where cedula=" + this.cedula);
             JOptionPane.showMessageDialog(null, "Usuario Eliminado");
         } catch (SQLException ex) {
 

@@ -581,23 +581,24 @@ public class Buscar_Medicos extends javax.swing.JFrame {
         String fecha;
         try {
             ResultSet rs = sentencias.executeQuery("SELECT * FROM medicos");
-            String Titulos[] = {"ID", "NombreCompleto", "FechaNacimiento", "Telefono", "CorreoElectronico", "Codigo", "Especialidad", "Salario"};
+            String Titulos[] = {"ID","Cedula", "NombreCompleto", "FechaNacimiento", "Telefono", "CorreoElectronico", "Codigo", "Especialidad", "Salario"};
             medico = new DefaultTableModel(null, Titulos);
 
-            String fila[] = new String[8];
+            String fila[] = new String[9];
             rs.beforeFirst();
             while (rs.next()) {
 
                 fila[0] = rs.getString("ID");
-                fila[1] = rs.getString("NombreCompleto");
+                fila[1]=rs.getString("Cedula");
+                fila[2] = rs.getString("NombreCompleto");
                 fecha = rs.getString("FechaNacimiento");
                 fecha = fecha.substring(8, 10) + "/" + fecha.substring(5, 7) + "/" + fecha.substring(0, 4);
-                fila[2] = fecha;
-                fila[3] = rs.getString("Telefono");
-                fila[4] = rs.getString("CorreoElectronico");
-                fila[5] = rs.getString("Codigo");
-                fila[6] = rs.getString("Especialidad");
-                fila[7] = rs.getString("Salario");
+                fila[3] = fecha;
+                fila[4] = rs.getString("Telefono");
+                fila[5] = rs.getString("CorreoElectronico");
+                fila[6] = rs.getString("Codigo");
+                fila[7] = rs.getString("Especialidad");
+                fila[8] = rs.getString("Salario");
                 medico.addRow(fila);
             }
             tabla.setModel(medico);
@@ -649,21 +650,22 @@ public class Buscar_Medicos extends javax.swing.JFrame {
             }
 
             ResultSet rs = sentencias.executeQuery(sql);
-            String encabezado[] = {"ID", "NombreCompleto", "FechaNacimiento", "Telefono", "CorreoElectronico", "Codigo", "Especialidad", "Salario"};
+            String encabezado[] = {"ID","Cedula", "NombreCompleto", "FechaNacimiento", "Telefono", "CorreoElectronico", "Codigo", "Especialidad", "Salario"};
             medico = new DefaultTableModel(null, encabezado);
 
-            String fila[] = new String[8];
+            String fila[] = new String[9];
             rs.beforeFirst();
             while (rs.next()) {
                 fila[0] = rs.getString("ID");
-                fila[1] = rs.getString("NombreCompleto");
+                fila[1]=rs.getString("Cedula");
+                fila[2] = rs.getString("NombreCompleto");
                 fecha = rs.getString("FechaNacimiento");
-                fila[2] = fecha.substring(8, 10) + "/" + fecha.substring(5, 7) + "/" + fecha.substring(0, 4);
-                fila[3] = rs.getString("Telefono");
-                fila[4] = rs.getString("CorreoElectronico");
-                fila[5] = rs.getString("Codigo");
-                fila[6] = rs.getString("Especialidad");
-                fila[7] = rs.getString("Salario");
+                fila[3] = fecha.substring(8, 10) + "/" + fecha.substring(5, 7) + "/" + fecha.substring(0, 4);
+                fila[4] = rs.getString("Telefono");
+                fila[5] = rs.getString("CorreoElectronico");
+                fila[6] = rs.getString("Codigo");
+                fila[7] = rs.getString("Especialidad");
+                fila[8] = rs.getString("Salario");
                 medico.addRow(fila);
             }
             tabla.setModel(medico);
