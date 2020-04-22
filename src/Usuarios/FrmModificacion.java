@@ -56,8 +56,26 @@ public class FrmModificacion extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel2.setText("Contraseña Actual:");
 
+        txtActual.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtActualKeyTyped(evt);
+            }
+        });
+
+        txtNew.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNewKeyTyped(evt);
+            }
+        });
+
         jLabel3.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel3.setText("Nueva Contraseña:");
+
+        txtConfirmar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtConfirmarKeyTyped(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel4.setText("Confirmar Contraseña:");
@@ -103,7 +121,7 @@ public class FrmModificacion extends javax.swing.JFrame {
                             .addComponent(txtConfirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtActual, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(12, Short.MAX_VALUE))
+                        .addContainerGap(20, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(cancelar)
@@ -171,6 +189,24 @@ public class FrmModificacion extends javax.swing.JFrame {
     private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
         this.dispose();
     }//GEN-LAST:event_cancelarActionPerformed
+
+    private void txtActualKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtActualKeyTyped
+        if(txtActual.getText().length()==10){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtActualKeyTyped
+
+    private void txtNewKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNewKeyTyped
+        if(txtNew.getText().length()==10){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtNewKeyTyped
+
+    private void txtConfirmarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtConfirmarKeyTyped
+        if(txtConfirmar.getText().length()==10){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtConfirmarKeyTyped
 
     /**
      * @param args the command line arguments
