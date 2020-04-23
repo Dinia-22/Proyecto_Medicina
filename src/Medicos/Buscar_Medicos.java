@@ -4,6 +4,7 @@ import Conectar.Conectar;
 import static Conectar.Conectar.sentencias;
 import java.sql.SQLException;
 import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -538,7 +539,8 @@ public class Buscar_Medicos extends javax.swing.JFrame {
 
     private void btnnacimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnnacimientoActionPerformed
         //Buscar Nacimiento:
-        prueba.setFechaNacimiento(this.jfecha1);
+        SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
+        prueba.setFechaNacimiento(date.format(this.jfecha1.getDate()));
         conec.conectar();
         prueba.readDate();
     }//GEN-LAST:event_btnnacimientoActionPerformed

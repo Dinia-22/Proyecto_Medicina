@@ -21,7 +21,7 @@ public class Medicos {
 
     private int id;
     private String nombre;
-    private JDateChooser FechaNacimiento;
+    private String FechaNacimiento;
     private String tel;
     private String correo;
     private int codigo;
@@ -29,11 +29,11 @@ public class Medicos {
     private int cedula;
     public double salario;
 
-    public JDateChooser getFechaNacimiento() {
+    public String getFechaNacimiento() {
         return FechaNacimiento;
     }
 
-    public void setFechaNacimiento(JDateChooser FechaNacimiento) {
+    public void setFechaNacimiento(String FechaNacimiento) {
         this.FechaNacimiento = FechaNacimiento;
     }
 
@@ -110,10 +110,10 @@ public class Medicos {
 
             PreparedStatement sentencia;
             sentencia = conexion.prepareStatement("insert medicos values(null,?,?,?,?,?,?,?,?)");
-            SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
+            
             sentencia.setInt(1, cedula);
             sentencia.setString(2, nombre);
-            sentencia.setString(3, date.format(FechaNacimiento.getDate()));
+            sentencia.setString(3, this.FechaNacimiento);
             sentencia.setString(4, tel);
             sentencia.setString(5, correo);
             sentencia.setInt(6, codigo);
@@ -163,9 +163,9 @@ public class Medicos {
 
     public void readDate() {
         try {
-            SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
+         
 
-            datos = sentencias.executeQuery("select * from medicos where FechaNacimiento='" + dt.format(this.FechaNacimiento.getDate()) + "'");
+            datos = sentencias.executeQuery("select * from medicos where FechaNacimiento='" + this.FechaNacimiento + "'");
             if (datos.next()) {
                 System.out.println(datos.getInt(1));
                 JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(4));
@@ -273,8 +273,8 @@ public class Medicos {
 
         try {
 
-            SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
-            sentencias.executeUpdate("update medicos set NombreCompleto='" + this.nombre + "',FechaNacimiento='" + dt.format(this.FechaNacimiento.getDate()) + "',Telefono='" + this.tel + "',CorreoElectronico='" + this.correo + "',Codigo='" + this.codigo + "',Especialidad='" + this.especialidad + "',Salario='" + this.salario + "' where cedula=" + this.cedula);
+            
+            sentencias.executeUpdate("update medicos set NombreCompleto='" + this.nombre + "',FechaNacimiento='" + this.FechaNacimiento + "',Telefono='" + this.tel + "',CorreoElectronico='" + this.correo + "',Codigo='" + this.codigo + "',Especialidad='" + this.especialidad + "',Salario='" + this.salario + "' where cedula=" + this.cedula);
             JOptionPane.showMessageDialog(null, "Se actualizaron los datos");
 
         } catch (SQLException ex) {

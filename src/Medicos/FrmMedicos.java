@@ -6,6 +6,7 @@
 package Medicos;
 
 import Conectar.Conectar;
+import java.text.SimpleDateFormat;
 
 public class FrmMedicos extends javax.swing.JFrame {
 
@@ -309,9 +310,10 @@ public class FrmMedicos extends javax.swing.JFrame {
 
         //medico.setID(Integer.parseInt(jejemplo.getValue().toString())); esto era ejemplo
         //medico.setID(Integer.parseInt(this.jidentificacion.getText()));
+        SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
         medico.setCedula(Integer.parseInt(this.jcedula.getText()));
         medico.setNombre(this.jnombre.getText());
-        medico.setFechaNacimiento(this.jfecha);
+        medico.setFechaNacimiento(date.format(this.jfecha.getDate()));
         medico.setTel(this.jtelefono.getText());
         medico.setCorreo(this.jcorreo.getText());
         medico.setCodigo(Integer.parseInt(this.jcodigo.getText()));

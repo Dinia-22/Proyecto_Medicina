@@ -6,6 +6,7 @@
 package Medicos;
 
 import Conectar.Conectar;
+import java.text.SimpleDateFormat;
 
 
 public class FrmActualizar extends javax.swing.JFrame {
@@ -230,9 +231,10 @@ public class FrmActualizar extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // Aceptar Cambios de la Informacion.
+        SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
         medico.setCedula(Integer.parseInt(this.jcedula3.getText()));
         medico.setNombre(this.jnombre3.getText());
-        medico.setFechaNacimiento(this.jfecha3);
+        medico.setFechaNacimiento(date.format(this.jfecha3.getDate()));
         medico.setTel(this.jtelefono3.getText());
         medico.setCorreo(this.jcorreo3.getText());
         medico.setCodigo(Integer.parseInt(this.jcodigo3.getText()));
