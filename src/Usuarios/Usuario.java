@@ -137,7 +137,7 @@ public class Usuario {
     public void updateContraseña() {
         try {
 
-            sentencias.executeUpdate("update usuarios set contraseña='" + this.contraseña + "' where id=" + this.Id);
+            sentencias.executeUpdate("update usuarios set contraseña='" + this.contraseña + "' where cedula=" + this.cedula);
             JOptionPane.showMessageDialog(null, "Se actualizo la contraseña");
 
         } catch (SQLException ex) {
