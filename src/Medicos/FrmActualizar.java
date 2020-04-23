@@ -230,7 +230,7 @@ public class FrmActualizar extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // Aceptar Cambios de la Informacion.
-        medico.setID(Integer.parseInt(this.jcedula3.getText()));
+        medico.setCedula(Integer.parseInt(this.jcedula3.getText()));
         medico.setNombre(this.jnombre3.getText());
         medico.setFechaNacimiento(this.jfecha3);
         medico.setTel(this.jtelefono3.getText());

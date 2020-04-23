@@ -274,7 +274,7 @@ public class Medicos {
         try {
 
             SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
-            sentencias.executeUpdate("update medicos set NombreCompleto='" + this.nombre + "',FechaNacimiento='" + dt.format(this.FechaNacimiento.getDate()) + "',Telefono='" + this.tel + "',CorreoElectronico='" + this.correo + "',Codigo='" + this.codigo + "',Especialidad='" + this.especialidad + "',Salario='" + this.salario + "' where id=" + this.id);
+            sentencias.executeUpdate("update medicos set NombreCompleto='" + this.nombre + "',FechaNacimiento='" + dt.format(this.FechaNacimiento.getDate()) + "',Telefono='" + this.tel + "',CorreoElectronico='" + this.correo + "',Codigo='" + this.codigo + "',Especialidad='" + this.especialidad + "',Salario='" + this.salario + "' where cedula=" + this.cedula);
             JOptionPane.showMessageDialog(null, "Se actualizaron los datos");
 
         } catch (SQLException ex) {

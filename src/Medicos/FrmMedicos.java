@@ -29,7 +29,7 @@ public class FrmMedicos extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jcedula = new javax.swing.JTextField();
+        jidentificacion = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jnombre = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -48,6 +48,8 @@ public class FrmMedicos extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jtelefono = new javax.swing.JFormattedTextField();
+        jLabel9 = new javax.swing.JLabel();
+        jcedula = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMusuario = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -63,19 +65,19 @@ public class FrmMedicos extends javax.swing.JFrame {
 
         jPanel1.setToolTipText("Ingrese sus Datos");
 
-        jcedula.addActionListener(new java.awt.event.ActionListener() {
+        jidentificacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jcedulaActionPerformed(evt);
+                jidentificacionActionPerformed(evt);
             }
         });
-        jcedula.addKeyListener(new java.awt.event.KeyAdapter() {
+        jidentificacion.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                jcedulaKeyTyped(evt);
+                jidentificacionKeyTyped(evt);
             }
         });
 
         jLabel1.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
-        jLabel1.setText("Numero Cedula:");
+        jLabel1.setText("Numero Id:");
 
         jnombre.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -151,7 +153,7 @@ public class FrmMedicos extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jcedula))
+                        .addComponent(jidentificacion))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -193,7 +195,7 @@ public class FrmMedicos extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jcedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jidentificacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -229,6 +231,14 @@ public class FrmMedicos extends javax.swing.JFrame {
                     .addComponent(jButton3))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
+
+        jLabel9.setText("Numero Cedula:");
+
+        jcedula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcedulaActionPerformed(evt);
+            }
+        });
 
         jMusuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/search_2.png"))); // NOI18N
         jMusuario.setText("Buscar Usuario");
@@ -280,16 +290,26 @@ public class FrmMedicos extends javax.swing.JFrame {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jcedula, javax.swing.GroupLayout.PREFERRED_SIZE, 497, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(11, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jcedula, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -300,7 +320,8 @@ public class FrmMedicos extends javax.swing.JFrame {
         //Jbutton;
 
         //medico.setID(Integer.parseInt(jejemplo.getValue().toString())); esto era ejemplo
-        medico.setID(Integer.parseInt(this.jcedula.getText()));
+        medico.setID(Integer.parseInt(this.jidentificacion.getText()));
+        medico.setCedula(Integer.parseInt(this.jcedula.getText()));
         medico.setNombre(this.jnombre.getText());
         medico.setFechaNacimiento(this.jfecha);
         medico.setTel(this.jtelefono.getText());
@@ -359,17 +380,21 @@ public class FrmMedicos extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jnombreKeyTyped
 
+    private void jidentificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jidentificacionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jidentificacionActionPerformed
+
+    private void jidentificacionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jidentificacionKeyTyped
+        // TODO add your handling code here:
+        //Da la longitud al id
+        if (jidentificacion.getText().length()==11) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jidentificacionKeyTyped
+
     private void jcedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcedulaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jcedulaActionPerformed
-
-    private void jcedulaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jcedulaKeyTyped
-        // TODO add your handling code here:
-        //Da la longitud al id
-        if (jcedula.getText().length()==11) {
-            evt.consume();
-        }
-    }//GEN-LAST:event_jcedulaKeyTyped
 
     /**
      * @param args the command line arguments
@@ -419,6 +444,7 @@ public class FrmMedicos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMActualizarIn;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
@@ -430,6 +456,7 @@ public class FrmMedicos extends javax.swing.JFrame {
     private javax.swing.JTextField jcorreo;
     private javax.swing.JTextField jespecialidad;
     private com.toedter.calendar.JDateChooser jfecha;
+    private javax.swing.JTextField jidentificacion;
     private javax.swing.JMenu jmEliminar;
     private javax.swing.JTextField jnombre;
     private javax.swing.JTextField jsalario;
