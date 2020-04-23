@@ -4,6 +4,7 @@ import Conectar.Conectar;
 import static Conectar.Conectar.sentencias;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -25,7 +26,7 @@ public class FrmBuscar extends javax.swing.JFrame {
 
     public void configurarTabla() {
 
-        String Titulos[] = new String[5];
+        String Titulos[] = new String[6];
         paciente = new DefaultTableModel(null, Titulos);
         tabla.setModel(paciente);
     }
@@ -41,26 +42,26 @@ public class FrmBuscar extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         aceptar = new javax.swing.JButton();
         can = new javax.swing.JButton();
-        txtid = new javax.swing.JTextField();
+        txtcedula = new javax.swing.JTextField();
         txtnombre = new javax.swing.JTextField();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         nombre = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        cedula = new javax.swing.JTextField();
+        txtxcedula = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        telefono = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         correo = new javax.swing.JTextField();
         busnombre = new javax.swing.JButton();
-        buscedula = new javax.swing.JButton();
         busfecha = new javax.swing.JButton();
         bustelefono = new javax.swing.JButton();
         buscorreo = new javax.swing.JButton();
         fecha = new com.toedter.calendar.JDateChooser();
         buscan = new javax.swing.JButton();
+        txttelefono = new javax.swing.JFormattedTextField();
+        buscar_cedula = new javax.swing.JButton();
         filtro = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tabla = new javax.swing.JTable();
@@ -76,7 +77,7 @@ public class FrmBuscar extends javax.swing.JFrame {
         jLabel7.setText("Filtrar Pacientes");
 
         jLabel8.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
-        jLabel8.setText("ID:");
+        jLabel8.setText("Cedula:");
 
         jLabel9.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel9.setText("Nombre Completo:");
@@ -107,16 +108,14 @@ public class FrmBuscar extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel9)
-                                .addGap(60, 60, 60))
+                            .addComponent(jLabel9)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addComponent(jLabel8)
-                                .addGap(154, 154, 154)))
+                                .addComponent(jLabel8)))
+                        .addGap(60, 60, 60)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(txtnombre, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
-                            .addComponent(txtid, javax.swing.GroupLayout.Alignment.LEADING)))
+                            .addComponent(txtcedula, javax.swing.GroupLayout.Alignment.LEADING)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(162, 162, 162)
                         .addComponent(jLabel7))
@@ -135,7 +134,7 @@ public class FrmBuscar extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(txtid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtcedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
@@ -169,6 +168,12 @@ public class FrmBuscar extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel1.setText("Nombre:");
 
+        nombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                nombreKeyTyped(evt);
+            }
+        });
+
         jLabel2.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel2.setText("Cedula:");
 
@@ -187,15 +192,6 @@ public class FrmBuscar extends javax.swing.JFrame {
         busnombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 busnombreActionPerformed(evt);
-            }
-        });
-
-        buscedula.setBackground(new java.awt.Color(102, 102, 102));
-        buscedula.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.png"))); // NOI18N
-        buscedula.setText("Buscar Cedula");
-        buscedula.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buscedulaActionPerformed(evt);
             }
         });
 
@@ -235,90 +231,103 @@ public class FrmBuscar extends javax.swing.JFrame {
             }
         });
 
+        try {
+            txttelefono.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##-##-##-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        buscar_cedula.setBackground(new java.awt.Color(0, 204, 255));
+        buscar_cedula.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.png"))); // NOI18N
+        buscar_cedula.setText("Buscar Cedula");
+        buscar_cedula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscar_cedulaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(8, 8, 8)
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(156, 156, 156)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5))
-                        .addGap(32, 32, 32)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(telefono)
-                            .addComponent(correo)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txttelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(correo)
+                                .addContainerGap())
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel1)
-                                    .addComponent(jLabel2))
-                                .addGap(32, 32, 32)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(nombre)
-                                    .addComponent(cedula)))
+                                    .addComponent(jLabel4))
+                                .addGap(118, 118, 118)
+                                .addComponent(jLabel5)
+                                .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(21, 21, 21)
-                                .addComponent(fecha, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGap(7, 7, 7)
+                                .addComponent(nombre))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(busnombre)
-                                .addGap(40, 40, 40))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(buscedula)
-                                .addGap(46, 46, 46)))
+                            .addComponent(jLabel2)
+                            .addComponent(txtxcedula, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3)
+                            .addComponent(fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(buscorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(45, 45, 45)
-                                .addComponent(buscan))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(busfecha)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(bustelefono)))
-                        .addGap(8, 8, 8)))
-                .addContainerGap())
+                            .addComponent(buscar_cedula)
+                            .addComponent(bustelefono))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(busnombre)
+                            .addComponent(buscorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(58, 58, 58)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(busfecha, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(buscan))
+                        .addGap(36, 36, 36))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(11, 11, 11)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtxcedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(30, 30, 30)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5)))
+                    .addComponent(jLabel3))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel3)
-                    .addComponent(fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txttelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(correo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(29, 29, 29)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(telefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(correo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buscar_cedula)
                     .addComponent(busnombre)
-                    .addComponent(bustelefono)
                     .addComponent(busfecha))
-                .addGap(34, 34, 34)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buscedula)
-                    .addComponent(buscorreo)
-                    .addComponent(buscan))
-                .addContainerGap())
+                    .addComponent(bustelefono)
+                    .addComponent(buscan)
+                    .addComponent(buscorreo))
+                .addGap(18, 18, 18))
         );
 
         jTabbedPane1.addTab("Buscar", jPanel1);
@@ -375,34 +384,33 @@ public class FrmBuscar extends javax.swing.JFrame {
             .addGroup(filtroLayout.createSequentialGroup()
                 .addGroup(filtroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(filtroLayout.createSequentialGroup()
+                        .addGap(61, 61, 61)
+                        .addComponent(verdatos)
+                        .addGap(33, 33, 33)
+                        .addComponent(cancelar)
+                        .addGap(37, 37, 37)
+                        .addComponent(filtrar))
+                    .addGroup(filtroLayout.createSequentialGroup()
                         .addGap(134, 134, 134)
                         .addComponent(jLabel6))
                     .addGroup(filtroLayout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addGroup(filtroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(filtroLayout.createSequentialGroup()
-                                .addComponent(verdatos)
-                                .addGap(63, 63, 63)
-                                .addComponent(cancelar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
-                                .addComponent(filtrar)
-                                .addGap(6, 6, 6))
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(16, 16, 16)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 568, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
         filtroLayout.setVerticalGroup(
             filtroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, filtroLayout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(24, 24, 24)
                 .addGroup(filtroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(verdatos)
                     .addComponent(cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(filtrar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Filtro", filtro);
@@ -413,13 +421,12 @@ public class FrmBuscar extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 508, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jTabbedPane1))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
+                .addComponent(jTabbedPane1)
                 .addContainerGap())
         );
 
@@ -427,35 +434,26 @@ public class FrmBuscar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void busnombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_busnombreActionPerformed
-        prueba.Nombre = this.nombre;
+        prueba.setNombre(this.txtnombre.getText());
         conec.conectar();
         prueba.Read_Nombre();
     }//GEN-LAST:event_busnombreActionPerformed
 
-    private void buscedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscedulaActionPerformed
-        Paciente prueba = new Paciente();
-        prueba.ID = this.cedula;
-        conec.conectar();
-        prueba.Read_Cedula();
-    }//GEN-LAST:event_buscedulaActionPerformed
-
     private void busfechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_busfechaActionPerformed
-        Paciente prueba = new Paciente();
-        prueba.FechaNacimiento = this.fecha;
+        SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
+        prueba.setFechaNacimiento(date.format(this.fecha.getDate()));
         conec.conectar();
         prueba.Read_Fecha();
     }//GEN-LAST:event_busfechaActionPerformed
 
     private void bustelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bustelefonoActionPerformed
-        Paciente prueba = new Paciente();
-        prueba.Telefono = this.telefono;
+        prueba.setTelefono(this.txttelefono.getText());
         conec.conectar();
         prueba.Read_Telefono();
     }//GEN-LAST:event_bustelefonoActionPerformed
 
     private void buscorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscorreoActionPerformed
-        Paciente prueba = new Paciente();
-        prueba.correo = this.correo;
+        prueba.setCorreo(this.correo.getText());
         conec.conectar();
         prueba.Read_Correo();
     }//GEN-LAST:event_buscorreoActionPerformed
@@ -469,20 +467,21 @@ public class FrmBuscar extends javax.swing.JFrame {
         String fecha;
         try {
             ResultSet rs = sentencias.executeQuery("SELECT * FROM pacientes");
-            String Titulos[] = {"ID", "NombreCompleto", "FechaNacimiento", "Telefono", "CorreoElectronico"};
+            String Titulos[] = {"ID","NumeroCedula","NombreCompleto", "FechaNacimiento", "Telefono", "CorreoElectronico"};
             paciente = new DefaultTableModel(null, Titulos);
 
-            String fila[] = new String[5];
+            String fila[] = new String[6];
             rs.beforeFirst();
             while (rs.next()) {
 
                 fila[0] = rs.getString("ID");
-                fila[1] = rs.getString("NombreCompleto");
+                fila[1] = rs.getString("NumeroCedula");
+                fila[2] = rs.getString("NombreCompleto");
                 fecha = rs.getString("FechaNacimiento");
                 fecha = fecha.substring(8, 10) + "/" + fecha.substring(5, 7) + "/" + fecha.substring(0, 4);
-                fila[2] = fecha;
-                fila[3] = rs.getString("Telefono");
-                fila[4] = rs.getString("CorreoElectronico");
+                fila[3] = fecha;
+                fila[4] = rs.getString("Telefono");
+                fila[5] = rs.getString("CorreoElectronico");
                 paciente.addRow(fila);
             }
             tabla.setModel(paciente);
@@ -498,7 +497,7 @@ public class FrmBuscar extends javax.swing.JFrame {
 
     private void filtrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filtrarActionPerformed
 
-        filtrar_pacientes.setSize(480,210);
+        filtrar_pacientes.setSize(480, 210);
         filtrar_pacientes.setModal(true);
         filtrar_pacientes.setVisible(true);
     }//GEN-LAST:event_filtrarActionPerformed
@@ -508,23 +507,23 @@ public class FrmBuscar extends javax.swing.JFrame {
     }//GEN-LAST:event_canActionPerformed
 
     private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed
-        String id, nombre,fecha;
+        String cedula, nombre, fecha;
         String sql;
         int contador = 0;
-        
+
         try {
 
-            id = txtid.getText();
+            cedula = txtcedula.getText();
             nombre = txtnombre.getText();
-            
+
             // Contruccion de la consulta sql select
             sql = "SELECT * FROM pacientes";
-            
-            if (!id.equals("")) {
+
+            if (!cedula.equals("")) {
                 contador++;
-                sql += " WHERE ID LIKE '%" + id + "%'";
+                sql += " WHERE NumeroCedula LIKE '%" + cedula + "%'";
             }
-            
+
             if (!nombre.equals("")) {
                 contador++;
                 if (contador == 1) {
@@ -535,18 +534,19 @@ public class FrmBuscar extends javax.swing.JFrame {
             }
 
             ResultSet rs = sentencias.executeQuery(sql);
-            String encabezado[] = {"ID", "NombreCompleto","FechaNacimiento","Telefono","CorreoElectronico"};
+            String encabezado[] = {"ID", "NumeroCedula", "NombreCompleto", "FechaNacimiento", "Telefono", "CorreoElectronico"};
             paciente = new DefaultTableModel(null, encabezado);
 
-            String fila[] = new String[5];
+            String fila[] = new String[6];
             rs.beforeFirst();
             while (rs.next()) {
                 fila[0] = rs.getString("ID");
-                fila[1] = rs.getString("NombreCompleto");
+                fila[1] = rs.getString("NumeroCedula");
+                fila[2] = rs.getString("NombreCompleto");
                 fecha = rs.getString("FechaNacimiento");
-                fila[2] = fecha.substring(8, 10) + "/" + fecha.substring(5, 7) + "/" + fecha.substring(0, 4);
-                fila[3] = rs.getString("Telefono");
-                fila[4] = rs.getString("CorreoElectronico");
+                fila[3] = fecha.substring(8, 10) + "/" + fecha.substring(5, 7) + "/" + fecha.substring(0, 4);
+                fila[4] = rs.getString("Telefono");
+                fila[5] = rs.getString("CorreoElectronico");
                 paciente.addRow(fila);
             }
             tabla.setModel(paciente);
@@ -555,6 +555,18 @@ public class FrmBuscar extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_aceptarActionPerformed
+
+    private void buscar_cedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscar_cedulaActionPerformed
+        prueba.setCedula(Integer.parseInt(this.txtxcedula.getText()));
+        conec.conectar();
+        prueba.Read_Cedula();
+    }//GEN-LAST:event_buscar_cedulaActionPerformed
+
+    private void nombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nombreKeyTyped
+        if (txtnombre.getText().length() == 20) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_nombreKeyTyped
 
     /**
      * @param args the command line arguments
@@ -594,14 +606,13 @@ public class FrmBuscar extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton aceptar;
     private javax.swing.JButton buscan;
-    private javax.swing.JButton buscedula;
+    private javax.swing.JButton buscar_cedula;
     private javax.swing.JButton buscorreo;
     private javax.swing.JButton busfecha;
     private javax.swing.JButton busnombre;
     private javax.swing.JButton bustelefono;
     private javax.swing.JButton can;
     private javax.swing.JButton cancelar;
-    private javax.swing.JTextField cedula;
     private javax.swing.JTextField correo;
     private com.toedter.calendar.JDateChooser fecha;
     private javax.swing.JButton filtrar;
@@ -622,9 +633,10 @@ public class FrmBuscar extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField nombre;
     private javax.swing.JTable tabla;
-    private javax.swing.JTextField telefono;
-    private javax.swing.JTextField txtid;
+    private javax.swing.JTextField txtcedula;
     private javax.swing.JTextField txtnombre;
+    private javax.swing.JFormattedTextField txttelefono;
+    private javax.swing.JTextField txtxcedula;
     private javax.swing.JButton verdatos;
     // End of variables declaration//GEN-END:variables
 }
