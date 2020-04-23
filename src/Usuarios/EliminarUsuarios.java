@@ -132,7 +132,7 @@ public class EliminarUsuarios extends javax.swing.JFrame {
     private void txtEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEliminarActionPerformed
         conec.conectar();
         prueba.setCedula(Integer.parseInt(this.txtcedula.getText()));
-        if(this.txtcedula.getText().equals("0")){ 
+        if(this.txtcedula.getText().equals("504110287")){ 
             JOptionPane.showMessageDialog(null, "No puede eliminar este usuario");
             
         }else{

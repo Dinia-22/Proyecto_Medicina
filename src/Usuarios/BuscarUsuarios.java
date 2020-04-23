@@ -533,7 +533,7 @@ public class BuscarUsuarios extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void nomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomActionPerformed
-        prueba.setTxtNombre(this.txtnombre.getText());
+        prueba.setTxtNombre(this.txtNom.getText());
         conec.conectar();
         prueba.readNombre();
     }//GEN-LAST:event_nomActionPerformed
@@ -607,7 +607,7 @@ public class BuscarUsuarios extends javax.swing.JFrame {
     }//GEN-LAST:event_verdatosActionPerformed
 
     private void buscedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscedulaActionPerformed
-        prueba.setId(Integer.parseInt(this.txtid.getText()));
+        prueba.setCedula(Integer.parseInt(this.txtcedula.getText()));
         conec.conectar();
         prueba.Read_Cedula();
     }//GEN-LAST:event_buscedulaActionPerformed

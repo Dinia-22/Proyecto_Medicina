@@ -163,10 +163,10 @@ public class Usuario {
 
         try {
 
-            datos = sentencias.executeQuery("select * from usuarios where id='" + this.Id + "'");
+            datos = sentencias.executeQuery("select * from usuarios where cedula='" + this.cedula + "'");
             if (datos.next()) {
                 System.out.println(datos.getInt(1));
-                JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(1));
+                JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(2));
                 System.out.println(datos.getString(3));
             } else {
                 JOptionPane.showMessageDialog(null, "No hay mas registros");
