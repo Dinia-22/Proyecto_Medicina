@@ -276,8 +276,7 @@ public class FrmCitas extends javax.swing.JFrame {
     }//GEN-LAST:event_cancelActionPerformed
 
     private void saveInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveInfoActionPerformed
-        SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
-        
+        SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd"); 
         prueba.setMedicoEspe(this.txtMedico.getText());
         prueba.setFecha(dt.format(this.txtfecha.getDate()));
         prueba.setHora(this.txtHora.getText());
