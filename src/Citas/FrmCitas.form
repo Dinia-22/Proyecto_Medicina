@@ -93,11 +93,11 @@
                       <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Group type="102" attributes="0">
-                              <Component id="save" min="-2" max="-2" attributes="0"/>
+                              <Component id="saveInfo" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                               <Component id="cancel" min="-2" pref="144" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
-                              <Component id="saveInformation" min="-2" max="-2" attributes="0"/>
+                              <Component id="saveInformationActualizada" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -117,8 +117,8 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="cancel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="saveInformation" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="save" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="saveInformationActualizada" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="saveInfo" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -301,7 +301,7 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="save">
+    <Component class="javax.swing.JButton" name="saveInfo">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="66" green="66" red="66" type="rgb"/>
@@ -312,7 +312,7 @@
         <Property name="text" type="java.lang.String" value="Guardar Informacion"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="saveActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="saveInfoActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="cancel">
@@ -329,7 +329,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cancelActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="saveInformation">
+    <Component class="javax.swing.JButton" name="saveInformationActualizada">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="66" green="66" red="66" type="rgb"/>
@@ -340,7 +340,7 @@
         <Property name="text" type="java.lang.String" value="Guardar Informacion Actualizada"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="saveInformationActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="saveInformationActualizadaActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">

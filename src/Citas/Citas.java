@@ -97,8 +97,8 @@ public class Citas {
     public void update() {
         try {
 
-            SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
-            sentencias.executeUpdate("update citas set Fecha='" + this.fecha + "',Hora='" + this.hora + "',Paciente='" + this.paciente + "',Medico='" + this.MedicoEspe + "' where Id=" + this.Id);
+           
+            sentencias.executeUpdate("update citas set Fecha='" + this.fecha + "',Hora='" + this.hora + "',Paciente='" + this.paciente + "',Medico='" + this.MedicoEspe + "' where Cedula=" + this.cedula);
             JOptionPane.showMessageDialog(null, "Se actualizaron los datos");
 
         } catch (SQLException ex) {

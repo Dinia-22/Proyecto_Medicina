@@ -42,9 +42,9 @@ public class FrmCitas extends javax.swing.JFrame {
         txtid = new javax.swing.JTextField();
         txtcedula = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        save = new javax.swing.JButton();
+        saveInfo = new javax.swing.JButton();
         cancel = new javax.swing.JButton();
-        saveInformation = new javax.swing.JButton();
+        saveInformationActualizada = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -172,12 +172,12 @@ public class FrmCitas extends javax.swing.JFrame {
                 .addContainerGap(26, Short.MAX_VALUE))
         );
 
-        save.setBackground(new java.awt.Color(102, 102, 102));
-        save.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/save.png"))); // NOI18N
-        save.setText("Guardar Informacion");
-        save.addActionListener(new java.awt.event.ActionListener() {
+        saveInfo.setBackground(new java.awt.Color(102, 102, 102));
+        saveInfo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/save.png"))); // NOI18N
+        saveInfo.setText("Guardar Informacion");
+        saveInfo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                saveActionPerformed(evt);
+                saveInfoActionPerformed(evt);
             }
         });
 
@@ -190,12 +190,12 @@ public class FrmCitas extends javax.swing.JFrame {
             }
         });
 
-        saveInformation.setBackground(new java.awt.Color(102, 102, 102));
-        saveInformation.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/save.png"))); // NOI18N
-        saveInformation.setText("Guardar Informacion Actualizada");
-        saveInformation.addActionListener(new java.awt.event.ActionListener() {
+        saveInformationActualizada.setBackground(new java.awt.Color(102, 102, 102));
+        saveInformationActualizada.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/save.png"))); // NOI18N
+        saveInformationActualizada.setText("Guardar Informacion Actualizada");
+        saveInformationActualizada.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                saveInformationActionPerformed(evt);
+                saveInformationActualizadaActionPerformed(evt);
             }
         });
 
@@ -247,11 +247,11 @@ public class FrmCitas extends javax.swing.JFrame {
                         .addGap(14, 14, 14)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(save)
+                                .addComponent(saveInfo)
                                 .addGap(42, 42, 42)
                                 .addComponent(cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(saveInformation))
+                                .addComponent(saveInformationActualizada))
                             .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(14, Short.MAX_VALUE))
         );
@@ -265,17 +265,16 @@ public class FrmCitas extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cancel)
-                    .addComponent(saveInformation)
-                    .addComponent(save))
+                    .addComponent(saveInformationActualizada)
+                    .addComponent(saveInfo))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void saveInformationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveInformationActionPerformed
+    private void saveInformationActualizadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveInformationActualizadaActionPerformed
         prueba.setCedula(Integer.parseInt(this.txtcedula.getText()));
-        prueba.setId(Integer.parseInt(this.txtid.getText()));
         SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
         prueba.setFecha(dt.format(this.txtfecha.getDate()));
         prueba.setHora(this.txtHora.getText());
@@ -284,14 +283,15 @@ public class FrmCitas extends javax.swing.JFrame {
         conec.conectar();
         prueba.update();
 
-    }//GEN-LAST:event_saveInformationActionPerformed
+    }//GEN-LAST:event_saveInformationActualizadaActionPerformed
 
     private void cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelActionPerformed
         this.dispose();  //decirle a una ventana que se destruya     
     }//GEN-LAST:event_cancelActionPerformed
 
-    private void saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveActionPerformed
+    private void saveInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveInfoActionPerformed
         SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
+        prueba.setCedula(Integer.parseInt(this.txtcedula.getText()));
         prueba.setMedicoEspe(this.txtMedico.getText());
         prueba.setFecha(dt.format(this.txtfecha.getDate()));
         prueba.setHora(this.txtHora.getText());
@@ -303,7 +303,7 @@ public class FrmCitas extends javax.swing.JFrame {
         }else{
             prueba.create();
         } 
-    }//GEN-LAST:event_saveActionPerformed
+    }//GEN-LAST:event_saveInfoActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         Buscar_Citas b = new Buscar_Citas();
@@ -389,8 +389,8 @@ public class FrmCitas extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JButton save;
-    private javax.swing.JButton saveInformation;
+    private javax.swing.JButton saveInfo;
+    private javax.swing.JButton saveInformationActualizada;
     private javax.swing.JTextField txtHora;
     private javax.swing.JTextField txtMedico;
     private javax.swing.JTextField txtPaciente;
