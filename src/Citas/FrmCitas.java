@@ -296,6 +296,7 @@ public class FrmCitas extends javax.swing.JFrame {
         prueba.setFecha(dt.format(this.txtfecha.getDate()));
         prueba.setHora(this.txtHora.getText());
         prueba.setPaciente(this.txtPaciente.getText());
+        prueba.setCedula(Integer.parseInt(this.txtcedula.getText()));
         conec.conectar();
         if (this.txtHora.getText().equals("12:45")|| this.txtfecha.getDate().equals("2020-04-07")) {
             JOptionPane.showMessageDialog(null, "No puede programar una cita en la misma fecha y hora ");

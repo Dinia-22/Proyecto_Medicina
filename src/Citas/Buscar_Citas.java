@@ -492,7 +492,7 @@ public class Buscar_Citas extends javax.swing.JFrame {
     }//GEN-LAST:event_horaActionPerformed
 
     private void cedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cedulaActionPerformed
-        prueba.setId(Integer.parseInt(this.txtid.getText()));
+        prueba.setCedula(Integer.parseInt(this.txtCedula.getText()));
         conec.conectar();
         prueba.readCedula();
     }//GEN-LAST:event_cedulaActionPerformed

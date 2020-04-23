@@ -140,7 +140,6 @@ public class Citas {
 
     public void readCedula() {
         try {
-
             datos = sentencias.executeQuery("select * from citas where cedula='" + this.cedula + "'");
             if (datos.next()) {
 
