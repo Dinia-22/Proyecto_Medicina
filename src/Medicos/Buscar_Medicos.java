@@ -517,7 +517,7 @@ public class Buscar_Medicos extends javax.swing.JFrame {
 
     private void btncedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncedulaActionPerformed
         //Buscar Cedula:
-        prueba.setID(Integer.parseInt(this.jcedula1.getText()));
+        prueba.setCedula(Integer.parseInt(this.jcedula1.getText()));
         conec.conectar();
         prueba.readCedula();
     }//GEN-LAST:event_btncedulaActionPerformed

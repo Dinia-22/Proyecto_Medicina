@@ -29,8 +29,6 @@ public class FrmMedicos extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jidentificacion = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
         jnombre = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -65,20 +63,6 @@ public class FrmMedicos extends javax.swing.JFrame {
 
         jPanel1.setToolTipText("Ingrese sus Datos");
 
-        jidentificacion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jidentificacionActionPerformed(evt);
-            }
-        });
-        jidentificacion.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jidentificacionKeyTyped(evt);
-            }
-        });
-
-        jLabel1.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
-        jLabel1.setText("Numero Id:");
-
         jnombre.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jnombreKeyTyped(evt);
@@ -105,6 +89,18 @@ public class FrmMedicos extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel4.setText("Telefono:");
+
+        jcodigo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jcodigoKeyTyped(evt);
+            }
+        });
+
+        jespecialidad.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jespecialidadKeyTyped(evt);
+            }
+        });
 
         jButton1.setBackground(new java.awt.Color(102, 102, 102));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/save.png"))); // NOI18N
@@ -139,6 +135,14 @@ public class FrmMedicos extends javax.swing.JFrame {
             ex.printStackTrace();
         }
 
+        jLabel9.setText("Numero Cedula:");
+
+        jcedula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcedulaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -151,10 +155,6 @@ public class FrmMedicos extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jcodigo))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jidentificacion))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jnombre))
@@ -163,6 +163,14 @@ public class FrmMedicos extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jcorreo))
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addGap(18, 18, 18)
+                        .addComponent(jespecialidad, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jsalario))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addGap(18, 18, 18)
                         .addComponent(jtelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -170,15 +178,7 @@ public class FrmMedicos extends javax.swing.JFrame {
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jfecha, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 26, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addGap(18, 18, 18)
-                        .addComponent(jespecialidad, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jsalario)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(29, 29, 29)
@@ -188,15 +188,21 @@ public class FrmMedicos extends javax.swing.JFrame {
                 .addGap(80, 80, 80)
                 .addComponent(jButton2)
                 .addGap(29, 29, 29))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jcedula, javax.swing.GroupLayout.PREFERRED_SIZE, 497, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(14, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addGap(11, 11, 11)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jidentificacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(jLabel9)
+                    .addComponent(jcedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -231,14 +237,6 @@ public class FrmMedicos extends javax.swing.JFrame {
                     .addComponent(jButton3))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
-
-        jLabel9.setText("Numero Cedula:");
-
-        jcedula.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jcedulaActionPerformed(evt);
-            }
-        });
 
         jMusuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/search_2.png"))); // NOI18N
         jMusuario.setText("Buscar Usuario");
@@ -295,21 +293,11 @@ public class FrmMedicos extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jcedula, javax.swing.GroupLayout.PREFERRED_SIZE, 497, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(11, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jcedula, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -320,7 +308,7 @@ public class FrmMedicos extends javax.swing.JFrame {
         //Jbutton;
 
         //medico.setID(Integer.parseInt(jejemplo.getValue().toString())); esto era ejemplo
-        medico.setID(Integer.parseInt(this.jidentificacion.getText()));
+        //medico.setID(Integer.parseInt(this.jidentificacion.getText()));
         medico.setCedula(Integer.parseInt(this.jcedula.getText()));
         medico.setNombre(this.jnombre.getText());
         medico.setFechaNacimiento(this.jfecha);
@@ -380,21 +368,23 @@ public class FrmMedicos extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jnombreKeyTyped
 
-    private void jidentificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jidentificacionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jidentificacionActionPerformed
-
-    private void jidentificacionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jidentificacionKeyTyped
-        // TODO add your handling code here:
-        //Da la longitud al id
-        if (jidentificacion.getText().length()==11) {
-            evt.consume();
-        }
-    }//GEN-LAST:event_jidentificacionKeyTyped
-
     private void jcedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcedulaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jcedulaActionPerformed
+
+    private void jespecialidadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jespecialidadKeyTyped
+        // TODO add your handling code here:
+         if (jespecialidad.getText().length() == 25) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jespecialidadKeyTyped
+
+    private void jcodigoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jcodigoKeyTyped
+        // TODO add your handling code here:
+         if (jcodigo.getText().length() == 10) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jcodigoKeyTyped
 
     /**
      * @param args the command line arguments
@@ -436,7 +426,6 @@ public class FrmMedicos extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -456,7 +445,6 @@ public class FrmMedicos extends javax.swing.JFrame {
     private javax.swing.JTextField jcorreo;
     private javax.swing.JTextField jespecialidad;
     private com.toedter.calendar.JDateChooser jfecha;
-    private javax.swing.JTextField jidentificacion;
     private javax.swing.JMenu jmEliminar;
     private javax.swing.JTextField jnombre;
     private javax.swing.JTextField jsalario;
