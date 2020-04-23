@@ -57,7 +57,7 @@ public class Actualizar extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel1.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
-        jLabel1.setText("ID");
+        jLabel1.setText("Cedula");
 
         jLabel2.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel2.setText("Nombre Completo");
@@ -234,7 +234,7 @@ public class Actualizar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
-        prueba.setId(Integer.parseInt(this.txtCedula.getText()));
+        prueba.setCedula(Integer.parseInt(this.txtCedula.getText()));
         SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
         prueba.setFechaNacimiento(dt.format(this.txtFecha.getDate()));
         prueba.setNomUsuario(this.txtUsuario.getText());
