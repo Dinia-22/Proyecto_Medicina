@@ -467,7 +467,7 @@ public class FrmBuscar extends javax.swing.JFrame {
         String fecha;
         try {
             ResultSet rs = sentencias.executeQuery("SELECT * FROM pacientes");
-            String Titulos[] = {"ID","NumeroCedula","NombreCompleto", "FechaNacimiento", "Telefono", "CorreoElectronico"};
+            String Titulos[] = {"ID","Cedula","NombreCompleto", "FechaNacimiento", "Telefono", "CorreoElectronico"};
             paciente = new DefaultTableModel(null, Titulos);
 
             String fila[] = new String[6];
@@ -475,7 +475,7 @@ public class FrmBuscar extends javax.swing.JFrame {
             while (rs.next()) {
 
                 fila[0] = rs.getString("ID");
-                fila[1] = rs.getString("NumeroCedula");
+                fila[1] = rs.getString("Cedula");
                 fila[2] = rs.getString("NombreCompleto");
                 fecha = rs.getString("FechaNacimiento");
                 fecha = fecha.substring(8, 10) + "/" + fecha.substring(5, 7) + "/" + fecha.substring(0, 4);
@@ -521,7 +521,7 @@ public class FrmBuscar extends javax.swing.JFrame {
 
             if (!cedula.equals("")) {
                 contador++;
-                sql += " WHERE NumeroCedula LIKE '%" + cedula + "%'";
+                sql += " WHERE Cedula LIKE '%" + cedula + "%'";
             }
 
             if (!nombre.equals("")) {
@@ -534,7 +534,7 @@ public class FrmBuscar extends javax.swing.JFrame {
             }
 
             ResultSet rs = sentencias.executeQuery(sql);
-            String encabezado[] = {"ID", "NumeroCedula", "NombreCompleto", "FechaNacimiento", "Telefono", "CorreoElectronico"};
+            String encabezado[] = {"ID", "Cedula", "NombreCompleto", "FechaNacimiento", "Telefono", "CorreoElectronico"};
             paciente = new DefaultTableModel(null, encabezado);
 
             String fila[] = new String[6];

@@ -105,7 +105,7 @@ public class Paciente {
         try {
 
             SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
-            sentencias.executeUpdate("update pacientes set NombreCompleto='" + this.nombre + "',FechaNacimiento='" + this.fechaNacimiento + "',Telefono='" + this.telefono + "',CorreoElectronico='" + this.correo + "' where NumeroCedula=" + this.cedula);
+            sentencias.executeUpdate("update pacientes set NombreCompleto='" + this.nombre + "',FechaNacimiento='" + this.fechaNacimiento + "',Telefono='" + this.telefono + "',CorreoElectronico='" + this.correo + "' where Cedula=" + this.cedula);
             JOptionPane.showMessageDialog(null, "Se actualizaron los datos");
 
         } catch (SQLException ex) {
@@ -115,7 +115,7 @@ public class Paciente {
 
     public void delete_Cedula() {
         try {
-            sentencias.executeUpdate("delete from pacientes where NumeroCedula=" + this.cedula);
+            sentencias.executeUpdate("delete from pacientes where Cedula=" + this.cedula);
             JOptionPane.showMessageDialog(null, "Usuario Eliminado");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al Eliminar");
@@ -128,7 +128,7 @@ public class Paciente {
 
         try {
 
-            datos = sentencias.executeQuery("select * from pacientes where NumeroCedula='" + this.cedula + "'");
+            datos = sentencias.executeQuery("select * from pacientes where Cedula='" + this.cedula + "'");
             if (datos.next()) {
                 System.out.println(datos.getInt(1));
                 JOptionPane.showMessageDialog(null, "Dato Encontrado " + datos.getString(2));
