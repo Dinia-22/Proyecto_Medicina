@@ -126,7 +126,7 @@ public class Usuario {
     public void update() {
 
         try {
-            sentencias.executeUpdate("update usuarios set NombreCompleto='" + this.txtNombre + "',FechaNacimiento='" + this.FechaNacimiento + "',Telefono='" + this.txtTel + "',CorreoElectronico='" + this.txtCorreo + "',NombredeUsuario='" + this.NomUsuario + "',TipodeUsuario='" + this.tipo + "' where ID=" + this.Id);
+            sentencias.executeUpdate("update usuarios set NombreCompleto='" + this.txtNombre + "',FechaNacimiento='" + this.FechaNacimiento + "',Telefono='" + this.txtTel + "',CorreoElectronico='" + this.txtCorreo + "',NombredeUsuario='" + this.NomUsuario + "',TipodeUsuario='" + this.tipo + "' where Cedula=" + this.cedula);
             JOptionPane.showMessageDialog(null, "Se actualizaron los datos");
 
         } catch (SQLException ex) {
