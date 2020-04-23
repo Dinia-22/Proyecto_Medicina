@@ -133,7 +133,7 @@ public class Expediente extends Thread {
     public void update() {
         try {
 
-            sentencias.executeUpdate("update expediente set fecha='" + this.Fecha + "',hora='" + this.hora + "',medico='" + this.medico + "',descripcion='" + this.Descrip + "',paciente='" + this.paciente + "' where id=" + this.ID);
+            sentencias.executeUpdate("update expediente set fecha='" + this.Fecha + "',hora='" + this.hora + "',medico='" + this.medico + "',descripcion='" + this.Descrip + "',paciente='" + this.paciente + "' where cedula=" + this.cedula);
             JOptionPane.showMessageDialog(null, "Se actualizaron los datos");
 
         } catch (SQLException ex) {
