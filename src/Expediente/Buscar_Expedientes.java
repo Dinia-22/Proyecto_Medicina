@@ -440,6 +440,7 @@ public class Buscar_Expedientes extends javax.swing.JFrame {
         ex.setHora(this.txthora.getText());
         conec.conectar();
         ex.readHora();
+        
     }//GEN-LAST:event_horaActionPerformed
 
     private void pacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pacienteActionPerformed
