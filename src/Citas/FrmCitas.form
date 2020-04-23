@@ -159,23 +159,19 @@
                   <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
               </Group>
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="95" max="-2" attributes="0"/>
-                  <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
-                  <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="97" max="-2" attributes="0"/>
-              </Group>
-              <Group type="102" alignment="0" attributes="0">
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="txtid" min="-2" pref="199" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
+                          <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="txtHora" min="-2" pref="199" max="-2" attributes="0"/>
-                              <Component id="txtfecha" min="-2" pref="199" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="txtcedula" min="-2" pref="181" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="txtHora" min="-2" pref="199" max="-2" attributes="0"/>
+                                  <Component id="txtfecha" min="-2" pref="199" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
                   </Group>
@@ -183,7 +179,6 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="txtMedico" alignment="1" min="-2" pref="218" max="-2" attributes="0"/>
                       <Component id="txtPaciente" alignment="1" min="-2" pref="218" max="-2" attributes="0"/>
-                      <Component id="txtcedula" alignment="1" min="-2" pref="181" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
               </Group>
@@ -214,17 +209,11 @@
                       <Component id="txtHora" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtMedico" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="14" max="32767" attributes="0"/>
+                  <Component id="txtcedula" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="txtid" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtcedula" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace pref="26" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -278,16 +267,6 @@
           <Events>
             <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtMedicoKeyTyped"/>
           </Events>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel6">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="sansserif" size="14" style="0"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="ID"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="txtid">
         </Component>
         <Component class="javax.swing.JTextField" name="txtcedula">
           <Events>
