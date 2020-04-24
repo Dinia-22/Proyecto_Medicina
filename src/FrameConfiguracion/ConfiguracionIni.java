@@ -85,7 +85,7 @@ public class ConfiguracionIni {
     }
 
     public void archIni() {
-        File archIni = new File("C:\\Users\\juan1\\Desktop\\UTN\\UTN I CUATRIMESTRE 2020\\Proyecto Progra\\Proyecto_Medicina-master\\ Fichero.ini");
+        File archIni = new File("C:\\Users\\juan1\\Desktop\\UTN\\UTN I CUATRIMESTRE 2020\\Proyecto Progra\\Proyecto_Medicina-master\\Fichero.ini");
         if (!archIni.exists()) {
             try {
                 archIni.createNewFile();   
@@ -97,12 +97,13 @@ public class ConfiguracionIni {
                 
                 FileWriter LeeS = new FileWriter(archIni, true);
                 BufferedWriter crea = new BufferedWriter(LeeS);
-                crea.write(this.Ip+ " Nombre de la IP \n");
-                crea.write( this.NomBaD + " Nombre de la base de datos \n");
-                crea.write(this.NomUsuario+ " Nombre de Usuario \n");
-                crea.write(this.contraseña +" Contraseña \n");
+                crea.write(" Nombre de la IP :"+ this.getIp() );
+                crea.write(" \n Nombre de la base de datos :"+ this.NomBaD);
+                crea.write(" \n Nombre de Usuario :"+ this.NomUsuario);
+                crea.write(" \n Contraseña :"+this.contraseña );
                 crea.close();
-                //crea.flush();
+                crea.flush();
+                JOptionPane.showMessageDialog(null, "Se creo con exito");
                 
             } catch (IOException e) {
             }
