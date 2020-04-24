@@ -30,7 +30,7 @@ public class Buscar_Citas extends javax.swing.JFrame {
 
     public void configurarTabla() {
 
-        String Titulos[] = new String[5];
+        String Titulos[] = new String[6];
         cita = new DefaultTableModel(null, Titulos);
         tabla.setModel(cita);
     }
@@ -49,7 +49,7 @@ public class Buscar_Citas extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        txtid = new javax.swing.JTextField();
+        txtcedula = new javax.swing.JTextField();
         txtnombre = new javax.swing.JTextField();
         aceptar_citas = new javax.swing.JButton();
         cancelar_citas = new javax.swing.JButton();
@@ -88,7 +88,7 @@ public class Buscar_Citas extends javax.swing.JFrame {
         jLabel7.setText("Filtrar Citas");
 
         jLabel8.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
-        jLabel8.setText("ID:");
+        jLabel8.setText("Cedula:");
 
         jLabel10.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         jLabel10.setText("Paciente:");
@@ -121,25 +121,30 @@ public class Buscar_Citas extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(149, 149, 149)
-                        .addComponent(jLabel7))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(64, 64, 64)
-                        .addComponent(aceptar_citas)
-                        .addGap(54, 54, 54)
-                        .addComponent(cancelar_citas))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel8)
+                            .addComponent(txtcedula, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel10)
-                            .addComponent(jLabel11))
-                        .addGap(57, 57, 57)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtid)
-                            .addComponent(txtnombre)
-                            .addComponent(txtmedi, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE))))
-                .addContainerGap(91, Short.MAX_VALUE))
+                            .addComponent(txtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtmedi)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel11)
+                                .addGap(0, 191, Short.MAX_VALUE))))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(149, 149, 149)
+                        .addComponent(jLabel7)))
+                .addContainerGap())
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(146, 146, 146)
+                .addComponent(aceptar_citas)
+                .addGap(40, 40, 40)
+                .addComponent(cancelar_citas)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -149,20 +154,18 @@ public class Buscar_Citas extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(txtid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel10)
-                    .addComponent(txtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(jLabel11))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
+                    .addComponent(txtcedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtmedi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(aceptar_citas)
                     .addComponent(cancelar_citas))
-                .addGap(26, 26, 26))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout Filtrar_CitasLayout = new javax.swing.GroupLayout(Filtrar_Citas.getContentPane());
@@ -542,22 +545,22 @@ public class Buscar_Citas extends javax.swing.JFrame {
     }//GEN-LAST:event_cancelarActionPerformed
 
     private void aceptar_citasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptar_citasActionPerformed
-        String id, paciente, fecha, medico;
+        String cedula, paciente, fecha, medico;
         String sql;
         int contador = 0;
 
         try {
 
-            id = txtid.getText();
+            cedula = txtcedula.getText();
             paciente = txtnombre.getText();
             medico = txtmedi.getText();
 
             // Contruccion de la consulta sql select
             sql = "SELECT * FROM citas";
 
-            if (!id.equals("")) {
+            if (!cedula.equals("")) {
                 contador++;
-                sql += " WHERE ID LIKE '%" + id + "%'";
+                sql += " WHERE Cedula LIKE '%" + cedula + "%'";
             }
 
             if (!paciente.equals("")) {
@@ -602,7 +605,7 @@ public class Buscar_Citas extends javax.swing.JFrame {
     }//GEN-LAST:event_aceptar_citasActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        Filtrar_Citas.setSize(350, 330);
+        Filtrar_Citas.setSize(700,220);
         Filtrar_Citas.setModal(true);
         Filtrar_Citas.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -704,7 +707,7 @@ public class Buscar_Citas extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser txtFecha;
     private javax.swing.JTextField txtHora;
     private javax.swing.JTextField txtPaciente;
-    private javax.swing.JTextField txtid;
+    private javax.swing.JTextField txtcedula;
     private javax.swing.JTextField txtmedi;
     private javax.swing.JTextField txtmedico;
     private javax.swing.JTextField txtnombre;
