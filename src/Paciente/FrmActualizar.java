@@ -218,7 +218,7 @@ public class FrmActualizar extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void nombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nombreKeyTyped
-        if (nombre.getText().length() == 20) {
+        if (nombre.getText().length() == 30) {
             evt.consume();
         }
     }//GEN-LAST:event_nombreKeyTyped
@@ -230,7 +230,7 @@ public class FrmActualizar extends javax.swing.JFrame {
     }//GEN-LAST:event_cedulaKeyTyped
 
     private void correoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_correoKeyTyped
-        if (correo.getText().length() == 10) {
+        if (correo.getText().length() == 30) {
             evt.consume();
         }
     }//GEN-LAST:event_correoKeyTyped
