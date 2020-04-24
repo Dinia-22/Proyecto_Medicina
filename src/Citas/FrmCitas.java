@@ -52,7 +52,7 @@ public class FrmCitas extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Citas");
-        setLocation(new java.awt.Point(380, 150));
+        setLocation(new java.awt.Point(380, 200));
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
