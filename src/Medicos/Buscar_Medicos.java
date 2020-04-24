@@ -26,7 +26,7 @@ public class Buscar_Medicos extends javax.swing.JFrame {
 
     public void configurarTabla() {
 
-        String Titulos[] = new String[8];
+        String Titulos[] = new String[9];
         medico = new DefaultTableModel(null, Titulos);
         tabla.setModel(medico);
     }
@@ -47,7 +47,7 @@ public class Buscar_Medicos extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         guardar_medicos = new javax.swing.JButton();
         cancelar_medicos = new javax.swing.JButton();
-        txtID = new javax.swing.JTextField();
+        txtcedula = new javax.swing.JTextField();
         txtNombre = new javax.swing.JTextField();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
@@ -87,10 +87,10 @@ public class Buscar_Medicos extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(204, 204, 204));
 
         jLabel10.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
-        jLabel10.setText("Filtrar Pacientes");
+        jLabel10.setText("Filtrar Medicos");
 
         jLabel11.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
-        jLabel11.setText("ID:");
+        jLabel11.setText("Cedula:");
 
         jLabel12.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel12.setText("Nombre Completo:");
@@ -120,26 +120,26 @@ public class Buscar_Medicos extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(162, 162, 162)
-                        .addComponent(jLabel10))
+                        .addContainerGap()
+                        .addComponent(txtcedula, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtNombre))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel12)
-                                .addGap(37, 37, 37))
+                                .addGap(85, 85, 85)
+                                .addComponent(guardar_medicos)
+                                .addGap(83, 83, 83)
+                                .addComponent(cancelar_medicos))
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(jLabel11)
-                                .addGap(131, 131, 131)))
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(txtNombre, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 298, Short.MAX_VALUE)
-                            .addComponent(txtID, javax.swing.GroupLayout.Alignment.LEADING)))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(85, 85, 85)
-                        .addComponent(guardar_medicos)
-                        .addGap(83, 83, 83)
-                        .addComponent(cancelar_medicos)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(107, 107, 107)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel12)
+                                    .addComponent(jLabel10))))
+                        .addGap(0, 93, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -147,18 +147,21 @@ public class Buscar_Medicos extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel10)
                 .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel11)
+                        .addGap(19, 19, 19))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel12)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
-                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtcedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(guardar_medicos)
                     .addComponent(cancelar_medicos))
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout filtrar_medicosLayout = new javax.swing.GroupLayout(filtrar_medicos.getContentPane());
@@ -625,21 +628,21 @@ public class Buscar_Medicos extends javax.swing.JFrame {
     }//GEN-LAST:event_cancelar_medicosActionPerformed
 
     private void guardar_medicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardar_medicosActionPerformed
-        String id, nombre, fecha;
+        String cedula, nombre, fecha;
         String sql;
         int nrocond = 0;
 
         try {
 
-            id = txtID.getText();
+            cedula = txtcedula.getText();
             nombre = txtNombre.getText();
 
             // Contruccion de la consulta sql select
             sql = "SELECT * FROM medicos";
 
-            if (!id.equals("")) {
+            if (!cedula.equals("")) {
                 nrocond++;
-                sql += " WHERE ID LIKE '%" + id + "%'";
+                sql += " WHERE Cedula LIKE '%" + cedula + "%'";
             }
 
             if (!nombre.equals("")) {
@@ -753,8 +756,8 @@ public class Buscar_Medicos extends javax.swing.JFrame {
     private javax.swing.JTextField jsalario1;
     private javax.swing.JFormattedTextField jtelefono1;
     private javax.swing.JTable tabla;
-    private javax.swing.JTextField txtID;
     private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtcedula;
     private javax.swing.JButton verdatos;
     // End of variables declaration//GEN-END:variables
 }
