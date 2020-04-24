@@ -8,7 +8,6 @@ package Paciente;
 import Conectar.Conectar;
 import java.text.SimpleDateFormat;
 
-
 public class FrmPacientes extends javax.swing.JFrame {
 
     Paciente paci = new Paciente();
@@ -61,9 +60,21 @@ public class FrmPacientes extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
+        txtcedula.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtcedulaKeyTyped(evt);
+            }
+        });
+
         txtnombre.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtnombreKeyTyped(evt);
+            }
+        });
+
+        txtcorreo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtcorreoKeyTyped(evt);
             }
         });
 
@@ -294,6 +305,19 @@ public class FrmPacientes extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtnombreKeyTyped
 
+    private void txtcedulaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtcedulaKeyTyped
+        if (txtcedula.getText().length() == 10) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtcedulaKeyTyped
+
+    private void txtcorreoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtcorreoKeyTyped
+        if(txtcorreo.getText().length()==30){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtcorreoKeyTyped
+
+    
     /**
      * @param args the command line arguments
      */

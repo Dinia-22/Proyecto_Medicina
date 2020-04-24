@@ -177,6 +177,12 @@ public class FrmBuscar extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel2.setText("Cedula:");
 
+        txtxcedula.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtxcedulaKeyTyped(evt);
+            }
+        });
+
         jLabel3.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel3.setText("Fecha Nacimiento: ");
 
@@ -185,6 +191,12 @@ public class FrmBuscar extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel5.setText("Correo Electronico:");
+
+        correo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                correoKeyTyped(evt);
+            }
+        });
 
         busnombre.setBackground(new java.awt.Color(102, 102, 102));
         busnombre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.png"))); // NOI18N
@@ -467,7 +479,7 @@ public class FrmBuscar extends javax.swing.JFrame {
         String fecha;
         try {
             ResultSet rs = sentencias.executeQuery("SELECT * FROM pacientes");
-            String Titulos[] = {"ID","Cedula","NombreCompleto", "FechaNacimiento", "Telefono", "CorreoElectronico"};
+            String Titulos[] = {"ID", "Cedula", "NombreCompleto", "FechaNacimiento", "Telefono", "CorreoElectronico"};
             paciente = new DefaultTableModel(null, Titulos);
 
             String fila[] = new String[6];
@@ -567,6 +579,18 @@ public class FrmBuscar extends javax.swing.JFrame {
             evt.consume();
         }
     }//GEN-LAST:event_nombreKeyTyped
+
+    private void txtxcedulaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtxcedulaKeyTyped
+        if (txtxcedula.getText().length() == 20) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtxcedulaKeyTyped
+
+    private void correoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_correoKeyTyped
+        if (correo.getText().length() == 20) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_correoKeyTyped
 
     /**
      * @param args the command line arguments

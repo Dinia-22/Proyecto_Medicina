@@ -346,6 +346,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtxcedula">
+              <Events>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtxcedulaKeyTyped"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel3">
               <Properties>
@@ -372,6 +375,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="correo">
+              <Events>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="correoKeyTyped"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="busnombre">
               <Properties>
