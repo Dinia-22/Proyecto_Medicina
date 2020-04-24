@@ -30,7 +30,7 @@ public class BuscarUsuarios extends javax.swing.JFrame {
 
     public void configurarTabla() {
 
-        String Titulos[] = new String[8];
+        String Titulos[] = new String[9];
         usuario = new DefaultTableModel(null, Titulos);
         tabla.setModel(usuario);
     }
@@ -49,7 +49,7 @@ public class BuscarUsuarios extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        txtid = new javax.swing.JTextField();
+        txtcedu = new javax.swing.JTextField();
         txtnombre = new javax.swing.JTextField();
         gaurdar_usuario = new javax.swing.JButton();
         cancelar_usuario = new javax.swing.JButton();
@@ -92,7 +92,7 @@ public class BuscarUsuarios extends javax.swing.JFrame {
         jLabel10.setText("Filtrar Usuario");
 
         jLabel11.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
-        jLabel11.setText("ID:");
+        jLabel11.setText("Cedula:");
 
         jLabel12.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         jLabel12.setText("Nombre Completo:");
@@ -120,45 +120,44 @@ public class BuscarUsuarios extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(96, 96, 96)
+                .addComponent(gaurdar_usuario)
+                .addGap(26, 26, 26)
+                .addComponent(cancelar_usuario)
+                .addContainerGap(190, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel11)
+                    .addComponent(txtcedu, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtnombre)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel11))
+                            .addComponent(jLabel10)
                             .addComponent(jLabel12))
-                        .addGap(26, 26, 26)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtid, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(65, 65, 65)
-                        .addComponent(gaurdar_usuario)
-                        .addGap(50, 50, 50)
-                        .addComponent(cancelar_usuario))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(105, 105, 105)
-                        .addComponent(jLabel10)))
-                .addContainerGap(18, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel10)
-                .addGap(14, 14, 14)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
-                    .addComponent(txtid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(16, 16, 16)
+                    .addComponent(jLabel12))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12)
+                    .addComponent(txtcedu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(gaurdar_usuario)
                     .addComponent(cancelar_usuario))
-                .addGap(18, 18, 18))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout Filtrar_UsuariosLayout = new javax.swing.GroupLayout(Filtrar_Usuarios.getContentPane());
@@ -617,21 +616,21 @@ public class BuscarUsuarios extends javax.swing.JFrame {
     }//GEN-LAST:event_cancelarActionPerformed
 
     private void gaurdar_usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gaurdar_usuarioActionPerformed
-        String id, nombre, fecha;
+        String cedula, nombre, fecha;
         String sql;
         int contador = 0;
 
         try {
 
-            id = txtid.getText();
+            cedula = txtcedu.getText();
             nombre = txtnombre.getText();
 
             // Contruccion de la consulta sql select
             sql = "SELECT * FROM usuarios";
 
-            if (!id.equals("")) {
+            if (!cedula.equals("")) {
                 contador++;
-                sql += " WHERE ID LIKE '%" + id + "%'";
+                sql += " WHERE Cedula LIKE '%" + cedula + "%'";
             }
 
             if (!nombre.equals("")) {
@@ -669,7 +668,7 @@ public class BuscarUsuarios extends javax.swing.JFrame {
     }//GEN-LAST:event_gaurdar_usuarioActionPerformed
 
     private void buscar_filtroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscar_filtroActionPerformed
-        Filtrar_Usuarios.setSize(350, 230);
+        Filtrar_Usuarios.setSize(440,200);
         Filtrar_Usuarios.setModal(true);
         Filtrar_Usuarios.setVisible(true);
     }//GEN-LAST:event_buscar_filtroActionPerformed
@@ -781,8 +780,8 @@ public class BuscarUsuarios extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField txtTel;
     private javax.swing.JTextField txtU;
     private javax.swing.JTextField txtUsuario;
+    private javax.swing.JTextField txtcedu;
     private javax.swing.JTextField txtcedula;
-    private javax.swing.JTextField txtid;
     private javax.swing.JTextField txtnombre;
     private javax.swing.JButton verdatos;
     // End of variables declaration//GEN-END:variables
