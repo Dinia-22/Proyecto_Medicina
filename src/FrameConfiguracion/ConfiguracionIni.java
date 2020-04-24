@@ -85,15 +85,13 @@ public class ConfiguracionIni {
     }
 
     public void archIni() {
-        File archIni = new File("C:\\Users\\Maria Paula\\OneDrive - Universidad Técnica Nacional\\Trabajos maria\\Pogramacion2\\ Fichero.ini");
+        File archIni = new File("C:\\Users\\juan1\\Desktop\\UTN\\UTN I CUATRIMESTRE 2020\\Proyecto Progra\\Proyecto_Medicina-master\\ Fichero.ini");
         if (!archIni.exists()) {
             try {
-                archIni.createNewFile();
-                
+                archIni.createNewFile();   
             } catch (IOException e) {
                 JOptionPane.showMessageDialog(null, "Error al crear el Fichero.ini");
             }
-
         } else {
             try {
                 
@@ -104,7 +102,7 @@ public class ConfiguracionIni {
                 crea.write(this.NomUsuario+ " Nombre de Usuario \n");
                 crea.write(this.contraseña +" Contraseña \n");
                 crea.close();
-                crea.flush();
+                //crea.flush();
                 
             } catch (IOException e) {
             }

@@ -191,6 +191,7 @@
         <Component class="javax.swing.JTextField" name="jcedula3">
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jcedula3ActionPerformed"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jcedula3KeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel1">
@@ -202,6 +203,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jnombre3">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jnombre3KeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
@@ -262,10 +266,19 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jcorreo3">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jcorreo3KeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="jcodigo3">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jcodigo3KeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="jespecialidad3">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jespecialidad3KeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="jsalario3">
         </Component>

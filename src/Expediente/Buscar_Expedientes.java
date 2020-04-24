@@ -554,9 +554,10 @@ public class Buscar_Expedientes extends javax.swing.JFrame {
     }//GEN-LAST:event_txtPacienteKeyTyped
 
     private void buscarcedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarcedulaActionPerformed
-        ex.setMedico(this.txtce.getText());
+
+        ex.setCedula(Integer.parseInt(this.txtce.getText()));
         conec.conectar();
-        ex.readMedico();
+        ex.Read_Cedula();
     }//GEN-LAST:event_buscarcedulaActionPerformed
 
     /**

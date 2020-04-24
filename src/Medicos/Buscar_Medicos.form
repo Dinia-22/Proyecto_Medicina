@@ -450,10 +450,19 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jcorreo1">
+              <Events>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jcorreo1KeyTyped"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="jcodigo1">
+              <Events>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jcodigo1KeyTyped"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="jespecialidad1">
+              <Events>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jespecialidad1KeyTyped"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="jsalario1">
             </Component>

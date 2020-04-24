@@ -183,7 +183,6 @@ public class BuscarUsuarios extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel2.setText("Nombre");
 
-        txtNom.setText("nombre");
         txtNom.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtNomKeyTyped(evt);
@@ -205,7 +204,6 @@ public class BuscarUsuarios extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel5.setText("Usuario");
 
-        txtU.setText("usuario");
         txtU.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtUKeyTyped(evt);
@@ -218,7 +216,6 @@ public class BuscarUsuarios extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel7.setText("Tipo de Usuario");
 
-        txtUsuario.setText("tipo");
         txtUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtUsuarioKeyTyped(evt);
@@ -291,7 +288,6 @@ public class BuscarUsuarios extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel3.setText("Cedula");
 
-        txtcedula.setText("cedula");
         txtcedula.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtcedulaKeyTyped(evt);

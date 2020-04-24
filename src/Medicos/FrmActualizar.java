@@ -8,7 +8,6 @@ package Medicos;
 import Conectar.Conectar;
 import java.text.SimpleDateFormat;
 
-
 public class FrmActualizar extends javax.swing.JFrame {
 
     /**
@@ -61,9 +60,20 @@ public class FrmActualizar extends javax.swing.JFrame {
                 jcedula3ActionPerformed(evt);
             }
         });
+        jcedula3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jcedula3KeyTyped(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel1.setText("Numero Cedula:");
+
+        jnombre3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jnombre3KeyTyped(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel2.setText("Nombre Completo:");
@@ -85,6 +95,24 @@ public class FrmActualizar extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel4.setText("Telefono:");
+
+        jcorreo3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jcorreo3KeyTyped(evt);
+            }
+        });
+
+        jcodigo3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jcodigo3KeyTyped(evt);
+            }
+        });
+
+        jespecialidad3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jespecialidad3KeyTyped(evt);
+            }
+        });
 
         jButton1.setBackground(new java.awt.Color(102, 102, 102));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/modificar.png"))); // NOI18N
@@ -255,6 +283,41 @@ public class FrmActualizar extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jcedula3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jcedula3KeyTyped
+        // TODO add your handling code here:
+        if (jcedula3.getText().length() == 11) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jcedula3KeyTyped
+
+    private void jnombre3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jnombre3KeyTyped
+        // TODO add your handling code here:
+        if (jnombre3.getText().length() == 10) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jnombre3KeyTyped
+
+    private void jcorreo3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jcorreo3KeyTyped
+        // TODO add your handling code here:
+        if (jcorreo3.getText().length() == 25) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jcorreo3KeyTyped
+
+    private void jespecialidad3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jespecialidad3KeyTyped
+        // TODO add your handling code here:
+        if (jespecialidad3.getText().length() == 25) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jespecialidad3KeyTyped
+
+    private void jcodigo3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jcodigo3KeyTyped
+        // TODO add your handling code here:
+        if (jcodigo3.getText().length() == 10) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jcodigo3KeyTyped
 
     /**
      * @param args the command line arguments

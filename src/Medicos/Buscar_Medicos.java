@@ -224,6 +224,24 @@ public class Buscar_Medicos extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel4.setText("Telefono:");
 
+        jcorreo1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jcorreo1KeyTyped(evt);
+            }
+        });
+
+        jcodigo1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jcodigo1KeyTyped(evt);
+            }
+        });
+
+        jespecialidad1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jespecialidad1KeyTyped(evt);
+            }
+        });
+
         btncedula.setBackground(new java.awt.Color(102, 102, 102));
         btncedula.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.png"))); // NOI18N
         btncedula.setText("Cedula");
@@ -695,7 +713,7 @@ public class Buscar_Medicos extends javax.swing.JFrame {
 
     private void jcedula1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jcedula1KeyTyped
         // TODO add your handling code here:
-        if (jcedula1.getText().length() == 10) {
+        if (jcedula1.getText().length() == 11) {
             evt.consume();
         }
     }//GEN-LAST:event_jcedula1KeyTyped
@@ -710,6 +728,27 @@ public class Buscar_Medicos extends javax.swing.JFrame {
             evt.consume();
         }
     }//GEN-LAST:event_jnombre1KeyTyped
+
+    private void jcorreo1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jcorreo1KeyTyped
+        // TODO add your handling code here:
+        if (jnombre1.getText().length() == 25) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jcorreo1KeyTyped
+
+    private void jespecialidad1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jespecialidad1KeyTyped
+        // TODO add your handling code here:
+        if (jespecialidad1.getText().length() == 25) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jespecialidad1KeyTyped
+
+    private void jcodigo1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jcodigo1KeyTyped
+        // TODO add your handling code here:
+        if (jcodigo1.getText().length() == 10) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jcodigo1KeyTyped
 
     /**
      * @param args the command line arguments
