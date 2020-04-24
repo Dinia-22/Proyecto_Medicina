@@ -446,7 +446,7 @@ public class FrmBuscar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void busnombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_busnombreActionPerformed
-        prueba.setNombre(this.txtnombre.getText());
+        prueba.setNombre(this.nombre.getText());
         conec.conectar();
         prueba.Read_Nombre();
     }//GEN-LAST:event_busnombreActionPerformed
