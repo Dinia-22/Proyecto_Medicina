@@ -50,6 +50,7 @@ public class FrmExpediente extends javax.swing.JFrame {
         txtCedula = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         txtAusentePresente = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         Buscar = new javax.swing.JMenuItem();
@@ -150,6 +151,13 @@ public class FrmExpediente extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("Archivo XML");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -179,32 +187,35 @@ public class FrmExpediente extends javax.swing.JFrame {
                             .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(33, 33, 33)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtHora, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(33, 33, 33)
-                                .addComponent(jLabel2)))
-                        .addGap(55, 55, 55)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtDecrip)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jLabel4)
-                                .addGap(74, 74, 74))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(aceptar)
-                        .addGap(135, 135, 135)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtHora, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(33, 33, 33)
+                                        .addComponent(jLabel2)))
+                                .addGap(55, 55, 55)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtDecrip)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addComponent(jLabel4)
+                                        .addGap(74, 74, 74))))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(48, 48, 48)
+                                .addComponent(jButton1)
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(aceptar)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(cancel))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(2, 2, 2)
+                                .addGap(137, 137, 137)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtAusentePresente, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(11, 11, 11)
-                                        .addComponent(jLabel7)))
+                                    .addComponent(jLabel7)
+                                    .addComponent(txtAusentePresente, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
@@ -247,7 +258,8 @@ public class FrmExpediente extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(aceptar)
                     .addComponent(actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cancel))
+                    .addComponent(cancel)
+                    .addComponent(jButton1))
                 .addContainerGap())
         );
 
@@ -311,20 +323,9 @@ public class FrmExpediente extends javax.swing.JFrame {
         ex.setFecha(dt.format(this.txtFecha.getDate()));
         ex.setHora(this.txtHora.getText());
         ex.setMedico(this.txtMedico.getText());
-        ex.xmlconfig();
         ex.setEstado(this.txtAusentePresente.getText());
-    
-
-    
         conec.conectar();
         ex.create();
-
-        try {
-            ex.start();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Se creo el archivo XML");
-        }
-
 
     }//GEN-LAST:event_aceptarActionPerformed
 
@@ -338,8 +339,6 @@ public class FrmExpediente extends javax.swing.JFrame {
         ex.setCedula(Integer.parseInt(this.txtCedula.getText()));
         conec.conectar();
         ex.update();
-        ex.xmlconfig();
-
     }//GEN-LAST:event_actualizarActionPerformed
 
     private void cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelActionPerformed
@@ -387,10 +386,23 @@ public class FrmExpediente extends javax.swing.JFrame {
     }//GEN-LAST:event_txtDecripKeyTyped
 
     private void txtAusentePresenteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAusentePresenteKeyTyped
-        if(txtAusentePresente.getText().length()==10){
+        if (txtAusentePresente.getText().length() == 10) {
             evt.consume();
         }
     }//GEN-LAST:event_txtAusentePresenteKeyTyped
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        //Archivo XML
+        conec.conectar();
+        ex.start();
+
+        try {
+            ex.start();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Se creo el archivo XML");
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -433,6 +445,7 @@ public class FrmExpediente extends javax.swing.JFrame {
     private javax.swing.JButton actualizar;
     private javax.swing.JButton cancel;
     private javax.swing.JMenuItem eliminar;
+    private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
