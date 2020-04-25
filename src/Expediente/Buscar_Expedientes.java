@@ -7,12 +7,15 @@ package Expediente;
 
 import Conectar.Conectar;
 import static Conectar.Conectar.sentencias;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import javax.swing.table.DefaultTableModel;
+
 
 public class Buscar_Expedientes extends javax.swing.JFrame {
 
@@ -77,6 +80,7 @@ public class Buscar_Expedientes extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         verdatos = new javax.swing.JButton();
         cencelar = new javax.swing.JButton();
+        XML = new javax.swing.JButton();
 
         jPanel3.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -372,25 +376,36 @@ public class Buscar_Expedientes extends javax.swing.JFrame {
             }
         });
 
+        XML.setBackground(new java.awt.Color(0, 204, 204));
+        XML.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/new.png"))); // NOI18N
+        XML.setText("Exportar XML");
+        XML.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                XMLActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel9)
-                .addGap(253, 253, 253))
+                .addComponent(verdatos)
+                .addGap(115, 115, 115)
+                .addComponent(XML)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton2)
+                .addGap(94, 94, 94)
+                .addComponent(cencelar))
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(69, 69, 69)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(verdatos)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2)
-                        .addGap(116, 116, 116)
-                        .addComponent(cencelar))
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 583, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(79, Short.MAX_VALUE))
+                        .addGap(69, 69, 69)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 583, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(262, 262, 262)
+                        .addComponent(jLabel9)))
+                .addContainerGap(83, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -399,12 +414,13 @@ public class Buscar_Expedientes extends javax.swing.JFrame {
                 .addComponent(jLabel9)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(verdatos, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cencelar))
-                .addGap(95, 95, 95))
+                    .addComponent(cencelar)
+                    .addComponent(XML)
+                    .addComponent(verdatos, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         jTabbedPane1.addTab("Filtro", jPanel2);
@@ -417,9 +433,7 @@ public class Buscar_Expedientes extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 6, Short.MAX_VALUE))
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -476,6 +490,8 @@ public class Buscar_Expedientes extends javax.swing.JFrame {
             //JOptionPane.showMessageDialog(null, "Error al extraer datos de la tabla");
             Logger.getLogger(Expediente.class.getName()).log(Level.SEVERE, null, ex);
         }
+     
+
     }//GEN-LAST:event_verdatosActionPerformed
 
     private void cencelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cencelarActionPerformed
@@ -566,6 +582,10 @@ public class Buscar_Expedientes extends javax.swing.JFrame {
         ex.Read_Cedula();
     }//GEN-LAST:event_buscarcedulaActionPerformed
 
+    private void XMLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_XMLActionPerformed
+        
+    }//GEN-LAST:event_XMLActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -604,6 +624,7 @@ public class Buscar_Expedientes extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDialog Filtrar_Expediente;
+    private javax.swing.JButton XML;
     private javax.swing.JButton buscarcedula;
     private javax.swing.JButton cancelar;
     private javax.swing.JButton cancelar_expediente;
