@@ -44,6 +44,7 @@ public class Expediente extends Thread {
     private String paciente;
     private int ID;
     private int cedula;
+    private String estado;
     
 
     public Expediente() {
@@ -105,19 +106,28 @@ public class Expediente extends Thread {
     public void setID(int ID) {
         this.ID = ID;
     }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
     
 
     public void create() {
         try {
 
             PreparedStatement sentencia;
-            sentencia = conexion.prepareStatement("insert expediente values(null,?,?,?,?,?,?)");
+            sentencia = conexion.prepareStatement("insert expediente values(null,?,?,?,?,?,?,?)");
             sentencia.setInt(1, cedula);
             sentencia.setString(2, this.Fecha);
             sentencia.setString(3, this.hora);
             sentencia.setString(4, this.medico);
             sentencia.setString(5, this.Descrip);
             sentencia.setString(6, this.paciente);
+            sentencia.setString(7, estado);
             sentencia.execute();
             JOptionPane.showMessageDialog(null, "Se agregaron los datos");
 
@@ -130,7 +140,7 @@ public class Expediente extends Thread {
     public void update() {
         try {
 
-            sentencias.executeUpdate("update expediente set fecha='" + this.Fecha + "',hora='" + this.hora + "',medico='" + this.medico + "',descripcion='" + this.Descrip + "',paciente='" + this.paciente + "' where cedula=" + this.cedula);
+            sentencias.executeUpdate("update expediente set fecha='" + this.Fecha + "',hora='" + this.hora + "',medico='" + this.medico + "',descripcion='" + this.Descrip + "',paciente='" + this.paciente+"',estado='" + "' where cedula=" + this.cedula);
             JOptionPane.showMessageDialog(null, "Se actualizaron los datos");
 
         } catch (SQLException ex) {
