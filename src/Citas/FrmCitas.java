@@ -80,7 +80,7 @@ public class FrmCitas extends javax.swing.JFrame {
         });
 
         jLabel5.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
-        jLabel5.setText("Medico");
+        jLabel5.setText("Especialidad del Medico");
 
         txtMedico.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -188,10 +188,11 @@ public class FrmCitas extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(saveInformationActualizada)
-                    .addComponent(cancel)
-                    .addComponent(saveInfo))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(cancel)
+                        .addComponent(saveInfo)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
