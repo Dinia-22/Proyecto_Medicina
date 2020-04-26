@@ -25,6 +25,8 @@ import java.util.Properties;
  * @author Maria Paula
  */
 public class ConfIni {
+    public static Connection conexion;
+    public static Statement sentencias;
 
     private String Ip="localhost";
     private  String Nom ="medicina?useServerPrepStmts=true";
