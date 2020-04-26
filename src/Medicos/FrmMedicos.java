@@ -64,6 +64,11 @@ public class FrmMedicos extends javax.swing.JFrame {
 
         jPanel1.setToolTipText("Ingrese sus Datos");
 
+        jnombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jnombreActionPerformed(evt);
+            }
+        });
         jnombre.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jnombreKeyTyped(evt);
@@ -412,6 +417,10 @@ public class FrmMedicos extends javax.swing.JFrame {
             evt.consume();
         }
     }//GEN-LAST:event_jcorreoKeyTyped
+
+    private void jnombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jnombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jnombreActionPerformed
 
     /**
      * @param args the command line arguments
