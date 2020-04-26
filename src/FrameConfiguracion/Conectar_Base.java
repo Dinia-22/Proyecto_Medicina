@@ -212,13 +212,7 @@ public class Conectar_Base extends javax.swing.JFrame {
     }//GEN-LAST:event_cancelarActionPerformed
 
     private void conectarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_conectarActionPerformed
-        ConfiguracionIni confi = new ConfiguracionIni();
-        confi.setIp(this.txtID.getText());
-        confi.setNomBaD(this.txtNom.getText());
-        confi.setNomUsuario(this.txtUsuario.getText());
-        confi.setContraseña(this.txtContraseña.getText());
-        confi.conectar();
-        confi.archIni();
+      
     }//GEN-LAST:event_conectarActionPerformed
 
     /**
