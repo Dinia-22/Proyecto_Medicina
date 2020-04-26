@@ -8,17 +8,17 @@ package Citas;
 import static Conectar.Conectar.conexion;
 import static Conectar.Conectar.datos;
 import static Conectar.Conectar.sentencias;
+import Paciente.Paciente;
 import Usuarios.Usuario;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
-
-public class Citas {
+public class Citas extends Paciente {
 
     private int Id;
     private int cedula;
@@ -88,21 +88,23 @@ public class Citas {
             sentencia.execute();
             JOptionPane.showMessageDialog(null, "Se agregaron los datos");
 
-        } catch (SQLException ex) {
-            Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException e) {
+            if (e.getErrorCode() == 1062) {
+                JOptionPane.showMessageDialog(null, "La hora ya existe ", "La cedula ya existe", JOptionPane.ERROR_MESSAGE);
+
+            }
+
         }
 
     }
 
     public void update() {
         try {
-
-           
             sentencias.executeUpdate("update citas set Fecha='" + this.fecha + "',Hora='" + this.hora + "',Paciente='" + this.paciente + "',Medico='" + this.MedicoEspe + "' where Cedula=" + this.cedula);
             JOptionPane.showMessageDialog(null, "Se actualizaron los datos");
 
-        } catch (SQLException ex) {
-            Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException e) {
+           
         }
 
     }
@@ -121,7 +123,7 @@ public class Citas {
     ///////////////////////////// para buscar la informacion del usuario///////////////////////////////////////////////////
     public void readFecha() {
         try {
-           
+
             datos = sentencias.executeQuery("select * from citas where Fecha='" + this.fecha + "'");
             if (datos.next()) {
                 System.out.println(datos.getInt(1));

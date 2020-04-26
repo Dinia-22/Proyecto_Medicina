@@ -6,13 +6,20 @@
 package Citas;
 
 import Conectar.Conectar;
+import static Conectar.Conectar.conexion;
+import Usuarios.Usuario;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class FrmCitas extends javax.swing.JFrame {
 
     Citas prueba = new Citas();
     Conectar conec = new Conectar();
+
     /**
      * Creates new form FrmCitas
      */
@@ -261,6 +268,7 @@ public class FrmCitas extends javax.swing.JFrame {
         prueba.setCedula(Integer.parseInt(this.txtcedula.getText()));
         SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
         prueba.setFecha(dt.format(this.txtfecha.getDate()));
+        
         prueba.setHora(this.txtHora.getText());
         prueba.setPaciente(this.txtPaciente.getText());
         prueba.setMedicoEspe(this.txtMedico.getText());
@@ -274,18 +282,18 @@ public class FrmCitas extends javax.swing.JFrame {
     }//GEN-LAST:event_cancelActionPerformed
 
     private void saveInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveInfoActionPerformed
-        SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd"); 
+        SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
         prueba.setMedicoEspe(this.txtMedico.getText());
         prueba.setFecha(dt.format(this.txtfecha.getDate()));
-        prueba.setHora(this.txtHora.getText());
+        prueba.setHora(this.txtHora.getText());  
         prueba.setPaciente(this.txtPaciente.getText());
         prueba.setCedula(Integer.parseInt(this.txtcedula.getText()));
-        conec.conectar();
-        if (this.txtHora.getText().equals("12:45")|| this.txtfecha.getDate().equals("2020-04-07")) {
-            JOptionPane.showMessageDialog(null, "No puede programar una cita en la misma fecha y hora ");
-        }else{
-            prueba.create();
-        } 
+        conec.conectar(); 
+        prueba.create();
+       
+       
+
+
     }//GEN-LAST:event_saveInfoActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
@@ -299,25 +307,27 @@ public class FrmCitas extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void txtPacienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPacienteKeyTyped
-        if(txtPaciente.getText().length()==25){
+        if (txtPaciente.getText().length() == 25) {
             evt.consume();
+            
         }
     }//GEN-LAST:event_txtPacienteKeyTyped
 
     private void txtHoraKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtHoraKeyTyped
-        if(txtHora.getText().length()==5){
+        if (txtHora.getText().length() == 5) {
             evt.consume();
         }
+        
     }//GEN-LAST:event_txtHoraKeyTyped
 
     private void txtMedicoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMedicoKeyTyped
-        if(txtMedico.getText().length()==25){
+        if (txtMedico.getText().length() == 25) {
             evt.consume();
         }
     }//GEN-LAST:event_txtMedicoKeyTyped
 
     private void txtcedulaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtcedulaKeyTyped
-        if(txtcedula.getText().length()==10){
+        if (txtcedula.getText().length() == 10) {
             evt.consume();
         }
     }//GEN-LAST:event_txtcedulaKeyTyped
