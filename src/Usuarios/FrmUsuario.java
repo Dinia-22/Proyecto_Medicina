@@ -5,7 +5,7 @@
  */
 package Usuarios;
 
-import Conectar.Conectar;
+import FrameConfiguracion.ConfIni;
 import java.text.SimpleDateFormat;
 
 
@@ -13,7 +13,8 @@ import java.text.SimpleDateFormat;
 public class FrmUsuario extends javax.swing.JFrame {
 
     Usuario p = new Usuario();
-    Conectar conec = new Conectar();       
+    ConfIni confi = new ConfIni();
+    
 
     /**
      * Creates new form FrmUsuario
@@ -340,7 +341,7 @@ public class FrmUsuario extends javax.swing.JFrame {
         p.setTxtTel(this.txtTelefono.getText());
         SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
         p.setFechaNacimiento(dt.format(this.txtFecha.getDate()));
-        conec.conectar();
+        confi.conectar();
         p.create();
      
        
