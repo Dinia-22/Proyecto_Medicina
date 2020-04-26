@@ -118,8 +118,11 @@ public class Usuario {
 
             JOptionPane.showMessageDialog(null, "Se agregaron los datos");
 
-        } catch (SQLException ex) {
-            Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException e) {
+            if(e.getErrorCode()==1062){
+                JOptionPane.showMessageDialog(null, "La cedula ya existe ", "", JOptionPane.ERROR_MESSAGE);
+            }
+           
         }
     }
 
