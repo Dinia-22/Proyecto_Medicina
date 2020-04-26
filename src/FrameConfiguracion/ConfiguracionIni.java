@@ -13,7 +13,6 @@ import java.sql.Statement;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-
 public class ConfiguracionIni {
 
     private String Ip;
@@ -54,8 +53,6 @@ public class ConfiguracionIni {
     public void setContraseña(String contraseña) {
         this.contraseña = contraseña;
     }
-   
-  
 
     public Connection getConexion() {
         return conexion;
@@ -72,7 +69,7 @@ public class ConfiguracionIni {
     public void setSentencias(Statement sentencias) {
         this.sentencias = sentencias;
     }
-    
+
     public void conectar() {
         try {
             this.conexion = DriverManager.getConnection("jdbc:mysql://localhost/medicina?useServerPrepStmts=true", "root", "");
@@ -80,36 +77,35 @@ public class ConfiguracionIni {
             JOptionPane.showMessageDialog(null, "Se conecto de manera exitosa");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al conectar");
-            
-        }        
+
+        }
     }
 
     public void archIni() {
         File archIni = new File("C:\\Users\\juan1\\Desktop\\UTN\\UTN I CUATRIMESTRE 2020\\Proyecto Progra\\Proyecto_Medicina-master\\Fichero.ini");
         if (!archIni.exists()) {
             try {
-                archIni.createNewFile();   
+                archIni.createNewFile();
             } catch (IOException e) {
                 JOptionPane.showMessageDialog(null, "Error al crear el Fichero.ini");
             }
         } else {
             try {
-                
+
                 FileWriter LeeS = new FileWriter(archIni, true);
                 BufferedWriter crea = new BufferedWriter(LeeS);
-                crea.write(" Nombre de la IP :"+ this.getIp() );
-                crea.write(" \n Nombre de la base de datos :"+ this.NomBaD);
-                crea.write(" \n Nombre de Usuario :"+ this.NomUsuario);
-                crea.write(" \n Contraseña :"+this.contraseña );
+                crea.write(" Nombre de la IP :" + this.getIp());
+                crea.write(" \n Nombre de la base de datos :" + this.NomBaD);
+                crea.write(" \n Nombre de Usuario :" + this.NomUsuario);
+                crea.write(" \n Contraseña :" + this.contraseña);
                 crea.close();
+
                 crea.flush();
                 JOptionPane.showMessageDialog(null, "Se creo con exito");
-                
+
             } catch (IOException e) {
             }
         }
     }
-    
- 
 
 }

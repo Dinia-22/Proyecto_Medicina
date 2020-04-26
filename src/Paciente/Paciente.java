@@ -16,7 +16,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
-
 public class Paciente {
 
     private int id;
@@ -88,7 +87,7 @@ public class Paciente {
 
             PreparedStatement sentencia;
             sentencia = conexion.prepareStatement("insert pacientes values(null,?,?,?,?,?)");
-          
+
             sentencia.setInt(1, cedula);
             sentencia.setString(2, this.nombre);
             sentencia.setString(3, this.fechaNacimiento);
@@ -97,11 +96,10 @@ public class Paciente {
             sentencia.execute();
             JOptionPane.showMessageDialog(null, "Se agregaron los datos");
         } catch (SQLException e) {
-            if(e.getErrorCode()==1062){
+            if (e.getErrorCode() == 1062) {
                 JOptionPane.showMessageDialog(null, "Error al ingresar", "La cedula ya existe", JOptionPane.ERROR_MESSAGE);
-                
             }
-       
+
         }
     }
 
@@ -179,7 +177,7 @@ public class Paciente {
             JOptionPane.showMessageDialog(null, "Error en el read");
         }
     }
-    
+
     public void Read_Telefono() {
 
         try {
@@ -214,8 +212,6 @@ public class Paciente {
             JOptionPane.showMessageDialog(null, "Error en el read");
         }
     }
-
-    
 
 //    public static void main(String[] args) {
 //        Conectar p = new Conectar();
