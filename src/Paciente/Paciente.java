@@ -8,14 +8,14 @@ package Paciente;
 import static Conectar.Conectar.conexion;
 import static Conectar.Conectar.datos;
 import static Conectar.Conectar.sentencias;
-import com.toedter.calendar.JDateChooser;
+
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
+
 
 public class Paciente {
 
@@ -88,7 +88,7 @@ public class Paciente {
 
             PreparedStatement sentencia;
             sentencia = conexion.prepareStatement("insert pacientes values(null,?,?,?,?,?)");
-            SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
+          
             sentencia.setInt(1, cedula);
             sentencia.setString(2, this.nombre);
             sentencia.setString(3, this.fechaNacimiento);
@@ -96,15 +96,17 @@ public class Paciente {
             sentencia.setString(5, this.correo);
             sentencia.execute();
             JOptionPane.showMessageDialog(null, "Se agregaron los datos");
-        } catch (SQLException ex) {
-            Logger.getLogger(Paciente.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException e) {
+            if(e.getErrorCode()==1062){
+                JOptionPane.showMessageDialog(null, "Error al ingresar", "La cedula ya existe", JOptionPane.ERROR_MESSAGE);
+                
+            }
+       
         }
     }
 
     public void update() {// Actualizar Informacion
         try {
-
-            SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
             sentencias.executeUpdate("update pacientes set NombreCompleto='" + this.nombre + "',FechaNacimiento='" + this.fechaNacimiento + "',Telefono='" + this.telefono + "',CorreoElectronico='" + this.correo + "' where Cedula=" + this.cedula);
             JOptionPane.showMessageDialog(null, "Se actualizaron los datos");
 
