@@ -9,10 +9,10 @@ import static Conectar.Conectar.conexion;
 import static Conectar.Conectar.datos;
 import static Conectar.Conectar.sentencias;
 import Usuarios.Usuario;
-import com.toedter.calendar.JDateChooser;
+
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
