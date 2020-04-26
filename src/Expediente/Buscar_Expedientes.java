@@ -467,10 +467,10 @@ public class Buscar_Expedientes extends javax.swing.JFrame {
         String fecha;
         try {
             ResultSet rs = sentencias.executeQuery("SELECT * FROM expediente");
-            String Titulos[] = {"ID", "Cedula", "Fecha", "Hora", "Medico", "Descripcion", "Paciente"};
+            String Titulos[] = {"ID", "Cedula", "Fecha", "Hora", "Medico", "Descripcion", "Paciente","Estado"};
             expediente = new DefaultTableModel(null, Titulos);
 
-            String fila[] = new String[7];
+            String fila[] = new String[8];
             rs.beforeFirst();
             while (rs.next()) {
 
@@ -483,6 +483,7 @@ public class Buscar_Expedientes extends javax.swing.JFrame {
                 fila[4] = rs.getString("Medico");
                 fila[5] = rs.getString("Descripcion");
                 fila[6] = rs.getString("Paciente");
+                fila[7]=rs.getString("Estado");
                 expediente.addRow(fila);
             }
             tabla.setModel(expediente);
@@ -536,10 +537,10 @@ public class Buscar_Expedientes extends javax.swing.JFrame {
             }
 
             ResultSet rs = sentencias.executeQuery(sql);
-            String encabezado[] = {"ID", "Cedula", "Fecha", "Hora", "Medico", "Descripcion", "Paciente"};
+            String encabezado[] = {"ID", "Cedula", "Fecha", "Hora", "Medico", "Descripcion", "Paciente","Estado"};
             expediente = new DefaultTableModel(null, encabezado);
 
-            String fila[] = new String[7];
+            String fila[] = new String[8];
             rs.beforeFirst();
             while (rs.next()) {
                 fila[0] = rs.getString("ID");
@@ -550,6 +551,7 @@ public class Buscar_Expedientes extends javax.swing.JFrame {
                 fila[4] = rs.getString("Medico");
                 fila[5] = rs.getString("Descripcion");
                 fila[6] = rs.getString("Paciente");
+                fila[7]=rs.getString("Estado");
 
                 expediente.addRow(fila);
             }
