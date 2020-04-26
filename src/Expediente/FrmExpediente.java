@@ -6,6 +6,9 @@
 package Expediente;
 
 import Conectar.Conectar;
+import java.awt.Desktop;
+import java.io.File;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 
@@ -401,6 +404,15 @@ public class FrmExpediente extends javax.swing.JFrame {
             ex.start();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Se creo el archivo XML");
+        }
+
+        if (Desktop.isDesktopSupported()) {
+            try {
+                File xml = new File("C:\\Users\\juan1\\Desktop\\UTN\\UTN I CUATRIMESTRE 2020\\Proyecto Progra\\Proyecto_Medicina-master\\consultorio.xml");
+                Desktop.getDesktop().open(xml);
+            } catch (IOException e) {
+                JOptionPane.showMessageDialog(null, "Error al crear");
+            }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
