@@ -5,11 +5,17 @@
  */
 package Expediente;
 
+import Citas.Citas;
 import Conectar.Conectar;
+import static Conectar.Conectar.sentencias;
 import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class FrmExpediente extends javax.swing.JFrame {
@@ -54,6 +60,7 @@ public class FrmExpediente extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         txtAusentePresente = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         Buscar = new javax.swing.JMenuItem();
@@ -161,6 +168,13 @@ public class FrmExpediente extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setText("Cargar Informacion");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -207,19 +221,16 @@ public class FrmExpediente extends javax.swing.JFrame {
                                 .addComponent(actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(48, 48, 48)
                                 .addComponent(jButton1)
-                                .addGap(0, 0, Short.MAX_VALUE))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(cancel))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(aceptar)
+                        .addGap(137, 137, 137)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(cancel))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(137, 137, 137)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel7)
-                                    .addComponent(txtAusentePresente, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE)))))
+                            .addComponent(jLabel7)
+                            .addComponent(txtAusentePresente, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton2)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -256,8 +267,10 @@ public class FrmExpediente extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtAusentePresente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtAusentePresente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(aceptar)
                     .addComponent(actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -416,6 +429,31 @@ public class FrmExpediente extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        //Btn busqueda
+        conec.conectar();
+        this.busquedaNombre();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    public void busquedaNombre() {
+        try {
+            String cedula = txtCedula.getText();
+            // Contruccion de la consulta sql select
+            String sql = "SELECT * FROM expediente ";
+            if (!cedula.equals("")) {
+                sql += " WHERE Cedula LIKE '%" + cedula + "%'";
+            }
+            ResultSet rs = sentencias.executeQuery(sql);
+            rs.beforeFirst();
+            while (rs.next()) {
+                txtPaciente.setText(rs.getString("paciente"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Citas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -458,6 +496,7 @@ public class FrmExpediente extends javax.swing.JFrame {
     private javax.swing.JButton cancel;
     private javax.swing.JMenuItem eliminar;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
