@@ -6,16 +6,15 @@
 package Citas;
 
 import Conectar.Conectar;
-import static Conectar.Conectar.conexion;
+
 import static Conectar.Conectar.sentencias;
-import Usuarios.Usuario;
-import java.sql.PreparedStatement;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
+
 
 public class FrmCitas extends javax.swing.JFrame {
 
