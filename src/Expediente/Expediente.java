@@ -131,8 +131,8 @@ public class Expediente extends Thread {
             sentencia.execute();
             JOptionPane.showMessageDialog(null, "Se agregaron los datos");
 
-        } catch (SQLException ex) {
-            Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException e) {
+               JOptionPane.showMessageDialog(null, "La cedula ya existe no puede guardar ", null, JOptionPane.ERROR_MESSAGE);
         }
 
     }
