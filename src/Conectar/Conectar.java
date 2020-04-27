@@ -49,8 +49,6 @@ public class Conectar {
         return contra;
     }
 
-  
-
     public void setIp(String Ip) {
         this.ip =ip;
     }
