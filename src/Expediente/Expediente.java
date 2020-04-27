@@ -124,7 +124,10 @@ public class Expediente extends Thread {
             JOptionPane.showMessageDialog(null, "Se agregaron los datos");
 
         } catch (SQLException e) {
-               JOptionPane.showMessageDialog(null, "La cedula ya existe no puede guardar ", null, JOptionPane.ERROR_MESSAGE);
+            if(e.getErrorCode()==1062){
+                JOptionPane.showMessageDialog(null, "La cedula ya existe no puede guardar ", null, JOptionPane.ERROR_MESSAGE);
+            }
+           
         }
 
     }
