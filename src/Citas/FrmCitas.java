@@ -353,9 +353,10 @@ public class FrmCitas extends javax.swing.JFrame {
         conec.conectar();
         this.busquedaNombre();
         this.busquedaMedico();
+
     }//GEN-LAST:event_JinformacionActionPerformed
 
-    public void busquedaMedico(){
+    public void busquedaMedico() {
         try {
             String cedula = txtcedula.getText();
             // Contruccion de la consulta sql select
@@ -372,7 +373,8 @@ public class FrmCitas extends javax.swing.JFrame {
             Logger.getLogger(Citas.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    public void busquedaNombre(){
+
+    public void busquedaNombre() {
         try {
             String cedula = txtcedula.getText();
             // Contruccion de la consulta sql select
@@ -389,6 +391,7 @@ public class FrmCitas extends javax.swing.JFrame {
             Logger.getLogger(Citas.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
     /**
      * @param args the command line arguments
      */

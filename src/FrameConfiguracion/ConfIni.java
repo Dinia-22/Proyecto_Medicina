@@ -25,13 +25,14 @@ import java.util.Properties;
  * @author Maria Paula
  */
 public class ConfIni {
+
     public static Connection conexion;
     public static Statement sentencias;
 
-    private String Ip="localhost";
-    private  String Nom ="medicina?useServerPrepStmts=true";
+    private String Ip = "localhost";
+    private String Nom = "medicina?useServerPrepStmts=true";
     private String Usuario = "root";
-    private  String contra="";
+    private String contra = "";
 
     public String getIp() {
         return Ip;
@@ -64,13 +65,11 @@ public class ConfIni {
     public void setContra(String contra) {
         this.contra = contra;
     }
-    
+
     public static void main(String[] args) {
         ConfIni con = new ConfIni();
-        
-        
 
-        File archivo = new File("C:\\Users\\Maria Paula\\OneDrive - Universidad Técnica Nacional\\Trabajos maria\\Pogramacion2\\Proyecto_Medicina-master\\archivo.ini");
+        File archivo = new File("C:\\Users\\juan1\\Desktop\\UTN\\UTN I CUATRIMESTRE 2020\\Proyecto Progra\\Proyecto_Medicina-master\\archivo.ini");
         try {
             System.out.println("\tCreando el flujo de escritura a archivo");
 
@@ -119,14 +118,13 @@ public class ConfIni {
             ex.printStackTrace();
         }
         con.conectar();
-        
 
     }
 
     public void conectar() {
         ConfIni confi = new ConfIni();
         try {
-            conexion = DriverManager.getConnection("jdbc:mysql://"+confi.getIp()+"/"+confi.getNom(), confi.getUsuario(), "");
+            conexion = DriverManager.getConnection("jdbc:mysql://" + confi.getIp() + "/" + confi.getNom(), confi.getUsuario(), "");
             sentencias = conexion.createStatement();
             System.out.println("Conectado");
 
