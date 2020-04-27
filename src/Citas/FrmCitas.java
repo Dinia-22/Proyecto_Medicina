@@ -90,7 +90,7 @@ public class FrmCitas extends javax.swing.JFrame {
         });
 
         jLabel5.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
-        jLabel5.setText("Especialidad del Medico");
+        jLabel5.setText("Nombre del Medico");
 
         txtMedico.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -351,6 +351,28 @@ public class FrmCitas extends javax.swing.JFrame {
         // TODO add your handling code here:
         //boton de carga
         conec.conectar();
+        this.busquedaNombre();
+        this.busquedaMedico();
+    }//GEN-LAST:event_JinformacionActionPerformed
+
+    public void busquedaMedico(){
+        try {
+            String cedula = txtcedula.getText();
+            // Contruccion de la consulta sql select
+            String sql = "SELECT * FROM medicos ";
+            if (!cedula.equals("")) {
+                sql += " WHERE Cedula LIKE '%" + cedula + "%'";
+            }
+            ResultSet rs = sentencias.executeQuery(sql);
+            rs.beforeFirst();
+            while (rs.next()) {
+                this.txtMedico.setText(rs.getString("NombreCompleto"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Citas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public void busquedaNombre(){
         try {
             String cedula = txtcedula.getText();
             // Contruccion de la consulta sql select
@@ -366,8 +388,7 @@ public class FrmCitas extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(Citas.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_JinformacionActionPerformed
-
+    }
     /**
      * @param args the command line arguments
      */
