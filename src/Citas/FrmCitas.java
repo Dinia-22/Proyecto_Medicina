@@ -7,8 +7,10 @@ package Citas;
 
 import Conectar.Conectar;
 import static Conectar.Conectar.conexion;
+import static Conectar.Conectar.sentencias;
 import Usuarios.Usuario;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.logging.Level;
@@ -50,6 +52,7 @@ public class FrmCitas extends javax.swing.JFrame {
         saveInfo = new javax.swing.JButton();
         cancel = new javax.swing.JButton();
         saveInformationActualizada = new javax.swing.JButton();
+        Jinformacion = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -131,6 +134,13 @@ public class FrmCitas extends javax.swing.JFrame {
             }
         });
 
+        Jinformacion.setText("Cargar Informacion");
+        Jinformacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JinformacionActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -139,33 +149,38 @@ public class FrmCitas extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtcedula, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7))
-                        .addGap(50, 50, 50)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel3)
-                            .addComponent(txtPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtHora, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 38, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addComponent(txtMedico, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(11, 11, 11))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(txtfecha, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(11, 11, 11)
                         .addComponent(saveInfo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(saveInformationActualizada)
                         .addGap(58, 58, 58)
                         .addComponent(cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(24, 24, 24))))
+                        .addGap(24, 24, 24))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtcedula, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel7))
+                                .addGap(50, 50, 50)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel3)
+                                    .addComponent(txtPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtHora, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel2)
+                            .addComponent(txtfecha, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 38, Short.MAX_VALUE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel5)
+                                    .addComponent(txtMedico, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(11, 11, 11))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(99, 99, 99)
+                                .addComponent(Jinformacion)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -193,7 +208,9 @@ public class FrmCitas extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Jinformacion))))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(saveInformationActualizada)
@@ -268,7 +285,7 @@ public class FrmCitas extends javax.swing.JFrame {
         prueba.setCedula(Integer.parseInt(this.txtcedula.getText()));
         SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
         prueba.setFecha(dt.format(this.txtfecha.getDate()));
-        
+
         prueba.setHora(this.txtHora.getText());
         prueba.setPaciente(this.txtPaciente.getText());
         prueba.setMedicoEspe(this.txtMedico.getText());
@@ -285,13 +302,11 @@ public class FrmCitas extends javax.swing.JFrame {
         SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
         prueba.setMedicoEspe(this.txtMedico.getText());
         prueba.setFecha(dt.format(this.txtfecha.getDate()));
-        prueba.setHora(this.txtHora.getText());  
+        prueba.setHora(this.txtHora.getText());
         prueba.setPaciente(this.txtPaciente.getText());
         prueba.setCedula(Integer.parseInt(this.txtcedula.getText()));
-        conec.conectar(); 
+        conec.conectar();
         prueba.create();
-       
-       
 
 
     }//GEN-LAST:event_saveInfoActionPerformed
@@ -309,7 +324,7 @@ public class FrmCitas extends javax.swing.JFrame {
     private void txtPacienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPacienteKeyTyped
         if (txtPaciente.getText().length() == 25) {
             evt.consume();
-            
+
         }
     }//GEN-LAST:event_txtPacienteKeyTyped
 
@@ -317,7 +332,7 @@ public class FrmCitas extends javax.swing.JFrame {
         if (txtHora.getText().length() == 5) {
             evt.consume();
         }
-        
+
     }//GEN-LAST:event_txtHoraKeyTyped
 
     private void txtMedicoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMedicoKeyTyped
@@ -331,6 +346,27 @@ public class FrmCitas extends javax.swing.JFrame {
             evt.consume();
         }
     }//GEN-LAST:event_txtcedulaKeyTyped
+
+    private void JinformacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JinformacionActionPerformed
+        // TODO add your handling code here:
+        //boton de carga
+        conec.conectar();
+        try {
+            String cedula = txtcedula.getText();
+            // Contruccion de la consulta sql select
+            String sql = "SELECT * FROM pacientes ";
+            if (!cedula.equals("")) {
+                sql += " WHERE Cedula LIKE '%" + cedula + "%'";
+            }
+            ResultSet rs = sentencias.executeQuery(sql);
+            rs.beforeFirst();
+            while (rs.next()) {
+                txtPaciente.setText(rs.getString("NombreCompleto"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Citas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_JinformacionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -368,6 +404,7 @@ public class FrmCitas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Jinformacion;
     private javax.swing.JButton cancel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
