@@ -5,6 +5,8 @@
  */
 package FrameConfiguracion;
 
+import Conectar.Conectar;
+
 public class Conectar_Base extends javax.swing.JFrame {
 
     /**
@@ -211,11 +213,13 @@ public class Conectar_Base extends javax.swing.JFrame {
     }//GEN-LAST:event_cancelarActionPerformed
 
     private void conectarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_conectarActionPerformed
-        ConfIni confi = new ConfIni();
+        Conectar confi = new Conectar();
+       
         this.txtID.setText(confi.getIp());
+        this.txtContraseña.setText(confi.getContra());
         this.txtNom.setText(confi.getNom());
         this.txtUsuario.setText(confi.getUsuario());
-        this.txtContraseña.setText(confi.getContra());
+        
         confi.conectar();
     }//GEN-LAST:event_conectarActionPerformed
 
