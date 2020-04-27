@@ -76,7 +76,7 @@ public class Conectar {
     }
 
     public void Archivo() {
-        File archivo = new File("C:\\Users\\Maria Paula\\OneDrive - Universidad Técnica Nacional\\Trabajos maria\\Pogramacion2\\Proyecto_Medicina-master\\archivo.ini");
+        File archivo = new File("C:\\Users\\juan1\\Desktop\\UTN\\UTN I CUATRIMESTRE 2020\\Proyecto Progra\\Proyecto_Medicina-master\\archivo.ini");
         try {
             System.out.println("\tCreando el flujo de escritura a archivo");
 

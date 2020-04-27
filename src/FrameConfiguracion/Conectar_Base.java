@@ -217,6 +217,7 @@ public class Conectar_Base extends javax.swing.JFrame {
         this.txtUsuario.setText(confi.getUsuario());
         
         confi.conectar();
+        confi.Archivo();
     }//GEN-LAST:event_conectarActionPerformed
 
     /**
