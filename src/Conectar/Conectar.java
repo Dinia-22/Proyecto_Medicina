@@ -25,13 +25,10 @@ public class Conectar {
     public static Connection conexion;
     public static Statement sentencias;
     public static ResultSet datos;
-    private String ip="localhost" ;
-    private String nom ="medicina";
-    private String usuario="root";
+    private String ip = "localhost";
+    private String nom = "medicina";
+    private String usuario = "root";
     private String contra = "";
-    
-
-   
 
     public String getIp() {
         return ip;
@@ -50,7 +47,7 @@ public class Conectar {
     }
 
     public void setIp(String Ip) {
-        this.ip =ip;
+        this.ip = ip;
     }
 
     public void setNom(String Nom) {
@@ -69,16 +66,17 @@ public class Conectar {
         try {
             conexion = DriverManager.getConnection("jdbc:mysql://" + this.getIp() + "/" + this.getNom(), this.getUsuario(), this.contra);
             sentencias = conexion.createStatement();
-            JOptionPane.showMessageDialog(null,"Conectado");
-       
+            JOptionPane.showMessageDialog(null, "Conectado");
 
         } catch (SQLException ex) {
 
-           JOptionPane.showMessageDialog(null, "Error al conectar", null, JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Error al conectar", null, JOptionPane.ERROR_MESSAGE);
         }
-        
-        
-        File archivo = new File("C:\\Users\\juan1\\Desktop\\UTN\\UTN I CUATRIMESTRE 2020\\Proyecto Progra\\Proyecto_Medicina-master\\archivo.ini");
+
+    }
+
+    public void Archivo() {
+        File archivo = new File("C:\\Users\\Maria Paula\\OneDrive - Universidad Técnica Nacional\\Trabajos maria\\Pogramacion2\\Proyecto_Medicina-master\\archivo.ini");
         try {
             System.out.println("\tCreando el flujo de escritura a archivo");
 
@@ -92,19 +90,10 @@ public class Conectar {
                 prop.setProperty("db.nombre", this.getNom());
                 prop.setProperty("db.usuario", this.getUsuario());
                 prop.setProperty("db.password", this.getContra());
-
-                System.out.println("\tAlmacenamos el arhivo");
-                System.out.println("\tCon un comentario al inicio");
                 prop.store(outputStream, "Config");
 
-                System.out.println("\tEl archivo se cierra en este punto gracias al Try-catch con recursos");
+               
             }
-
-            System.out.println("");
-            System.out.println("");
-            System.out.println("Leemos el archivo de configuracion");
-            System.out.println("\tCreando el flujo de lectura a archivo");
-
             try (InputStream inputStream = new FileInputStream(archivo)) {
                 Properties prop = new Properties();
                 prop.load(inputStream);
@@ -133,6 +122,7 @@ public class Conectar {
         Conectar conec = new Conectar();
 
         conec.conectar();
+        conec.Archivo();
     }
 
 }
