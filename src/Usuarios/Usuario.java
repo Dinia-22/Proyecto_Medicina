@@ -112,6 +112,7 @@ public class Usuario {
 
         } catch (SQLException e) {
             if(e.getErrorCode()==1062){
+                
                 JOptionPane.showMessageDialog(null, "La cedula ya existe", " ", JOptionPane.ERROR_MESSAGE);
             }
         }
