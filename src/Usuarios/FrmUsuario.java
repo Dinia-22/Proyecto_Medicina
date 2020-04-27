@@ -5,16 +5,15 @@
  */
 package Usuarios;
 
-import FrameConfiguracion.ConfIni;
-import java.text.SimpleDateFormat;
 
+import java.text.SimpleDateFormat;
 
 
 public class FrmUsuario extends javax.swing.JFrame {
 
     Usuario p = new Usuario();
-    ConfIni confi = new ConfIni();
-    
+    //Conectar_Base cone = new Conectar_Base();
+   // Conectar m = new Conectar();
 
     /**
      * Creates new form FrmUsuario
@@ -46,11 +45,11 @@ public class FrmUsuario extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         txtCorreo = new javax.swing.JTextField();
         txtUsuario = new javax.swing.JTextField();
-        guardar = new javax.swing.JButton();
         cancel = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         txtcedula = new javax.swing.JTextField();
         txtTelefono = new javax.swing.JFormattedTextField();
+        jButton1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         B = new javax.swing.JMenuItem();
@@ -120,15 +119,6 @@ public class FrmUsuario extends javax.swing.JFrame {
             }
         });
 
-        guardar.setBackground(new java.awt.Color(102, 102, 102));
-        guardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/save.png"))); // NOI18N
-        guardar.setText("Guardar");
-        guardar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                guardarActionPerformed(evt);
-            }
-        });
-
         cancel.setBackground(new java.awt.Color(0, 204, 255));
         cancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/close.png"))); // NOI18N
         cancel.setText("Cancelar");
@@ -151,6 +141,15 @@ public class FrmUsuario extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+
+        jButton1.setBackground(new java.awt.Color(153, 0, 153));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/save.png"))); // NOI18N
+        jButton1.setText("Guardar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -193,11 +192,11 @@ public class FrmUsuario extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(10, 10, 10)
-                                .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(40, 40, 40)))
+                                .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(190, 190, 190)
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -239,7 +238,7 @@ public class FrmUsuario extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cancel)
-                    .addComponent(guardar))
+                    .addComponent(jButton1))
                 .addGap(18, 18, Short.MAX_VALUE))
         );
 
@@ -330,23 +329,6 @@ public class FrmUsuario extends javax.swing.JFrame {
         eli.setVisible(true);
     }//GEN-LAST:event_EActionPerformed
 
-    private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
-        p.setCedula(Integer.parseInt(this.txtcedula.getText()));
-       
-        p.setTxtCorreo(this.txtCorreo.getText());
-        p.setNomUsuario(this.txtUsuario.getText());
-        p.setContraseña(this.txtContraseña.getText());
-        p.setTipo(this.txtTipo.getText());
-        p.setTxtNombre(this.txtNombre.getText());
-        p.setTxtTel(this.txtTelefono.getText());
-        SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
-        p.setFechaNacimiento(dt.format(this.txtFecha.getDate()));
-        confi.conectar();
-        p.create();
-     
-       
-    }//GEN-LAST:event_guardarActionPerformed
-
     private void ACActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ACActionPerformed
         FrmModificacion prueba = new FrmModificacion();
         prueba.setVisible(true);
@@ -370,40 +352,57 @@ public class FrmUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_BActionPerformed
 
     private void txtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyTyped
-        if(txtNombre.getText().length()==25){
+        if (txtNombre.getText().length() == 25) {
             evt.consume();
         }
     }//GEN-LAST:event_txtNombreKeyTyped
 
     private void txtContraseñaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtContraseñaKeyTyped
-        if(txtContraseña.getText().length()==10){
+        if (txtContraseña.getText().length() == 10) {
             evt.consume();
         }
     }//GEN-LAST:event_txtContraseñaKeyTyped
 
     private void txtTipoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTipoKeyTyped
-        if(txtTipo.getText().length()==15){
+        if (txtTipo.getText().length() == 15) {
             evt.consume();
         }
     }//GEN-LAST:event_txtTipoKeyTyped
 
     private void txtCorreoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCorreoKeyTyped
-        if(txtCorreo.getText().length()==30){
+        if (txtCorreo.getText().length() == 30) {
             evt.consume();
         }
     }//GEN-LAST:event_txtCorreoKeyTyped
 
     private void txtcedulaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtcedulaKeyTyped
-        if(txtcedula.getText().length()==10){
+        if (txtcedula.getText().length() == 10) {
             evt.consume();
         }
     }//GEN-LAST:event_txtcedulaKeyTyped
 
     private void txtUsuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUsuarioKeyTyped
-        if(txtUsuario.getText().length()==10){
+        if (txtUsuario.getText().length() == 10) {
             evt.consume();
         }
     }//GEN-LAST:event_txtUsuarioKeyTyped
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        p.setCedula(Integer.parseInt(this.txtcedula.getText()));
+        p.setTxtCorreo(this.txtCorreo.getText());
+        p.setNomUsuario(this.txtUsuario.getText());
+        p.setContraseña(this.txtContraseña.getText());
+        p.setTipo(this.txtTipo.getText());
+        p.setTxtNombre(this.txtNombre.getText());
+        p.setTxtTel(this.txtTelefono.getText());
+        SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
+        p.setFechaNacimiento(dt.format(this.txtFecha.getDate()));
+        p.create();
+
+
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+   
 
     /**
      * @param args the command line arguments
@@ -446,7 +445,7 @@ public class FrmUsuario extends javax.swing.JFrame {
     private javax.swing.JMenuItem B;
     private javax.swing.JMenuItem E;
     private javax.swing.JButton cancel;
-    private javax.swing.JButton guardar;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
