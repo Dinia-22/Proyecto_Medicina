@@ -1,4 +1,3 @@
-
 package Usuarios;
 
 import static Conectar.Conectar.conexion;
@@ -93,14 +92,12 @@ public class Usuario {
     public String getTxtNombre() {
         return txtNombre;
     }
-    
-    
-    public void create() {
-        try {
 
-            PreparedStatement sentencia;
+    public void create() {
+
+        PreparedStatement sentencia;
+        try {
             sentencia = conexion.prepareStatement("insert usuarios values(null,?,?,?,?,?,?,?,?)");
-          
             sentencia.setInt(1, cedula);
             sentencia.setString(2, txtNombre);
             sentencia.setString(3, this.FechaNacimiento);
@@ -109,17 +106,16 @@ public class Usuario {
             sentencia.setString(6, this.NomUsuario);
             sentencia.setString(7, this.contraseña);
             sentencia.setString(8, this.tipo);
-
             sentencia.execute();
 
             JOptionPane.showMessageDialog(null, "Se agregaron los datos");
 
         } catch (SQLException e) {
             if(e.getErrorCode()==1062){
-                JOptionPane.showMessageDialog(null, "La cedula ya existe ", "", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "La cedula ya existe", " ", JOptionPane.ERROR_MESSAGE);
             }
-           
         }
+
     }
 
     public void update() {
@@ -284,6 +280,5 @@ public class Usuario {
         }
 
     }
-
 
 }
