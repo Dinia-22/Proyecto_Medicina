@@ -90,7 +90,8 @@ public class Citas extends Paciente {
 
         } catch (SQLException e) {
             if (e.getErrorCode() == 1062) {
-                JOptionPane.showMessageDialog(null, "La hora ya existe y fecha existen ", null, JOptionPane.ERROR_MESSAGE);
+                
+                JOptionPane.showMessageDialog(null, "La hora,fecha,cedula ya existen ", null, JOptionPane.ERROR_MESSAGE);
                 
 
             }
