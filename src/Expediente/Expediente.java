@@ -47,14 +47,6 @@ public class Expediente extends Thread {
     private String estado;
     
 
-    public Expediente() {
-        this.Fecha = Fecha;
-        this.hora = hora;
-        this.medico = medico;
-        this.Descrip = Descrip;
-        this.paciente = paciente;
-    }
-
     public String getFecha() {
         return Fecha;
     }
@@ -140,7 +132,7 @@ public class Expediente extends Thread {
     public void update() {
         try {
 
-            sentencias.executeUpdate("update expediente set fecha='" + this.Fecha + "',hora='" + this.hora + "',medico='" + this.medico + "',descripcion='" + this.Descrip + "',paciente='" + this.paciente+"',estado='" + "' where cedula=" + this.cedula);
+            sentencias.executeUpdate("update expediente set fecha='" + this.Fecha + "',hora='" + this.hora + "',medico='" + this.medico + "',descripcion='" + this.Descrip + "',paciente='" + this.paciente+"',estado='" + this.estado + "' where cedula=" + this.cedula);
             JOptionPane.showMessageDialog(null, "Se actualizaron los datos");
 
         } catch (SQLException ex) {

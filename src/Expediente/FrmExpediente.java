@@ -155,6 +155,11 @@ public class FrmExpediente extends javax.swing.JFrame {
 
         jLabel7.setText("Estado del paciente");
 
+        txtAusentePresente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAusentePresenteActionPerformed(evt);
+            }
+        });
         txtAusentePresente.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtAusentePresenteKeyTyped(evt);
@@ -353,6 +358,7 @@ public class FrmExpediente extends javax.swing.JFrame {
         ex.setHora(this.txtHora.getText());
         ex.setMedico(this.txtMedico.getText());
         ex.setCedula(Integer.parseInt(this.txtCedula.getText()));
+        ex.setEstado(this.txtAusentePresente.getText());
         conec.conectar();
         ex.update();
     }//GEN-LAST:event_actualizarActionPerformed
@@ -435,6 +441,10 @@ public class FrmExpediente extends javax.swing.JFrame {
         conec.conectar();
         this.busquedaNombre();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void txtAusentePresenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAusentePresenteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAusentePresenteActionPerformed
 
     public void busquedaNombre() {
         try {
