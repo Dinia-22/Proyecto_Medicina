@@ -450,7 +450,7 @@ public class FrmExpediente extends javax.swing.JFrame {
         try {
             String cedula = txtCedula.getText();
             // Contruccion de la consulta sql select
-            String sql = "SELECT * FROM expediente ";
+            String sql = "SELECT * FROM citas ";
             if (!cedula.equals("")) {
                 sql += " WHERE Cedula LIKE '%" + cedula + "%'";
             }
